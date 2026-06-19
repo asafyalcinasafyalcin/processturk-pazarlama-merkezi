@@ -1,0 +1,249 @@
+[
+  {
+    "code": "PRO-FILLING-GFM-001",
+    "slug": "granul-dolum",
+    "name_en": "Granule Filling Machine",
+    "category": "Filling / Granule",
+    "price_usd": 1150,
+    "price_text": "1,150 USD",
+    "specs": {
+      "filled_products": "Tea, coffee bean, sugar, salt, dragee, spices bean, rice, seed, olive etc.",
+      "filling_range": "20 gr - 1200 gr",
+      "capacity": "600-1000 pcs/hour",
+      "size": "60 x 50 x 150 cm",
+      "power": "300 Watt",
+      "voltage": "230 V / 50 Hz"
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/granul-dolum.png",
+    "hd": true
+  },
+  {
+    "code": "PRO-FILLING-LFH-001",
+    "slug": "sivi-dolum-kafa",
+    "name_en": "Liquid Filling Head",
+    "category": "Filling / Liquid",
+    "price_usd": 1150,
+    "price_text": "1,150 USD",
+    "specs": {
+      "filled_products": "Honey, tahini, molasses, high viscosity liquids etc.",
+      "filling_range": "50 gr - 1000 gr",
+      "capacity": "250 Lt/hour",
+      "size": "25 x 40 x 36 cm",
+      "power": "500 Watt",
+      "voltage": "230 V / 50 Hz"
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Liquid Filling Head.png",
+    "hd": false
+  },
+  {
+    "code": "PRO-FILLING-LFL-001",
+    "slug": "sivi-dolum-hat",
+    "name_en": "Liquid Filling Line (without tanks)",
+    "category": "Filling / Liquid Line",
+    "price_usd": 28750,
+    "price_text": "28,750 USD",
+    "specs": {
+      "filled_products": "Honey, tahini, molasses, high viscosity liquids etc.",
+      "filling_range": "50 gr - 1000 gr",
+      "capacity": "250 Lt/hour",
+      "size": "450 x 200 x 150 cm",
+      "power": "2000 Watt",
+      "voltage": "230 V / 50 Hz"
+    },
+    "video": "https://www.youtube.com/watch?v=4opm_aE-Blc",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Liquid Filling Line (without tanks).png",
+    "hd": true
+  },
+  {
+    "code": "PRO-FILLING-MLM-001",
+    "slug": "manuel-etiketleme",
+    "name_en": "Manual Labelling Machine",
+    "category": "Labelling",
+    "price_usd": 345,
+    "price_text": "345 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "",
+      "size": "45 x 30 x 20 cm",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Manual Labelling Machine.jpeg",
+    "hd": false
+  },
+  {
+    "code": "PRO-FILLING-LFM4-001",
+    "slug": "sivi-dolum-4nozul",
+    "name_en": "Liquid Filling Machine (4 nozzles)",
+    "category": "Filling / Liquid",
+    "price_usd": 33350,
+    "price_text": "33,350 USD",
+    "specs": {
+      "filled_products": "All liquid products",
+      "filling_range": "",
+      "capacity": "Depends on number of nozzles; 400 ml 1000 pcs/hour with 4 nozzles",
+      "size": "",
+      "power": "2000 Watt",
+      "voltage": "380 V / 50 Hz"
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Liquid Filling Machine (4 nozzles).png",
+    "hd": true
+  },
+  {
+    "code": "PRO-FILLING-SALM-001",
+    "slug": "etiketleme-yari",
+    "name_en": "Semi Automatic Labelling Machine",
+    "category": "Labelling",
+    "price_usd": 1035,
+    "price_text": "1,035 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "",
+      "size": "Machine size 60 x 50 x 150 cm; labelling unit 45 x 30 x 20 cm",
+      "power": "300 Watt",
+      "voltage": "230 V / 50 Hz"
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Semi Automatic Labelling Machine.jpeg",
+    "hd": false
+  },
+  {
+    "code": "PRO-FILLING-FALC-001",
+    "slug": "etiketleme-oto",
+    "name_en": "Full Automatic Labelling Machine with Cabin",
+    "category": "Labelling",
+    "price_usd": 7475,
+    "price_text": "7,475 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "10-40 bottles/min.",
+      "size": "60 x 50 x 150 cm",
+      "power": "750 Watt",
+      "voltage": "230 V / 50 Hz"
+    },
+    "video": "https://www.youtube.com/watch?v=V8V1cd4XeVU&t=14s",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-oto.png",
+    "hd": true
+  },
+  {
+    "code": "PRO-FILLING-FALC304-001",
+    "slug": "etiketleme-oto-304",
+    "name_en": "Full Automatic Labelling Machine with Cabin (Stainless Steel 304)",
+    "category": "Labelling",
+    "price_usd": 12075,
+    "price_text": "12,075 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "10-40 bottles/min.",
+      "size": "60 x 50 x 150 cm",
+      "power": "750 Watt",
+      "voltage": "230 V / 50 Hz"
+    },
+    "video": "https://www.youtube.com/watch?v=V8V1cd4XeVU&t=14s",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-oto-304.png",
+    "hd": true
+  },
+  {
+    "code": "PRO-FILLING-FAL304-NC-001",
+    "slug": "etiketleme-304-kabinsiz",
+    "name_en": "Full Automatic Labelling Machine (Stainless Steel 304) without cabin",
+    "category": "Labelling",
+    "price_usd": 10350,
+    "price_text": "10,350 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "10-40 bottles/min. (based on automatic labelling platform)",
+      "size": "60 x 50 x 150 cm",
+      "power": "750 Watt",
+      "voltage": "230 V / 50 Hz"
+    },
+    "video": "https://www.youtube.com/watch?v=V8V1cd4XeVU&t=14s",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-304-kabinsiz.png",
+    "hd": true
+  },
+  {
+    "code": "PRO-FILLING-OLCM-001",
+    "slug": "tek-hat-kapatma",
+    "name_en": "One Line Capping Machine",
+    "category": "Capping",
+    "price_usd": 28175,
+    "price_text": "28,175 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "750-900 pcs/hour",
+      "size": "100 x 2500 x 2000 cm",
+      "power": "750 Watt",
+      "voltage": "380 V"
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/One Line Capping Machine.jpeg",
+    "hd": false
+  },
+  {
+    "code": "PRO-FILLING-TLCM-001",
+    "slug": "iki-hat-kapatma",
+    "name_en": "Two Line Capping Machine",
+    "category": "Capping",
+    "price_usd": 37375,
+    "price_text": "37,375 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "1500 pcs/hour",
+      "size": "100 x 4800 x 2000 cm",
+      "power": "2000 Watt",
+      "voltage": "380 V"
+    },
+    "video": "https://www.youtube.com/watch?v=p3y3Y5WL4CY&t=3s",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Two Line Capping Machine.jpeg",
+    "hd": false
+  },
+  {
+    "code": "PRO-FILLING-CCM-001",
+    "slug": "can-kapatma-oto",
+    "name_en": "Can Capping Machine",
+    "category": "Capping / Can",
+    "price_usd": 48300,
+    "price_text": "48,300 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "1000 pcs/hour",
+      "size": "",
+      "power": "",
+      "voltage": "380 V"
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Can Capping Machine .png",
+    "hd": false
+  },
+  {
+    "code": "PRO-FILLING-SACCM-001",
+    "slug": "can-kapatma-yari",
+    "name_en": "Semi Automatic Can Capping Machine",
+    "category": "Capping / Can",
+    "price_usd": 4600,
+    "price_text": "4,600 USD",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "12-15 pcs/minute",
+      "size": "",
+      "power": "",
+      "voltage": "380 V"
+    },
+    "video": "",
+    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Semi Automatic Can Capping Machine.jpeg",
+    "hd": false
+  }
+]

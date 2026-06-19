@@ -1,0 +1,509 @@
+{
+  "granul-dolum": {
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "ozellik",
+          "by_lang": {
+            "tr": {
+              "headline": "Yüksek verimlilikte dolum makinesi",
+              "primary": "Granule Filling Machine ile üretiminizi hızlandırın. Paslanmaz çelik yapısıyla uzun ömürlü ve dayanıklıdır. Detaylı bilgi için WhatsApp'tan bize ulaşın.",
+              "description": "Güvenilir mühendislik ile kalite sunar.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Unmatched Precision in Filling",
+              "primary": "Experience the precision of our Granule Filling Machine, designed to enhance your production efficiency while handling diverse products like tea, coffee, and spices. Elevate your operations with engineered reliability. Message us on WhatsApp.",
+              "description": "Engineered for optimal performance.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "hiz/kapasite",
+          "by_lang": {
+            "tr": {
+              "headline": "Hızlı dolum, yüksek kapasite",
+              "primary": "600-1000 adet/saat kapasitesiyle her boyut işletmeye uyum sağlar. İhtiyaçlarınıza uygun, otomatik sistem ile zaman kazanmanızı destekler. Detaylar için WhatsApp’tan ulaşın.",
+              "description": "Etkin bir üretim çözümü sunar.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Rapid Filling at 1000 pcs/hour",
+              "primary": "Boost your productivity with our Granule Filling Machine, capable of filling between 600 to 1000 pieces per hour. This ensures a swift turnaround for your production line. Connect with us via WhatsApp for more info.",
+              "description": "Maximize your filling speed today.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "kalite/dayanıklılık",
+          "by_lang": {
+            "tr": {
+              "headline": "Paslanmaz çelik ile üst düzey kalite",
+              "primary": "Granule Filling Machine, endüstri standartlarına uygun paslanmaz çelik ile üretilmiştir. Uzun ömürlü ve güvenilir bir çözüm arıyorsanız doğru yerdesiniz. Bilgi için WhatsApp'ta buluşalım.",
+              "description": "Dayanıklılık ve kaliteyi bir arada sunar.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Built to Last: Stainless Steel Design",
+              "primary": "Our Granule Filling Machine features a robust stainless steel design that promises not only durability but also top-notch performance under demanding conditions. Invest in longevity for your business. Reach out to us on WhatsApp.",
+              "description": "Durability you can count on.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-cozum",
+          "by_lang": {
+            "tr": {
+              "headline": "Karmaşık dolum süreçlerine son",
+              "primary": "Granule Filling Machine, farklı ürünleri tek bir makinede dolum yapmanıza olanak tanır. Zaman ve maliyet tasarrufu sağlayarak sorunlarınıza çözüm getirir. Daha fazla bilgi için WhatsApp’tan ulaşın.",
+              "description": "Çözüm odaklı mühendislik ile üretilmiştir.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Your Filling Challenges Solved",
+              "primary": "Say goodbye to filling inconsistencies with our advanced Granule Filling Machine. Designed to tackle common challenges in granule filling, it ensures efficiency and precision. Let’s discuss how we can help on WhatsApp.",
+              "description": "Precision that prevents waste.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        }
+      ],
+      "highlights": [
+        "600-1000 pcs/saat kapasite",
+        "Paslanmaz çelik yapım",
+        "Birden fazla ürün işleme",
+        "Hızlı otomasyon sistemi"
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-06-19T11:54:24.185Z"
+    },
+    "updated_at": "2026-06-19T20:39:25.868Z",
+    "image": {
+      "url": "https://v3b.fal.media/files/b/0a9ecc12/tkNim6P0StRIZSInI0LLy.jpg",
+      "model": "flux-schnell",
+      "at": "2026-06-18T13:57:28.693Z"
+    },
+    "video": {
+      "url": "/api/media/granul-dolum-tr-1781878415526-e9f69d.mp4",
+      "type": "rendered",
+      "lang": "tr",
+      "durationSec": 20,
+      "imageSource": "real",
+      "voice": true,
+      "music": true,
+      "model": "seedance-2-fast",
+      "at": "2026-06-19T14:13:35.556Z"
+    },
+    "scriptPlan": {
+      "lang": "tr",
+      "hook": "Hızlı dolum, az fire",
+      "benefitB": "Hızlı otomasyon, çoklu ürün",
+      "voiceover": "Granüler dolum makinemiz, ürün tipine göre 600–1.000 adet/saat kapasite sunarak baharat, kuruyemiş ve granül gıda süreçlerinizi hızlandırır. Paslanmaz çelik yapısı ile dayanıklıdır, Türk mühendisliği ile işlenmiştir. 7/24 uzaktan destekle her zaman yanınızdayız. Daha fazla bilgi için hemen bizimle iletişime geçin!",
+      "cta": "Fiyat ve teklif için WhatsApp'tan yazın",
+      "specLines": [
+        "Kapasite: ürün tipine göre 600–1.000 adet/saat"
+      ],
+      "trustLines": [
+        "Türkiye'de üretim — Türk mühendisliği",
+        "7/24 uzaktan destek + servis ağı"
+      ],
+      "capacity": "ürün tipine göre 600–1.000 adet/saat",
+      "material": null,
+      "scenes": [
+        {
+          "type": "hook",
+          "durationSec": 3,
+          "caption": "Hızlı dolum, az fire"
+        },
+        {
+          "type": "benefit",
+          "durationSec": 6,
+          "captionLines": [
+            "Ürün tipine göre 600–1.000 adet/saat",
+            "Hızlı otomasyon, çoklu ürün"
+          ]
+        },
+        {
+          "type": "trust",
+          "durationSec": 4,
+          "lines": [
+            "Türkiye'de üretim — Türk mühendisliği",
+            "7/24 uzaktan destek + servis ağı"
+          ]
+        },
+        {
+          "type": "spec",
+          "durationSec": 3,
+          "title": "TEKNİK ÖZELLİK",
+          "specLines": [
+            "Kapasite: ürün tipine göre 600–1.000 adet/saat"
+          ]
+        },
+        {
+          "type": "cta",
+          "durationSec": 4,
+          "title": "Fiyat ve teklif için WhatsApp'tan yazın",
+          "whatsapp": "905527062723",
+          "web": "processturk.com"
+        }
+      ],
+      "totalSec": 20
+    }
+  },
+  "sivi-dolum-hat": {
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "fiyat",
+          "by_lang": {
+            "tr": {
+              "primary": "Sıvı dolum hattımız, sadece 28,750 USD! Kendi üretiminizi hızlı ve verimli bir şekilde artırın. Hemen WhatsApp'tan teklif alın!",
+              "headline": "Liquid Filling Line 28,750 USD",
+              "description": "Yüksek kaliteli üretim için güvenilir bir çözüm.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Our liquid filling line is only $28,750! Boost your production quickly and efficiently. Get a quote on WhatsApp now!",
+              "headline": "Liquid Filling Line $28,750",
+              "description": "A reliable solution for high-quality production.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "hız",
+          "by_lang": {
+            "tr": {
+              "primary": "250 litre/saat kapasitesine sahip dolum hattımız ile üretiminizi hızlandırın. Daha fazla ürün, daha kısa sürede! Hemen WhatsApp'tan bilgi alın!",
+              "headline": "Filling Line 250 Lt/hour",
+              "description": "Hızlı ve etkili dolum çözümleri sağlar.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "primary": "Speed up your production with our filling line that has a capacity of 250 liters/hour! More products, less time! Inquire on WhatsApp now!",
+              "headline": "Filling Line 250 Lt/hour",
+              "description": "Provides fast and effective filling solutions.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "yeni-yatirimci",
+          "by_lang": {
+            "tr": {
+              "primary": "Yeni yatırımcılar için ideal seçim! Honey, tahini ve daha fazlasını hızlıca doldurun. WhatsApp'tan daha fazla bilgi alabilirsiniz!",
+              "headline": "Perfect for New Investors",
+              "description": "Yatımızınızı güvenle büyütün.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "primary": "The ideal choice for new investors! Quickly fill honey, tahini, and more. Get more information on WhatsApp!",
+              "headline": "Perfect for New Investors",
+              "description": "Grow your investment with confidence.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-cozum",
+          "by_lang": {
+            "tr": {
+              "primary": "Üretim hızında düşüş mü yaşıyorsunuz? 250 Lt/saat kapasiteye sahip dolum hattımız sorununuzu çözer! Hemen WhatsApp'tan ulaşın!",
+              "headline": "Fast Filling Solution",
+              "description": "Üretim sorunlarınıza güvenilir çözüm.",
+              "cta": "WhatsApp'tan ulaşın"
+            },
+            "en": {
+              "primary": "Experiencing a drop in production speed? Our filling line with a capacity of 250 Lt/hour solves your problem! Contact us on WhatsApp!",
+              "headline": "Fast Filling Solution",
+              "description": "A trustworthy solution for your production issues.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "E",
+          "angle": "sosyal-kanit",
+          "by_lang": {
+            "tr": {
+              "primary": "2100'den fazla mutlu müşteri ile sıvı dolum hattımızı seçin! Kalite ve güvenin adresi. WhatsApp’tan size özel teklif alabilirsiniz!",
+              "headline": "Proven by 2100+ Clients",
+              "description": "Güçlü müşteri referansına sahip.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Choose our liquid filling line proven by over 2100 happy customers! A benchmark of quality and trust. Get your special offer on WhatsApp!",
+              "headline": "Proven by 2100+ Clients",
+              "description": "Strong customer references available.",
+              "cta": "Send message"
+            }
+          }
+        }
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-06-19T09:21:47.267Z"
+    },
+    "updated_at": "2026-06-19T09:24:36.078Z",
+    "image": {
+      "url": "https://v3b.fal.media/files/b/0a9ee76d/RcXosNyiktv_JPMw_KCkY.jpg",
+      "model": "flux-schnell",
+      "at": "2026-06-19T09:24:36.077Z"
+    },
+    "video": {
+      "url": "https://v3b.fal.media/files/b/0a9ee77b/MtyT8JrPDcLA_-FoFTrqL_video.mp4",
+      "model": "seedance-2-fast",
+      "duration": 5,
+      "aspect": "9:16",
+      "at": "2026-06-19T09:24:36.077Z"
+    }
+  },
+  "etiketleme-oto": {
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "fiyat",
+          "by_lang": {
+            "tr": {
+              "primary": "Tam otomatik etiketleme makinesi, yalnızca 7,475 USD! Bu makine, işinizi kolaylaştıracak. Hızla etiketleme yaparak zaman ve maliyet avantajı sağlayın!",
+              "headline": "Etiketleme Makinesi: 7,475 USD",
+              "description": "Yüksek kalite ve güvenilir performans.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Get the full automatic labelling machine for just 7,475 USD! Streamline your labeling process and save on time and costs!",
+              "headline": "Labelling Machine: $7,475",
+              "description": "High quality and reliable performance.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "hız",
+          "by_lang": {
+            "tr": {
+              "primary": "Ambalajlama hızınız 10-40 şişe/dk! Bu tam otomatik etiketleme makinesi, ürünlerinizi hızlı bir şekilde etiketleyerek verimliliğinizi artırır.",
+              "headline": "10-40 şişe/dk ile hız kazanın",
+              "description": "Etiketleme sürecinde güvenilir bir çözüm.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Label at 10-40 bottles/min! This full automatic labelling machine boosts your productivity by rapidly labeling your products.",
+              "headline": "Label at 10-40 bottles/min",
+              "description": "A reliable solution for your labeling needs.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "yeni-yatirimci",
+          "by_lang": {
+            "tr": {
+              "primary": "Yeni yatırımcılar için mükemmel başlangıç! Tam otomatik etiketleme makinesi ile işinizi büyütmek ve rekabet yaratmak artık mümkün.",
+              "headline": "Yeni yatırımcılar için etiketleme makinesi",
+              "description": "Güvenilir bir mühendislik ile büyüyün.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Perfect start for new investors! Grow your business with the full automatic labelling machine and create a competitive edge.",
+              "headline": "Labelling machine for new investors",
+              "description": "Grow with reliable engineering.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-cozum",
+          "by_lang": {
+            "tr": {
+              "primary": "Etiketleme süreçlerindeki zorluklara son! Tam otomatik etiketleme makinesi, zamandan tasarruf ve insan hatalarını en aza indiriyor.",
+              "headline": "Sorunları çözen etiketleme makinesi",
+              "description": "Zaman ve hata payını azaltır.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Say goodbye to labeling challenges! The full automatic labelling machine saves time and reduces human errors.",
+              "headline": "Labelling machine that solves problems",
+              "description": "Reduces time and error rates.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "E",
+          "angle": "sosyal-kanit",
+          "by_lang": {
+            "tr": {
+              "primary": "Sektördeki diğer yatırımcılar gibi siz de tam otomatik etiketleme makinemizi seçin! Güvenilir bir çözümle başarıya ulaşın.",
+              "headline": "Başarı için etiketleme makinesi",
+              "description": "Diğer yatırımcıların tercihi ile güven duyun.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Join other investors who trust our full automatic labelling machine! Achieve success with a reliable solution.",
+              "headline": "Labelling machine trusted by investors",
+              "description": "Trust the choice of other investors.",
+              "cta": "Send message"
+            }
+          }
+        }
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-06-19T09:22:00.127Z"
+    },
+    "updated_at": "2026-06-19T09:27:25.008Z",
+    "image": {
+      "url": "https://v3b.fal.media/files/b/0a9ee77d/RwqSmWdH4GMw693RyHvqd.jpg",
+      "model": "flux-schnell",
+      "at": "2026-06-19T09:27:25.000Z"
+    },
+    "video": {
+      "url": "https://v3b.fal.media/files/b/0a9ee78c/9TNBs4Z-tLSl6WX2qe8jl_video.mp4",
+      "model": "seedance-2-fast",
+      "duration": 5,
+      "aspect": "9:16",
+      "at": "2026-06-19T09:27:25.003Z"
+    }
+  },
+  "sivi-dolum-kafa": {
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "fiyat",
+          "by_lang": {
+            "tr": {
+              "primary": "Liquid Filling Head 1,150 USD ile çözümler sunuyor. Yüksek kapasiteli, etkili doldurma sistemleri arıyorsanız buradayız! Hızla WhatsApp'tan bize ulaşın.",
+              "headline": "Liquid Filling Head 1,150 USD",
+              "description": "Kalite ve güvenle dolum deneyimi.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Discover the Liquid Filling Head for just $1,150! Perfect for high-capacity filling needs. Contact us on WhatsApp now!",
+              "headline": "Liquid Filling Head $1,150",
+              "description": "Experience quality and reliability in filling.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "hız",
+          "by_lang": {
+            "tr": {
+              "primary": "Sadece 250 lt/saat kapasiteyle hızlı dolgular için Liquid Filling Head! İşinizi büyütmek isteyen herkes için ideal! WhatsApp'tan bilgi alın.",
+              "headline": "250 Lt/saat Hızlı Doldurma Başlığı",
+              "description": "Yüksek verim, düşük bekleme süresi.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Achieve 250 lt/hour with the Liquid Filling Head! Ideal for those expanding their business. Contact us on WhatsApp!",
+              "headline": "250 Lt/hour Fast Filling Head",
+              "description": "High efficiency, low downtime.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "yeni-yatirimci",
+          "by_lang": {
+            "tr": {
+              "primary": "Yeni yatırımcılar için Liquid Filling Head ile işinizi kolaylaştırın! Düşük maliyet, yüksek verim! Hızla WhatsApp'tan iletişime geçin.",
+              "headline": "Yeni Yatırımcıya Özel Doldurma Başlığı",
+              "description": "Başarılı bir başlangıç için ihtiyacınız var.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Simplify your startup with the Liquid Filling Head! Low cost, high output for new investors. Reach us on WhatsApp quickly!",
+              "headline": "Special Filling Head for New Investors",
+              "description": "Your need for a successful start.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-cozum",
+          "by_lang": {
+            "tr": {
+              "primary": "Yüksek viskoziteli sıvılarda sıkışma sorununa son! Liquid Filling Head ile etkili çözümler keşfedin. WhatsApp ile iletişime geçin.",
+              "headline": "Sorunları Çözen Doldurma Başlığı",
+              "description": "Güvenilir sonuçlar için ideal.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Say goodbye to clogs with high-viscosity liquids! Discover effective solutions with the Liquid Filling Head. Contact us on WhatsApp!",
+              "headline": "Clogging Solution Filling Head",
+              "description": "Ideal for reliable results.",
+              "cta": "Send message"
+            }
+          }
+        },
+        {
+          "id": "E",
+          "angle": "sosyal-kanit",
+          "by_lang": {
+            "tr": {
+              "primary": "Diğer başarılı işletmeler gibi siz de Liquid Filling Head ile dolum işlemlerini hızlandırın! WhatsApp’tan detaylar için bize ulaşın.",
+              "headline": "Başarılı İşletmelere Güvenli Doldurma",
+              "description": "Sektördeki güvenilir isimlerden biri.",
+              "cta": "WhatsApp'tan teklif al"
+            },
+            "en": {
+              "primary": "Join other successful businesses with the Liquid Filling Head and speed up your filling processes! Contact us on WhatsApp for details.",
+              "headline": "Trusted Filling for Successful Businesses",
+              "description": "One of the reliable names in the industry.",
+              "cta": "Send message"
+            }
+          }
+        }
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-06-19T10:32:28.547Z"
+    },
+    "updated_at": "2026-06-19T10:35:09.284Z",
+    "image": {
+      "url": "https://v3b.fal.media/files/b/0a9ee912/kgrNnrW0ObVO1WHRVulDG.jpg",
+      "model": "flux-schnell",
+      "at": "2026-06-19T10:35:09.276Z"
+    },
+    "video": {
+      "url": "https://v3b.fal.media/files/b/0a9ee922/I7Wd3GEfSYMk92pobvf5W_video.mp4",
+      "model": "seedance-2-fast",
+      "duration": 5,
+      "aspect": "9:16",
+      "at": "2026-06-19T10:35:09.279Z"
+    }
+  }
+}

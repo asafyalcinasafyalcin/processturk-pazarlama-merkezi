@@ -1,0 +1,90 @@
+import { NextResponse } from 'next/server';
+import path from 'node:path';
+import { findProduct } from '@/lib/products';
+import { WORKSPACE_ROOT } from '@/lib/paths';
+import { planAdScript } from '@/lib/scene-plan';
+import { videoImageInput } from '@/lib/product-image';
+import { genVideo, genVoice, genMusic } from '@/lib/providers/gen';
+import { renderAdVideo } from '@/lib/render';
+import { patchContent, getContent } from '@/lib/content';
+import { BRAND } from '@/lib/brand';
+import { normalizeForTTS } from '@/lib/tts-normalize';
+import { readSettings } from '@/lib/settings';
+
+export const runtime = 'nodejs';
+export const maxDuration = 800;
+
+const LOGO = path.join(WORKSPACE_ROOT, 'Meta_Reklam_Sistemi', 'assets', 'processturk-logo-white.png');
+
+// TAM PIPELINE: senaryo (fiyatsız) → gerçek ürün görseli → 10sn i2v klip → seslendirme
+// + müzik → ffmpeg render (logo intro/outro + spec kartı + altyazı) → 9:16 mp4.
+export async function POST(request) {
+  try {
+    const body = await request.json();
+    const { slug } = body;
+    if (!slug) return NextResponse.json({ ok: false, error: 'slug zorunlu' }, { status: 400 });
+    const product = await findProduct(slug);
+    if (!product) return NextResponse.json({ ok: false, error: 'Ürün bulunamadı' }, { status: 404 });
+
+    const lang = body.lang || (product.marketing?.languages || ['tr'])[0];
+    const wantVoice = body.voice !== false;
+    const wantMusic = body.music !== false;
+    const existing = await getContent(slug);
+    const highlights = product.marketing?.highlights?.length
+      ? product.marketing.highlights
+      : (existing?.copy?.highlights || []);
+    const videoModel = body.videoModel || 'seedance-2-fast';
+
+    // 1) senaryo (fiyatsız, harekete geçirici)
+    const plan = await planAdScript({ product, lang, highlights });
+
+    // 2) gerçek ürün görseli (sağlayıcıya göre: fal URL veya higgsfield yerel yol)
+    const img = await videoImageInput(product);
+
+    // 3) tek 10sn i2v klip (gerçek ürün DOLUM YAPARKEN); kanca + fayda sahnelerine bölünür
+    const motion = 'the real machine actively filling product, product flowing into packages, smooth subtle camera push-in then slow pan, medium/wide shot, factory background, premium commercial, realistic';
+    const negative = 'text, letters, numbers, logo, brand name, control panel, screen, monitor, display, UI, buttons, watermark, subtitles, distorted hands, distorted faces, deformed';
+    const clip = await genVideo({ model: videoModel, prompt: motion, negative_prompt: negative, imagePath: img.imagePath, image_url: img.url, aspect_ratio: '9:16', resolution: '720p', duration: 10 });
+    if (!clip.url) throw new Error('Ürün klibi üretilemedi.');
+
+    // kanca(0-3sn) + fayda(3-9sn) sahnelerine tek klibi segment olarak ata
+    let seg = 0;
+    const scenes = plan.scenes.map((s) => {
+      if (s.type === 'hook' || s.type === 'benefit') { const out = { ...s, clipUrl: clip.url, segStart: seg }; seg += s.durationSec; return out; }
+      return s;
+    });
+
+    // 4) seslendirme + müzik (opsiyonel)
+    const settings = await readSettings();
+    let voiceUrl = null, musicUrl = null;
+    if (wantVoice && plan.voiceover) {
+      try {
+        // TTS'ten ÖNCE okunur biçime normalize et (sayı→yazı, sembol, telaffuz sözlüğü)
+        const spoken = normalizeForTTS(plan.voiceover, lang, settings.pronounce);
+        voiceUrl = (await genVoice({ text: spoken, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset })).url;
+      } catch (e) { console.warn('TTS atlandı:', e.message); }
+    }
+    if (wantMusic) {
+      try { musicUrl = (await genMusic({ prompt: 'calm corporate industrial background, subtle, motivating, no vocals', seconds: plan.totalSec })).url; }
+      catch (e) { console.warn('Müzik atlandı:', e.message); }
+    }
+
+    // 5) render
+    const rendered = await renderAdVideo({
+      slug, lang, scenes, voiceUrl, musicUrl,
+      whatsapp: BRAND.whatsapp, web: BRAND.web, logoPath: LOGO,
+    });
+
+    const video = {
+      url: rendered.publicPath, type: 'rendered', lang,
+      durationSec: rendered.durationSec, imageSource: img.source,
+      voice: Boolean(voiceUrl), music: Boolean(musicUrl), model: videoModel,
+      at: new Date().toISOString(),
+    };
+    await patchContent(slug, { video, scriptPlan: plan });
+    return NextResponse.json({ ok: true, video, plan, imageSource: img.source });
+  } catch (err) {
+    const detail = err?.body?.detail?.[0];
+    return NextResponse.json({ ok: false, error: err.message || 'Üretim başarısız', detail: detail?.msg || null }, { status: 500 });
+  }
+}
