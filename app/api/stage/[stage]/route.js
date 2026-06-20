@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import path from 'node:path';
 import { findProduct } from '@/lib/products';
 import { getContent } from '@/lib/content';
-import { WORKSPACE_ROOT } from '@/lib/paths';
+import { metaReklamRoot } from '@/lib/paths';
 import { BRAND } from '@/lib/brand';
 import { planAdScript } from '@/lib/scene-plan';
 import { buildSrt } from '@/lib/srt';
@@ -18,7 +18,7 @@ import {
 
 export const runtime = 'nodejs';
 export const maxDuration = 800;
-const LOGO = path.join(WORKSPACE_ROOT, 'Meta_Reklam_Sistemi', 'assets', 'processturk-logo-white.png');
+const LOGO = path.join(metaReklamRoot(), 'assets', 'processturk-logo-white.png');
 
 function cap1(s, lang) { return s ? s.charAt(0).toLocaleUpperCase(lang === 'tr' ? 'tr' : 'en') + s.slice(1) : s; }
 

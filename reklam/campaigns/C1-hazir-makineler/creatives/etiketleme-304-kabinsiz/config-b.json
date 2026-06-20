@@ -1,0 +1,43 @@
+{
+  "slug": "etiketleme-304-kabinsiz",
+  "variant": "b",
+  "template": "product-b.html",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-304-kabinsiz.png",
+  "prep_prompt": "304 stainless steel automatic labelling machine without cabin, compact bottle labelling platform, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story", "square"],
+  "languages": {
+    "en": {
+      "origin": "Made in Türkiye",
+      "badges": ["304 Food-Grade", "10–40 bottles/min", "Compact · no cabin"],
+      "hero": "Turkish Engineering. European Components.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Starting from",
+      "price_num": "10,350 USD",
+      "sub": "304 Stainless Labelling (no cabin) · compact · installation & support",
+      "cta": "Get price on WhatsApp"
+    },
+    "fr": {
+      "origin": "Fabriqué en Türkiye",
+      "badges": ["Inox 304 alimentaire", "10–40 bouteilles/min", "Compact · sans cabine"],
+      "hero": "Ingénierie turque. Composants européens.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "À partir de",
+      "price_num": "10 350 USD",
+      "sub": "Étiqueteuse inox 304 (sans cabine) · compacte · installation & support",
+      "cta": "Obtenir le prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "origin": "صُنع في تركيا",
+      "badges": ["ستانلس 304 غذائي", "10–40 زجاجة/دقيقة", "مدمجة · بدون كابينة"],
+      "hero": "هندسة تركية. مكوّنات أوروبية.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "تبدأ من",
+      "price_num": "10,350 دولار",
+      "sub": "آلة وسم ستانلس 304 (بدون كابينة) · مدمجة · تركيب ودعم",
+      "cta": "اعرف السعر عبر واتساب"
+    }
+  }
+}

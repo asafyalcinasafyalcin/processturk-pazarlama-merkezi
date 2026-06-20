@@ -1,0 +1,55 @@
+{
+  "slug": "etiketleme-304-kabinsiz",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-304-kabinsiz.png",
+  "prep_prompt": "304 stainless steel automatic labelling machine without cabin, compact bottle labelling platform, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story"],
+  "tag": "C1-etiket-304nc",
+  "campaign": {
+    "adsets": [
+      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "b" },
+      { "lang": "fr", "countries": ["DZ", "MA", "TN", "SN", "CI"], "concept": "b" },
+      { "lang": "ar", "countries": ["SA", "AE", "EG"], "concept": "b" }
+    ]
+  },
+  "languages": {
+    "en": {
+      "badges": ["304 Stainless Steel", "10–40 bottles / min", "Compact · no cabin"],
+      "name": "304 Stainless Labelling (No Cabin)",
+      "price_pre": "Starting from",
+      "price_num": "10,350 USD",
+      "sub": "Food-grade automatic labelling — compact footprint",
+      "trust": "304 stainless · automatic platform · space-saving",
+      "cta": "Get model & price on WhatsApp"
+    },
+    "fr": {
+      "badges": ["Acier inox 304", "10–40 bouteilles / min", "Compact · sans cabine"],
+      "name": "Étiqueteuse Inox 304 (sans cabine)",
+      "price_pre": "À partir de",
+      "price_num": "10 350 USD",
+      "sub": "Étiquetage automatique alimentaire — encombrement réduit",
+      "trust": "Inox 304 · plateforme automatique · gain de place",
+      "cta": "Obtenir modèle et prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "badges": ["ستانلس ستيل 304", "10–40 زجاجة / دقيقة", "مدمجة · بدون كابينة"],
+      "name": "آلة وسم ستانلس 304 (بدون كابينة)",
+      "price_pre": "تبدأ من",
+      "price_num": "10,350 دولار",
+      "sub": "وسم أوتوماتيكي بمواصفات غذائية — حيز صغير",
+      "trust": "ستانلس 304 · منصة أوتوماتيكية · موفّرة للمساحة",
+      "cta": "احصل على الموديل والسعر عبر واتساب"
+    },
+    "ru": {
+      "badges": ["Нержавеющая сталь 304", "10–40 бут. / мин", "Компактный · без кабины"],
+      "name": "Этикетировщик 304 (без кабины)",
+      "price_pre": "От",
+      "price_num": "10 350 USD",
+      "sub": "Пищевое авто-этикетирование — компактно",
+      "trust": "Сталь 304 · автоплатформа · экономия места",
+      "cta": "Узнать модель и цену в WhatsApp"
+    }
+  }
+}

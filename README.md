@@ -4,7 +4,7 @@ Sosyal medya + reklam + içerik üretimini ve ürün onboarding'ini tek panelden
 
 - **Port:** 4181 · **Stack:** Next.js 15 + React 19 + Tailwind 3.4
 - **Başlat:** `./start-local.sh` (dev) veya `./start-local.sh prod`
-- **Tek kaynak ürün verisi:** `../Meta_Reklam_Sistemi/data/products.json` (paylaşılır; `PRODUCTS_JSON_PATH` ile override).
+- **Tek kaynak ürün verisi:** `data/products.json` (paylaşılır; `PRODUCTS_JSON_PATH` ile override).
 
 ## Mimari
 ```
@@ -33,4 +33,4 @@ Hub (4170) → Pazarlama Komuta Merkezi (4181)
 Birden fazla kişiye gidecek her dış gönderim/kampanya **açık onay** gerektirir (CLAUDE.md "Toplu Gönderim Onayı"). Onay kapısı Faz 3'te panele gömülür.
 
 ## Ortam
-`.env.example` → `.env.local`. `FAL_KEY`'i `../Meta_Reklam_Sistemi/.env.local`'dan al (aynı anahtar).
+`.env.example` → `.env.local`. `FAL_KEY`'i `tek .env.local`'dan al (aynı anahtar).

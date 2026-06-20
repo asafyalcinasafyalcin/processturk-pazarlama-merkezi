@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import path from 'node:path';
 import { findProduct } from '@/lib/products';
-import { WORKSPACE_ROOT } from '@/lib/paths';
+import { metaReklamRoot } from '@/lib/paths';
 import { planAdScript } from '@/lib/scene-plan';
 import { videoImageInput } from '@/lib/product-image';
 import { genVideo, genVoice, genMusic } from '@/lib/providers/gen';
@@ -14,7 +14,7 @@ import { readSettings } from '@/lib/settings';
 export const runtime = 'nodejs';
 export const maxDuration = 800;
 
-const LOGO = path.join(WORKSPACE_ROOT, 'Meta_Reklam_Sistemi', 'assets', 'processturk-logo-white.png');
+const LOGO = path.join(metaReklamRoot(), 'assets', 'processturk-logo-white.png');
 
 // TAM PIPELINE: senaryo (fiyatsız) → gerçek ürün görseli → 10sn i2v klip → seslendirme
 // + müzik → ffmpeg render (logo intro/outro + spec kartı + altyazı) → 9:16 mp4.

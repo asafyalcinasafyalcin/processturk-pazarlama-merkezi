@@ -25,10 +25,11 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent          # Meta_Reklam_Sistemi
-# Ürün verisi: PRODUCTS_JSON_PATH env > ROOT/data/products.json (VPS/container uyumu)
+ROOT = Path(__file__).resolve().parent.parent          # reklam/
+APP_ROOT = ROOT.parent                                  # Processturk_Pazarlama_Merkezi/ (tek data/ + .env.local)
+# Ürün verisi: PRODUCTS_JSON_PATH env > APP_ROOT/data/products.json (VPS/container uyumu)
 PRODUCTS = Path(os.environ["PRODUCTS_JSON_PATH"]) if os.environ.get("PRODUCTS_JSON_PATH") \
-    else ROOT / "data" / "products.json"
+    else APP_ROOT / "data" / "products.json"
 
 # dil → hedef ülkeler (create_meta_campaign.py GEO'su + genişletme)
 GEO = {
@@ -129,8 +130,8 @@ def build_plan(slug: str, langs: list, daily: float, number: str, content: dict)
 
 def _meta_env() -> dict:
     """create_meta_campaign.py ile aynı .env.local yükleme + kontrol."""
-    env_file = ROOT / ".env.local"
-    if env_file.exists():
+    env_file = next((p for p in (APP_ROOT / ".env.local", ROOT / ".env.local") if p.exists()), None)
+    if env_file is not None:
         for line in env_file.read_text(encoding="utf-8").splitlines():
             line = line.strip()
             if line and not line.startswith("#") and "=" in line:

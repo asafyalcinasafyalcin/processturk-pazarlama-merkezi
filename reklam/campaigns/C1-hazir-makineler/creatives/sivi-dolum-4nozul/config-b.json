@@ -1,0 +1,43 @@
+{
+  "slug": "sivi-dolum-4nozul",
+  "variant": "b",
+  "template": "product-b.html",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Liquid Filling Machine (4 nozzles).png",
+  "prep_prompt": "304 stainless steel automatic 4-nozzle liquid filling machine, industrial bottling equipment, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story", "square"],
+  "languages": {
+    "en": {
+      "origin": "Made in Türkiye",
+      "badges": ["304 Stainless Steel", "4 nozzles · up to 1000/h", "European components"],
+      "hero": "Turkish Engineering. European Components.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Starting from",
+      "price_num": "33,350 USD",
+      "sub": "4-Nozzle Liquid Filler · oil · sauce · high-speed",
+      "cta": "Get price on WhatsApp"
+    },
+    "fr": {
+      "origin": "Fabriqué en Türkiye",
+      "badges": ["Acier inox 304", "4 buses · jusqu'à 1000/h", "Composants européens"],
+      "hero": "Ingénierie turque. Composants européens.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "À partir de",
+      "price_num": "33 350 USD",
+      "sub": "Remplisseuse 4 buses · huile · sauce · haute cadence",
+      "cta": "Obtenir le prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "origin": "صُنع في تركيا",
+      "badges": ["ستانلس ستيل 304", "4 فوهات · حتى 1000/ساعة", "مكوّنات أوروبية"],
+      "hero": "هندسة تركية. مكوّنات أوروبية.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "تبدأ من",
+      "price_num": "33,350 دولار",
+      "sub": "آلة تعبئة 4 فوهات · زيت · صلصة · عالية السرعة",
+      "cta": "اعرف السعر عبر واتساب"
+    }
+  }
+}

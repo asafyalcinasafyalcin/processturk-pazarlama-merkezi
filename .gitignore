@@ -5,3 +5,7 @@ out
 *.log
 .DS_Store
 data/*.local.json
+
+# Finansal kaynak — imaja/git'e girmez
+reklam/**/*.xlsx
+*.xlsx

@@ -1,0 +1,55 @@
+{
+  "slug": "etiketleme-oto-304",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-oto-304.png",
+  "prep_prompt": "304 stainless steel automatic labelling machine with enclosed cabin for bottles, food grade industrial equipment, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story"],
+  "tag": "C1-etiket-304",
+  "campaign": {
+    "adsets": [
+      { "lang": "ar", "countries": ["SA", "AE", "QA", "KW", "EG"], "concept": "b" },
+      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "b" },
+      { "lang": "fr", "countries": ["DZ", "MA", "TN", "SN", "CI"], "concept": "b" }
+    ]
+  },
+  "languages": {
+    "en": {
+      "badges": ["304 Stainless Steel", "10–40 bottles / min", "Full-auto + cabin"],
+      "name": "304 Stainless Labelling Machine",
+      "price_pre": "Starting from",
+      "price_num": "12,075 USD",
+      "sub": "Food-grade labelling for bottles & jars",
+      "trust": "304 stainless · enclosed cabin · automatic",
+      "cta": "Get model & price on WhatsApp"
+    },
+    "fr": {
+      "badges": ["Acier inox 304", "10–40 bouteilles / min", "Auto + cabine"],
+      "name": "Étiqueteuse Inox 304",
+      "price_pre": "À partir de",
+      "price_num": "12 075 USD",
+      "sub": "Étiquetage qualité alimentaire pour bouteilles & bocaux",
+      "trust": "Inox 304 · cabine fermée · automatique",
+      "cta": "Obtenir modèle et prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "badges": ["ستانلس ستيل 304", "10–40 زجاجة / دقيقة", "أوتوماتيكية + كابينة"],
+      "name": "آلة وسم ستانلس 304",
+      "price_pre": "تبدأ من",
+      "price_num": "12,075 دولار",
+      "sub": "وسم بمواصفات غذائية للزجاجات والعبوات",
+      "trust": "ستانلس 304 · كابينة مغلقة · أوتوماتيكية",
+      "cta": "احصل على الموديل والسعر عبر واتساب"
+    },
+    "ru": {
+      "badges": ["Нержавеющая сталь 304", "10–40 бут. / мин", "Автомат + кабина"],
+      "name": "Этикетировщик из стали 304",
+      "price_pre": "От",
+      "price_num": "12 075 USD",
+      "sub": "Пищевое этикетирование бутылок и банок",
+      "trust": "Сталь 304 · закрытая кабина · автомат",
+      "cta": "Узнать модель и цену в WhatsApp"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="__LANG__" dir="__DIR__">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Cairo:wght@600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+  :root{ --navy:#071739; --red:#FF3255; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:__W__px;height:__H__px;overflow:hidden}
+  .stage{position:relative;width:__W__px;height:__H__px;overflow:hidden;color:#fff;
+    font-family:'Inter','Noto Sans Arabic',system-ui,sans-serif;
+    background:radial-gradient(118% 72% at 50% 24%, #18386180 0%, #0c2244 46%, #071739 100%), #071739;}
+  .floor{position:absolute;left:0;right:0;bottom:0;height:48%;
+    background:linear-gradient(180deg, rgba(7,23,57,0) 0%, rgba(4,13,32,.5) 66%, rgba(3,9,24,.9) 100%)}
+  .grid{position:absolute;inset:0;opacity:.05;
+    background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);
+    background-size:64px 64px;mask:radial-gradient(70% 52% at 50% 30%,#000,transparent 75%)}
+  .pad{position:absolute;inset:0;padding:__PAD__px;display:flex;flex-direction:column}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .logo{height:__LOGO_H__px;width:auto;max-width:48%}
+  .origin{display:flex;align-items:center;gap:.45em;font-family:'Inter','Noto Sans Arabic',sans-serif;
+    font-weight:700;font-size:__BADGE_FS__px;color:#fff;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+    padding:.42em .8em;border-radius:999px;white-space:nowrap}
+  .origin .flag{font-size:1.15em;line-height:1}
+  .badgerow{margin-top:__BADGE_MT__px;display:flex}
+  .badge{font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:600;font-size:__BADGE_FS__px;letter-spacing:.01em;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+    padding:.5em .9em;border-radius:999px;white-space:nowrap;color:rgba(255,255,255,.9)}
+  .machine-wrap{flex:1;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:1.5%}
+  .shadow{position:absolute;bottom:1.5%;left:50%;transform:translateX(-50%);
+    width:54%;height:5.5%;background:radial-gradient(ellipse at center,rgba(0,0,0,.6),transparent 72%);filter:blur(10px);z-index:1}
+  .machine{height:__MACHINE_H__px;width:auto;max-width:90%;object-fit:contain;
+    filter:drop-shadow(0 26px 36px rgba(0,0,0,.42));z-index:2}
+  .props{position:absolute;bottom:2.5%;left:53%;height:__PROPS_H__px;width:auto;z-index:3;
+    filter:drop-shadow(0 12px 16px rgba(0,0,0,.55))}
+  .text{display:flex;flex-direction:column;gap:__GAP__px}
+  .hero{font-family:'Montserrat','Cairo',sans-serif;font-weight:900;font-size:__NAME_FS__px;
+    line-height:1.02;letter-spacing:-.015em;text-transform:uppercase}
+  .hero .eu{color:var(--red)}
+  .brands{display:flex;align-items:center;gap:.5em;flex-wrap:wrap;
+    font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:700;font-size:__TRUST_FS__px;
+    color:rgba(255,255,255,.92);letter-spacing:.01em}
+  .brands .dot{width:.34em;height:.34em;border-radius:50%;background:var(--red);display:inline-block}
+  .price{display:flex;align-items:baseline;gap:.32em;flex-wrap:wrap;font-family:'Montserrat','Cairo',sans-serif;margin-top:.06em}
+  .price .pre{font-weight:700;font-size:__PRICE_PRE_FS__px;color:#fff;opacity:.92}
+  .price .num{font-weight:900;font-size:__PRICE_FS__px;color:var(--red);line-height:1;letter-spacing:-.01em}
+  .sub{font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:600;font-size:__SUB_FS__px;color:rgba(255,255,255,.94)}
+  .cta{align-self:flex-start;margin-top:__CTAMT__px;background:var(--red);color:#fff;
+    font-family:'Montserrat','Cairo',sans-serif;font-weight:800;font-size:__CTA_FS__px;letter-spacing:.005em;
+    padding:.72em 1.3em;border-radius:__RAD__px;display:inline-flex;align-items:center;gap:.55em;
+    box-shadow:0 4px 10px rgba(0,0,0,.18)}
+  .cta::before{content:"";width:.92em;height:.92em;border-radius:50%;background:#fff;opacity:.95}
+  .site{font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:600;font-size:__TRUST_FS__px;
+    color:rgba(255,255,255,.5);letter-spacing:.04em;margin-top:.35em;direction:ltr;unicode-bidi:isolate}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="grid"></div>
+    <div class="floor"></div>
+    <div class="pad">
+      <div class="top">
+        <img class="logo" src="__LOGO__" alt="ProcessTürk">
+        <div class="origin"><span class="flag">🇹🇷</span>__ORIGIN__</div>
+      </div>
+      <div class="badgerow"><div class="badge">__BADGE_LINE__</div></div>
+      <div class="machine-wrap">
+        <div class="shadow"></div>
+        <img class="machine" src="__MACHINE__" alt="">
+        __PROPS_BLOCK__
+      </div>
+      <div class="text">
+        <div class="hero">__HERO__</div>
+        <div class="brands">__BRANDS__</div>
+        <div class="price"><span class="pre">__PRICE_PRE__</span><span class="num">__PRICE_NUM__</span></div>
+        <div class="sub">__SUB__</div>
+        <div class="cta">__CTA__</div>
+        <div class="site">www.processturk.com</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

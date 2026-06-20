@@ -1,0 +1,54 @@
+{
+  "slug": "etiketleme-oto",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-oto.png",
+  "prep_prompt": "automatic self-adhesive labelling machine with enclosed cabin for bottles, industrial packaging equipment, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story", "square"],
+  "tag": "C1-etiket-oto",
+  "campaign": {
+    "adsets": [
+      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "a" },
+      { "lang": "fr", "countries": ["DZ", "MA", "TN", "SN", "CI"], "concept": "a" }
+    ]
+  },
+  "languages": {
+    "en": {
+      "badges": ["10–40 bottles / min", "Full-auto + cabin", "Installation & support"],
+      "name": "Automatic Labelling Machine",
+      "price_pre": "Starting from",
+      "price_num": "7,475 USD",
+      "sub": "Self-adhesive labelling for bottles & jars",
+      "trust": "Enclosed cabin · dust-free · automatic",
+      "cta": "Get model & price on WhatsApp"
+    },
+    "fr": {
+      "badges": ["10–40 bouteilles / min", "Auto + cabine", "Installation & support"],
+      "name": "Étiqueteuse Automatique",
+      "price_pre": "À partir de",
+      "price_num": "7 475 USD",
+      "sub": "Étiquetage adhésif pour bouteilles & bocaux",
+      "trust": "Cabine fermée · sans poussière · automatique",
+      "cta": "Obtenir modèle et prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "badges": ["10–40 زجاجة / دقيقة", "أوتوماتيكية + كابينة", "تركيب ودعم"],
+      "name": "آلة وسم أوتوماتيكية",
+      "price_pre": "تبدأ من",
+      "price_num": "7,475 دولار",
+      "sub": "وسم ذاتي اللصق للزجاجات والعبوات",
+      "trust": "كابينة مغلقة · بلا غبار · أوتوماتيكية",
+      "cta": "احصل على الموديل والسعر عبر واتساب"
+    },
+    "ru": {
+      "badges": ["10–40 бут. / мин", "Автомат + кабина", "Монтаж и поддержка"],
+      "name": "Автоматический этикетировщик",
+      "price_pre": "От",
+      "price_num": "7 475 USD",
+      "sub": "Самоклеящееся этикетирование бутылок и банок",
+      "trust": "Закрытая кабина · без пыли · автомат",
+      "cta": "Узнать модель и цену в WhatsApp"
+    }
+  }
+}

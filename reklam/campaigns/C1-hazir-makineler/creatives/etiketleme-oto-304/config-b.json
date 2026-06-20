@@ -1,0 +1,43 @@
+{
+  "slug": "etiketleme-oto-304",
+  "variant": "b",
+  "template": "product-b.html",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-oto-304.png",
+  "prep_prompt": "304 stainless steel automatic labelling machine with enclosed cabin, food grade industrial equipment, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story", "square"],
+  "languages": {
+    "en": {
+      "origin": "Made in Türkiye",
+      "badges": ["304 Food-Grade", "Enclosed cabin", "10–40 bottles/min"],
+      "hero": "Turkish Engineering. European Components.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Starting from",
+      "price_num": "12,075 USD",
+      "sub": "304 Stainless Labelling + cabin · hygienic · installation & support",
+      "cta": "Get price on WhatsApp"
+    },
+    "fr": {
+      "origin": "Fabriqué en Türkiye",
+      "badges": ["Inox 304 alimentaire", "Cabine fermée", "10–40 bouteilles/min"],
+      "hero": "Ingénierie turque. Composants européens.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "À partir de",
+      "price_num": "12 075 USD",
+      "sub": "Étiqueteuse inox 304 + cabine · hygiénique · installation & support",
+      "cta": "Obtenir le prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "origin": "صُنع في تركيا",
+      "badges": ["ستانلس 304 غذائي", "كابينة مغلقة", "10–40 زجاجة/دقيقة"],
+      "hero": "هندسة تركية. مكوّنات أوروبية.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "تبدأ من",
+      "price_num": "12,075 دولار",
+      "sub": "آلة وسم ستانلس 304 + كابينة · صحية · تركيب ودعم",
+      "cta": "اعرف السعر عبر واتساب"
+    }
+  }
+}

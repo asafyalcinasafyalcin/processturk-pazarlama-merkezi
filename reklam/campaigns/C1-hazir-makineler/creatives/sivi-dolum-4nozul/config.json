@@ -1,0 +1,55 @@
+{
+  "slug": "sivi-dolum-4nozul",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Liquid Filling Machine (4 nozzles).png",
+  "prep_prompt": "304 stainless steel automatic 4-nozzle liquid filling machine, industrial bottling equipment, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story"],
+  "tag": "C1-4nozul",
+  "campaign": {
+    "adsets": [
+      { "lang": "ar", "countries": ["SA", "AE", "QA", "KW", "EG"], "concept": "b" },
+      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "b" },
+      { "lang": "fr", "countries": ["DZ", "MA", "TN", "SN", "CI"], "concept": "b" }
+    ]
+  },
+  "languages": {
+    "en": {
+      "badges": ["304 Stainless Steel", "4 nozzles · up to 1000/h", "Installation & support"],
+      "name": "4-Nozzle Liquid Filler",
+      "price_pre": "Starting from",
+      "price_num": "33,350 USD",
+      "sub": "For oil · sauce · liquids — high-speed filling",
+      "trust": "4-nozzle automatic · engineering & installation",
+      "cta": "Get model & price on WhatsApp"
+    },
+    "fr": {
+      "badges": ["Acier inox 304", "4 buses · jusqu'à 1000/h", "Installation & support"],
+      "name": "Remplisseuse 4 Buses",
+      "price_pre": "À partir de",
+      "price_num": "33 350 USD",
+      "sub": "Pour huile · sauce · liquides — haute cadence",
+      "trust": "4 buses automatique · ingénierie & installation",
+      "cta": "Obtenir modèle et prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "badges": ["ستانلس ستيل 304", "4 فوهات · حتى 1000/ساعة", "تركيب ودعم"],
+      "name": "آلة تعبئة سوائل بـ4 فوهات",
+      "price_pre": "تبدأ من",
+      "price_num": "33,350 دولار",
+      "sub": "للزيت · الصلصة · السوائل — تعبئة عالية السرعة",
+      "trust": "أوتوماتيكية بـ4 فوهات · هندسة وتركيب",
+      "cta": "احصل على الموديل والسعر عبر واتساب"
+    },
+    "ru": {
+      "badges": ["Нержавеющая сталь 304", "4 сопла · до 1000/час", "Монтаж и поддержка"],
+      "name": "Розлив на 4 сопла",
+      "price_pre": "От",
+      "price_num": "33 350 USD",
+      "sub": "Для масла · соуса · жидкостей — высокая скорость",
+      "trust": "4 сопла, автомат · инжиниринг и монтаж",
+      "cta": "Узнать модель и цену в WhatsApp"
+    }
+  }
+}

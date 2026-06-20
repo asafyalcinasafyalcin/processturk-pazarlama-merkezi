@@ -44,6 +44,8 @@ COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@img ./node_modules/
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/sharp ./node_modules/sharp
 # Seed verisi (products.json/content.json/calendar.json) — kalıcı storage mount'u bunu gölgeler
 COPY --from=builder --chown=nextjs:nodejs /app/data ./data
+# Reklam motoru — panel_meta_campaign.py (kampanya rotası) + creative cutout'lar (video first-frame)
+COPY --from=builder --chown=nextjs:nodejs /app/reklam ./reklam
 COPY --chown=nextjs:nodejs docker-entrypoint.sh ./docker-entrypoint.sh
 # Yazılabilir state + Higgsfield auth (HOME) klasörleri
 RUN chmod +x docker-entrypoint.sh \

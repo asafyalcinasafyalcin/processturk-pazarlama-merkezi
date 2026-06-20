@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;800&display=swap');
+  :root{
+    --navy:#071739; --red:#FF3255; --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:__W__px;height:__H__px;overflow:hidden}
+  .stage{position:relative;width:__W__px;height:__H__px;background:var(--navy);overflow:hidden;
+    font-family:'Inter',system-ui,sans-serif;color:var(--white)}
+  .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  /* Navy okunabilirlik + marka tonu: üstte hafif, altta güçlü koyu degrade */
+  .scrim{position:absolute;inset:0;background:
+    linear-gradient(180deg, rgba(7,23,57,.55) 0%, rgba(7,23,57,.10) 32%, rgba(7,23,57,.78) 72%, rgba(7,23,57,.96) 100%)}
+  .pad{position:absolute;inset:0;padding:__PAD__px;display:flex;flex-direction:column;justify-content:space-between}
+  .top{display:flex;align-items:center;justify-content:space-between}
+  .badge{font-family:'Inter';font-weight:600;font-size:__BADGE__px;letter-spacing:.02em;
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
+    padding:.55em .9em;border-radius:999px;backdrop-filter:blur(4px)}
+  .brand{font-family:'Montserrat';font-weight:800;font-size:__BRAND__px;letter-spacing:.01em}
+  .brand b{color:var(--red)}
+  .bottom{display:flex;flex-direction:column;gap:__GAP__px}
+  .price{font-family:'Montserrat';font-weight:900;font-size:__PRICE__px;line-height:.95;letter-spacing:-.02em}
+  .price small{color:var(--red)}
+  .head{font-family:'Montserrat';font-weight:700;font-size:__HEAD__px;line-height:1.05;max-width:92%}
+  .sub{font-family:'Inter';font-weight:500;font-size:__SUB__px;line-height:1.3;color:rgba(255,255,255,.86);max-width:90%}
+  .cta{align-self:flex-start;margin-top:__CTAMT__px;background:var(--red);color:#fff;
+    font-family:'Montserrat';font-weight:800;font-size:__CTA__px;letter-spacing:.01em;
+    padding:.7em 1.25em;border-radius:__RAD__px;display:inline-flex;align-items:center;gap:.5em}
+  .cta::before{content:"";width:.9em;height:.9em;border-radius:50%;background:#fff;opacity:.95;
+    box-shadow:0 0 0 .18em rgba(255,255,255,.25)}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <img class="photo" src="__PHOTO__" alt="">
+    <div class="scrim"></div>
+    <div class="pad">
+      <div class="top">
+        <div class="badge">__BADGE_TEXT__</div>
+        <div class="brand">Process<b>Türk</b></div>
+      </div>
+      <div class="bottom">
+        <div class="price">__PRICE_TEXT__</div>
+        <div class="head">__HEAD_TEXT__</div>
+        <div class="sub">__SUB_TEXT__</div>
+        <div class="cta">__CTA_TEXT__</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

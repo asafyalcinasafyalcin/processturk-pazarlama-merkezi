@@ -1,0 +1,32 @@
+{
+  "slug": "granul-dolum",
+  "variant": "b",
+  "template": "product-b.html",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/granul-dolum.png",
+  "prep_prompt": "304 stainless steel semi-automatic granule filling machine, industrial food packaging equipment, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": "three small clear glass jars filled with colorful dried spices, nuts and pulses, neatly arranged on a dark reflective surface, soft studio lighting, realistic product photo, isolated on plain white background, no text",
+  "sizes": ["feed", "story", "square"],
+  "languages": {
+    "en": {
+      "origin": "Made in Türkiye",
+      "badges": ["CE Certified", "Warranty", "304 Stainless Steel"],
+      "hero": "Turkish Engineering. European Components.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Starting from",
+      "price_num": "1,150 USD",
+      "sub": "Granular Filling Machine · ready stock · installation & support",
+      "cta": "Get model & price on WhatsApp"
+    },
+    "fr": {
+      "origin": "Fabriqué en Türkiye",
+      "badges": ["Certifié CE", "Garantie", "Acier inox 304"],
+      "hero": "Ingénierie turque. Composants européens.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "À partir de",
+      "price_num": "1 150 USD",
+      "sub": "Machine de remplissage granulaire · stock prêt · installation & support",
+      "cta": "Obtenir modèle et prix sur WhatsApp"
+    }
+  }
+}

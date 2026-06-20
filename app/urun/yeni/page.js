@@ -189,7 +189,7 @@ export default function YeniUrunPage() {
               <Field k="Diller" v={form.languages.join(', ')} full />
             </div>
             <p className="text-[11px] text-slate-500">
-              Kaydedince ürün <span className="font-mono">Meta_Reklam_Sistemi/data/products.json</span>'a eklenir (tek kaynak).
+              Kaydedince ürün <span className="font-mono">data/products.json</span>'a eklenir (tek kaynak).
             </p>
             {error && <div className="text-red text-sm">⚠ {error}</div>}
           </div>

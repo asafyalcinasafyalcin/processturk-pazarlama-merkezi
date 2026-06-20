@@ -1,0 +1,54 @@
+{
+  "slug": "granul-dolum",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/granul-dolum.png",
+  "prep_prompt": "304 stainless steel semi-automatic granule filling machine, industrial food packaging equipment, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": "three small clear glass jars filled with colorful dried spices, nuts and pulses, neatly arranged on a dark reflective surface, soft studio lighting, realistic product photo, isolated on plain white background, no text",
+  "sizes": ["feed", "story", "square"],
+  "tag": "C1-granul",
+  "campaign": {
+    "adsets": [
+      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "a" },
+      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "b" }
+    ]
+  },
+  "languages": {
+    "en": {
+      "badges": ["304 Stainless Steel", "1–3 Weeks Delivery", "Technical Support"],
+      "name": "Granular Filling Machine",
+      "price_pre": "Starting from",
+      "price_num": "1,150 USD",
+      "sub": "For spices · nuts · pulses · granular products",
+      "trust": "Tabletop / semi-automatic models",
+      "cta": "Get model & price on WhatsApp"
+    },
+    "fr": {
+      "badges": ["Acier inox 304", "Livraison 1–3 semaines", "Support technique"],
+      "name": "Machine de Remplissage Granulaire",
+      "price_pre": "À partir de",
+      "price_num": "1 150 USD",
+      "sub": "Épices · fruits secs · légumineuses · produits granulaires",
+      "trust": "Modèles de table / semi-automatiques",
+      "cta": "Obtenir modèle et prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "badges": ["ستانلس ستيل 304", "تسليم خلال 1–3 أسابيع", "دعم فني"],
+      "name": "آلة تعبئة الحبيبات",
+      "price_pre": "تبدأ من",
+      "price_num": "1,150 دولار",
+      "sub": "للتوابل · المكسرات · البقوليات · المنتجات الحبيبية",
+      "trust": "موديلات مكتبية / نصف أوتوماتيكية",
+      "cta": "احصل على الموديل والسعر عبر واتساب"
+    },
+    "ru": {
+      "badges": ["Нержавеющая сталь 304", "Поставка 1–3 недели", "Техподдержка"],
+      "name": "Машина для Фасовки Гранул",
+      "price_pre": "От",
+      "price_num": "1 150 USD",
+      "sub": "Для специй · орехов · бобовых · гранулированных продуктов",
+      "trust": "Настольные / полуавтоматические модели",
+      "cta": "Узнать модель и цену в WhatsApp"
+    }
+  }
+}

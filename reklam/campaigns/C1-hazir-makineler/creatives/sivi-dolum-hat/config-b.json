@@ -1,0 +1,43 @@
+{
+  "slug": "sivi-dolum-hat",
+  "variant": "b",
+  "template": "product-b.html",
+  "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Liquid Filling Line (without tanks).png",
+  "prep_prompt": "304 stainless steel automatic liquid filling line, industrial bottling line, sharp studio product photo, white background",
+  "refine_prompt": null,
+  "props_prompt": null,
+  "sizes": ["feed", "story", "square"],
+  "languages": {
+    "en": {
+      "origin": "Made in Türkiye",
+      "badges": ["304 Stainless Steel", "250 L / hour", "Engineering · installation"],
+      "hero": "Turkish Engineering. European Components.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Starting from",
+      "price_num": "28,750 USD",
+      "sub": "Liquid Filling Line · honey · tahini · molasses · turnkey",
+      "cta": "Get price on WhatsApp"
+    },
+    "fr": {
+      "origin": "Fabriqué en Türkiye",
+      "badges": ["Acier inox 304", "250 L / heure", "Ingénierie · installation"],
+      "hero": "Ingénierie turque. Composants européens.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "À partir de",
+      "price_num": "28 750 USD",
+      "sub": "Ligne de remplissage liquide · miel · tahini · clé en main",
+      "cta": "Obtenir le prix sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "origin": "صُنع في تركيا",
+      "badges": ["ستانلس ستيل 304", "250 لتر / ساعة", "هندسة وتركيب"],
+      "hero": "هندسة تركية. مكوّنات أوروبية.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "تبدأ من",
+      "price_num": "28,750 دولار",
+      "sub": "خط تعبئة السوائل · عسل · طحينة · دبس · متكامل",
+      "cta": "اعرف السعر عبر واتساب"
+    }
+  }
+}
