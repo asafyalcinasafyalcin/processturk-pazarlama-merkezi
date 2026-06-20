@@ -4,17 +4,63 @@
   "prep_prompt": "304 stainless steel semi-automatic granule filling machine, industrial food packaging equipment, sharp studio product photo, white background",
   "refine_prompt": null,
   "props_prompt": "three small clear glass jars filled with colorful dried spices, nuts and pulses, neatly arranged on a dark reflective surface, soft studio lighting, realistic product photo, isolated on plain white background, no text",
-  "sizes": ["feed", "story", "square"],
+  "sizes": [
+    "feed",
+    "story",
+    "square"
+  ],
   "tag": "C1-granul",
   "campaign": {
     "adsets": [
-      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "a" },
-      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "b" }
+      {
+        "lang": "en",
+        "countries": [
+          "NG",
+          "GH",
+          "KE"
+        ],
+        "concept": "a-hf"
+      },
+      {
+        "lang": "en",
+        "countries": [
+          "NG",
+          "GH",
+          "KE"
+        ],
+        "concept": "b-hf"
+      },
+      {
+        "lang": "fr",
+        "countries": [
+          "DZ",
+          "MA",
+          "TN",
+          "SN",
+          "CI"
+        ],
+        "concept": "a-hf"
+      },
+      {
+        "lang": "fr",
+        "countries": [
+          "DZ",
+          "MA",
+          "TN",
+          "SN",
+          "CI"
+        ],
+        "concept": "b-hf"
+      }
     ]
   },
   "languages": {
     "en": {
-      "badges": ["304 Stainless Steel", "1–3 Weeks Delivery", "Technical Support"],
+      "badges": [
+        "304 Stainless Steel",
+        "1–3 Weeks Delivery",
+        "Technical Support"
+      ],
       "name": "Granular Filling Machine",
       "price_pre": "Starting from",
       "price_num": "1,150 USD",
@@ -23,7 +69,11 @@
       "cta": "Get model & price on WhatsApp"
     },
     "fr": {
-      "badges": ["Acier inox 304", "Livraison 1–3 semaines", "Support technique"],
+      "badges": [
+        "Acier inox 304",
+        "Livraison 1–3 semaines",
+        "Support technique"
+      ],
       "name": "Machine de Remplissage Granulaire",
       "price_pre": "À partir de",
       "price_num": "1 150 USD",
@@ -33,7 +83,11 @@
     },
     "ar": {
       "rtl": true,
-      "badges": ["ستانلس ستيل 304", "تسليم خلال 1–3 أسابيع", "دعم فني"],
+      "badges": [
+        "ستانلس ستيل 304",
+        "تسليم خلال 1–3 أسابيع",
+        "دعم فني"
+      ],
       "name": "آلة تعبئة الحبيبات",
       "price_pre": "تبدأ من",
       "price_num": "1,150 دولار",
@@ -42,7 +96,11 @@
       "cta": "احصل على الموديل والسعر عبر واتساب"
     },
     "ru": {
-      "badges": ["Нержавеющая сталь 304", "Поставка 1–3 недели", "Техподдержка"],
+      "badges": [
+        "Нержавеющая сталь 304",
+        "Поставка 1–3 недели",
+        "Техподдержка"
+      ],
       "name": "Машина для Фасовки Гранул",
       "price_pre": "От",
       "price_num": "1 150 USD",

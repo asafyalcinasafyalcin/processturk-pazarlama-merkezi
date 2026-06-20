@@ -4,18 +4,84 @@
   "prep_prompt": "304 stainless steel automatic liquid filling line for viscous food liquids, industrial bottling line, sharp studio product photo, white background",
   "refine_prompt": null,
   "props_prompt": null,
-  "sizes": ["feed", "story"],
+  "sizes": [
+    "feed",
+    "story"
+  ],
   "tag": "C1-sivi-hat",
   "campaign": {
     "adsets": [
-      { "lang": "ar", "countries": ["SA", "AE", "QA", "KW", "EG"], "concept": "b" },
-      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "b" },
-      { "lang": "fr", "countries": ["DZ", "MA", "TN", "SN", "CI"], "concept": "b" }
+      {
+        "lang": "en",
+        "countries": [
+          "NG",
+          "GH",
+          "KE"
+        ],
+        "concept": "a-hf"
+      },
+      {
+        "lang": "en",
+        "countries": [
+          "NG",
+          "GH",
+          "KE"
+        ],
+        "concept": "b-hf"
+      },
+      {
+        "lang": "fr",
+        "countries": [
+          "DZ",
+          "MA",
+          "TN",
+          "SN",
+          "CI"
+        ],
+        "concept": "a-hf"
+      },
+      {
+        "lang": "fr",
+        "countries": [
+          "DZ",
+          "MA",
+          "TN",
+          "SN",
+          "CI"
+        ],
+        "concept": "b-hf"
+      },
+      {
+        "lang": "ar",
+        "countries": [
+          "SA",
+          "AE",
+          "QA",
+          "KW",
+          "EG"
+        ],
+        "concept": "a-hf"
+      },
+      {
+        "lang": "ar",
+        "countries": [
+          "SA",
+          "AE",
+          "QA",
+          "KW",
+          "EG"
+        ],
+        "concept": "b-hf"
+      }
     ]
   },
   "languages": {
     "en": {
-      "badges": ["304 Stainless Steel", "250 L / hour", "Installation & support"],
+      "badges": [
+        "304 Stainless Steel",
+        "250 L / hour",
+        "Installation & support"
+      ],
       "name": "Liquid Filling Line",
       "price_pre": "Starting from",
       "price_num": "28,750 USD",
@@ -24,7 +90,11 @@
       "cta": "Get model & price on WhatsApp"
     },
     "fr": {
-      "badges": ["Acier inox 304", "250 L / heure", "Installation & support"],
+      "badges": [
+        "Acier inox 304",
+        "250 L / heure",
+        "Installation & support"
+      ],
       "name": "Ligne de Remplissage Liquide",
       "price_pre": "À partir de",
       "price_num": "28 750 USD",
@@ -34,7 +104,11 @@
     },
     "ar": {
       "rtl": true,
-      "badges": ["ستانلس ستيل 304", "250 لتر / ساعة", "تركيب ودعم"],
+      "badges": [
+        "ستانلس ستيل 304",
+        "250 لتر / ساعة",
+        "تركيب ودعم"
+      ],
       "name": "خط تعبئة السوائل",
       "price_pre": "تبدأ من",
       "price_num": "28,750 دولار",
@@ -43,7 +117,11 @@
       "cta": "احصل على الموديل والسعر عبر واتساب"
     },
     "ru": {
-      "badges": ["Нержавеющая сталь 304", "250 л / час", "Монтаж и поддержка"],
+      "badges": [
+        "Нержавеющая сталь 304",
+        "250 л / час",
+        "Монтаж и поддержка"
+      ],
       "name": "Линия розлива жидкостей",
       "price_pre": "От",
       "price_num": "28 750 USD",

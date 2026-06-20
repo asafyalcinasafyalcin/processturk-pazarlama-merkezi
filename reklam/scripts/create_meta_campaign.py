@@ -243,17 +243,18 @@ def build_unit(g: "Graph", env: dict, camp_id: str, slug: str, lang: str, geo: l
 
 
 def _concept_tx(out_dir: Path, base_cfg: dict, concept: str, lang: str) -> tuple:
-    """Concept'e göre dil-metnini ve dosya son ekini döndürür.
-    concept 'b' → kardeş config-b.json (kalite); 'a' → ana config (fiyat). tx'e _lang gömülür (prefill için)."""
-    if concept == "b":
+    """Concept'e göre dil-metnini ve creative dosya son ekini döndürür. tx'e _lang gömülür (prefill için).
+    Metin kaynağı: 'b'/'b-hf' → kardeş config-b.json (kalite/menşei); 'a'/'a-hf' → ana config (fiyat).
+    Dosya seti:  a→''  ·  b→'-b' (cutout)  ·  a-hf→'-hf'  ·  b-hf→'-b-hf'  (Higgsfield lifestyle sahne)."""
+    SUFFIX = {"a": "", "b": "-b", "a-hf": "-hf", "b-hf": "-b-hf"}
+    suffix = SUFFIX.get(concept, "")
+    if concept in ("b", "b-hf"):
         bpath = out_dir / "config-b.json"
         if not bpath.exists():
-            return None, "-b"
+            return None, suffix
         tx = json.loads(bpath.read_text(encoding="utf-8")).get("languages", {}).get(lang)
-        suffix = "-b"
     else:
         tx = base_cfg.get("languages", {}).get(lang)
-        suffix = ""
     if tx is not None:
         tx = dict(tx, _lang=lang)
     return tx, suffix
