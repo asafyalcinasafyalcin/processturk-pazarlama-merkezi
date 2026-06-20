@@ -1,3 +1,74 @@
 {
-  "items": []
+  "items": [
+    {
+      "id": "post-1781953026737-resu",
+      "slug": "granul-dolum",
+      "platform": "instagram",
+      "lang": "tr",
+      "variantId": "A",
+      "caption": "Yüksek verimlilikte dolum makinesi\nGranule Filling Machine ile üretiminizi hızlandırın. Paslanmaz çelik yapısıyla uzun ömürlü ve dayanıklıdır. Detaylı bilgi için WhatsApp'tan bize ulaşın.\nGüvenilir mühendislik ile kalite sunar.",
+      "videoUrl": "/api/media/granul-dolum-tr-1781878415526-e9f69d.mp4",
+      "scheduledAt": null,
+      "status": "draft",
+      "createdAt": "2026-06-20T10:57:06.737Z",
+      "publishedAt": null,
+      "result": null
+    },
+    {
+      "id": "post-1781953026742-mvtz",
+      "slug": "granul-dolum",
+      "platform": "tiktok",
+      "lang": "tr",
+      "variantId": "A",
+      "caption": "Yüksek verimlilikte dolum makinesi\nGranule Filling Machine ile üretiminizi hızlandırın. Paslanmaz çelik yapısıyla uzun ömürlü ve dayanıklıdır. Detaylı bilgi için WhatsApp'tan bize ulaşın.\nGüvenilir mühendislik ile kalite sunar.",
+      "videoUrl": "/api/media/granul-dolum-tr-1781878415526-e9f69d.mp4",
+      "scheduledAt": null,
+      "status": "draft",
+      "createdAt": "2026-06-20T10:57:06.742Z",
+      "publishedAt": null,
+      "result": null
+    },
+    {
+      "id": "post-1781953026746-hr92",
+      "slug": "granul-dolum",
+      "platform": "youtube",
+      "lang": "tr",
+      "variantId": "A",
+      "caption": "Yüksek verimlilikte dolum makinesi\nGranule Filling Machine ile üretiminizi hızlandırın. Paslanmaz çelik yapısıyla uzun ömürlü ve dayanıklıdır. Detaylı bilgi için WhatsApp'tan bize ulaşın.\nGüvenilir mühendislik ile kalite sunar.",
+      "videoUrl": "/api/media/granul-dolum-tr-1781878415526-e9f69d.mp4",
+      "scheduledAt": null,
+      "status": "draft",
+      "createdAt": "2026-06-20T10:57:06.746Z",
+      "publishedAt": null,
+      "result": null
+    },
+    {
+      "id": "post-1781953026749-0fm9",
+      "slug": "granul-dolum",
+      "platform": "facebook",
+      "lang": "tr",
+      "variantId": "A",
+      "caption": "Yüksek verimlilikte dolum makinesi\nGranule Filling Machine ile üretiminizi hızlandırın. Paslanmaz çelik yapısıyla uzun ömürlü ve dayanıklıdır. Detaylı bilgi için WhatsApp'tan bize ulaşın.\nGüvenilir mühendislik ile kalite sunar.",
+      "videoUrl": "/api/media/granul-dolum-tr-1781878415526-e9f69d.mp4",
+      "scheduledAt": null,
+      "status": "draft",
+      "createdAt": "2026-06-20T10:57:06.749Z",
+      "publishedAt": null,
+      "result": null
+    },
+    {
+      "id": "post-1781953026753-9pr2",
+      "slug": "granul-dolum",
+      "platform": "linkedin",
+      "lang": "tr",
+      "variantId": "A",
+      "caption": "Yüksek verimlilikte dolum makinesi\nGranule Filling Machine ile üretiminizi hızlandırın. Paslanmaz çelik yapısıyla uzun ömürlü ve dayanıklıdır. Detaylı bilgi için WhatsApp'tan bize ulaşın.\nGüvenilir mühendislik ile kalite sunar.",
+      "videoUrl": "/api/media/granul-dolum-tr-1781878415526-e9f69d.mp4",
+      "scheduledAt": null,
+      "status": "draft",
+      "createdAt": "2026-06-20T10:57:06.753Z",
+      "publishedAt": null,
+      "result": null
+    }
+  ]
 }

@@ -88,7 +88,7 @@
       "model": "openai/gpt-4o-mini",
       "at": "2026-06-19T11:54:24.185Z"
     },
-    "updated_at": "2026-06-19T20:39:25.868Z",
+    "updated_at": "2026-06-20T10:56:34.888Z",
     "image": {
       "url": "https://v3b.fal.media/files/b/0a9ecc12/tkNim6P0StRIZSInI0LLy.jpg",
       "model": "flux-schnell",
@@ -159,6 +159,362 @@
         }
       ],
       "totalSec": 20
+    },
+    "pipelines": {
+      "tr": {
+        "text": {
+          "status": "draft",
+          "data": {
+            "hook": "Granülü saatte 1.000 adede kadar doldurun!",
+            "benefitB": "Paslanmaz çelik yapı",
+            "voiceover": "Granule Filling Machine ile baharat, kuruyemiş ve granül gıda ürünlerinizi saatte 600–1.000 adet hızla doldurun. Türk mühendisliği ile tasarlanan bu makine, dünya genelinde sevkiyat ve kurulum seçenekleri sunarken, 7/24 uzaktan destek ile işletmenizi her an güçlendiriyor. Üretime bugün başlayın, biz kuralım, siz doldurun!",
+            "scenes": [
+              {
+                "type": "hook",
+                "durationSec": 3,
+                "caption": "Granülü saatte 1.000 adede kadar doldurun!"
+              },
+              {
+                "type": "benefit",
+                "durationSec": 6,
+                "captionLines": [
+                  "Ürün tipine göre 600–1.000 adet/saat",
+                  "Paslanmaz çelik yapı"
+                ]
+              },
+              {
+                "type": "trust",
+                "durationSec": 4,
+                "lines": [
+                  "Türkiye'de üretim — Türk mühendisliği",
+                  "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+                ]
+              },
+              {
+                "type": "spec",
+                "durationSec": 3,
+                "title": "TEKNİK ÖZELLİK",
+                "specLines": [
+                  "Kapasite: ürün tipine göre 600–1.000 adet/saat"
+                ]
+              },
+              {
+                "type": "cta",
+                "durationSec": 4,
+                "title": "Ülkenize sevkiyat ve fiyat için WhatsApp'tan yazın",
+                "whatsapp": "905527062723",
+                "web": "processturk.com"
+              }
+            ],
+            "capacity": "ürün tipine göre 600–1.000 adet/saat",
+            "specLines": [
+              "Kapasite: ürün tipine göre 600–1.000 adet/saat"
+            ],
+            "trustLines": [
+              "Türkiye'de üretim — Türk mühendisliği",
+              "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+            ],
+            "totalSec": 20
+          },
+          "inputHash": null,
+          "cost": 0.002,
+          "at": "2026-06-20T10:55:43.807Z",
+          "versions": [
+            {
+              "vid": "v-mqm8rv7j-dx9",
+              "data": {
+                "hook": "Granülü saatte 1.000 adede kadar doldurun!",
+                "benefitB": "Paslanmaz çelik yapı",
+                "voiceover": "Granule Filling Machine ile baharat, kuruyemiş ve granül gıda ürünlerinizi saatte 600–1.000 adet hızla doldurun. Türk mühendisliği ile tasarlanan bu makine, dünya genelinde sevkiyat ve kurulum seçenekleri sunarken, 7/24 uzaktan destek ile işletmenizi her an güçlendiriyor. Üretime bugün başlayın, biz kuralım, siz doldurun!",
+                "scenes": [
+                  {
+                    "type": "hook",
+                    "durationSec": 3,
+                    "caption": "Granülü saatte 1.000 adede kadar doldurun!"
+                  },
+                  {
+                    "type": "benefit",
+                    "durationSec": 6,
+                    "captionLines": [
+                      "Ürün tipine göre 600–1.000 adet/saat",
+                      "Paslanmaz çelik yapı"
+                    ]
+                  },
+                  {
+                    "type": "trust",
+                    "durationSec": 4,
+                    "lines": [
+                      "Türkiye'de üretim — Türk mühendisliği",
+                      "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+                    ]
+                  },
+                  {
+                    "type": "spec",
+                    "durationSec": 3,
+                    "title": "TEKNİK ÖZELLİK",
+                    "specLines": [
+                      "Kapasite: ürün tipine göre 600–1.000 adet/saat"
+                    ]
+                  },
+                  {
+                    "type": "cta",
+                    "durationSec": 4,
+                    "title": "Ülkenize sevkiyat ve fiyat için WhatsApp'tan yazın",
+                    "whatsapp": "905527062723",
+                    "web": "processturk.com"
+                  }
+                ],
+                "capacity": "ürün tipine göre 600–1.000 adet/saat",
+                "specLines": [
+                  "Kapasite: ürün tipine göre 600–1.000 adet/saat"
+                ],
+                "trustLines": [
+                  "Türkiye'de üretim — Türk mühendisliği",
+                  "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+                ],
+                "totalSec": 20
+              },
+              "cost": 0.002,
+              "at": "2026-06-20T10:55:43.807Z",
+              "note": null
+            }
+          ],
+          "currentVid": "v-mqm8rv7j-dx9"
+        },
+        "voice": {
+          "status": "empty",
+          "data": null,
+          "inputHash": null,
+          "cost": 0,
+          "at": null
+        },
+        "subtitle": {
+          "status": "empty",
+          "data": null,
+          "inputHash": null,
+          "cost": 0,
+          "at": null
+        },
+        "video": {
+          "status": "empty",
+          "data": null,
+          "inputHash": null,
+          "cost": 0,
+          "at": null
+        }
+      },
+      "en": {
+        "text": {
+          "status": "approved",
+          "data": {
+            "hook": "Global shipping, instant support, guaranteed!",
+            "benefitB": "Fast automation system",
+            "voiceover": "Introducing our Granule Filling Machine, capable of processing 600–1,000 pcs/hour! Perfect for spices, nuts, and granular foods, this machine combines Turkish engineering with global shipping and 7/24 remote support. Elevate your production line today!",
+            "scenes": [
+              {
+                "type": "hook",
+                "durationSec": 3,
+                "caption": "Global shipping, instant support, guaranteed!"
+              },
+              {
+                "type": "benefit",
+                "durationSec": 6,
+                "captionLines": [
+                  "Depending on product, 600–1,000 pcs/hour",
+                  "Fast automation system"
+                ]
+              },
+              {
+                "type": "trust",
+                "durationSec": 4,
+                "lines": [
+                  "Made in Türkiye — Turkish engineering",
+                  "Worldwide shipping · 24/7 remote support + service network"
+                ]
+              },
+              {
+                "type": "spec",
+                "durationSec": 3,
+                "title": "TECHNICAL SPEC",
+                "specLines": [
+                  "Capacity: depending on product, 600–1,000 pcs/hour"
+                ]
+              },
+              {
+                "type": "cta",
+                "durationSec": 4,
+                "title": "Get a delivered price to your country — message us on WhatsApp",
+                "whatsapp": "905527062723",
+                "web": "processturk.com"
+              }
+            ],
+            "capacity": "depending on product, 600–1,000 pcs/hour",
+            "specLines": [
+              "Capacity: depending on product, 600–1,000 pcs/hour"
+            ],
+            "trustLines": [
+              "Made in Türkiye — Turkish engineering",
+              "Worldwide shipping · 24/7 remote support + service network"
+            ],
+            "totalSec": 20
+          },
+          "inputHash": null,
+          "cost": 0.002,
+          "at": "2026-06-20T10:56:08.598Z",
+          "versions": [
+            {
+              "vid": "v-mqm8sec6-1ci",
+              "data": {
+                "hook": "Global shipping, instant support, guaranteed!",
+                "benefitB": "Fast automation system",
+                "voiceover": "Introducing our Granule Filling Machine, capable of processing 600–1,000 pcs/hour! Perfect for spices, nuts, and granular foods, this machine combines Turkish engineering with global shipping and 7/24 remote support. Elevate your production line today!",
+                "scenes": [
+                  {
+                    "type": "hook",
+                    "durationSec": 3,
+                    "caption": "Global shipping, instant support, guaranteed!"
+                  },
+                  {
+                    "type": "benefit",
+                    "durationSec": 6,
+                    "captionLines": [
+                      "Depending on product, 600–1,000 pcs/hour",
+                      "Fast automation system"
+                    ]
+                  },
+                  {
+                    "type": "trust",
+                    "durationSec": 4,
+                    "lines": [
+                      "Made in Türkiye — Turkish engineering",
+                      "Worldwide shipping · 24/7 remote support + service network"
+                    ]
+                  },
+                  {
+                    "type": "spec",
+                    "durationSec": 3,
+                    "title": "TECHNICAL SPEC",
+                    "specLines": [
+                      "Capacity: depending on product, 600–1,000 pcs/hour"
+                    ]
+                  },
+                  {
+                    "type": "cta",
+                    "durationSec": 4,
+                    "title": "Get a delivered price to your country — message us on WhatsApp",
+                    "whatsapp": "905527062723",
+                    "web": "processturk.com"
+                  }
+                ],
+                "capacity": "depending on product, 600–1,000 pcs/hour",
+                "specLines": [
+                  "Capacity: depending on product, 600–1,000 pcs/hour"
+                ],
+                "trustLines": [
+                  "Made in Türkiye — Turkish engineering",
+                  "Worldwide shipping · 24/7 remote support + service network"
+                ],
+                "totalSec": 20
+              },
+              "cost": 0.002,
+              "at": "2026-06-20T10:56:08.598Z",
+              "note": null
+            }
+          ],
+          "currentVid": "v-mqm8sec6-1ci"
+        },
+        "voice": {
+          "status": "empty",
+          "data": null,
+          "inputHash": null,
+          "cost": 0,
+          "at": null
+        },
+        "subtitle": {
+          "status": "approved",
+          "data": {
+            "srt": "1\n00:00:00,000 --> 00:00:03,000\nGlobal shipping, instant support, guaranteed!\n\n2\n00:00:03,000 --> 00:00:09,000\nDepending on product, 600–1,000 pcs/hour\nFast automation system\n\n3\n00:00:09,000 --> 00:00:13,000\nMade in Türkiye — Turkish engineering\nWorldwide shipping · 24/7 remote support + service network\n\n4\n00:00:13,000 --> 00:00:16,000\nTECHNICAL SPEC\n\n5\n00:00:16,000 --> 00:00:20,000\nGet a delivered price to your country — message us on WhatsApp\n",
+            "cues": [
+              {
+                "start": 0,
+                "end": 3,
+                "text": "Global shipping, instant support, guaranteed!"
+              },
+              {
+                "start": 3,
+                "end": 9,
+                "text": "Depending on product, 600–1,000 pcs/hour\nFast automation system"
+              },
+              {
+                "start": 9,
+                "end": 13,
+                "text": "Made in Türkiye — Turkish engineering\nWorldwide shipping · 24/7 remote support + service network"
+              },
+              {
+                "start": 13,
+                "end": 16,
+                "text": "TECHNICAL SPEC"
+              },
+              {
+                "start": 16,
+                "end": 20,
+                "text": "Get a delivered price to your country — message us on WhatsApp"
+              }
+            ],
+            "totalSec": 20
+          },
+          "inputHash": "1251ca8803225aaf",
+          "cost": 0,
+          "at": "2026-06-20T10:56:34.886Z",
+          "versions": [
+            {
+              "vid": "v-mqm8syme-ksl",
+              "data": {
+                "srt": "1\n00:00:00,000 --> 00:00:03,000\nGlobal shipping, instant support, guaranteed!\n\n2\n00:00:03,000 --> 00:00:09,000\nDepending on product, 600–1,000 pcs/hour\nFast automation system\n\n3\n00:00:09,000 --> 00:00:13,000\nMade in Türkiye — Turkish engineering\nWorldwide shipping · 24/7 remote support + service network\n\n4\n00:00:13,000 --> 00:00:16,000\nTECHNICAL SPEC\n\n5\n00:00:16,000 --> 00:00:20,000\nGet a delivered price to your country — message us on WhatsApp\n",
+                "cues": [
+                  {
+                    "start": 0,
+                    "end": 3,
+                    "text": "Global shipping, instant support, guaranteed!"
+                  },
+                  {
+                    "start": 3,
+                    "end": 9,
+                    "text": "Depending on product, 600–1,000 pcs/hour\nFast automation system"
+                  },
+                  {
+                    "start": 9,
+                    "end": 13,
+                    "text": "Made in Türkiye — Turkish engineering\nWorldwide shipping · 24/7 remote support + service network"
+                  },
+                  {
+                    "start": 13,
+                    "end": 16,
+                    "text": "TECHNICAL SPEC"
+                  },
+                  {
+                    "start": 16,
+                    "end": 20,
+                    "text": "Get a delivered price to your country — message us on WhatsApp"
+                  }
+                ],
+                "totalSec": 20
+              },
+              "cost": 0,
+              "at": "2026-06-20T10:56:34.886Z",
+              "note": null
+            }
+          ],
+          "currentVid": "v-mqm8syme-ksl"
+        },
+        "video": {
+          "status": "empty",
+          "data": null,
+          "inputHash": null,
+          "cost": 0,
+          "at": null
+        }
+      }
     }
   },
   "sivi-dolum-hat": {

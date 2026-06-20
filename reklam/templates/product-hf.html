@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="__LANG__" dir="__DIR__">
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600&family=Cairo:wght@600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+  :root{ --navy:#071739; --red:#FF3255; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:__W__px;height:__H__px;overflow:hidden}
+  .stage{position:relative;width:__W__px;height:__H__px;overflow:hidden;color:#fff;
+    font-family:'Inter','Noto Sans Arabic',system-ui,sans-serif;background:#071739}
+  /* Higgsfield sahne — tam-kare arka plan (gerçek makine sahnede) */
+  .scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  /* Okunabilirlik perdeleri: üstte logo/badge, altta metin bloğu için */
+  .scrim-top{position:absolute;left:0;right:0;top:0;height:34%;z-index:1;
+    background:linear-gradient(180deg, rgba(7,23,57,.82) 0%, rgba(7,23,57,.42) 48%, rgba(7,23,57,0) 100%)}
+  .scrim-bottom{position:absolute;left:0;right:0;bottom:0;height:56%;z-index:1;
+    background:linear-gradient(180deg, rgba(4,11,28,0) 0%, rgba(4,11,28,.55) 42%, rgba(3,8,22,.94) 100%)}
+  .pad{position:absolute;inset:0;padding:__PAD__px;display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+  .top{display:flex;flex-direction:column;align-items:flex-start}
+  .logo{height:__LOGO_H__px;width:auto;max-width:54%;filter:drop-shadow(0 2px 8px rgba(0,0,0,.45))}
+  .badgerow{margin-top:__BADGE_MT__px;display:flex;flex-wrap:wrap;gap:.5em}
+  .badge{font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:600;font-size:__BADGE_FS__px;letter-spacing:.01em;
+    background:rgba(7,23,57,.42);border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(3px);
+    padding:.5em .9em;border-radius:999px;white-space:nowrap;color:#fff}
+  .text{display:flex;flex-direction:column;gap:__GAP__px}
+  .name{font-family:'Montserrat','Cairo',sans-serif;font-weight:800;font-size:__NAME_FS__px;line-height:1.04;letter-spacing:-.01em;
+    text-shadow:0 2px 12px rgba(0,0,0,.5)}
+  .price{display:flex;align-items:baseline;gap:.32em;flex-wrap:wrap;font-family:'Montserrat','Cairo',sans-serif}
+  .price .pre{font-weight:700;font-size:__PRICE_PRE_FS__px;color:#fff;opacity:.94}
+  .price .num{font-weight:900;font-size:__PRICE_FS__px;color:var(--red);line-height:1;letter-spacing:-.01em;
+    text-shadow:0 2px 14px rgba(0,0,0,.45)}
+  .sub{font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:600;font-size:__SUB_FS__px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .trust{font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:500;font-size:__TRUST_FS__px;color:rgba(255,255,255,.82);text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .cta{align-self:flex-start;margin-top:__CTAMT__px;background:var(--red);color:#fff;
+    font-family:'Montserrat','Cairo',sans-serif;font-weight:800;font-size:__CTA_FS__px;letter-spacing:.005em;
+    padding:.72em 1.3em;border-radius:__RAD__px;display:inline-flex;align-items:center;gap:.55em;
+    box-shadow:0 6px 16px rgba(0,0,0,.32)}
+  .cta::before{content:"";width:.92em;height:.92em;border-radius:50%;background:#fff;opacity:.95}
+  .site{font-family:'Inter','Noto Sans Arabic',sans-serif;font-weight:600;font-size:__TRUST_FS__px;
+    color:rgba(255,255,255,.62);letter-spacing:.04em;margin-top:.35em;direction:ltr;unicode-bidi:isolate}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <img class="scene" src="__SCENE__" alt="">
+    <div class="scrim-top"></div>
+    <div class="scrim-bottom"></div>
+    <div class="pad">
+      <div class="top">
+        <img class="logo" src="__LOGO__" alt="ProcessTürk">
+        <div class="badgerow"><div class="badge">__BADGE_LINE__</div></div>
+      </div>
+      <div class="text">
+        <div class="name">__NAME__</div>
+        <div class="price"><span class="pre">__PRICE_PRE__</span><span class="num">__PRICE_NUM__</span></div>
+        <div class="sub">__SUB__</div>
+        <div class="trust">__TRUST__</div>
+        <div class="cta">__CTA__</div>
+        <div class="site">www.processturk.com</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

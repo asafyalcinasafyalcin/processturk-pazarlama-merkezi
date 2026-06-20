@@ -9,3 +9,18 @@ data/*.local.json
 # Finansal kaynak — imaja/git'e girmez
 reklam/**/*.xlsx
 *.xlsx
+
+# Üretim/render çıktıları — repo'ya/imaja girmez (panel yeniden üretir; cutout.png hariç tutulur)
+public/renders/
+reklam/assets/hf-out/
+reklam/campaigns/**/*_upscaled.png
+reklam/campaigns/**/*-story.png
+reklam/campaigns/**/*-feed.png
+reklam/campaigns/**/*-square.png
+reklam/campaigns/**/*-preview.png
+# Ara/scratch üretim dosyaları (scriptler yeniden üretir)
+reklam/campaigns/**/_*.png
+reklam/campaigns/**/_*.jpg
+reklam/campaigns/**/base.png
+reklam/campaigns/**/props.png
+reklam/campaigns/**/preview-*.png
