@@ -29,9 +29,9 @@ TEMPLATE = ROOT / "templates" / "product-hf.html"
 
 
 def render(tx: dict, size: str, scene: Path, logo: Path, out: Path,
-           lang: str = "tr", rtl: bool = False) -> Path:
+           lang: str = "tr", rtl: bool = False, template: Path = TEMPLATE) -> Path:
     s = mp.SIZES[size]
-    tpl = TEMPLATE.read_text(encoding="utf-8")
+    tpl = template.read_text(encoding="utf-8")
     badge_line = " · ".join(html.escape(b) for b in tx.get("badges", [])[:3])
     repl = {
         "__W__": s["W"], "__H__": s["H"], "__PAD__": s["pad"], "__BADGE_FS__": s["badge"],
@@ -49,6 +49,9 @@ def render(tx: dict, size: str, scene: Path, logo: Path, out: Path,
            .replace("__SCENE__", scene.resolve().as_uri())
            .replace("__LOGO__", logo.resolve().as_uri())
            .replace("__NAME__", html.escape(tx.get("name", "")))
+           .replace("__ORIGIN__", html.escape(tx.get("origin", "")))
+           .replace("__HERO__", html.escape(tx.get("hero", "")))
+           .replace("__BRANDS__", html.escape(tx.get("brands", "")))
            .replace("__PRICE_PRE__", html.escape(tx.get("price_pre", "")))
            .replace("__PRICE_NUM__", html.escape(tx.get("price_num", "")))
            .replace("__SUB__", html.escape(tx.get("sub", "")))
@@ -76,6 +79,9 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("config", type=Path)
     p.add_argument("--sizes", nargs="+", default=None)
+    p.add_argument("--template", default=None,
+                   help="Overlay template (ad veya yol). B varyantı için product-b-hf.html. "
+                        "Verilmezse: variant=b → product-b-hf.html, aksi → product-hf.html")
     args = p.parse_args()
 
     cfg_path = args.config.resolve()
@@ -83,6 +89,18 @@ def main() -> None:
     out_dir = cfg_path.parent
     slug = cfg.get("slug", out_dir.name)
     vsuf = f"-{cfg['variant']}" if cfg.get("variant") else ""
+
+    # Template seçimi: --template > variant'a göre otomatik > product-hf.html
+    if args.template:
+        tname = args.template
+    elif cfg.get("variant"):
+        tname = f"product-{cfg['variant']}-hf.html"
+    else:
+        tname = "product-hf.html"
+    template = Path(tname) if Path(tname).is_absolute() else ROOT / "templates" / tname
+    if not template.exists():
+        sys.exit(f"Template bulunamadı: {template}")
+    print(f"[i] Template: {template.name}")
 
     print("[1/2] Beyaz logo")
     logo = mp.ensure_white_logo()
@@ -99,7 +117,7 @@ def main() -> None:
                 print(f"  ! sahne yok, atlandı: {scene.name} (önce hf_scene.py çalıştır)")
                 continue
             out = out_dir / f"{slug}{vsuf}-hf-{code}-{size}.png"
-            render(tx, size, scene, logo, out, lang=code, rtl=rtl)
+            render(tx, size, scene, logo, out, lang=code, rtl=rtl, template=template)
             outs.append(out)
     print("\nHazır:")
     for o in outs:
