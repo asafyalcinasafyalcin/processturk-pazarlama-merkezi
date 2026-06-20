@@ -39,6 +39,9 @@ COPY --from=builder /app/public ./public
 RUN mkdir .next && chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# sharp native modülü (musl) — Next standalone trace'i libvips .so'larını atlıyor; tam kopyala
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@img ./node_modules/@img
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/sharp ./node_modules/sharp
 # Seed verisi (products.json/content.json/calendar.json) — kalıcı storage mount'u bunu gölgeler
 COPY --from=builder --chown=nextjs:nodejs /app/data ./data
 COPY --chown=nextjs:nodejs docker-entrypoint.sh ./docker-entrypoint.sh
