@@ -34,9 +34,9 @@ restore_previous() {
 }
 trap restore_previous INT TERM HUP
 
-set -a
-. "./$ENV_FILE"
-set +a
+# Tüm dosyayı source ETME — HF_CREDENTIALS_JSON gibi JSON değerler sourcing'i kırar.
+# Yalnız Traefik label'ı için gereken BASIC_AUTH_USERS'ı literal çek; gerisini docker --env-file taşır.
+BASIC_AUTH_USERS=$(grep -E '^BASIC_AUTH_USERS=' "$ENV_FILE" | head -1 | cut -d= -f2-)
 
 docker run -d \
   --name "$APP_NAME" \
