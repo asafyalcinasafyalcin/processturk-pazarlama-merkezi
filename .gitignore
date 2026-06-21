@@ -24,3 +24,4 @@ reklam/campaigns/**/_*.jpg
 reklam/campaigns/**/base.png
 reklam/campaigns/**/props.png
 reklam/campaigns/**/preview-*.png
+.env.production
