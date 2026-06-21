@@ -219,6 +219,10 @@ def build_unit(g: "Graph", env: dict, camp_id: str, slug: str, lang: str, geo: l
         promoted_object={"page_id": env["page"]},
         targeting={"geo_locations": {"countries": geo}, "age_min": 25, "age_max": 55,
                    "publisher_platforms": ["facebook", "instagram"],
+                   # Açık yerleşimler: yalnız asset_customization_rules'ın kapsadığı formatlar
+                   # (profil akışı / bildirim / keşfet-grid gibi kapsanmayan yeni formatlar dışarıda → "0 kural" uyarısı olmaz)
+                   "facebook_positions": ["feed", "story", "facebook_reels"],
+                   "instagram_positions": ["stream", "story", "reels", "explore"],
                    "targeting_automation": {"advantage_audience": 0}}))   # sabit kitle (A/B kontrollü)
     print(f"  ✓ adset {adset['id']} ({label} → {','.join(geo)})")
 
