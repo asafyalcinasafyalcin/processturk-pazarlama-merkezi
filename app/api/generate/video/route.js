@@ -6,6 +6,7 @@ import { planAdScript } from '@/lib/scene-plan';
 import { videoImageInput } from '@/lib/product-image';
 import { genVideo, genVoice, genMusic } from '@/lib/providers/gen';
 import { renderAdVideo } from '@/lib/render';
+import { saveRawClip, brandOverlay } from '@/lib/raw-clip';
 import { patchContent, getContent } from '@/lib/content';
 import { BRAND } from '@/lib/brand';
 import { normalizeForTTS } from '@/lib/tts-normalize';
@@ -46,6 +47,25 @@ export async function POST(request) {
     const negative = 'text, letters, numbers, logo, brand name, control panel, screen, monitor, display, UI, buttons, watermark, subtitles, distorted hands, distorted faces, deformed';
     const clip = await genVideo({ model: videoModel, prompt: motion, negative_prompt: negative, imagePath: img.imagePath, image_url: img.url, aspect_ratio: '9:16', resolution: '720p', duration: 10 });
     if (!clip.url) throw new Error('Ürün klibi üretilemedi.');
+
+    // mode:'raw' → markasız temiz klibi kaydet; brandOverlay ile reklam marka katmanını göm.
+    // Panelin tam anlatılı render'ından (altyazı/kart/seslendirme) ayrı, "5sn tek-kare" reklam yolu.
+    if (body.mode === 'raw') {
+      const raw = await saveRawClip({ url: clip.url, slug, lang });
+      let branded = null;
+      if (body.brandOverlay !== false) {
+        try { branded = await brandOverlay({ rawFile: raw.file, slug, lang }); }
+        catch (e) { console.warn('Marka katmanı atlandı:', e.message); }
+      }
+      const chosen = branded || raw;
+      const video = {
+        url: chosen.publicPath, type: branded ? 'raw-branded' : 'raw', lang,
+        rawUrl: raw.publicPath, imageSource: img.source, voice: false, music: false,
+        model: videoModel, at: new Date().toISOString(),
+      };
+      await patchContent(slug, { video, scriptPlan: plan });
+      return NextResponse.json({ ok: true, video, plan, imageSource: img.source, branded: Boolean(branded) });
+    }
 
     // kanca(0-3sn) + fayda(3-9sn) sahnelerine tek klibi segment olarak ata
     let seg = 0;

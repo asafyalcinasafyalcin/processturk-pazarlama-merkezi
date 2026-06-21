@@ -1,7 +1,14 @@
 # C1 — Yayın Onay Kapısı Paketi (İlk Reklam: Granül Dolum)
 
-> 🔴 **ONAY KAPISI.** Bu sayfa launch içindir; **hiçbir reklam yayınlanmadı / harcama yapılmadı.**
-> Aşağıdaki paket Asaf'ın açık onayını bekler ("evet, başlat" / "onayla"). Belirsiz yanıt onay sayılmaz.
+> ✅ **KURULDU (2026-06-20, PAUSED).** Asaf "evet başlat" onayı verdi → kampanya Meta'da
+> **duraklatılmış** olarak kuruldu. **Hâlâ harcama yapılmadı**; yayın = Asaf'ın Ads Manager'da
+> "yayınla"sına bağlı.
+>
+> - **Campaign ID:** `120247128107760674` · 2 ad set (EN→NG/GH/KE, FR→DZ/MA/TN/SN/CI), 2 creative, 2 ad
+> - **Para birimi gerçeği:** Reklam hesabı **TRY (₺)** — aşağıdaki "$" senaryoları eski varsayımdır.
+>   Meta minimumu **₺46,44/ad set/gün**. Kurulan bütçe: **₺50/ad set/gün** (toplam ₺100/gün, ~₺700/7 gün).
+> - **Ads Manager:** https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=676668703597119
+> - Bütçe değiştirmek için: `create_meta_campaign.py ... --daily <TRY>` (yeni kampanya kurar) veya Ads Manager.
 
 ## İlk launch ürünü: Granül Dolum (lead)
 Neden ilk: en düşük fiyat (**1.150 USD**) → en geniş kitle, en düşük CPL beklentisi, hızlı öğrenme.

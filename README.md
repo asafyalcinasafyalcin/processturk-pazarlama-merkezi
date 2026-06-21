@@ -22,9 +22,32 @@ Hub (4170) → Pazarlama Komuta Merkezi (4181)
 - **Faz 3 (tamam):** İçerik takvimi (`/takvim`) + ONAY KAPISI. Akış: taslak → onay (modal teyit) → yayın. `/api/publish` LinkedIn/X'i icerik-ajani API'sine gönderir (gerçek); Instagram/TikTok/YouTube/Facebook için "assisted paket" döner. Onaysız yayın 409 ile bloklanır; PATCH ile `published` zorlanamaz.
 - **Faz 4 (tamam):** Meta kampanya planı (`/kampanyalar`). `scripts/panel_meta_campaign.py` products.json + content.json'dan besler, PAUSED kampanya planını (ad set/geo/creative/WhatsApp `[REKLAM:]` link) dry-run üretir. Gerçek kurulum META_* token + video upload + Asaf onayı gerektirir.
 
+## Tek Giriş Noktası — Komut Yönlendirme (`/api/komut`)
+
+İki bağımsız akışı tek komutla tetikler (ürün: `products.json`, marka: `_core/brands/<BRAND_ID>.json`):
+
+| Komut | `action` | Akış | Varsayılan davranış |
+|-------|----------|------|---------------------|
+| "bu ürünle paylaşım yap" | `paylasim` | Sosyal: `generate/copy` (+ ops. `generate/video`) → takvim → onay → `publish` | yalnız **metin** üretir (ucuz, dışa kapalı) |
+| "bu ürünle reklam çık" | `reklam` | Reklam: `campaign` (Meta plan) → PAUSED kurulum | yalnız **dry-run plan** döner |
+
+```bash
+# Paylaşım (metin)            POST /api/komut { "slug":"...", "action":"paylasim" }
+# Paylaşım + video            POST /api/komut { "slug":"...", "action":"paylasim", "options":{"video":true} }
+# Reklam planı (dry-run)      POST /api/komut { "slug":"...", "action":"reklam" }
+# Reklam PAUSED kurulum       POST /api/komut { "slug":"...", "action":"reklam", "options":{"mode":"create"} }
+```
+
+**Bağımsızlık:** bir akış çalışırken diğerine dokunulmaz; ikisi de aynı ürün+marka kaynağından
+beslenir (aynı ton/kalite). **Güvenlik:** bu uç hiçbir dış gönderim/yayın yapmaz — yayın daima
+`/takvim` onayından + `/api/publish`'ten, gerçek kampanya daima Asaf onayından geçer. Mevcut
+`generate/copy`, `generate/video`, `campaign` handler'larını in-process yeniden kullanır (mantık tekrarı yok).
+
 ### Bilinen sonraki adımlar
 - Renk/tema ince ayarı (kullanıcı isteği: şu an fazla koyu).
-- Video üzerine marka overlay burn-in (fiyat/logo/CTA) — şu an overlay verisi hazır, yazma işi ileride (ffmpeg/Remotion).
+- Video üzerine marka overlay burn-in (fiyat/logo/CTA) — ✅ İki katman:
+  - **Script:** `reklam/scripts/make_video_overlay.py` (şeffaf `templates/video-overlay.html` → Chrome PNG → ffmpeg overlay; statik creative ile tek kaynak config.json). `--lang`, `--no-top` (video zaten markalıysa).
+  - **Panele bağlı:** Ürün detayında **"Reklam modu"** → `/api/generate/video` `{ mode:'raw', brandOverlay:true }`. Ham (markasız) klip üretir (`lib/raw-clip.js`), o slug'ın reklam config'ini bulur, marka katmanını (fiyat/başlık/CTA + üst logo) burn-in eder. Ham klipte metin/logo olmadığı için çift-logo çakışması olmaz. Config yoksa ham klip döner.
 - IG/TikTok/YouTube gerçek API yayını (işletme hesabı + uygulama onayı).
 - Meta gerçek kampanya kurulumu (token + /advideos video upload).
 - `data/` durum dosyaları (`content.json`, `calendar.json`) tek kullanıcı/lokal içindir; çok kullanıcı için DB'ye taşınabilir.
