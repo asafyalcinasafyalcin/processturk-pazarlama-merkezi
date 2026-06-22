@@ -27,3 +27,4 @@ reklam/campaigns/**/preview-*.png
 .env.production
 reklam/campaigns/**/*.mp4
 reklam/campaigns/**/*-hf-scene-*.jpg
+data/renders/

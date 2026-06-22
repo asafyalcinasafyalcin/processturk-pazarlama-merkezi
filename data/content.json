@@ -861,5 +861,293 @@
       "aspect": "9:16",
       "at": "2026-06-19T10:35:09.279Z"
     }
+  },
+  "sivi-dolum-4nozul": {
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "ozellik",
+          "by_lang": {
+            "tr": {
+              "headline": "Yüksek verimli dolum makinesi",
+              "primary": "4 nozul ile hızlı ve etkili dolum yaparak üretim süreçlerinizi hızlandırın. Gelişmiş otomasyon sistemi sayesinde her dolumda mükemmel sonuç alın. WhatsApp'tan bilgi al.",
+              "description": "Sıvı ürünleriniz için güvenilir bir çözüm.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Hızlı ve verimli dolum çözümleri",
+              "primary": "4 nozul sistemi ile dakikada 1.000 adet dolum yaparak üretim sürecinizi hızlandırın. Türk mühendisliği ile kaliteli ve güvenilir dolum deneyimi için bize ulaşın!",
+              "description": "Güvenilir mühendislik ve dayanıklılık sunar.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "hız/kapasite",
+          "by_lang": {
+            "tr": {
+              "headline": "Hızlı dolum kapasitesiyle tanışın",
+              "primary": "Dakikada 1.000 adet dolum kapasitesi ile üretim hattınızı güçlendirin. 4 nozul sayesinde verimliliği artırarak zaman kazanabilirsiniz. WhatsApp'tan bilgi al.",
+              "description": "Yüksek hız, yüksek verimlilik sağlar.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Dakikada 1.000 dolum kapasitesi",
+              "primary": "Yüksek hızda dolum yaparak iş süreçlerinizi optimize edin. 4 nozul sayesinde verimliliği artırarak zaman ve kaynak tasarrufu sağlayın. Hızlı çözümler için bizimle iletişime geçin!",
+              "description": "Yüksek hız ve kapasite ile üretiminizi artırın.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "kalite/dayanıklılık",
+          "by_lang": {
+            "tr": {
+              "headline": "Dayanıklı ve kaliteli üretim",
+              "primary": "Paslanmaz çelik tasarımı ile uzun ömürlü kullanım sunan dolum makinemiz, her türlü sıvı ürün için idealdir. Kalitenizden ödün vermeden üretiminizi gerçekleştirin. WhatsApp'tan bilgi al.",
+              "description": "Kalite ve dayanıklılık bir arada.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Dayanıklı ve güvenilir tasarım",
+              "primary": "Paslanmaz çelik yapısı ve sağlam mühendislikle uzun ömürlü bir dolum makinesi. İşinizi güvenle sürdürmek için mükemmel bir çözüm. Detaylar için bizimle iletişime geçin!",
+              "description": "Kaliteyi ve dayanıklılığı bir arada sunar.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-çözüm",
+          "by_lang": {
+            "tr": {
+              "headline": "Sıvı dolum sorunlarınıza çözüm",
+              "primary": "Sıvı ürün dolum sürecindeki zorlukları geride bırakın. 4 nozul ile her zaman doğru dolum yaparak israfı önleyin. WhatsApp'tan bilgi al.",
+              "description": "Sorunlara hızlı çözümler sunuyoruz.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Sıvı dolumda güvenilir çözüm",
+              "primary": "Sıvı dolumunda yaşanan sorunları ortadan kaldırarak iş akışınızı kolaylaştırın. 4 nozul ile hızlı ve güvenilir dolum garantisi sunuyoruz. Çözüm için bizimle iletişime geçin!",
+              "description": "Sorunlarınıza pratik çözümler sunar.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        }
+      ],
+      "highlights": [
+        "4 nozul ile yüksek verim",
+        "400 ml dolum kapasitesi",
+        "Tüm sıvı ürünler için uygun",
+        "Gelişmiş otomasyon sistemi"
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-06-22T14:02:43.211Z"
+    },
+    "updated_at": "2026-06-22T14:03:25.000Z",
+    "image": {
+      "url": "/api/media/sivi-dolum-4nozul-hf-scene-feed.png",
+      "model": "higgsfield/scene",
+      "at": "2026-06-22T14:03:25.000Z"
+    }
+  },
+  "etiketleme-oto-304": {
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "ozellik",
+          "by_lang": {
+            "tr": {
+              "headline": "Tam otomatik etiketleme çözümü",
+              "primary": "Paslanmaz çelik 304 yapısıyla dayanıklılığı artırırken, tam otomatik sistemiyle iş akışınızı hızlandırır. Detaylar için WhatsApp'tan bilgi alın.",
+              "description": "Yüksek kaliteli mühendislik ile tasarlandı.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Tam otomatik etiketleme çözümü",
+              "primary": "Üretim hatlarınız için tasarlanmış bu makine, yüksek hız ve mükemmel doğrulukla etiketleme yapar. Paslanmaz çelik yapısı ve kullanıcı dostu tasarımıyla iş gücünüzü artırın. WhatsApp'tan bilgi alın.",
+              "description": "Türk mühendisliği ile güvenilir performans.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "hız/kapasite",
+          "by_lang": {
+            "tr": {
+              "headline": "Hızlı etiketleme kapasitesi",
+              "primary": "Dakikada 10-40 şişe etiketleyerek üretkenliğinizi artırın. Otomasyon teknolojisi ile zamandan tasarruf edin. Daha fazla bilgi için WhatsApp'tan ulaşın.",
+              "description": "Hızlı ve verimli etiketleme deneyimi.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Hızla etiketleme imkanı",
+              "primary": "10-40 şişe/dakika kapasitesi ile üretim süreçlerinizi hızlandırın. Bu full otomatik etiketleme makinesi, iş verimliliğinizi artırmak için ideal. WhatsApp'tan bilgi alın.",
+              "description": "Hızlı çözüm ile işlerinizi büyütün.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "kalite/dayanıklılık",
+          "by_lang": {
+            "tr": {
+              "headline": "Dayanıklı ve güvenilir yapı",
+              "primary": "Paslanmaz çelik 304 malzeme ile uzun ömürlü bir çözüm sunuyoruz. Yüksek kalite mühendisliği ile her koşulda çalışmaya hazır. Daha fazlası için WhatsApp'tan bilgi alın.",
+              "description": "Türk mühendisliği ile güvenilirlik.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Paslanmaz çelik kalitesi",
+              "primary": "304 paslanmaz çelikten üretilmiş bu makine, uzun ömürlü ve dayanıklı bir çözüm sunar. Kaliteli malzeme ile güvenilir performans elde edin. WhatsApp'tan bilgi alın.",
+              "description": "Kalite ile güvenilir sonuçlar.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-çözüm",
+          "by_lang": {
+            "tr": {
+              "headline": "Etiketleme sorunlarınıza çözüm",
+              "primary": "Etiketleme süreçlerinizdeki sorunları ortadan kaldırın. Tam otomatik sistemi ile verimliliğinizi artırın. Detaylar için WhatsApp'tan bize ulaşın.",
+              "description": "Sürekli destek ve çözüm sunar.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Sorunları kolayca çözün",
+              "primary": "Etiketleme sürecindeki sıkıntılara son verin! Tam otomatik etiketleme makinemiz, üretim hatalarını minimize eder ve verimliliği artırır. WhatsApp'tan bilgi alın.",
+              "description": "Sorunlarınıza etkili çözümler.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        }
+      ],
+      "highlights": [
+        "Paslanmaz çelik 304 yapı",
+        "10-40 şişe/dakika kapasite",
+        "Tam otomatik etiketleme",
+        "Kabinli tasarım ile koruma"
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-06-22T14:02:56.843Z"
+    },
+    "updated_at": "2026-06-22T14:03:25.000Z",
+    "image": {
+      "url": "/api/media/etiketleme-oto-304-hf-scene-feed.png",
+      "model": "higgsfield/scene",
+      "at": "2026-06-22T14:03:25.000Z"
+    }
+  },
+  "etiketleme-304-kabinsiz": {
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "ozellik",
+          "by_lang": {
+            "tr": {
+              "headline": "Tam otomatik etiketleme çözümü",
+              "primary": "Etiketleme sürecinizi hızlandırın, tam otomatik sistemi ile iş verimliliğinizi artırın. Şimdi detaylı bilgi almak için WhatsApp'tan bize ulaşın.",
+              "description": "Yüksek kaliteli mühendislik ile üretilmiştir.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Tam otomatik etiketleme çözümü",
+              "primary": "Şişeleriniz için hızlı ve verimli bir etiketleme sistemi mi arıyorsunuz? Full otomatik etiketleme makinemiz, paslanmaz çelik 304 ile üretilmiş olup, mükemmel dayanıklılık sunar. WhatsApp'tan bilgi alın!",
+              "description": "Güvenilir Türk mühendisliği ile tasarlandı.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "hız/kapasite",
+          "by_lang": {
+            "tr": {
+              "headline": "Hızlı etiketleme, yüksek verim",
+              "primary": "10-40 şişe/dakika kapasitesi ile üretkenliğinizi artırın. Hızlı ve etkili çözümler arıyorsanız, bizimle iletişime geçin.",
+              "description": "Hızlı sonuçlar, yüksek kapasiteli üretim.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Hızlı etiketleme kapasitesi",
+              "primary": "10-40 şişe/dk kapasitesi ile üretim hattınızı hızlandırın. Bu makine, etiketleme sürecinizi optimize ederek zaman kazandırır. Daha fazla bilgi için WhatsApp'tan bize ulaşın.",
+              "description": "Yüksek hız ile verimliliğinizi artırın.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "kalite/dayanıklılık",
+          "by_lang": {
+            "tr": {
+              "headline": "Dayanıklı paslanmaz çelik tasarım",
+              "primary": "Paslanmaz çelik 304 ile üretilmiş sağlam yapısı sayesinde uzun ömürlü kullanım sunar. Kaliteyi ön planda tutan bir sistem arıyorsanız, bizimle irtibata geçin.",
+              "description": "Güvenilir ve dayanıklı mühendislik.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Dayanıklı paslanmaz çelik yapı",
+              "primary": "Paslanmaz çelik 304 ile üretilen etiketleme makinemiz, uzun ömürlü ve güvenilir bir performans sunar. Kaliteli tasarımı ile her türlü üretim koşuluna dayanıklıdır. Detaylar için WhatsApp'tan bizimle iletişime geçin.",
+              "description": "Kalite ve dayanıklılık bir arada.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-çözüm",
+          "by_lang": {
+            "tr": {
+              "headline": "Etiketleme sorunlarına çözüm",
+              "primary": "Zaman kaybı ve hatalı etiketleme sorunlarınızı ortadan kaldırın. Güvenilir ve otomatik sistemimizle işleriniz daha kolay hale geliyor. Detaylı bilgi için WhatsApp'tan bize ulaşın.",
+              "description": "Her türlü etiketleme ihtiyacınıza uygun çözüm.",
+              "cta": "WhatsApp'tan bilgi al"
+            },
+            "en": {
+              "headline": "Etiketleme sorunlarına çözüm",
+              "primary": "Üretim sürecinizdeki etiketleme sorunlarını sona erdirin! Full otomatik etiketleme makinemiz, hızlı ve etkili çözümler sunarak ürünlerinizi en iyi şekilde etiketler. Bizimle WhatsApp'tan iletişime geçin!",
+              "description": "Sorunlarınıza kalıcı çözümler.",
+              "cta": "WhatsApp'tan bilgi al"
+            }
+          }
+        }
+      ],
+      "highlights": [
+        "Tam otomatik etiketleme",
+        "Paslanmaz çelik 304",
+        "10-40 şişe/dakika kapasite",
+        "Uzun ömürlü ve dayanıklı tasarım"
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-06-22T14:03:10.533Z"
+    },
+    "updated_at": "2026-06-22T14:03:25.000Z",
+    "image": {
+      "url": "/api/media/etiketleme-304-kabinsiz-hf-scene-feed.png",
+      "model": "higgsfield/scene",
+      "at": "2026-06-22T14:03:25.000Z"
+    }
   }
 }

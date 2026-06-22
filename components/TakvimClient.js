@@ -75,6 +75,7 @@ export default function TakvimClient({ initialItems, names }) {
                           : <span className="text-[10px] text-amber">assisted (manuel)</span>}
                       </div>
                       <p className="text-sm text-slate-600 whitespace-pre-line line-clamp-3">{it.caption}</p>
+                      {it.imageUrl && <a href={it.imageUrl} target="_blank" rel="noreferrer" className="text-xs text-slate-400 hover:underline">🖼 görsel</a>}
                       {it.videoUrl && <a href={it.videoUrl} target="_blank" rel="noreferrer" className="text-xs text-red hover:underline">🎬 video</a>}
                       {it.result?.method === 'assisted' && (
                         <div className="mt-2 text-[11px] text-slate-400 bg-amber/10 border border-amber/30 rounded-lg p-2">
