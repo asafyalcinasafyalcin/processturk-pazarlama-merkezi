@@ -6,6 +6,12 @@ set -eu
 
 APP_NAME="${APP_NAME:-processturk-pazarlama}"
 APP_DOMAIN="${APP_DOMAIN:-pazarlama.72.60.134.242.nip.io}"
+# Ek domain(ler) — boşlukla ayır. Her domaine Traefik ayrı LE sertifikası üretir; biri
+# (DNS yoksa) başarısız olsa diğeri etkilenmez. pazarlama.processturk.com için Hostinger'da
+# A kaydı → 72.60.134.242 eklenince otomatik çalışır.
+EXTRA_DOMAINS="${EXTRA_DOMAINS:-pazarlama.processturk.com}"
+HOST_RULE="Host(\`$APP_DOMAIN\`)"
+for _d in $EXTRA_DOMAINS; do HOST_RULE="$HOST_RULE || Host(\`$_d\`)"; done
 IMAGE_NAME="${APP_NAME}:latest"
 OLD_NAME="${APP_NAME}-previous"
 ENV_FILE=".env.production"
@@ -55,11 +61,11 @@ docker run -d \
   --label "traefik.http.middlewares.pazarlama-redirect.redirectscheme.scheme=https" \
   --label "traefik.http.routers.pazarlama-http.entryPoints=http" \
   --label "traefik.http.routers.pazarlama-http.middlewares=pazarlama-redirect" \
-  --label "traefik.http.routers.pazarlama-http.rule=Host(\`$APP_DOMAIN\`) && PathPrefix(\`/\`)" \
+  --label "traefik.http.routers.pazarlama-http.rule=($HOST_RULE) && PathPrefix(\`/\`)" \
   --label "traefik.http.routers.pazarlama-http.service=pazarlama-https" \
   --label "traefik.http.routers.pazarlama-https.entryPoints=https" \
   --label "traefik.http.routers.pazarlama-https.middlewares=pazarlama-auth,pazarlama-gzip" \
-  --label "traefik.http.routers.pazarlama-https.rule=Host(\`$APP_DOMAIN\`) && PathPrefix(\`/\`)" \
+  --label "traefik.http.routers.pazarlama-https.rule=($HOST_RULE) && PathPrefix(\`/\`)" \
   --label "traefik.http.routers.pazarlama-https.service=pazarlama-https" \
   --label "traefik.http.routers.pazarlama-https.tls=true" \
   --label "traefik.http.routers.pazarlama-https.tls.certresolver=letsencrypt" \
