@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { findProduct } from '@/lib/products';
-import { patchContent } from '@/lib/content';
+import { patchContent, getContent } from '@/lib/content';
 import { genImage } from '@/lib/providers/gen';
 import { resolveProductImagePath } from '@/lib/product-image';
 import { findTemplate } from '@/lib/templates';
@@ -18,6 +18,17 @@ export async function POST(request) {
 
     const product = await findProduct(slug);
     if (!product) return NextResponse.json({ ok: false, error: 'Ürün bulunamadı' }, { status: 404 });
+
+    // Slug cache: aynı slug+template+lang için ≤7 günlük sonuç varsa tekrar üretme.
+    // force:true ile aşılır (gen.js prompt-hash cache da devre dışı kalır).
+    if (!body.force) {
+      const existing = await getContent(slug);
+      const g = existing?.gorsel;
+      if (g?.url && g.template === templateId && g.lang === lang) {
+        const ageDays = (Date.now() - new Date(g.at).getTime()) / 86400000;
+        if (ageDays < 7) return NextResponse.json({ ok: true, gorsel: g, fromCache: true });
+      }
+    }
 
     const template = findTemplate(templateId);
 
@@ -41,13 +52,14 @@ export async function POST(request) {
     const prompt = template.buildPrompt(product, lang);
     const negativePrompt = template.buildNegativePrompt ? template.buildNegativePrompt() : undefined;
 
-    // Görsel üret (Higgsfield → fal fallback gen.js'te otomatik)
+    // Görsel üret (Higgsfield → fal fallback gen.js'te otomatik; prompt-hash cache gen.js'te)
     const result = await genImage({
       prompt,
       negative_prompt: negativePrompt,
       image_size: falSize,      // fal için
       aspect_ratio: hfRatio,   // HF için
       model: 'flux-dev',       // fal default; HF kendi modelini kullanır
+      force: body.force,        // cache bypass
     });
 
     const imageUrl = result.url;

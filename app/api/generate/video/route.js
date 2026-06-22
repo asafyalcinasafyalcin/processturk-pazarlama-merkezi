@@ -36,6 +36,18 @@ export async function POST(request) {
       : (existing?.copy?.highlights || []);
     const videoModel = body.videoModel || 'seedance-2-fast';
 
+    // Slug cache: aynı slug+lang+model için ≤7 günlük video varsa tekrar üretme.
+    // force:true ile aşılır.
+    if (!body.force) {
+      const cv = existing?.video;
+      if (cv?.url && cv.lang === lang && cv.model === videoModel) {
+        const ageDays = (Date.now() - new Date(cv.at).getTime()) / 86400000;
+        if (ageDays < 7) {
+          return NextResponse.json({ ok: true, video: cv, plan: existing?.scriptPlan, fromCache: true });
+        }
+      }
+    }
+
     // 1) senaryo (fiyatsız, harekete geçirici)
     const plan = await planAdScript({ product, lang, highlights });
 
@@ -45,7 +57,7 @@ export async function POST(request) {
     // 3) tek 10sn i2v klip (gerçek ürün DOLUM YAPARKEN); kanca + fayda sahnelerine bölünür
     const motion = 'the real machine actively filling product, product flowing into packages, smooth subtle camera push-in then slow pan, medium/wide shot, factory background, premium commercial, realistic';
     const negative = 'text, letters, numbers, logo, brand name, control panel, screen, monitor, display, UI, buttons, watermark, subtitles, distorted hands, distorted faces, deformed';
-    const clip = await genVideo({ model: videoModel, prompt: motion, negative_prompt: negative, imagePath: img.imagePath, image_url: img.url, aspect_ratio: '9:16', resolution: '720p', duration: 10 });
+    const clip = await genVideo({ model: videoModel, prompt: motion, negative_prompt: negative, imagePath: img.imagePath, image_url: img.url, aspect_ratio: '9:16', resolution: '720p', duration: 10, force: body.force });
     if (!clip.url) throw new Error('Ürün klibi üretilemedi.');
 
     // mode:'raw' → markasız temiz klibi kaydet; brandOverlay ile reklam marka katmanını göm.
@@ -61,6 +73,7 @@ export async function POST(request) {
       const video = {
         url: chosen.publicPath, type: branded ? 'raw-branded' : 'raw', lang,
         rawUrl: raw.publicPath, imageSource: img.source, voice: false, music: false,
+        voiceUrl: null, musicUrl: null,
         model: videoModel, at: new Date().toISOString(),
       };
       await patchContent(slug, { video, scriptPlan: plan });
@@ -75,17 +88,19 @@ export async function POST(request) {
     });
 
     // 4) seslendirme + müzik (opsiyonel)
+    // Mevcut ses/müzik URL'leri content.json'dan alınır; yoksa üretilir.
+    // Aynı voiceover metni + aynı müzik prompt → tekrar üretilmez (gen.js prompt-hash cache).
     const settings = await readSettings();
-    let voiceUrl = null, musicUrl = null;
-    if (wantVoice && plan.voiceover) {
+    let voiceUrl = existing?.video?.voiceUrl || null;
+    let musicUrl = existing?.video?.musicUrl || null;
+    if (wantVoice && plan.voiceover && !voiceUrl) {
       try {
-        // TTS'ten ÖNCE okunur biçime normalize et (sayı→yazı, sembol, telaffuz sözlüğü)
         const spoken = normalizeForTTS(plan.voiceover, lang, settings.pronounce);
-        voiceUrl = (await genVoice({ text: spoken, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset })).url;
+        voiceUrl = (await genVoice({ text: spoken, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset, force: body.force })).url;
       } catch (e) { console.warn('TTS atlandı:', e.message); }
     }
-    if (wantMusic) {
-      try { musicUrl = (await genMusic({ prompt: 'calm corporate industrial background, subtle, motivating, no vocals', seconds: plan.totalSec })).url; }
+    if (wantMusic && !musicUrl) {
+      try { musicUrl = (await genMusic({ prompt: 'calm corporate industrial background, subtle, motivating, no vocals', seconds: plan.totalSec, force: body.force })).url; }
       catch (e) { console.warn('Müzik atlandı:', e.message); }
     }
 
@@ -99,6 +114,7 @@ export async function POST(request) {
       url: rendered.publicPath, type: 'rendered', lang,
       durationSec: rendered.durationSec, imageSource: img.source,
       voice: Boolean(voiceUrl), music: Boolean(musicUrl), model: videoModel,
+      voiceUrl, musicUrl,
       at: new Date().toISOString(),
     };
     await patchContent(slug, { video, scriptPlan: plan });
