@@ -21,10 +21,52 @@ const empty = {
 
 export default function YeniUrunPage() {
   const router = useRouter();
+  const [started, setStarted] = useState(false);
   const [step, setStep] = useState(0);
   const [form, setForm] = useState(empty);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
+
+  // PDF / metin import state
+  const [importMode, setImportMode] = useState(false);
+  const [importText, setImportText] = useState('');
+  const [importFile, setImportFile] = useState(null);
+  const [importBusy, setImportBusy] = useState(false);
+  const [importError, setImportError] = useState(null);
+
+  async function handleImport() {
+    if (!importText.trim() && !importFile) return;
+    setImportBusy(true); setImportError(null);
+    try {
+      const fd = new FormData();
+      if (importText.trim()) fd.append('text', importText.trim());
+      if (importFile) fd.append('file', importFile);
+      const res = await fetch('/api/products/import-pdf', { method: 'POST', body: fd });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      const p = d.product;
+      setForm((f) => ({
+        ...f,
+        name_tr: p.name_tr || f.name_tr,
+        name_en: p.name_en || f.name_en,
+        category: p.category || f.category,
+        notes: p.notes || f.notes,
+        specs: {
+          filled_products: p.specs?.filled_products || f.specs.filled_products,
+          filling_range: p.specs?.filling_range || f.specs.filling_range,
+          capacity: p.specs?.capacity || f.specs.capacity,
+          size: p.specs?.size || f.specs.size,
+          power: p.specs?.power || f.specs.power,
+          voltage: p.specs?.voltage || f.specs.voltage,
+        },
+        audience: p.audience || f.audience,
+        promise: p.promise || f.promise,
+        hero_number: p.hero_number || f.hero_number,
+      }));
+      setStarted(true);
+    } catch (e) { setImportError(e.message); }
+    finally { setImportBusy(false); }
+  }
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const setSpec = (k, v) => setForm((f) => ({ ...f, specs: { ...f.specs, [k]: v } }));
@@ -64,7 +106,79 @@ export default function YeniUrunPage() {
         <Link href="/" className="text-sm text-slate-400 hover:text-slate-700">← Vazgeç</Link>
       </div>
 
+      {/* ── Başlangıç Ekranı ── */}
+      {!started && (
+        <div className="space-y-4">
+          {!importMode ? (
+            <div className="card p-6 space-y-4">
+              <h2 className="font-head font-bold text-lg">Nasıl başlamak istersiniz?</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button
+                  className="card p-4 flex flex-col items-center gap-2 hover:border-navy/50 hover:bg-navy/5 cursor-pointer border border-line transition text-left"
+                  onClick={() => setImportMode(true)}
+                >
+                  <span className="text-3xl">📄</span>
+                  <span className="font-semibold text-sm">PDF / Doküman Yükle</span>
+                  <span className="text-xs text-slate-400 text-center">Katalog ya da teknik dokümanı yapıştır, AI doldurun</span>
+                </button>
+                <button
+                  className="card p-4 flex flex-col items-center gap-2 hover:border-navy/50 hover:bg-navy/5 cursor-pointer border border-line transition text-left"
+                  onClick={() => setStarted(true)}
+                >
+                  <span className="text-3xl">📝</span>
+                  <span className="font-semibold text-sm">Manuel Doldur</span>
+                  <span className="text-xs text-slate-400 text-center">Adım adım wizard ile kendin doldur</span>
+                </button>
+                <a
+                  href="/templates/urun-sablonu.csv"
+                  download
+                  className="card p-4 flex flex-col items-center gap-2 hover:border-navy/50 hover:bg-navy/5 cursor-pointer border border-line transition text-left no-underline"
+                >
+                  <span className="text-3xl">📊</span>
+                  <span className="font-semibold text-sm">Excel Şablonu İndir</span>
+                  <span className="text-xs text-slate-400 text-center">CSV şablonunu doldur, daha sonra manuel gir</span>
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="card p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <h2 className="font-head font-bold text-lg">📄 PDF / Metin ile Otomatik Doldur</h2>
+                <button className="text-sm text-slate-400 hover:text-slate-700" onClick={() => setImportMode(false)}>← Geri</button>
+              </div>
+              <textarea
+                className="input w-full text-sm"
+                rows={6}
+                value={importText}
+                onChange={(e) => setImportText(e.target.value)}
+                placeholder="Ürün teknik dokümanı, katalog metni veya müşteri notunu yapıştırın…"
+              />
+              <div className="flex items-center gap-3 text-sm text-slate-500">
+                <span>veya PDF dosyası:</span>
+                <input
+                  type="file"
+                  accept=".pdf,.txt,.md"
+                  className="text-sm"
+                  onChange={(e) => setImportFile(e.target.files?.[0] || null)}
+                />
+                {importFile && <span className="text-xs text-slate-400">{importFile.name}</span>}
+              </div>
+              {importError && <p className="text-red text-sm">⚠ {importError}</p>}
+              <button
+                className="btn btn-primary"
+                onClick={handleImport}
+                disabled={importBusy || (!importText.trim() && !importFile)}
+              >
+                {importBusy ? '⏳ AI analiz ediyor…' : '⚡ AI ile Formu Doldur'}
+              </button>
+              <p className="text-xs text-slate-400">AI çıktısını wizard adımlarında düzenleyebilirsin.</p>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Adım göstergesi */}
+      {started && (<>
       <div className="flex items-center gap-2 mb-8">
         {STEPS.map((s, i) => (
           <div key={s} className="flex items-center gap-2 flex-1">
@@ -205,6 +319,7 @@ export default function YeniUrunPage() {
           <button className="btn btn-primary" onClick={save} disabled={saving}>{saving ? 'Kaydediliyor…' : '✓ Ürünü Kaydet'}</button>
         )}
       </div>
+      </>)}
     </div>
   );
 }

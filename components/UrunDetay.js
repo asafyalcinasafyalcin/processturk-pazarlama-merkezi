@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import PipelinePanel from './PipelinePanel';
 import AssetLibrary from './AssetLibrary';
+import { IMAGE_CONCEPTS } from '@/lib/image-concepts';
 
 const LANG_LABEL = { tr: 'TR', en: 'EN', ar: 'AR', fr: 'FR', ru: 'RU' };
 
@@ -11,12 +12,21 @@ const TABS = [
   { id: 'gorsel', label: '🖼️ Görsel' },
   { id: 'icerik', label: '✍️ İçerik' },
   { id: 'video',  label: '🎬 Video'  },
-  { id: 'reklam', label: '📣 Reklam' },
+  { id: 'reklam', label: '📣 Kopya' },
 ];
 
-const IMAGE_TEMPLATES = [
-  { id: 'makine-vitrin',    label: 'Makine Vitrin',    emoji: '🏭', desc: 'Lifestyle ürün sahnesi', cost: '~$0.02' },
-  { id: 'muhendis-anlatim', label: 'Mühendis Anlatım', emoji: '👷', desc: 'Mühendis + makine',      cost: '~$0.03' },
+
+const VIDEO_PLATFORMS = [
+  { id: 'reels',    label: 'Instagram Reels', icon: '📱', ratio: '9:16',  defaultDur: 15 },
+  { id: 'stories',  label: 'Stories',          icon: '📸', ratio: '9:16',  defaultDur: 10 },
+  { id: 'youtube',  label: 'YouTube',          icon: '▶️', ratio: '16:9', defaultDur: 20 },
+  { id: 'linkedin', label: 'LinkedIn',         icon: '💼', ratio: '16:9', defaultDur: 20 },
+];
+
+const VOICE_STYLES = [
+  { id: 'satis',  label: '🔥 Satış Odaklı', desc: 'Hızlı, enerjik, tetikleyici' },
+  { id: 'bilgi',  label: 'ℹ️ Bilgilendirici', desc: 'Sakin, net, profesyonel' },
+  { id: 'maskot', label: '🤖 Maskot Sesi',   desc: 'Robot karakteri, OpenAI onyx' },
 ];
 
 const ALL_PLATFORMS = [
@@ -41,12 +51,18 @@ export default function UrunDetay({ product, initialContent }) {
   const [brief, setBrief] = useState(null);
   const [briefBusy, setBriefBusy] = useState(false);
   const [briefMsg, setBriefMsg] = useState(null);
+  const [importBusy, setImportBusy] = useState(false);
+  const [importText, setImportText] = useState('');
+  const [importFile, setImportFile] = useState(null);
 
   // ── Görsel ──
   const [uploadFile, setUploadFile] = useState(null);
   const [uploadBusy, setUploadBusy] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState(null);
   const [activeTemplate, setActiveTemplate] = useState('makine-vitrin');
+  const [activeConcept, setActiveConcept] = useState('vitrin');
+  const [customPrompt, setCustomPrompt] = useState('');
+  const [libCounts, setLibCounts] = useState({});
   const [gorselBusy, setGorselBusy] = useState(false);
   const [gorsel, setGorsel] = useState(null);
 
@@ -65,6 +81,9 @@ export default function UrunDetay({ product, initialContent }) {
   const [videoElapsed, setVideoElapsed] = useState(0);
   const [videoResult, setVideoResult] = useState(null);
   const videoTimerRef = useRef(null);
+  const [videoPlatform, setVideoPlatform] = useState('reels');
+  const [videoDuration, setVideoDuration] = useState(15);
+  const [voiceStyle, setVoiceStyle] = useState('satis');
 
   // ── Reklam copy ──
   const [copyBusy, setCopyBusy] = useState(false);
@@ -83,6 +102,25 @@ export default function UrunDetay({ product, initialContent }) {
   useEffect(() => {
     setDraft(content.copy ? JSON.parse(JSON.stringify(content.copy)) : null);
   }, [content.copy]);
+
+  // Kütüphaneden konsept kullanım sayıları
+  useEffect(() => {
+    fetch(`/api/assets?slug=${product.slug}`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (!d.ok) return;
+        const counts = {};
+        d.assets.filter((a) => a.stage === 'gorsel').forEach((a) => {
+          const t = a.summary || a.note || '';
+          IMAGE_CONCEPTS.forEach((c) => {
+            if (t.includes(c.id) || (c.templateId && t.includes(c.templateId))) {
+              counts[c.id] = (counts[c.id] || 0) + 1;
+            }
+          });
+        });
+        setLibCounts(counts);
+      }).catch(() => {});
+  }, [product.slug]); // eslint-disable-line
 
   useEffect(() => () => clearInterval(videoTimerRef.current), []);
 
@@ -122,6 +160,26 @@ export default function UrunDetay({ product, initialContent }) {
     finally { setBriefBusy(false); }
   }
 
+  // ── Brief import (PDF / metin) ──
+  async function handleBriefImport() {
+    if (!importText.trim() && !importFile) return;
+    setImportBusy(true); setBriefMsg(null);
+    try {
+      const fd = new FormData();
+      fd.append('slug', product.slug);
+      if (importText.trim()) fd.append('text', importText.trim());
+      if (importFile) fd.append('file', importFile);
+      const res = await fetch('/api/brief/import', { method: 'POST', body: fd });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setBrief(d.brief);
+      setImportText('');
+      setImportFile(null);
+      setBriefMsg('AI brief doldurdu — gözden geçir ve kaydet ✓');
+    } catch (e) { setBriefMsg('⚠ ' + e.message); }
+    finally { setImportBusy(false); }
+  }
+
   function updateHighlight(i, val) {
     setBrief((b) => { const h = [...(b?.highlights || [])]; h[i] = val; return { ...b, highlights: h }; });
   }
@@ -155,14 +213,22 @@ export default function UrunDetay({ product, initialContent }) {
   async function handleGenGorsel() {
     setGorselBusy(true); setError(null);
     try {
+      const concept = IMAGE_CONCEPTS.find((c) => c.id === activeConcept) || IMAGE_CONCEPTS[0];
+      const templateId = concept.templateId || 'makine-vitrin';
       const res = await fetch('/api/generate/gorsel', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: product.slug, template: activeTemplate, lang: langs[0], platforms: ['instagram'], force: true }),
+        body: JSON.stringify({
+          slug: product.slug, template: templateId, lang: langs[0],
+          platforms: ['instagram'], concept: activeConcept,
+          customPrompt: concept.isCustom ? customPrompt : undefined,
+          force: true,
+        }),
       });
       const d = await res.json();
       if (!d.ok) throw new Error(d.error);
       setGorsel(d.gorsel);
       setContent((c) => ({ ...c, gorsel: d.gorsel }));
+      setLibCounts((prev) => ({ ...prev, [activeConcept]: (prev[activeConcept] || 0) + 1 }));
       setMsg(d.gorsel.imageSource === 'img2img' ? 'Görsel üretildi (makine fotoğrafından) ✓' : 'Görsel üretildi ✓');
     } catch (e) { setError('Görsel hatası: ' + e.message); }
     finally { setGorselBusy(false); }
@@ -216,7 +282,11 @@ export default function UrunDetay({ product, initialContent }) {
     try {
       const res = await fetch('/api/generate/video', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: product.slug, lang: videoLang, voice: wantVoice, music: false, duration: 10, force: true }),
+        body: JSON.stringify({
+          slug: product.slug, lang: videoLang, voice: wantVoice, music: false,
+          duration: videoDuration, aspect_ratio: VIDEO_PLATFORMS.find((p) => p.id === videoPlatform)?.ratio || '9:16',
+          platform: videoPlatform, voiceStyle, force: true,
+        }),
       });
       const d = await res.json();
       if (!d.ok) {
@@ -372,6 +442,40 @@ export default function UrunDetay({ product, initialContent }) {
               placeholder="Ör: Sarı granüller, beyaz poşetler, sanayi ortamı" />
           </div>
 
+          {/* PDF / Metin import */}
+          <details className="border border-line rounded-xl">
+            <summary className="cursor-pointer select-none px-4 py-3 text-sm text-slate-500 hover:text-slate-700">
+              📎 PDF veya Metin ile Otomatik Doldur
+            </summary>
+            <div className="px-4 pb-4 space-y-3 border-t border-line pt-3">
+              <textarea
+                className="input w-full text-sm"
+                rows={5}
+                value={importText}
+                onChange={(e) => setImportText(e.target.value)}
+                placeholder="Ürün teknik dokümanı, katalog metni veya müşteri notunu yapıştırın…"
+              />
+              <div className="flex items-center gap-3 text-sm text-slate-500">
+                <span>veya dosya:</span>
+                <input
+                  type="file"
+                  accept=".pdf,.txt,.md"
+                  className="text-sm"
+                  onChange={(e) => setImportFile(e.target.files?.[0] || null)}
+                />
+                {importFile && <span className="text-xs text-slate-400">{importFile.name}</span>}
+              </div>
+              <button
+                className="btn btn-primary text-sm"
+                onClick={handleBriefImport}
+                disabled={importBusy || (!importText.trim() && !importFile)}
+              >
+                {importBusy ? '⏳ AI analiz ediyor…' : '⚡ AI ile Doldur'}
+              </button>
+              <p className="text-xs text-slate-400">AI çıktıyı gözden geçir, düzenle, ardından kaydet.</p>
+            </div>
+          </details>
+
           <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-line">
             <button className="btn btn-primary" onClick={saveBrief} disabled={briefBusy}>
               {briefBusy ? 'Kaydediliyor…' : '💾 Brief Kaydet'}
@@ -428,25 +532,38 @@ export default function UrunDetay({ product, initialContent }) {
           <section className="card p-5">
             <h2 className="font-head font-bold mb-3">🎨 AI Görsel Üret</h2>
             {uploadedUrl && (
-              <div className="text-xs text-ok mb-3">✓ Fotoğraf yüklü — img2img modunda üretilecek</div>
+              <div className="text-xs text-ok mb-3">✓ Fotoğraf yüklü — img2img modunda üretilecek (makine yapısı korunur)</div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-              {IMAGE_TEMPLATES.map((t) => {
-                const active = activeTemplate === t.id;
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+              {IMAGE_CONCEPTS.map((c) => {
+                const isActive = activeConcept === c.id;
+                const count = libCounts[c.id] || 0;
                 return (
-                  <button key={t.id} onClick={() => setActiveTemplate(t.id)}
+                  <button key={c.id}
+                    onClick={() => { setActiveConcept(c.id); if (c.templateId) setActiveTemplate(c.templateId); }}
                     className={[
-                      'rounded-xl border p-4 text-left transition-all',
-                      active ? 'border-navy bg-navy/5 ring-2 ring-navy/40' : 'border-line hover:border-navy/30',
+                      'rounded-xl border p-3 text-left transition-all relative',
+                      isActive ? 'border-navy bg-navy/5 ring-2 ring-navy/40' : 'border-line hover:border-navy/30',
                     ].join(' ')}>
-                    <div className="text-2xl mb-1">{t.emoji}</div>
-                    <div className="font-semibold text-sm">{t.label}</div>
-                    <div className="text-[11px] text-slate-400 mt-0.5">{t.desc} · {t.cost}</div>
+                    {count > 0 && (
+                      <span className="absolute top-2 right-2 text-[10px] bg-slate-100 text-slate-500 rounded-full px-1.5">{count}×</span>
+                    )}
+                    <div className="text-xl mb-1">{c.emoji}</div>
+                    <div className="font-semibold text-xs">{c.label}</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-2">{c.desc}</div>
+                    {c.requiresSoulId && <div className="text-[9px] text-ok mt-1">● Soul ID aktif</div>}
                   </button>
                 );
               })}
             </div>
+
+            {/* Özel prompt alanı — sadece "Özel" konsept seçilince görünür */}
+            {activeConcept === 'ozel' && (
+              <textarea className="textarea mb-3" rows={2} value={customPrompt}
+                onChange={(e) => setCustomPrompt(e.target.value)}
+                placeholder="Görsel için özel açıklama: ortam, renk, ışık, kompozisyon…" />
+            )}
 
             <button className="btn btn-primary" onClick={handleGenGorsel} disabled={gorselBusy}>
               {gorselBusy ? '⏳ Üretiliyor…' : gorselUrl ? '↻ Yeniden üret' : '⚡ Görsel Üret'}
@@ -543,7 +660,6 @@ export default function UrunDetay({ product, initialContent }) {
       {tab === 'video' && (
         <section className="card p-5 space-y-5">
           <h2 className="font-head font-bold text-lg">🎬 Video Üret</h2>
-          <p className="text-sm text-slate-500">9:16 tanıtım videosu — makine sahnesi, seslendirme ve marka kartları ile.</p>
 
           {!uploadedUrl && !gorselUrl && (
             <div className="card p-3 border-amber-400/40 text-amber-700 text-sm">
@@ -552,31 +668,75 @@ export default function UrunDetay({ product, initialContent }) {
             </div>
           )}
 
-          <div className="flex flex-wrap gap-5 items-start">
-            <div>
-              <label className="label mb-1">Dil</label>
-              <div className="flex gap-1.5">
-                {langs.map((l) => (
-                  <button key={l} onClick={() => setVideoLang(l)}
-                    className={`pill ${l === videoLang ? 'pill-active' : 'pill-muted'}`}>
-                    {LANG_LABEL[l] || l}
+          {/* Platform Seçimi */}
+          <div>
+            <label className="label mb-2">Platform</label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {VIDEO_PLATFORMS.map((p) => (
+                <button key={p.id}
+                  onClick={() => { setVideoPlatform(p.id); setVideoDuration(p.defaultDur); }}
+                  className={`border rounded-xl p-3 text-left transition ${
+                    videoPlatform === p.id ? 'border-red bg-red/5' : 'border-line hover:border-slate-400'
+                  }`}>
+                  <div className="text-lg">{p.icon}</div>
+                  <div className="text-xs font-semibold mt-1">{p.label}</div>
+                  <div className="text-[10px] text-slate-400">{p.ratio} · {p.defaultDur}sn</div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Süre */}
+          <div>
+            <label className="label mb-1">Süre: <strong>{videoDuration} saniye</strong></label>
+            <input type="range" min={10} max={20} step={5} value={videoDuration}
+              onChange={(e) => setVideoDuration(Number(e.target.value))}
+              className="w-full accent-red" />
+            <div className="flex justify-between text-[10px] text-slate-400">
+              <span>10sn</span><span>15sn</span><span>20sn</span>
+            </div>
+          </div>
+
+          {/* Dil */}
+          <div>
+            <label className="label mb-1">Dil</label>
+            <div className="flex gap-1.5">
+              {langs.map((l) => (
+                <button key={l} onClick={() => setVideoLang(l)}
+                  className={`pill ${l === videoLang ? 'pill-active' : 'pill-muted'}`}>
+                  {LANG_LABEL[l] || l}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Seslendirme */}
+          <div>
+            <label className="label mb-1">
+              Seslendirme{' '}
+              <button onClick={() => setWantVoice((v) => !v)}
+                className={`ml-2 pill text-xs ${wantVoice ? 'pill-active' : 'pill-muted'}`}>
+                {wantVoice ? '🎙️ Açık' : '🔇 Kapalı'}
+              </button>
+            </label>
+            {wantVoice && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {VOICE_STYLES.map((vs) => (
+                  <button key={vs.id} onClick={() => setVoiceStyle(vs.id)}
+                    className={`border rounded-xl px-3 py-2 text-left text-xs transition ${
+                      voiceStyle === vs.id ? 'border-red bg-red/5 font-semibold' : 'border-line hover:border-slate-400'
+                    }`}>
+                    <div>{vs.label}</div>
+                    <div className="text-slate-400 text-[10px]">{vs.desc}</div>
                   </button>
                 ))}
               </div>
-            </div>
-
-            <div>
-              <label className="label mb-1">Seslendirme</label>
-              <button onClick={() => setWantVoice((v) => !v)}
-                className={`pill ${wantVoice ? 'pill-active' : 'pill-muted'}`}>
-                {wantVoice ? '🎙️ Açık' : '🔇 Kapalı'}
-              </button>
-              {wantVoice && (
-                <div className="text-[11px] text-slate-400 mt-1">
-                  Higgsfield TTS · {voiceCharLabel[videoLang] || 'Roman'}
-                </div>
-              )}
-            </div>
+            )}
+            {wantVoice && voiceStyle !== 'maskot' && (
+              <div className="text-[11px] text-slate-400 mt-1">
+                Higgsfield TTS · {voiceCharLabel[videoLang] || 'Roman'}
+              </div>
+            )}
           </div>
 
           <button className="btn btn-primary text-base px-6 py-3" onClick={handleGenVideo} disabled={videoBusy}>
@@ -588,11 +748,12 @@ export default function UrunDetay({ product, initialContent }) {
           {videoUrl && (
             <div>
               <video src={videoUrl} controls className="w-full max-w-xs rounded-xl border border-line bg-black"
-                style={{ aspectRatio: '9/16' }} />
-              <div className="flex gap-2 mt-2 items-center">
+                style={{ aspectRatio: videoPlatform === 'youtube' || videoPlatform === 'linkedin' ? '16/9' : '9/16' }} />
+              <div className="flex gap-2 mt-2 items-center flex-wrap">
                 <a href={videoUrl} download className="btn btn-ghost text-sm">⬇ İndir</a>
                 {videoResult?.localPath && <span className="text-xs text-ok">✓ yerel kopya</span>}
                 {videoResult?.voice && <span className="text-xs text-slate-400">🎙️ ses var</span>}
+                {videoResult?.platform && <span className="text-xs text-slate-400">· {videoResult.platform}</span>}
               </div>
             </div>
           )}
@@ -605,7 +766,7 @@ export default function UrunDetay({ product, initialContent }) {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="font-head font-bold text-lg">📣 Reklam Kopyası</h2>
-              <p className="text-xs text-slate-400">4 varyant (A-D), fiyatsız, özellik odaklı — düzenlenebilir</p>
+              <p className="text-xs text-slate-400">4 varyant (A-D), özellik odaklı — düzenlenebilir. Meta'ya göndermek için → Kampanyalar</p>
             </div>
             <button className="btn btn-primary text-sm" onClick={genCopy} disabled={copyBusy}>
               {copyBusy ? 'Üretiliyor…' : draft ? '↻ Yeniden üret' : '✍ Üret'}
@@ -682,7 +843,7 @@ export default function UrunDetay({ product, initialContent }) {
       {/* Pipeline — daraltılmış gelişmiş bölüm */}
       <details className="mt-4">
         <summary className="cursor-pointer card p-3 text-sm text-slate-500 select-none">
-          🔧 Gelişmiş: Aşamalı Üretim Hattı (Pipeline)
+          ⚙ Teknik Pipeline (Gelişmiş — Metin/Ses/Altyazı/Video aşama sürümleri)
         </summary>
         <div className="mt-2">
           <PipelinePanel slug={product.slug} languages={langs} />

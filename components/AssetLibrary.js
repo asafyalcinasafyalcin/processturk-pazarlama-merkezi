@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const STAGE_LABEL = { text: '✍️ Metin', voice: '🎙️ Ses', subtitle: '💬 Altyazı', video: '🎬 Video' };
+const STAGE_LABEL = { text: '✍️ Metin', voice: '🎙️ Ses', subtitle: '💬 Altyazı', video: '🎬 Video', gorsel: '🖼️ Görsel' };
 
 export default function AssetLibrary({ slug }) {
   const [assets, setAssets] = useState([]);
@@ -38,7 +38,7 @@ export default function AssetLibrary({ slug }) {
         <div className="mt-4">
           <p className="text-xs text-slate-500 mb-3">Üretilen her metin/ses/altyazı/video sürümü saklanır — hiçbiri silinmez. Eski sürümü geri yükleyebilir, indirebilirsin.</p>
           <div className="flex flex-wrap gap-2 mb-4">
-            {['all', 'text', 'voice', 'subtitle', 'video'].map((t) => (
+            {['all', 'gorsel', 'text', 'voice', 'subtitle', 'video'].map((t) => (
               <button key={t} onClick={() => setFType(t)} className={`pill ${fType === t ? 'pill-ok' : 'pill-muted'}`}>{t === 'all' ? 'Hepsi' : STAGE_LABEL[t]}</button>
             ))}
             {langs.length > 1 && <span className="mx-1 text-slate-300">·</span>}
@@ -65,6 +65,9 @@ export default function AssetLibrary({ slug }) {
                       <span className="text-slate-400 ml-auto">{new Date(a.at).toLocaleString('tr-TR')} · ~${(a.cost || 0).toFixed(3)}</span>
                     </div>
                     {a.summary && <div className="text-sm text-slate-600 mt-1 truncate">{a.summary}</div>}
+                    {mediaUrl && a.stage === 'gorsel' && (
+                      <img src={mediaUrl} alt="görsel" className="mt-1 max-h-32 rounded object-contain border border-line" />
+                    )}
                     {mediaUrl && a.stage === 'voice' && <audio src={mediaUrl} controls className="w-full mt-1 h-8" />}
                     {mediaUrl && a.stage === 'video' && (
                       <div className="flex gap-2 mt-1">

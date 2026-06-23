@@ -8,6 +8,7 @@ import { resolveProductImagePath } from '@/lib/product-image';
 import { findTemplate } from '@/lib/templates';
 import { resolveFormat, FAL_TO_HF_RATIO } from '@/lib/platform-format';
 import { downloadAndSave } from '@/lib/download-asset';
+import { addToLibrary } from '@/lib/library';
 
 function loadMaskotConfig() {
   try {
@@ -107,6 +108,9 @@ export async function POST(request) {
       at: new Date().toISOString(),
     };
     await patchContent(slug, { gorsel: gorselData });
+
+    // Kütüphaneye ekle — her üretim kaydedilir, öncekiler silinmez
+    addToLibrary(slug, 'gorsel', gorselData);
 
     return NextResponse.json({ ok: true, gorsel: gorselData });
   } catch (err) {

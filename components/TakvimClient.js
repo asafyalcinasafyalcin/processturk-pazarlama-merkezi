@@ -3,20 +3,93 @@
 import { useState } from 'react';
 
 const STATUS = {
-  draft: { label: 'Taslak', cls: 'pill-muted' },
-  approved: { label: 'Onaylı', cls: 'pill-amber' },
-  published: { label: 'Yayınlandı', cls: 'pill-ok' },
+  draft:     { label: 'Taslak',      cls: 'pill-muted' },
+  approved:  { label: 'Onaylı',      cls: 'pill-amber' },
+  published: { label: 'Yayınlandı',  cls: 'pill-ok' },
 };
 const PLATFORM_LABEL = { instagram: 'Instagram', tiktok: 'TikTok', youtube: 'YouTube', facebook: 'Facebook', linkedin: 'LinkedIn', x: 'X' };
 const REAL = ['instagram', 'facebook', 'linkedin', 'x'];
 
+function ContentModal({ item, names, busy, onApprove, onPublish, onRemove, onClose }) {
+  if (!item) return null;
+  const pl = PLATFORM_LABEL[item.platform] || item.platform;
+  return (
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50" onClick={onClose}>
+      <div className="card p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        {/* Başlık */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="pill pill-muted">{pl}</span>
+            <span className={`pill ${STATUS[item.status].cls}`}>{STATUS[item.status].label}</span>
+            <span className="text-xs text-slate-400">{names[item.slug] || item.slug} · {item.lang?.toUpperCase()}</span>
+            {item.variantId && <span className="text-xs text-slate-400">varyant {item.variantId}</span>}
+          </div>
+          <button className="text-slate-400 hover:text-slate-700 text-lg" onClick={onClose}>✕</button>
+        </div>
+
+        {/* Görsel/Video önizleme */}
+        {(item.imageUrl || item.videoUrl) && (
+          <div className="mb-3 flex gap-2 flex-wrap">
+            {item.imageUrl && (
+              <a href={item.imageUrl} target="_blank" rel="noreferrer">
+                <img src={item.imageUrl} alt="görsel" className="h-24 w-auto rounded object-cover border border-line" />
+              </a>
+            )}
+            {item.videoUrl && (
+              <a href={item.videoUrl} target="_blank" rel="noreferrer"
+                className="h-24 w-24 rounded border border-line bg-black/10 flex items-center justify-center text-red text-2xl">
+                🎬
+              </a>
+            )}
+          </div>
+        )}
+
+        {/* Tam metin */}
+        <div className="mb-4">
+          <div className="text-xs text-slate-400 mb-1">Metin / Açıklama</div>
+          <div className="bg-slate-50 border border-line rounded-xl p-4 text-sm text-slate-700 whitespace-pre-line max-h-64 overflow-y-auto">
+            {item.caption || '(metin yok)'}
+          </div>
+        </div>
+
+        {item.result?.method === 'assisted' && (
+          <div className="text-[11px] text-slate-500 bg-amber/10 border border-amber/30 rounded-lg p-2 mb-3">
+            Manuel paylaş: videoyu indir + açıklamayı yapıştır.{item.result.package?.hashtags ? ` ${item.result.package.hashtags}` : ''}
+          </div>
+        )}
+
+        {/* Eylemler */}
+        <div className="flex items-center gap-2 flex-wrap justify-end border-t border-line pt-3 mt-2">
+          {item.status === 'draft' && (
+            <button className="btn btn-primary text-sm" disabled={busy === item.id} onClick={() => onApprove(item)}>
+              {busy === item.id ? '…' : '✓ Onayla'}
+            </button>
+          )}
+          {item.status === 'approved' && (
+            <button className="btn btn-primary text-sm" disabled={busy === item.id} onClick={() => onPublish(item)}>
+              {busy === item.id ? '…' : (REAL.includes(item.platform) ? '🚀 Yayınla' : '📦 Paketle & işaretle')}
+            </button>
+          )}
+          {item.status !== 'published' && (
+            <button className="btn btn-ghost text-sm text-red" disabled={busy === item.id} onClick={() => onRemove(item)}>
+              🗑 Kaldır
+            </button>
+          )}
+          <button className="btn btn-ghost text-sm" onClick={onClose}>Kapat</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function TakvimClient({ initialItems, names }) {
   const [items, setItems] = useState(initialItems || []);
   const [busy, setBusy] = useState(null);
-  const [confirming, setConfirming] = useState(null); // approval gate modal item
+  const [selected, setSelected] = useState(null);
 
   function replace(updated) {
     setItems((list) => list.map((it) => (it.id === updated.id ? updated : it)));
+    if (selected?.id === updated.id) setSelected(updated);
   }
 
   async function approve(item) {
@@ -24,7 +97,7 @@ export default function TakvimClient({ initialItems, names }) {
     const res = await fetch('/api/calendar', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: item.id, status: 'approved' }) });
     const data = await res.json();
     if (data.ok) replace(data.item);
-    setBusy(null); setConfirming(null);
+    setBusy(null);
   }
 
   async function publish(item) {
@@ -40,7 +113,7 @@ export default function TakvimClient({ initialItems, names }) {
     setBusy(item.id);
     await fetch(`/api/calendar?id=${item.id}`, { method: 'DELETE' });
     setItems((list) => list.filter((it) => it.id !== item.id));
-    setBusy(null);
+    setBusy(null); setSelected(null);
   }
 
   const groups = ['draft', 'approved', 'published'];
@@ -49,7 +122,7 @@ export default function TakvimClient({ initialItems, names }) {
     <div className="space-y-8">
       {items.length === 0 && (
         <div className="card p-10 text-center text-slate-400">
-          Takvim boş. Bir ürünün detayından <b>“Takvime ekle”</b> ile gönderi oluştur.
+          Takvim boş. Bir ürünün detayından <b>"Takvime ekle"</b> ile gönderi oluştur.
         </div>
       )}
 
@@ -64,37 +137,24 @@ export default function TakvimClient({ initialItems, names }) {
             </h2>
             <div className="space-y-3">
               {list.map((it) => (
-                <div key={it.id} className="card p-4">
+                <div key={it.id}
+                  className="card p-4 cursor-pointer hover:shadow-md transition-shadow"
+                  onClick={() => setSelected(it)}>
                   <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <span className="pill pill-muted">{PLATFORM_LABEL[it.platform] || it.platform}</span>
-                        <span className="text-xs text-slate-400">{names[it.slug] || it.slug} · {it.lang?.toUpperCase()} · varyant {it.variantId || '—'}</span>
+                        <span className="text-xs text-slate-400">{names[it.slug] || it.slug} · {it.lang?.toUpperCase()}{it.variantId ? ` · ${it.variantId}` : ''}</span>
                         {REAL.includes(it.platform)
                           ? <span className="text-[10px] text-ok">otomatik yayın</span>
-                          : <span className="text-[10px] text-amber">assisted (manuel)</span>}
+                          : <span className="text-[10px] text-amber">assisted</span>}
                       </div>
-                      <p className="text-sm text-slate-600 whitespace-pre-line line-clamp-3">{it.caption}</p>
-                      {it.imageUrl && <a href={it.imageUrl} target="_blank" rel="noreferrer" className="text-xs text-slate-400 hover:underline">🖼 görsel</a>}
-                      {it.videoUrl && <a href={it.videoUrl} target="_blank" rel="noreferrer" className="text-xs text-red hover:underline">🎬 video</a>}
-                      {it.result?.method === 'assisted' && (
-                        <div className="mt-2 text-[11px] text-slate-400 bg-amber/10 border border-amber/30 rounded-lg p-2">
-                          Manuel paylaş: videoyu indir + açıklamayı yapıştır. {it.result.package?.hashtags}
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-col gap-2 shrink-0">
-                      {it.status === 'draft' && (
-                        <button className="btn btn-ghost text-sm" disabled={busy === it.id} onClick={() => setConfirming(it)}>✓ Onayla</button>
-                      )}
-                      {it.status === 'approved' && (
-                        <button className="btn btn-primary text-sm" disabled={busy === it.id} onClick={() => publish(it)}>
-                          {busy === it.id ? '…' : (REAL.includes(it.platform) ? '🚀 Yayınla' : '📦 Paketle & işaretle')}
-                        </button>
-                      )}
-                      {it.status !== 'published' && (
-                        <button className="text-xs text-slate-500 hover:text-red" disabled={busy === it.id} onClick={() => remove(it)}>sil</button>
-                      )}
+                      <p className="text-sm text-slate-600 line-clamp-2">{it.caption || '(metin yok)'}</p>
+                      <div className="flex gap-2 mt-1">
+                        {it.imageUrl && <span className="text-[10px] text-slate-400">🖼 görsel</span>}
+                        {it.videoUrl && <span className="text-[10px] text-red">🎬 video</span>}
+                        <span className="text-[10px] text-slate-300 ml-auto">tıkla için detay →</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -104,25 +164,15 @@ export default function TakvimClient({ initialItems, names }) {
         );
       })}
 
-      {/* ONAY KAPISI modal */}
-      {confirming && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50" onClick={() => setConfirming(null)}>
-          <div className="card p-6 max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
-            <h3 className="font-head font-extrabold text-lg mb-2">Gönderiyi onayla</h3>
-            <p className="text-xs text-slate-400 mb-4">Onaydan sonra yayınlanabilir hale gelir. İçerik + platform + hedefi kontrol et:</p>
-            <div className="space-y-2 text-sm">
-              <div><span className="text-slate-500 text-xs">Platform:</span> <b>{PLATFORM_LABEL[confirming.platform]}</b> {REAL.includes(confirming.platform) ? '(otomatik yayın)' : '(manuel/assisted)'}</div>
-              <div><span className="text-slate-500 text-xs">Ürün / dil:</span> {names[confirming.slug] || confirming.slug} · {confirming.lang?.toUpperCase()}</div>
-              <div className="bg-slate-100 border border-line rounded-lg p-3 whitespace-pre-line text-slate-700">{confirming.caption}</div>
-              {confirming.videoUrl && <div className="text-xs text-red">🎬 video ekli</div>}
-            </div>
-            <div className="flex justify-end gap-2 mt-5">
-              <button className="btn btn-ghost text-sm" onClick={() => setConfirming(null)}>Vazgeç</button>
-              <button className="btn btn-primary text-sm" disabled={busy === confirming.id} onClick={() => approve(confirming)}>✓ Onaylıyorum</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ContentModal
+        item={selected}
+        names={names}
+        busy={busy}
+        onApprove={approve}
+        onPublish={publish}
+        onRemove={remove}
+        onClose={() => setSelected(null)}
+      />
     </div>
   );
 }

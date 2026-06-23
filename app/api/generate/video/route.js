@@ -39,6 +39,8 @@ export async function POST(request) {
       ? brief.highlights
       : (product.marketing?.highlights?.length ? product.marketing.highlights : (existing?.copy?.highlights || []));
     const videoModel = body.videoModel || 'seedance-2-fast';
+    const aspectRatio = body.aspect_ratio || '9:16';
+    const duration = Math.min(Math.max(body.duration || 15, 10), 20); // 10-20sn arası
 
     // Slug cache: aynı slug+lang+model için ≤7 günlük video varsa tekrar üretme.
     // force:true ile aşılır.
@@ -69,7 +71,7 @@ export async function POST(request) {
     // 3) tek 10sn i2v klip (gerçek ürün DOLUM YAPARKEN); kanca + fayda sahnelerine bölünür
     const motion = 'the real machine actively filling product, product flowing into packages, smooth subtle camera push-in then slow pan, medium/wide shot, factory background, premium commercial, realistic';
     const negative = 'text, letters, numbers, logo, brand name, control panel, screen, monitor, display, UI, buttons, watermark, subtitles, distorted hands, distorted faces, deformed';
-    const clip = await genVideo({ model: videoModel, prompt: motion, negative_prompt: negative, imagePath: img.imagePath, image_url: img.url, aspect_ratio: '9:16', resolution: '720p', duration: 10, force: body.force });
+    const clip = await genVideo({ model: videoModel, prompt: motion, negative_prompt: negative, imagePath: img.imagePath, image_url: img.url, aspect_ratio: aspectRatio, resolution: '720p', duration, force: body.force });
     if (!clip.url) throw new Error('Ürün klibi üretilemedi.');
 
     // mode:'raw' → markasız temiz klibi kaydet; brandOverlay ile reklam marka katmanını göm.
@@ -109,7 +111,7 @@ export async function POST(request) {
       try {
         const spoken = normalizeForTTS(plan.voiceover, lang, settings.pronounce);
         // lang geçilir → HF per-language voice map kullanılır
-        voiceUrl = (await genVoice({ text: spoken, lang, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset, force: body.force })).url;
+        voiceUrl = (await genVoice({ text: spoken, lang, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset, voiceStyle: body.voiceStyle || 'satis', force: body.force })).url;
       } catch (e) { console.warn('TTS atlandı:', e.message); }
     }
     if (wantMusic && !musicUrl) {
@@ -129,7 +131,7 @@ export async function POST(request) {
     const video = {
       url: rendered.publicPath,
       localPath: videoLocalPath || null,
-      type: 'rendered', lang,
+      type: 'rendered', lang, aspectRatio, platform: body.platform || null,
       durationSec: rendered.durationSec, imageSource: img.source,
       voice: Boolean(voiceUrl), music: Boolean(musicUrl), model: videoModel,
       voiceUrl, musicUrl,

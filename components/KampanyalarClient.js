@@ -49,18 +49,39 @@ const COUNTRY_LIST = [
   { code: 'MX', name: 'Meksika', flag: '🇲🇽' },
 ];
 
-// Hedef Müşteri → API concept map
+// Hedef Müşteri — çoklu seçim destekli
 const CONCEPT_OPTIONS = [
-  { id: 'a', label: 'Gıda Üreticisi', desc: 'Fabrika, atölye, paketleme tesisi' },
-  { id: 'b', label: 'İhracatçı / Distribütör', desc: 'Makineyi yurt dışına satanlar' },
-  { id: 'c', label: 'Sanayi Tesisi', desc: 'Kimya, tarım, maden sektörü' },
-  { id: 'd', label: 'Ambalaj Tesisi', desc: 'Özel ambalaj ve dolum hizmeti' },
+  { id: 'a', label: 'Gıda Üreticisi',           desc: 'Fabrika, atölye, paketleme tesisi' },
+  { id: 'b', label: 'İhracatçı / Distribütör',   desc: 'Makineyi yurt dışına satanlar' },
+  { id: 'c', label: 'Sanayi Tesisi',             desc: 'Kimya, tarım, maden sektörü' },
+  { id: 'd', label: 'Ambalaj Tesisi',            desc: 'Özel ambalaj ve dolum hizmeti' },
+  { id: 'e', label: 'Yatırımcı / Ortak',         desc: 'Makine sektörüne yatırım yapanlar' },
+  { id: 'f', label: 'Karar Verici / Yetkili',    desc: 'Satın alma müdürü, fabrika direktörü' },
+  { id: 'g', label: 'Sektör Temsilcisi',         desc: 'Dernek, oda, distribütör ağı' },
+];
+
+// Hazır ülke grupları
+const COUNTRY_GROUPS = [
+  { id: 'bati-afrika',   label: 'Batı Afrika',         codes: ['NG','GH','SN','CI','CM','ML','BF','GN','BJ'] },
+  { id: 'kuzey-afrika',  label: 'Kuzey Afrika',        codes: ['EG','MA','DZ','TN','LY'] },
+  { id: 'orta-dogu',     label: 'Orta Doğu',           codes: ['SA','AE','QA','KW','IQ','JO'] },
+  { id: 'fransizca',     label: 'Fransızca Konuşan',   codes: ['FR','SN','CI','CM','DZ','MA','TN','BE'] },
+  { id: 'turk-dunyasi',  label: 'Türk Dünyası',        codes: ['TR','AZ','KZ','UZ','TM','KG'] },
+  { id: 'eski-sovyet',   label: 'Rusça Konuşan',       codes: ['RU','UA','KZ','UZ','AZ'] },
+  { id: 'bati-avrupa',   label: 'Batı Avrupa',         codes: ['DE','GB','FR','NL','BE','IT','ES'] },
 ];
 
 // Ülke çoklu seçici bileşeni
 function CountryPicker({ selected, onChange }) {
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
+  const [savedGroups, setSavedGroups] = useState([]);
+  const [saveLabel, setSaveLabel] = useState('');
+  const [showSave, setShowSave] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/country-groups').then((r) => r.json()).then((d) => { if (d.ok) setSavedGroups(d.groups || []); }).catch(() => {});
+  }, []);
 
   const filtered = COUNTRY_LIST.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase()) || c.code.toLowerCase().includes(search.toLowerCase())
@@ -71,10 +92,54 @@ function CountryPicker({ selected, onChange }) {
     onChange(next);
   }
 
+  function applyGroup(codes) {
+    const next = [...new Set([...selected, ...codes])];
+    onChange(next);
+  }
+
+  async function saveGroup() {
+    if (!saveLabel.trim() || selected.length === 0) return;
+    const res = await fetch('/api/country-groups', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ label: saveLabel.trim(), codes: selected }) });
+    const d = await res.json();
+    if (d.ok) { setSavedGroups((g) => [...g, d.group]); setSaveLabel(''); setShowSave(false); }
+  }
+
+  async function deleteGroup(id) {
+    await fetch('/api/country-groups', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
+    setSavedGroups((g) => g.filter((x) => x.id !== id));
+  }
+
+  const allGroups = [...COUNTRY_GROUPS, ...savedGroups];
+
   return (
-    <div className="relative">
+    <div className="space-y-2">
+      {/* Hazır Gruplar */}
+      <div className="flex flex-wrap gap-1.5">
+        {allGroups.map((g) => (
+          <span key={g.id} className="flex items-center gap-1">
+            <button className="pill pill-muted text-xs hover:bg-navy/10" onClick={() => applyGroup(g.codes)}>
+              + {g.label} ({g.codes.length})
+            </button>
+            {g.id.startsWith('custom-') && (
+              <button className="text-[10px] text-slate-400 hover:text-red" onClick={() => deleteGroup(g.id)}>✕</button>
+            )}
+          </span>
+        ))}
+        <button className="pill pill-muted text-xs hover:bg-amber/10" onClick={() => setShowSave((s) => !s)}>
+          💾 Grubumu Kaydet
+        </button>
+      </div>
+
+      {showSave && selected.length > 0 && (
+        <div className="flex gap-2 items-center">
+          <input className="input text-sm flex-1" placeholder="Grup adı (örn: Müşterilerim)" value={saveLabel} onChange={(e) => setSaveLabel(e.target.value)} />
+          <button className="btn btn-primary text-xs" onClick={saveGroup}>Kaydet ({selected.length})</button>
+          <button className="btn btn-ghost text-xs" onClick={() => setShowSave(false)}>İptal</button>
+        </div>
+      )}
+
       {/* Seçilmiş ülkeler */}
-      <div className="flex flex-wrap gap-1 mb-1 min-h-[28px]">
+      <div className="flex flex-wrap gap-1 min-h-[28px]">
         {selected.map((code) => {
           const c = COUNTRY_LIST.find((x) => x.code === code);
           return (
@@ -87,7 +152,7 @@ function CountryPicker({ selected, onChange }) {
         {selected.length === 0 && <span className="text-xs text-slate-400">Ülke seçin…</span>}
       </div>
 
-      {/* Arama + dropdown toggle */}
+      {/* Arama + dropdown */}
       <div className="relative">
         <input
           className="input text-sm pr-8"
@@ -219,12 +284,24 @@ function TargetingSection({ slug }) {
                 </select>
               </div>
               <div>
-                <label className="label mb-1">Hedef Müşteri</label>
-                <select className="select" value={a.concept || 'a'} onChange={(e) => update(i, 'concept', e.target.value)}>
-                  {CONCEPT_OPTIONS.map((c) => (
-                    <option key={c.id} value={c.id}>{c.label} — {c.desc}</option>
-                  ))}
-                </select>
+                <label className="label mb-1">Hedef Müşteri <span className="text-slate-400 font-normal text-[10px]">(birden fazla seçilebilir)</span></label>
+                <div className="grid grid-cols-2 gap-1 mt-1">
+                  {CONCEPT_OPTIONS.map((c) => {
+                    const current = Array.isArray(a.concepts) ? a.concepts : [a.concept || 'a'];
+                    const checked = current.includes(c.id);
+                    return (
+                      <label key={c.id} className={`flex items-start gap-1.5 p-1.5 rounded-lg cursor-pointer text-xs border transition ${checked ? 'border-red/30 bg-red/5' : 'border-transparent hover:bg-slate-50'}`}>
+                        <input type="checkbox" className="mt-0.5 accent-red" checked={checked}
+                          onChange={() => {
+                            const next = checked ? current.filter((x) => x !== c.id) : [...current, c.id];
+                            update(i, 'concepts', next.length > 0 ? next : ['a']);
+                            update(i, 'concept', next[0] || 'a');
+                          }} />
+                        <span><b>{c.label}</b><br/><span className="text-slate-400">{c.desc}</span></span>
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 

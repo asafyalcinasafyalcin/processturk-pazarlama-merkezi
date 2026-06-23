@@ -21,10 +21,12 @@ export default async function KampanyalarPage() {
   return (
     <div className="px-6 md:px-10 py-8 max-w-4xl mx-auto">
       <h1 className="font-head font-extrabold text-2xl md:text-3xl mb-1">Reklam Komuta Merkezi</h1>
-      <p className="text-slate-400 text-sm mb-6">
-        Tek ekrandan: hedefleme → metin → creative → kurulum → rapor. Meta Click-to-WhatsApp.
-        Gerçek yayın META token + Asaf onayı gerektirir; hiçbir şey kendiliğinden harcamaz.
+      <p className="text-slate-400 text-sm mb-4">
+        Meta Click-to-WhatsApp kampanyalarını kur. Gerçek yayın için META token + Asaf onayı gerekir — hiçbir şey kendiliğinden harcamaz.
       </p>
+      <div className="card p-3 border-navy/20 bg-navy/5 text-sm text-navy mb-6">
+        💡 <b>İş akışı:</b> Reklam metinlerini önce ürün sayfasında <b>Kopya</b> sekmesinde üretin, ardından buradan Meta'ya kampanya kurun.
+      </div>
       <KampanyalarClient products={list} />
     </div>
   );
