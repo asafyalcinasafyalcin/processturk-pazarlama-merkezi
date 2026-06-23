@@ -1,0 +1,30 @@
+{
+  "slug": "iki-hat-kapatma",
+  "approved": false,
+  "highlights": [
+    "Dakikada 25 kapak kapatma kapasitesi ile üretkenliği artırın.",
+    "Türk mühendisliği ile tasarlanmış sağlam ve güvenilir yapı.",
+    "7/24 uzaktan destek ile her zaman yanınızdayız.",
+    "Küresel sevkiyat imkanı ile dünya çapında erişim sağlayın."
+  ],
+  "target_industries": [
+    "Gıda ve içecek",
+    "Kimya",
+    "Kozmetik",
+    "İlaç"
+  ],
+  "ideal_customer": "Üretim hattında verimliliği artırmak isteyen orta ve büyük ölçekli işletmeler.",
+  "pain_points": [
+    "Üretim hattında düşük hız ve verimlilik",
+    "Makine arızalarında yetersiz destek",
+    "Uluslararası teslimat zorlukları"
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Makine, endüstriyel bir ortamda, metalik gri tonlarda, fonksiyonel ve modern bir tasarımla gösterilmeli.",
+  "last_updated": "2026-06-23T13:36:56.278Z",
+  "_generated_by": "generate_briefs.js / gpt-4o"
+}

@@ -6,11 +6,17 @@ import AssetLibrary from './AssetLibrary';
 
 const LANG_LABEL = { tr: 'TR', en: 'EN', ar: 'AR', fr: 'FR', ru: 'RU' };
 
-const TEMPLATES = [
-  { id: 'makine-vitrin',    label: 'Makine Vitrin',    emoji: '🏭', desc: 'Lifestyle ürün sahnesi',  type: 'image', cost: '~$0.02' },
-  { id: 'muhendis-anlatim', label: 'Mühendis Anlatım', emoji: '👷', desc: 'Mühendis + makine',       type: 'image', cost: '~$0.03' },
-  { id: 'kisa-video',       label: 'Kısa Video',       emoji: '🎬', desc: '10 sn tanıtım videosu',   type: 'video', cost: '~$0.15' },
-  { id: 'maskot-konsept',   label: 'Maskot',           emoji: '🦸', desc: 'Soul ID eğitimi gerekli', type: 'image', cost: '~$0.05', requiresSoulId: true },
+const TABS = [
+  { id: 'brief',  label: '📋 Brief'  },
+  { id: 'gorsel', label: '🖼️ Görsel' },
+  { id: 'icerik', label: '✍️ İçerik' },
+  { id: 'video',  label: '🎬 Video'  },
+  { id: 'reklam', label: '📣 Reklam' },
+];
+
+const IMAGE_TEMPLATES = [
+  { id: 'makine-vitrin',    label: 'Makine Vitrin',    emoji: '🏭', desc: 'Lifestyle ürün sahnesi', cost: '~$0.02' },
+  { id: 'muhendis-anlatim', label: 'Mühendis Anlatım', emoji: '👷', desc: 'Mühendis + makine',      cost: '~$0.03' },
 ];
 
 const ALL_PLATFORMS = [
@@ -26,184 +32,212 @@ export default function UrunDetay({ product, initialContent }) {
   const m = product.marketing || {};
   const langs = m.languages?.length ? m.languages : ['tr', 'en'];
 
+  const [tab, setTab] = useState('brief');
   const [content, setContent] = useState(initialContent || {});
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState(null);
 
-  // Şablon + platform seçimi
+  // ── Brief ──
+  const [brief, setBrief] = useState(null);
+  const [briefBusy, setBriefBusy] = useState(false);
+  const [briefMsg, setBriefMsg] = useState(null);
+
+  // ── Görsel ──
+  const [uploadFile, setUploadFile] = useState(null);
+  const [uploadBusy, setUploadBusy] = useState(false);
+  const [uploadedUrl, setUploadedUrl] = useState(null);
   const [activeTemplate, setActiveTemplate] = useState('makine-vitrin');
+  const [gorselBusy, setGorselBusy] = useState(false);
+  const [gorsel, setGorsel] = useState(null);
+
+  // ── İçerik ──
   const [platforms, setPlatforms] = useState(['instagram']);
   const [lang, setLang] = useState(langs[0]);
-
-  // Üretim state
-  const [genStage, setGenStage] = useState('idle'); // idle | gen-image | gen-video | gen-text | ready
-  const [gorsel, setGorsel] = useState(null);
-  const [texts, setTexts] = useState({}); // { platform: { caption, hashtags } }
-  const [elapsed, setElapsed] = useState(0);
-  const timerRef = useRef(null);
-
-  // Paylaşım modal
-  const [publishPlatform, setPublishPlatform] = useState(null);
-  const [publishBusy, setPublishBusy] = useState(false);
-  const [publishResult, setPublishResult] = useState(null);
-
-  // Takvim
+  const [textBusy, setTextBusy] = useState(false);
+  const [texts, setTexts] = useState({});
   const [calBusy, setCalBusy] = useState(false);
   const [calMsg, setCalMsg] = useState(null);
 
-  // Reklam metni (mevcut copy sistemi — sağ panel)
+  // ── Video ──
+  const [videoLang, setVideoLang] = useState(langs[0]);
+  const [wantVoice, setWantVoice] = useState(true);
+  const [videoBusy, setVideoBusy] = useState(false);
+  const [videoElapsed, setVideoElapsed] = useState(0);
+  const [videoResult, setVideoResult] = useState(null);
+  const videoTimerRef = useRef(null);
+
+  // ── Reklam copy ──
   const [copyBusy, setCopyBusy] = useState(false);
   const [draft, setDraft] = useState(null);
   const [activeVariant, setActiveVariant] = useState('A');
   const [activeLang, setActiveLang] = useState(langs[0]);
   const [saveBusy, setSaveBusy] = useState(false);
 
+  // Yükle: ilk content'ten state
+  useEffect(() => {
+    if (content.gorsel) setGorsel(content.gorsel);
+    if (content.metin?.texts) setTexts(content.metin.texts);
+    if (content.video) setVideoResult(content.video);
+  }, []); // eslint-disable-line
+
   useEffect(() => {
     setDraft(content.copy ? JSON.parse(JSON.stringify(content.copy)) : null);
   }, [content.copy]);
 
+  useEffect(() => () => clearInterval(videoTimerRef.current), []);
+
+  // Brief yükle
   useEffect(() => {
-    if (content.gorsel) setGorsel(content.gorsel);
-    if (content.metin?.texts) setTexts(content.metin.texts);
-  }, [content.gorsel, content.metin]);
+    fetch(`/api/brief?slug=${product.slug}`)
+      .then((r) => r.json())
+      .then((d) => { if (d.ok && d.brief) setBrief(d.brief); })
+      .catch(() => {});
+  }, [product.slug]);
 
-  useEffect(() => () => clearInterval(timerRef.current), []);
+  // Mevcut yüklü görsel
+  useEffect(() => {
+    const url = `/products/${product.slug}/base.png`;
+    const img = new Image();
+    img.onload = () => setUploadedUrl(url + '?t=' + Date.now());
+    img.onerror = () => {};
+    img.src = url + '?t=' + Date.now();
+  }, [product.slug]);
 
-  const currentTemplate = TEMPLATES.find((t) => t.id === activeTemplate) || TEMPLATES[0];
   const togglePlatform = (id) =>
     setPlatforms((ps) => (ps.includes(id) ? ps.filter((x) => x !== id) : [...ps, id]));
 
-  function startTimer() {
-    setElapsed(0);
-    clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => setElapsed((s) => s + 1), 1000);
+  // ── Brief kaydet ──
+  async function saveBrief() {
+    setBriefBusy(true); setBriefMsg(null);
+    try {
+      const res = await fetch('/api/brief', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: product.slug, ...brief }),
+      });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setBrief(d.brief);
+      setBriefMsg('Brief kaydedildi ✓');
+    } catch (e) { setBriefMsg('⚠ ' + e.message); }
+    finally { setBriefBusy(false); }
   }
-  function stopTimer() { clearInterval(timerRef.current); }
 
-  async function handleGenerate() {
+  function updateHighlight(i, val) {
+    setBrief((b) => { const h = [...(b?.highlights || [])]; h[i] = val; return { ...b, highlights: h }; });
+  }
+  function addHighlight() {
+    setBrief((b) => ({ ...b, highlights: [...(b?.highlights || []), ''] }));
+  }
+  function removeHighlight(i) {
+    setBrief((b) => ({ ...b, highlights: (b?.highlights || []).filter((_, j) => j !== i) }));
+  }
+
+  // ── Görsel upload ──
+  async function handleUpload() {
+    if (!uploadFile) return;
+    setUploadBusy(true); setError(null);
+    try {
+      const fd = new FormData();
+      fd.append('slug', product.slug);
+      fd.append('file', uploadFile);
+      const res = await fetch('/api/products/upload-image', { method: 'POST', body: fd });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      const newUrl = d.localUrl + '?t=' + Date.now();
+      setUploadedUrl(newUrl);
+      setUploadFile(null);
+      setMsg('Fotoğraf yüklendi ✓ — Görsel ve Video üretimi bu fotoğrafı kaynak olarak kullanacak.');
+    } catch (e) { setError('Upload hatası: ' + e.message); }
+    finally { setUploadBusy(false); }
+  }
+
+  // ── Görsel üret ──
+  async function handleGenGorsel() {
+    setGorselBusy(true); setError(null);
+    try {
+      const res = await fetch('/api/generate/gorsel', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: product.slug, template: activeTemplate, lang: langs[0], platforms: ['instagram'], force: true }),
+      });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setGorsel(d.gorsel);
+      setContent((c) => ({ ...c, gorsel: d.gorsel }));
+      setMsg(d.gorsel.imageSource === 'img2img' ? 'Görsel üretildi (makine fotoğrafından) ✓' : 'Görsel üretildi ✓');
+    } catch (e) { setError('Görsel hatası: ' + e.message); }
+    finally { setGorselBusy(false); }
+  }
+
+  // ── Metin üret ──
+  async function handleGenText() {
     if (platforms.length === 0) { setError('En az bir platform seçin.'); return; }
-    setError(null); setMsg(null); setGorsel(null); setTexts({});
-    startTimer();
-
+    setTextBusy(true); setError(null);
     try {
-      if (currentTemplate.type === 'video') {
-        // Kısa video → mevcut video pipeline (10s, voice/music opsiyonel)
-        setGenStage('gen-video');
-        const res = await fetch('/api/generate/video', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slug: product.slug, lang, voice: false, music: false, duration: 10 }),
-        });
-        const data = await res.json();
-        if (!data.ok) throw new Error(data.error + (data.detail ? ` (${data.detail})` : ''));
-        setContent((c) => ({ ...c, video: data.video, scriptPlan: data.plan }));
-        setGorsel({ url: data.video.url, type: 'video' });
-      } else {
-        // Görsel şablonlar
-        setGenStage('gen-image');
-        const imgRes = await fetch('/api/generate/gorsel', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slug: product.slug, template: activeTemplate, lang, platforms }),
-        });
-        const imgData = await imgRes.json();
-        if (!imgData.ok) throw new Error(imgData.error);
-        setGorsel(imgData.gorsel);
-        setContent((c) => ({ ...c, gorsel: imgData.gorsel }));
-      }
-
-      // Metin üret (görsel ve video için)
-      setGenStage('gen-text');
-      const txtRes = await fetch('/api/generate/metin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: product.slug, lang, platforms, template: activeTemplate }),
+      const res = await fetch('/api/generate/metin', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: product.slug, lang, platforms, template: 'makine-vitrin' }),
       });
-      const txtData = await txtRes.json();
-      if (txtData.ok) {
-        setTexts(txtData.texts);
-        setContent((c) => ({ ...c, metin: { texts: txtData.texts, lang, platforms, template: activeTemplate } }));
-      }
-
-      setGenStage('ready');
-      setMsg('Görsel + metin hazır. Paylaşmak için platform seçin.');
-    } catch (e) {
-      setError('Üretim hatası: ' + e.message);
-      setGenStage('idle');
-    } finally {
-      stopTimer();
-    }
-  }
-
-  async function handleQuickPublish(platform) {
-    setPublishBusy(true); setPublishResult(null); setError(null);
-    const currentTexts = texts[platform] || texts['instagram'] || {};
-    const caption = currentTexts.caption || '';
-    const hashtags = currentTexts.hashtags || [];
-    const isVideo = gorsel?.type === 'video' || currentTemplate.type === 'video';
-    const mediaUrl = gorsel?.url || content.video?.url || '';
-
-    try {
-      const res = await fetch('/api/quick-publish', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          platform,
-          imageUrl: isVideo ? undefined : mediaUrl,
-          videoUrl: isVideo ? mediaUrl : undefined,
-          caption,
-          hashtags,
-        }),
-      });
-      const data = await res.json();
-      if (!data.ok) throw new Error(data.error);
-      setPublishResult({ method: data.method, platform, pkg: data.package });
-    } catch (e) {
-      setError('Paylaşım hatası: ' + e.message);
-    } finally {
-      setPublishBusy(false);
-    }
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setTexts(d.texts);
+      setContent((c) => ({ ...c, metin: { texts: d.texts, lang, platforms } }));
+    } catch (e) { setError('Metin hatası: ' + e.message); }
+    finally { setTextBusy(false); }
   }
 
   async function handleAddToCalendar() {
-    if (!gorsel && !content.video) { setCalMsg('Önce içerik üretin.'); return; }
+    const mediaUrl = gorsel?.localPath || gorsel?.url || videoResult?.localPath || videoResult?.url || '';
+    if (!mediaUrl) { setCalMsg('Önce görsel veya video üretin.'); return; }
     setCalBusy(true); setCalMsg(null);
-    const isVideo = gorsel?.type === 'video' || currentTemplate.type === 'video';
-    const mediaUrl = gorsel?.url || content.video?.url || '';
-
+    const isVideo = Boolean(videoResult?.url);
     try {
       for (const platform of platforms) {
-        const currentTexts = texts[platform] || texts['instagram'] || {};
-        const caption = currentTexts.caption || '';
-        const hashtags = currentTexts.hashtags || [];
-        const fullCaption = hashtags.length ? `${caption}\n\n${hashtags.join(' ')}` : caption;
+        const pt = texts[platform] || {};
+        const fullCaption = pt.hashtags?.length ? `${pt.caption || ''}\n\n${pt.hashtags.join(' ')}` : (pt.caption || '');
         await fetch('/api/calendar', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            slug: product.slug, platform, lang,
-            caption: fullCaption,
-            videoUrl: isVideo ? mediaUrl : '',
-            imageUrl: isVideo ? '' : mediaUrl,
-          }),
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slug: product.slug, platform, lang, caption: fullCaption,
+            videoUrl: isVideo ? mediaUrl : '', imageUrl: isVideo ? '' : mediaUrl }),
         });
       }
-      setCalMsg(`${platforms.length} gönderi takvime eklendi → onay için İçerik Takvimi\'ni aç.`);
-    } catch (e) {
-      setCalMsg('Takvim hatası: ' + e.message);
-    } finally {
-      setCalBusy(false);
-    }
+      setCalMsg(`${platforms.length} gönderi takvime eklendi → İçerik Takviminde onay gerekir.`);
+    } catch (e) { setCalMsg('⚠ ' + e.message); }
+    finally { setCalBusy(false); }
   }
 
-  // ── Copy section helpers ──
+  // ── Video üret ──
+  function startVideoTimer() {
+    setVideoElapsed(0); clearInterval(videoTimerRef.current);
+    videoTimerRef.current = setInterval(() => setVideoElapsed((s) => s + 1), 1000);
+  }
+
+  async function handleGenVideo() {
+    setVideoBusy(true); setError(null); startVideoTimer();
+    try {
+      const res = await fetch('/api/generate/video', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: product.slug, lang: videoLang, voice: wantVoice, music: false, duration: 10, force: true }),
+      });
+      const d = await res.json();
+      if (!d.ok) {
+        if (d.action === 'upload_image') throw new Error('Kaynak görsel yok. Görsel sekmesinden fotoğraf yükleyin veya önce Görsel Üret çalıştırın.');
+        throw new Error(d.error + (d.detail ? ` (${d.detail})` : ''));
+      }
+      setVideoResult(d.video);
+      setContent((c) => ({ ...c, video: d.video }));
+      setMsg('Video hazır ✓');
+    } catch (e) { setError('Video hatası: ' + e.message); }
+    finally { setVideoBusy(false); clearInterval(videoTimerRef.current); }
+  }
+
+  // ── Reklam copy ──
   const variant = draft?.variants?.find((v) => v.id === activeVariant) || draft?.variants?.[0];
   const langData = variant?.by_lang?.[activeLang];
 
   function editField(field, value) {
     setDraft((d) => {
       const copy = JSON.parse(JSON.stringify(d));
-      const v = copy.variants.find((x) => x.id === (variant?.id));
+      const v = copy.variants.find((x) => x.id === variant?.id);
       if (v) v.by_lang[activeLang][field] = value;
       return copy;
     });
@@ -216,11 +250,11 @@ export default function UrunDetay({ product, initialContent }) {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: product.slug, languages: langs }),
       });
-      const data = await res.json();
-      if (!data.ok) throw new Error(data.error);
-      setContent((c) => ({ ...c, copy: data.copy }));
-      setActiveVariant(data.copy.variants?.[0]?.id || 'A');
-    } catch (e) { setError('Metin: ' + e.message); }
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setContent((c) => ({ ...c, copy: d.copy }));
+      setActiveVariant(d.copy.variants?.[0]?.id || 'A');
+    } catch (e) { setError('Copy hatası: ' + e.message); }
     finally { setCopyBusy(false); }
   }
 
@@ -232,280 +266,428 @@ export default function UrunDetay({ product, initialContent }) {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: product.slug, copy: { ...draft, at: new Date().toISOString() } }),
       });
-      const data = await res.json();
-      if (!data.ok) throw new Error(data.error);
-      setContent((c) => ({ ...c, copy: data.content.copy }));
-      setMsg('Reklam metni kaydedildi.');
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setContent((c) => ({ ...c, copy: d.content.copy }));
+      setMsg('Reklam metni kaydedildi ✓');
     } catch (e) { setError('Kaydet: ' + e.message); }
     finally { setSaveBusy(false); }
   }
 
-  const isBusy = genStage !== 'idle' && genStage !== 'ready';
-  const hasMedia = Boolean(gorsel?.url || content.video?.url);
+  const gorselUrl = gorsel?.localPath || gorsel?.url;
+  const videoUrl  = videoResult?.localPath || videoResult?.url;
 
-  // Kısa durum metni
-  const stageLabel = {
-    'gen-image': `Görsel üretiliyor… ${elapsed}s`,
-    'gen-video': `Video üretiliyor… ${elapsed}s (≈3-5 dk)`,
-    'gen-text': 'Metinler yazılıyor…',
-    'ready': '',
-    'idle': '',
-  }[genStage] || '';
+  const voiceCharLabel = {
+    tr: 'Roman — erkek, enerjik', en: 'Brooks — erkek, sıcak',
+    ar: 'Gia — kadın, sıcak',    fr: 'Brooks', ru: 'Roman',
+  };
 
   return (
     <div className="mt-3">
       {/* Başlık */}
-      <div className="mb-4">
-        <h1 className="font-head font-extrabold text-2xl md:text-3xl">{m.name_tr || product.name_en}</h1>
-        <div className="text-slate-500 text-sm mt-1">{product.category}{product.specs?.capacity ? ` · ${product.specs.capacity}` : ''}</div>
+      <div className="mb-5 flex items-start gap-4">
+        {uploadedUrl && (
+          <img src={uploadedUrl} alt="Ürün" className="w-14 h-14 rounded-xl object-cover border border-line shrink-0" />
+        )}
+        <div>
+          <h1 className="font-head font-extrabold text-2xl md:text-3xl">{m.name_tr || product.name_en}</h1>
+          <div className="text-slate-500 text-sm mt-1">{product.category}{product.specs?.capacity ? ` · ${product.specs.capacity}` : ''}</div>
+        </div>
       </div>
 
-      {error && <div className="card p-3 border-red/40 text-red text-sm mb-4">⚠ {error}</div>}
-      {msg && <div className="card p-3 text-ok text-sm mb-4">✓ {msg}</div>}
-
-      {/* ═══════════════ İÇERİK ÜRETİCİ ═══════════════ */}
-      <section className="card p-5 mb-6">
-        <h2 className="font-head font-bold text-lg mb-4">İçerik Üretici</h2>
-
-        {/* 1) Şablon Seçici */}
-        <div className="mb-4">
-          <div className="label mb-2">Şablon</div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            {TEMPLATES.map((t) => {
-              const active = activeTemplate === t.id;
-              const disabled = t.requiresSoulId;
-              return (
-                <button
-                  key={t.id}
-                  onClick={() => !disabled && setActiveTemplate(t.id)}
-                  disabled={disabled}
-                  title={disabled ? 'Soul ID eğitimi gerekli. Maskot görselini paylaşın.' : t.desc}
-                  className={[
-                    'rounded-xl border p-3 text-left transition-all',
-                    active ? 'border-navy bg-navy/5 ring-2 ring-navy/40' : 'border-line hover:border-navy/30',
-                    disabled ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer',
-                  ].join(' ')}
-                >
-                  <div className="text-xl mb-1">{t.emoji}</div>
-                  <div className="font-semibold text-sm">{t.label}</div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">{t.desc}</div>
-                  <div className="text-[10px] text-slate-400 mt-1">{t.cost}{t.type === 'video' ? ' · video' : ' · görsel'}</div>
-                  {disabled && <div className="text-[10px] text-red mt-1">Soul ID gerekli</div>}
-                </button>
-              );
-            })}
-          </div>
+      {error && (
+        <div className="card p-3 border-red/40 text-red text-sm mb-4">
+          ⚠ {error}
+          <button className="ml-2 text-xs underline" onClick={() => setError(null)}>kapat</button>
         </div>
-
-        {/* 2) Platform Seçici */}
-        <div className="mb-4">
-          <div className="label mb-2">Platform (format otomatik belirlenir)</div>
-          <div className="flex flex-wrap gap-2">
-            {ALL_PLATFORMS.map((pl) => (
-              <button
-                key={pl.id}
-                onClick={() => togglePlatform(pl.id)}
-                className={`pill ${platforms.includes(pl.id) ? 'pill-active' : 'pill-muted'}`}
-              >
-                {pl.icon} {pl.label}
-                {pl.apiMode === 'assisted' && <span className="text-[10px] ml-1 opacity-60">(manuel)</span>}
-              </button>
-            ))}
-          </div>
-          {platforms.length === 0 && <p className="text-xs text-red mt-1">En az bir platform seçin.</p>}
+      )}
+      {msg && (
+        <div className="card p-3 text-ok text-sm mb-4">
+          ✓ {msg}
+          <button className="ml-2 text-xs underline" onClick={() => setMsg(null)}>kapat</button>
         </div>
+      )}
 
-        {/* 3) Dil + Üret */}
-        <div className="flex flex-wrap items-end gap-3 mb-4">
+      {/* Tab Bar */}
+      <div className="flex gap-0 mb-6 border-b border-line overflow-x-auto">
+        {TABS.map((t) => (
+          <button key={t.id} onClick={() => setTab(t.id)}
+            className={[
+              'px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b-2 transition-colors',
+              tab === t.id
+                ? 'border-navy text-navy bg-navy/3'
+                : 'border-transparent text-slate-500 hover:text-navy hover:bg-navy/3',
+            ].join(' ')}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ═══ BRIEF ═══ */}
+      {tab === 'brief' && (
+        <section className="card p-5 space-y-5">
           <div>
-            <div className="label mb-1">Dil</div>
-            <div className="flex gap-1.5">
-              {langs.map((l) => (
-                <button key={l} onClick={() => setLang(l)} className={`pill ${l === lang ? 'pill-active' : 'pill-muted'}`}>
-                  {LANG_LABEL[l] || l}
+            <h2 className="font-head font-bold text-lg mb-1">Ürün Brief</h2>
+            <p className="text-sm text-slate-500">
+              Bu bilgiler metin, video ve reklam üretiminde kullanılır.
+              Doğru doldurun — sistem artık hayal etmez, sizi dinler.
+            </p>
+          </div>
+
+          <div>
+            <label className="label mb-2">Öne çıkan özellikler (en az 3 madde)</label>
+            <div className="space-y-2">
+              {(brief?.highlights || []).map((h, i) => (
+                <div key={i} className="flex gap-2">
+                  <input className="input flex-1" value={h} onChange={(e) => updateHighlight(i, e.target.value)} placeholder={`Özellik ${i + 1}`} />
+                  <button className="btn btn-ghost text-xs px-2" onClick={() => removeHighlight(i)}>✕</button>
+                </div>
+              ))}
+              {(brief?.highlights || []).length === 0 && (
+                <p className="text-sm text-slate-400">Henüz özellik eklenmedi. Brief AI tarafından otomatik doldurulabilir.</p>
+              )}
+              <button className="btn btn-ghost text-sm" onClick={addHighlight}>+ Özellik ekle</button>
+            </div>
+          </div>
+
+          <div>
+            <label className="label mb-1">Hedef müşteri profili</label>
+            <input className="input" value={brief?.ideal_customer || ''}
+              onChange={(e) => setBrief((b) => ({ ...b, ideal_customer: e.target.value }))}
+              placeholder="Ör: Günlük 5.000+ paket üretmek isteyen gıda üreticisi" />
+          </div>
+
+          <div>
+            <label className="label mb-1">Kesinlikle söylenmeyecekler <span className="font-normal text-slate-400">(virgülle ayır)</span></label>
+            <input className="input"
+              value={(brief?.dont_say || []).join(', ')}
+              onChange={(e) => setBrief((b) => ({ ...b, dont_say: e.target.value.split(',').map((x) => x.trim()).filter(Boolean) }))}
+              placeholder="Ör: Avrupa teknolojisi, İthal parça" />
+          </div>
+
+          <div>
+            <label className="label mb-1">Görsel üretim notu</label>
+            <input className="input" value={brief?.image_notes || ''}
+              onChange={(e) => setBrief((b) => ({ ...b, image_notes: e.target.value }))}
+              placeholder="Ör: Sarı granüller, beyaz poşetler, sanayi ortamı" />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-line">
+            <button className="btn btn-primary" onClick={saveBrief} disabled={briefBusy}>
+              {briefBusy ? 'Kaydediliyor…' : '💾 Brief Kaydet'}
+            </button>
+            {!brief?.approved ? (
+              <button className="btn btn-ghost text-sm"
+                onClick={() => setBrief((b) => ({ ...b, approved: true }))}>
+                ✓ Onayla
+              </button>
+            ) : (
+              <span className="pill pill-ok text-xs">✓ Onaylı</span>
+            )}
+            {briefMsg && <span className="text-sm text-slate-500">{briefMsg}</span>}
+          </div>
+        </section>
+      )}
+
+      {/* ═══ GÖRSEL ═══ */}
+      {tab === 'gorsel' && (
+        <div className="space-y-5">
+          {/* Upload */}
+          <section className="card p-5">
+            <h2 className="font-head font-bold mb-1">📷 Makine Fotoğrafı</h2>
+            <p className="text-sm text-slate-500 mb-4">
+              Yüklenen fotoğraf img2img kaynak olur — makine yapısı korunur, arka plan / ışık değişir.
+            </p>
+
+            {uploadedUrl && (
+              <div className="mb-4">
+                <img src={uploadedUrl} alt="Yüklü fotoğraf" className="w-40 h-40 object-cover rounded-xl border border-line" />
+                <div className="text-xs text-ok mt-1">✓ Fotoğraf yüklü</div>
+              </div>
+            )}
+
+            <div className="border-2 border-dashed border-line rounded-xl p-6 text-center cursor-pointer hover:border-navy/40 transition-colors"
+              onClick={() => document.getElementById('file-upload').click()}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => { e.preventDefault(); setUploadFile(e.dataTransfer.files?.[0] || null); }}>
+              <input type="file" accept="image/jpeg,image/png,image/webp" className="hidden" id="file-upload"
+                onChange={(e) => setUploadFile(e.target.files?.[0] || null)} />
+              <div className="text-2xl mb-2">📁</div>
+              <div className="text-sm text-slate-600">{uploadFile ? uploadFile.name : 'JPG, PNG veya WEBP seçin'}</div>
+              <div className="text-xs text-slate-400 mt-1">tıklayın veya buraya sürükleyin</div>
+            </div>
+
+            {uploadFile && (
+              <button className="btn btn-primary mt-3" onClick={handleUpload} disabled={uploadBusy}>
+                {uploadBusy ? 'Yükleniyor…' : '⬆ Yükle'}
+              </button>
+            )}
+          </section>
+
+          {/* AI Görsel */}
+          <section className="card p-5">
+            <h2 className="font-head font-bold mb-3">🎨 AI Görsel Üret</h2>
+            {uploadedUrl && (
+              <div className="text-xs text-ok mb-3">✓ Fotoğraf yüklü — img2img modunda üretilecek</div>
+            )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              {IMAGE_TEMPLATES.map((t) => {
+                const active = activeTemplate === t.id;
+                return (
+                  <button key={t.id} onClick={() => setActiveTemplate(t.id)}
+                    className={[
+                      'rounded-xl border p-4 text-left transition-all',
+                      active ? 'border-navy bg-navy/5 ring-2 ring-navy/40' : 'border-line hover:border-navy/30',
+                    ].join(' ')}>
+                    <div className="text-2xl mb-1">{t.emoji}</div>
+                    <div className="font-semibold text-sm">{t.label}</div>
+                    <div className="text-[11px] text-slate-400 mt-0.5">{t.desc} · {t.cost}</div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <button className="btn btn-primary" onClick={handleGenGorsel} disabled={gorselBusy}>
+              {gorselBusy ? '⏳ Üretiliyor…' : gorselUrl ? '↻ Yeniden üret' : '⚡ Görsel Üret'}
+            </button>
+
+            {gorselUrl && (
+              <div className="mt-4">
+                <img src={gorselUrl} alt="Üretilen görsel" className="w-full max-w-sm rounded-xl border border-line" />
+                <div className="text-xs text-slate-400 mt-1">
+                  {gorsel?.imageSource === 'img2img' ? '✓ img2img (makine korundu)' : 'text2img'}
+                  {gorsel?.localPath ? ' · yerel kopya' : ' · CDN'}
+                  {gorsel?.provider ? ` · ${gorsel.provider}` : ''}
+                </div>
+                <a href={gorselUrl} download className="btn btn-ghost text-sm mt-2 inline-block">⬇ İndir</a>
+              </div>
+            )}
+          </section>
+        </div>
+      )}
+
+      {/* ═══ İÇERİK ═══ */}
+      {tab === 'icerik' && (
+        <section className="card p-5 space-y-5">
+          <h2 className="font-head font-bold text-lg">✍️ Sosyal Medya İçeriği</h2>
+
+          <div>
+            <label className="label mb-2">Platform</label>
+            <div className="flex flex-wrap gap-2">
+              {ALL_PLATFORMS.map((pl) => (
+                <button key={pl.id} onClick={() => togglePlatform(pl.id)}
+                  className={`pill ${platforms.includes(pl.id) ? 'pill-active' : 'pill-muted'}`}>
+                  {pl.icon} {pl.label}
+                  {pl.apiMode === 'assisted' && <span className="text-[10px] ml-1 opacity-60">(manuel)</span>}
                 </button>
               ))}
             </div>
+            {platforms.length === 0 && <p className="text-xs text-red mt-1">En az bir platform seçin.</p>}
           </div>
-          <button
-            className="btn btn-primary"
-            onClick={handleGenerate}
-            disabled={isBusy || platforms.length === 0}
-          >
-            {isBusy ? `⏳ ${stageLabel}` : hasMedia ? '↻ Yeniden üret' : `⚡ Üret (${currentTemplate.emoji} ${currentTemplate.label})`}
-          </button>
-        </div>
 
-        {/* 4) Önizleme + Metin */}
-        {(hasMedia || Object.keys(texts).length > 0) && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
-            {/* Sol: Görsel/Video */}
+          <div className="flex flex-wrap items-end gap-3">
             <div>
-              <div className="label mb-2">Önizleme</div>
-              {gorsel?.type === 'video' || currentTemplate.type === 'video' ? (
-                <video
-                  src={gorsel?.url || content.video?.url}
-                  controls
-                  className="w-full rounded-xl border border-line bg-black max-h-[400px]"
-                  style={{ aspectRatio: '9/16' }}
-                />
-              ) : gorsel?.url ? (
-                <img
-                  src={gorsel.url}
-                  alt="Üretilen görsel"
-                  className="w-full rounded-xl border border-line object-cover max-h-[400px]"
-                />
-              ) : null}
-              {gorsel?.url && (
-                <div className="flex gap-2 mt-2">
-                  <a href={gorsel.url} target="_blank" rel="noreferrer" className="btn btn-ghost text-sm">⬇ İndir</a>
-                  {gorsel?.provider && (
-                    <span className="text-[11px] text-slate-400 self-center">{gorsel.provider} · {gorsel.model}</span>
-                  )}
-                </div>
-              )}
+              <label className="label mb-1">Dil</label>
+              <div className="flex gap-1.5">
+                {langs.map((l) => (
+                  <button key={l} onClick={() => setLang(l)}
+                    className={`pill ${l === lang ? 'pill-active' : 'pill-muted'}`}>
+                    {LANG_LABEL[l] || l}
+                  </button>
+                ))}
+              </div>
             </div>
+            <button className="btn btn-primary" onClick={handleGenText} disabled={textBusy || platforms.length === 0}>
+              {textBusy ? '⏳ Yazılıyor…' : Object.keys(texts).length > 0 ? '↻ Yeniden üret' : '⚡ İçerik Üret'}
+            </button>
+          </div>
 
-            {/* Sağ: Platform Metin */}
-            <div>
-              <div className="label mb-2">Sosyal Medya Metni</div>
+          {Object.keys(texts).length > 0 && (
+            <div className="space-y-4">
               {platforms.map((platform) => {
                 const pt = texts[platform];
                 if (!pt) return null;
+                const plInfo = ALL_PLATFORMS.find((p) => p.id === platform);
                 return (
-                  <div key={platform} className="mb-4 last:mb-0">
-                    <div className="text-xs font-semibold text-slate-500 mb-1">
-                      {ALL_PLATFORMS.find((p) => p.id === platform)?.icon} {platform.toUpperCase()}
-                    </div>
+                  <div key={platform} className="border border-line rounded-xl p-4">
+                    <div className="font-semibold text-sm mb-2">{plInfo?.icon} {plInfo?.label}</div>
                     {pt.error ? (
                       <p className="text-xs text-red">{pt.error}</p>
                     ) : (
                       <>
-                        <textarea
-                          className="textarea text-sm"
-                          rows={4}
-                          defaultValue={pt.caption}
-                          readOnly={false}
-                        />
+                        <textarea className="textarea text-sm" rows={4} defaultValue={pt.caption} />
                         {pt.hashtags?.length > 0 && (
-                          <div className="mt-1 text-[11px] text-slate-500 leading-relaxed">
-                            {pt.hashtags.join(' ')}
-                          </div>
+                          <div className="mt-2 text-[11px] text-slate-500 leading-relaxed">{pt.hashtags.join(' ')}</div>
                         )}
                       </>
                     )}
                   </div>
                 );
               })}
-              {Object.keys(texts).length === 0 && (
-                <p className="text-slate-400 text-sm">Metin üretildiğinde burada görünür.</p>
+            </div>
+          )}
+
+          {Object.keys(texts).length > 0 && (
+            <div className="pt-4 border-t border-line flex items-center gap-3">
+              <button className="btn btn-primary" onClick={handleAddToCalendar} disabled={calBusy}>
+                {calBusy ? 'Ekleniyor…' : '📅 Takvime Ekle (onay gerekir)'}
+              </button>
+              {calMsg && <span className="text-sm text-slate-500">{calMsg}</span>}
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* ═══ VİDEO ═══ */}
+      {tab === 'video' && (
+        <section className="card p-5 space-y-5">
+          <h2 className="font-head font-bold text-lg">🎬 Video Üret</h2>
+          <p className="text-sm text-slate-500">9:16 tanıtım videosu — makine sahnesi, seslendirme ve marka kartları ile.</p>
+
+          {!uploadedUrl && !gorselUrl && (
+            <div className="card p-3 border-amber-400/40 text-amber-700 text-sm">
+              ⚠ Video için kaynak görsel gerekli.{' '}
+              <button className="underline" onClick={() => setTab('gorsel')}>Görsel sekmesine git →</button>
+            </div>
+          )}
+
+          <div className="flex flex-wrap gap-5 items-start">
+            <div>
+              <label className="label mb-1">Dil</label>
+              <div className="flex gap-1.5">
+                {langs.map((l) => (
+                  <button key={l} onClick={() => setVideoLang(l)}
+                    className={`pill ${l === videoLang ? 'pill-active' : 'pill-muted'}`}>
+                    {LANG_LABEL[l] || l}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="label mb-1">Seslendirme</label>
+              <button onClick={() => setWantVoice((v) => !v)}
+                className={`pill ${wantVoice ? 'pill-active' : 'pill-muted'}`}>
+                {wantVoice ? '🎙️ Açık' : '🔇 Kapalı'}
+              </button>
+              {wantVoice && (
+                <div className="text-[11px] text-slate-400 mt-1">
+                  Higgsfield TTS · {voiceCharLabel[videoLang] || 'Roman'}
+                </div>
               )}
             </div>
           </div>
-        )}
 
-        {/* 5) Paylaşım Butonları */}
-        {hasMedia && genStage === 'ready' && (
-          <div className="mt-5 pt-4 border-t border-line">
-            <div className="flex flex-wrap gap-3 items-start">
-              {/* Acil Paylaş */}
-              <div>
-                <div className="label mb-2">🚀 Acil Paylaş (onay yok)</div>
-                <div className="flex flex-wrap gap-2">
-                  {platforms.map((platform) => {
-                    const pl = ALL_PLATFORMS.find((p) => p.id === platform);
-                    return (
-                      <button
-                        key={platform}
-                        onClick={() => { setPublishPlatform(platform); handleQuickPublish(platform); }}
-                        disabled={publishBusy}
-                        className="btn btn-primary text-sm"
-                      >
-                        {publishBusy && publishPlatform === platform ? 'Gönderiliyor…' : `${pl?.icon} ${pl?.label}'e gönder`}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Takvime Ekle */}
-              <div>
-                <div className="label mb-2">📅 Takvime Ekle (onaylı)</div>
-                <button className="btn btn-ghost text-sm" onClick={handleAddToCalendar} disabled={calBusy}>
-                  {calBusy ? 'Ekleniyor…' : '📅 Takvime ekle (taslak)'}
-                </button>
-                {calMsg && <span className="text-xs text-slate-600 ml-2">{calMsg}</span>}
-              </div>
-            </div>
-
-            {/* Paylaşım sonucu */}
-            {publishResult && (
-              <div className={`mt-3 card p-3 text-sm ${publishResult.method === 'assisted' ? 'border-amber-400/40 text-amber-700' : 'text-ok'}`}>
-                {publishResult.method === 'assisted' ? (
-                  <>
-                    <strong>Manuel adımlar ({publishResult.platform}):</strong>{' '}
-                    {publishResult.pkg?.instructions}
-                    {publishResult.pkg?.videoUrl && (
-                      <div className="mt-1"><a href={publishResult.pkg.videoUrl} target="_blank" rel="noreferrer" className="underline">Video linkini aç</a></div>
-                    )}
-                  </>
-                ) : (
-                  `✓ ${publishResult.platform.toUpperCase()}\'de yayınlandı!`
-                )}
-              </div>
-            )}
-          </div>
-        )}
-      </section>
-
-      {/* ═══════════════ REKLAM METNİ (Mevcut copy sistemi) ═══════════════ */}
-      <section className="card p-5 mb-6">
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="font-head font-bold">Reklam Metni <span className="text-xs font-normal text-slate-400">(reklam varyantları, düzenlenebilir)</span></h2>
-          <button className="btn btn-primary text-sm" onClick={genCopy} disabled={copyBusy}>
-            {copyBusy ? 'Üretiliyor…' : draft ? '↻ Yeniden üret' : '✍ Metin üret'}
+          <button className="btn btn-primary text-base px-6 py-3" onClick={handleGenVideo} disabled={videoBusy}>
+            {videoBusy
+              ? `⏳ Üretiliyor… ${videoElapsed}s (≈3-5 dk)`
+              : videoUrl ? '↻ Yeniden üret' : '🎬 Video Üret'}
           </button>
-        </div>
 
-        {draft?.highlights?.length > 0 && (
-          <div className="mb-3">
-            <div className="label">Öne çıkan özellikler</div>
-            <div className="flex flex-wrap gap-1.5">{draft.highlights.map((h, i) => <span key={i} className="pill pill-ok">{h}</span>)}</div>
-          </div>
-        )}
-
-        {!draft && <p className="text-slate-500 text-sm">Fiyatsız, özellik-kancalı 4 varyant üretilecek (A-D).</p>}
-
-        {draft && (
-          <>
-            <div className="flex flex-wrap gap-1.5 mb-2">
-              {draft.variants.map((v) => (
-                <button key={v.id} onClick={() => setActiveVariant(v.id)} className={`pill ${v.id === activeVariant ? 'pill-active' : 'pill-muted'}`} title={v.angle}>{v.id} · {v.angle}</button>
-              ))}
-            </div>
-            <div className="flex gap-1.5 mb-3">
-              {(draft.languages || langs).map((l) => (
-                <button key={l} onClick={() => setActiveLang(l)} className={`pill ${l === activeLang ? 'pill-active' : 'pill-muted'}`}>{LANG_LABEL[l] || l}</button>
-              ))}
-            </div>
-            {langData ? (
-              <div className="space-y-3">
-                <div><label className="label">Headline</label><input className="input num" value={langData.headline || ''} onChange={(e) => editField('headline', e.target.value)} /></div>
-                <div><label className="label">Primary</label><textarea className="textarea" rows={3} value={langData.primary || ''} onChange={(e) => editField('primary', e.target.value)} /></div>
-                <div><label className="label">Description</label><input className="input" value={langData.description || ''} onChange={(e) => editField('description', e.target.value)} /></div>
-                <div><label className="label">CTA</label><input className="input" value={langData.cta || ''} onChange={(e) => editField('cta', e.target.value)} /></div>
-                <button className="btn btn-ghost text-sm" onClick={saveCopy} disabled={saveBusy}>{saveBusy ? 'Kaydediliyor…' : '💾 Kaydet'}</button>
+          {videoUrl && (
+            <div>
+              <video src={videoUrl} controls className="w-full max-w-xs rounded-xl border border-line bg-black"
+                style={{ aspectRatio: '9/16' }} />
+              <div className="flex gap-2 mt-2 items-center">
+                <a href={videoUrl} download className="btn btn-ghost text-sm">⬇ İndir</a>
+                {videoResult?.localPath && <span className="text-xs text-ok">✓ yerel kopya</span>}
+                {videoResult?.voice && <span className="text-xs text-slate-400">🎙️ ses var</span>}
               </div>
-            ) : <p className="text-slate-500 text-sm">Bu dil için veri yok.</p>}
-          </>
-        )}
-      </section>
+            </div>
+          )}
+        </section>
+      )}
 
-      {/* Aşamalı üretim hattı (Faz 2) */}
-      <PipelinePanel slug={product.slug} languages={langs} />
+      {/* ═══ REKLAM ═══ */}
+      {tab === 'reklam' && (
+        <section className="card p-5 space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="font-head font-bold text-lg">📣 Reklam Kopyası</h2>
+              <p className="text-xs text-slate-400">4 varyant (A-D), fiyatsız, özellik odaklı — düzenlenebilir</p>
+            </div>
+            <button className="btn btn-primary text-sm" onClick={genCopy} disabled={copyBusy}>
+              {copyBusy ? 'Üretiliyor…' : draft ? '↻ Yeniden üret' : '✍ Üret'}
+            </button>
+          </div>
 
-      {/* Varlık Kütüphanesi (Faz 3) */}
+          {!draft && (
+            <p className="text-slate-500 text-sm">
+              Brief onaylıysa özellikler otomatik dahil edilir. Yoksa ürün bilgisinden çıkarır.
+            </p>
+          )}
+
+          {draft?.highlights?.length > 0 && (
+            <div>
+              <div className="label mb-1">Özellikler (brieften)</div>
+              <div className="flex flex-wrap gap-1.5">
+                {draft.highlights.map((h, i) => <span key={i} className="pill pill-ok text-xs">{h}</span>)}
+              </div>
+            </div>
+          )}
+
+          {draft && (
+            <>
+              <div className="flex flex-wrap gap-1.5">
+                {draft.variants.map((v) => (
+                  <button key={v.id} onClick={() => setActiveVariant(v.id)}
+                    className={`pill ${v.id === activeVariant ? 'pill-active' : 'pill-muted'}`}
+                    title={v.angle}>
+                    {v.id} · {v.angle}
+                  </button>
+                ))}
+              </div>
+              <div className="flex gap-1.5">
+                {(draft.languages || langs).map((l) => (
+                  <button key={l} onClick={() => setActiveLang(l)}
+                    className={`pill ${l === activeLang ? 'pill-active' : 'pill-muted'}`}>
+                    {LANG_LABEL[l] || l}
+                  </button>
+                ))}
+              </div>
+              {langData ? (
+                <div className="space-y-3">
+                  <div>
+                    <label className="label">Headline</label>
+                    <input className="input" value={langData.headline || ''} onChange={(e) => editField('headline', e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="label">Primary</label>
+                    <textarea className="textarea" rows={3} value={langData.primary || ''} onChange={(e) => editField('primary', e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="label">Description</label>
+                    <input className="input" value={langData.description || ''} onChange={(e) => editField('description', e.target.value)} />
+                  </div>
+                  <div>
+                    <label className="label">CTA</label>
+                    <input className="input" value={langData.cta || ''} onChange={(e) => editField('cta', e.target.value)} />
+                  </div>
+                  <button className="btn btn-ghost text-sm" onClick={saveCopy} disabled={saveBusy}>
+                    {saveBusy ? 'Kaydediliyor…' : '💾 Kaydet'}
+                  </button>
+                </div>
+              ) : (
+                <p className="text-slate-500 text-sm">Bu dil için veri yok.</p>
+              )}
+            </>
+          )}
+        </section>
+      )}
+
+      {/* Varlık Kütüphanesi — her sekmede erişilebilir */}
       <AssetLibrary slug={product.slug} />
+
+      {/* Pipeline — daraltılmış gelişmiş bölüm */}
+      <details className="mt-4">
+        <summary className="cursor-pointer card p-3 text-sm text-slate-500 select-none">
+          🔧 Gelişmiş: Aşamalı Üretim Hattı (Pipeline)
+        </summary>
+        <div className="mt-2">
+          <PipelinePanel slug={product.slug} languages={langs} />
+        </div>
+      </details>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { findProduct } from '@/lib/products';
 import { buildCopyPrompt } from '@/lib/brand';
 import { genStructured } from '@/lib/providers/gen';
 import { patchContent } from '@/lib/content';
+import { readBrief } from '@/lib/brief';
 
 export const runtime = 'nodejs';
 export const maxDuration = 120;
@@ -17,11 +18,15 @@ export async function POST(request) {
 
     const langs = languages?.length ? languages : (product.marketing?.languages || ['tr', 'en']);
 
+    // Brief'ten highlights — Asaf'ın onayladığı özellik listesi
+    const brief = readBrief(slug);
+    const briefHighlights = brief?.highlights || [];
+
     // Dil başına ayrı düz çağrı (güvenilir JSON), sonra by_lang şekline birleştir.
     const perLang = {};
-    let highlights = [];
+    let highlights = briefHighlights;
     for (const lang of langs) {
-      const { system, prompt } = buildCopyPrompt(product, lang);
+      const { system, prompt } = buildCopyPrompt(product, lang, briefHighlights);
       const parsed = await genStructured({ system, prompt });
       if (!parsed?.variants?.length) {
         return NextResponse.json({ ok: false, error: `Metin üretilemedi (${lang}). Tekrar deneyin.` }, { status: 502 });

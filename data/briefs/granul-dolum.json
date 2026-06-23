@@ -1,0 +1,31 @@
+{
+  "slug": "granul-dolum",
+  "approved": false,
+  "highlights": [
+    "Türk mühendisliği ile üretilmiş granül dolum makinesi.",
+    "20 gr'dan 1200 gr'a kadar geniş dolum aralığı.",
+    "Saatte 600-1000 adet dolum kapasitesi.",
+    "Kompakt tasarım: 60 x 50 x 150 cm boyutlarında.",
+    "7/24 uzaktan destek ve küresel sevkiyat imkanı."
+  ],
+  "target_industries": [
+    "Gıda üretimi",
+    "Ambalaj sanayi",
+    "Baharat işleme",
+    "Tarım ürünleri paketleme"
+  ],
+  "ideal_customer": "Küçük ve orta ölçekli gıda üreticileri, hızlı ve hassas dolum çözümleri arayan işletmeler.",
+  "pain_points": [
+    "Dolum sürecinde hız ve hassasiyet eksikliği.",
+    "Geniş ürün yelpazesi için uygun dolum makinesi ihtiyacı.",
+    "Uzaktan destek ve hızlı sevkiyat gereksinimi."
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Paslanmaz çelik gövdeli, endüstriyel bir ortamda çalışan granül dolum makinesi. Kullanım sırasında çay, kahve çekirdeği veya baharat dolumu yapılırken gösterilebilir.",
+  "last_updated": "2026-06-23T13:36:03.707Z",
+  "_generated_by": "generate_briefs.js / gpt-4o"
+}

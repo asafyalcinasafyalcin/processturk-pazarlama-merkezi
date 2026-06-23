@@ -1,0 +1,31 @@
+{
+  "slug": "etiketleme-oto",
+  "approved": false,
+  "highlights": [
+    "Dakikada 10-40 şişe etiketleme kapasitesiyle verimliliği artırın.",
+    "Türk mühendisliği ile tasarlanmış kompakt ve güçlü yapı.",
+    "7/24 uzaktan destek ile kesintisiz operasyon garantisi.",
+    "Küresel sevkiyat ile dünya çapında erişim imkanı.",
+    "750 Watt güç tüketimi ile enerji tasarrufu sağlayın."
+  ],
+  "target_industries": [
+    "Gıda ve İçecek",
+    "Kozmetik",
+    "Kimya",
+    "İlaç"
+  ],
+  "ideal_customer": "Yüksek hacimli üretim yapan ve etiketleme süreçlerini optimize etmek isteyen işletmeler.",
+  "pain_points": [
+    "Etiketleme sürecinde zaman kaybı yaşamak.",
+    "Yüksek enerji tüketimi nedeniyle maliyet artışı.",
+    "Destek hizmetlerine hızlı erişim sağlayamamak."
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Ürünü beyaz ve metalik tonlarda, endüstriyel bir ortamda, etiketleme işlemi sırasında gösterin.",
+  "last_updated": "2026-06-23T13:36:34.116Z",
+  "_generated_by": "generate_briefs.js / gpt-4o"
+}

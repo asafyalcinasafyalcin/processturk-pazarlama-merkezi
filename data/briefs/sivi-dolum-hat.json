@@ -1,0 +1,31 @@
+{
+  "slug": "sivi-dolum-hat",
+  "approved": false,
+  "highlights": [
+    "Türk mühendisliği ile üretilen yüksek viskoziteli sıvı dolum hattı.",
+    "50 gr'dan 1000 gr'a kadar dolum kapasitesi sunar.",
+    "Saatte 250 litre dolum kapasitesi ile yüksek verimlilik sağlar.",
+    "7/24 uzaktan destek ile kesintisiz hizmet.",
+    "Küresel sevkiyat ile dünyanın her yerine ulaşım."
+  ],
+  "target_industries": [
+    "Gıda üretimi",
+    "Kimya endüstrisi",
+    "Kozmetik sektörü",
+    "İlaç sanayi"
+  ],
+  "ideal_customer": "Yüksek viskoziteli sıvı ürünler üreten ve dolum verimliliğini artırmak isteyen sanayiciler.",
+  "pain_points": [
+    "Dolum sürecinde yüksek viskoziteli sıvıların zorlukları.",
+    "Kesintisiz destek ihtiyacı.",
+    "Küresel pazara hızlı erişim sağlama isteği."
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Endüstriyel bir ortamda, paslanmaz çelikten yapılmış, modern ve dayanıklı bir dolum hattı. Ürün dolum işlemi sırasında gösterilmeli.",
+  "last_updated": "2026-06-23T13:36:16.404Z",
+  "_generated_by": "generate_briefs.js / gpt-4o"
+}

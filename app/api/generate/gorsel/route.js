@@ -1,10 +1,24 @@
 import { NextResponse } from 'next/server';
+import { readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { findProduct } from '@/lib/products';
 import { patchContent, getContent } from '@/lib/content';
 import { genImage } from '@/lib/providers/gen';
 import { resolveProductImagePath } from '@/lib/product-image';
 import { findTemplate } from '@/lib/templates';
 import { resolveFormat, FAL_TO_HF_RATIO } from '@/lib/platform-format';
+import { downloadAndSave } from '@/lib/download-asset';
+
+function loadMaskotConfig() {
+  try {
+    const p = join(process.cwd(), '..', '_core', 'maskot', 'soul-id.json');
+    return JSON.parse(readFileSync(p, 'utf8'));
+  } catch {
+    return { status: 'not-trained', reference_id: null };
+  }
+}
+
+const MASKOT_REFERENCE_IMG = join(process.cwd(), '..', '_core', 'maskot', 'mascot-wave.png');
 
 export const runtime = 'nodejs';
 export const maxDuration = 120;
@@ -32,15 +46,16 @@ export async function POST(request) {
 
     const template = findTemplate(templateId);
 
-    // Soul ID kontrolü (maskot)
+    // Soul ID / maskot referans kontrolü
+    let maskotSoulId = null;
+    let maskotReferenceImage = null;
     if (template.requiresSoulId) {
-      const soulId = process.env.MASKOT_SOUL_ID;
-      if (!soulId) {
-        return NextResponse.json({
-          ok: false,
-          error: 'Maskot Soul ID henüz eğitilmedi. MASKOT_SOUL_ID env\'ini ayarlayın.',
-          requiresSoulId: true,
-        }, { status: 422 });
+      const envSoulId = process.env.MASKOT_SOUL_ID;
+      const fileConfig = loadMaskotConfig();
+      maskotSoulId = envSoulId || (fileConfig.status === 'ready' ? fileConfig.reference_id : null);
+      if (!maskotSoulId) {
+        // Soul ID henüz yok → fallback: nano_banana_2_pro + referans görsel
+        maskotReferenceImage = MASKOT_REFERENCE_IMG;
       }
     }
 
@@ -52,32 +67,43 @@ export async function POST(request) {
     const prompt = template.buildPrompt(product, lang);
     const negativePrompt = template.buildNegativePrompt ? template.buildNegativePrompt() : undefined;
 
-    // Görsel üret (Higgsfield → fal fallback gen.js'te otomatik; prompt-hash cache gen.js'te)
+    // Img2img: Asaf'ın yüklediği makine fotoğrafı varsa bunu kaynak olarak kullan.
+    // Makine yapısı/detayları korunur, yalnızca arka plan/ışık değişir.
+    const uploadedBase = join(process.cwd(), 'public', 'products', slug, 'base.png');
+    const hasUploadedImage = existsSync(uploadedBase);
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:4181';
+    const img2imgUrl = hasUploadedImage ? `${siteUrl}/products/${slug}/base.png` : undefined;
+
     const result = await genImage({
       prompt,
       negative_prompt: negativePrompt,
-      image_size: falSize,      // fal için
-      aspect_ratio: hfRatio,   // HF için
-      model: 'flux-schnell',   // fal fallback; flux-schnell ücretsiz tier'da çalışır, HF kendi modelini kullanır
-      force: body.force,        // cache bypass
+      image_size: falSize,
+      aspect_ratio: hfRatio,
+      model: 'flux-schnell',
+      force: body.force,
+      ...(maskotSoulId && { soul_id: maskotSoulId }),
+      ...(maskotReferenceImage && !hasUploadedImage && { reference_image: maskotReferenceImage }),
+      ...(hasUploadedImage && !maskotSoulId && { image_url: img2imgUrl, reference_image: uploadedBase }),
     });
 
-    const imageUrl = result.url;
-    if (!imageUrl) throw new Error('Görsel URL dönmedi');
+    const cdnUrl = result.url;
+    if (!cdnUrl) throw new Error('Görsel URL dönmedi');
 
-    // Ürün gerçek görseli var mı?
+    // Yerel kopyala — CDN URL'ler expire olur; panel localPath'ten okur
+    const { localPath } = await downloadAndSave(cdnUrl, slug, 'gorsel');
+
     const hasRealImage = Boolean(resolveProductImagePath(product));
 
-    // content.json'a kaydet
     const gorselData = {
-      url: imageUrl,
+      url: cdnUrl,
+      localPath: localPath || null,
       template: templateId,
       lang,
       platforms,
       format: fmt,
       provider: result.provider,
       model: result.model,
-      imageSource: hasRealImage ? 'real' : 'ai-prompt',
+      imageSource: hasUploadedImage ? 'img2img' : (hasRealImage ? 'real' : 'ai-prompt'),
       at: new Date().toISOString(),
     };
     await patchContent(slug, { gorsel: gorselData });

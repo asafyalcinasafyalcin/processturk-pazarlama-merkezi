@@ -5,6 +5,119 @@ import { useState, useEffect, useCallback } from 'react';
 const LANGS = [{ id: 'tr', l: 'TR' }, { id: 'en', l: 'EN' }, { id: 'ar', l: 'AR' }, { id: 'fr', l: 'FR' }, { id: 'ru', l: 'RU' }];
 const SIZES = ['feed', 'story', 'square'];
 
+// Kullanıcı dostu ülke listesi — ISO kodu gizli, isim + bayrak gösterilir
+const COUNTRY_LIST = [
+  { code: 'TR', name: 'Türkiye', flag: '🇹🇷' },
+  { code: 'DE', name: 'Almanya', flag: '🇩🇪' },
+  { code: 'FR', name: 'Fransa', flag: '🇫🇷' },
+  { code: 'GB', name: 'İngiltere', flag: '🇬🇧' },
+  { code: 'NL', name: 'Hollanda', flag: '🇳🇱' },
+  { code: 'BE', name: 'Belçika', flag: '🇧🇪' },
+  { code: 'SA', name: 'Suudi Arabistan', flag: '🇸🇦' },
+  { code: 'AE', name: 'BAE (Dubai)', flag: '🇦🇪' },
+  { code: 'EG', name: 'Mısır', flag: '🇪🇬' },
+  { code: 'MA', name: 'Fas', flag: '🇲🇦' },
+  { code: 'DZ', name: 'Cezayir', flag: '🇩🇿' },
+  { code: 'TN', name: 'Tunus', flag: '🇹🇳' },
+  { code: 'IQ', name: 'Irak', flag: '🇮🇶' },
+  { code: 'KW', name: 'Kuveyt', flag: '🇰🇼' },
+  { code: 'QA', name: 'Katar', flag: '🇶🇦' },
+  { code: 'JO', name: 'Ürdün', flag: '🇯🇴' },
+  { code: 'NG', name: 'Nijerya', flag: '🇳🇬' },
+  { code: 'GH', name: 'Gana', flag: '🇬🇭' },
+  { code: 'KE', name: 'Kenya', flag: '🇰🇪' },
+  { code: 'ET', name: 'Etiyopya', flag: '🇪🇹' },
+  { code: 'SN', name: 'Senegal', flag: '🇸🇳' },
+  { code: 'CI', name: 'Fildişi Sahili', flag: '🇨🇮' },
+  { code: 'CM', name: 'Kamerun', flag: '🇨🇲' },
+  { code: 'TZ', name: 'Tanzanya', flag: '🇹🇿' },
+  { code: 'AZ', name: 'Azerbaycan', flag: '🇦🇿' },
+  { code: 'UZ', name: 'Özbekistan', flag: '🇺🇿' },
+  { code: 'KZ', name: 'Kazakistan', flag: '🇰🇿' },
+  { code: 'RU', name: 'Rusya', flag: '🇷🇺' },
+  { code: 'UA', name: 'Ukrayna', flag: '🇺🇦' },
+  { code: 'RO', name: 'Romanya', flag: '🇷🇴' },
+  { code: 'PL', name: 'Polonya', flag: '🇵🇱' },
+  { code: 'US', name: 'Amerika', flag: '🇺🇸' },
+  { code: 'CA', name: 'Kanada', flag: '🇨🇦' },
+  { code: 'IN', name: 'Hindistan', flag: '🇮🇳' },
+  { code: 'PK', name: 'Pakistan', flag: '🇵🇰' },
+  { code: 'BD', name: 'Bangladeş', flag: '🇧🇩' },
+  { code: 'ID', name: 'Endonezya', flag: '🇮🇩' },
+  { code: 'MY', name: 'Malezya', flag: '🇲🇾' },
+  { code: 'BR', name: 'Brezilya', flag: '🇧🇷' },
+  { code: 'MX', name: 'Meksika', flag: '🇲🇽' },
+];
+
+// Hedef Müşteri → API concept map
+const CONCEPT_OPTIONS = [
+  { id: 'a', label: 'Gıda Üreticisi', desc: 'Fabrika, atölye, paketleme tesisi' },
+  { id: 'b', label: 'İhracatçı / Distribütör', desc: 'Makineyi yurt dışına satanlar' },
+  { id: 'c', label: 'Sanayi Tesisi', desc: 'Kimya, tarım, maden sektörü' },
+  { id: 'd', label: 'Ambalaj Tesisi', desc: 'Özel ambalaj ve dolum hizmeti' },
+];
+
+// Ülke çoklu seçici bileşeni
+function CountryPicker({ selected, onChange }) {
+  const [search, setSearch] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const filtered = COUNTRY_LIST.filter((c) =>
+    c.name.toLowerCase().includes(search.toLowerCase()) || c.code.toLowerCase().includes(search.toLowerCase())
+  );
+
+  function toggle(code) {
+    const next = selected.includes(code) ? selected.filter((x) => x !== code) : [...selected, code];
+    onChange(next);
+  }
+
+  return (
+    <div className="relative">
+      {/* Seçilmiş ülkeler */}
+      <div className="flex flex-wrap gap-1 mb-1 min-h-[28px]">
+        {selected.map((code) => {
+          const c = COUNTRY_LIST.find((x) => x.code === code);
+          return (
+            <span key={code} className="pill pill-ok text-xs flex items-center gap-1">
+              {c?.flag} {c?.name || code}
+              <button className="ml-0.5 text-[10px] hover:text-red" onClick={() => toggle(code)}>✕</button>
+            </span>
+          );
+        })}
+        {selected.length === 0 && <span className="text-xs text-slate-400">Ülke seçin…</span>}
+      </div>
+
+      {/* Arama + dropdown toggle */}
+      <div className="relative">
+        <input
+          className="input text-sm pr-8"
+          placeholder="Ülke ara (Türkiye, Almanya…)"
+          value={search}
+          onFocus={() => setOpen(true)}
+          onChange={(e) => { setSearch(e.target.value); setOpen(true); }}
+        />
+        <button className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 text-xs"
+          onClick={() => setOpen((o) => !o)}>{open ? '▲' : '▼'}</button>
+      </div>
+
+      {open && (
+        <div className="absolute z-20 mt-1 w-full bg-white border border-line rounded-xl shadow-lg max-h-48 overflow-y-auto">
+          {filtered.length === 0 && <p className="text-xs text-slate-400 p-3">Sonuç yok.</p>}
+          {filtered.map((c) => (
+            <button key={c.code}
+              className={`w-full text-left px-3 py-1.5 text-sm hover:bg-navy/5 flex items-center gap-2 ${selected.includes(c.code) ? 'bg-navy/5 font-medium' : ''}`}
+              onClick={() => { toggle(c.code); setSearch(''); }}>
+              <span>{c.flag}</span>
+              <span>{c.name}</span>
+              {selected.includes(c.code) && <span className="ml-auto text-ok text-xs">✓</span>}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Chip({ ok, children }) {
   return <span className={`pill ${ok ? 'pill-ok' : 'pill-muted'}`}>{ok ? '✓' : '○'} {children}</span>;
 }
@@ -89,26 +202,44 @@ function TargetingSection({ slug }) {
     <section className="card p-5 space-y-3">
       <h2 className="font-head font-bold">🎯 Hedefleme</h2>
       {!hasConfig && <p className="text-sm text-amber">⚠ Bu ürünün creative config'i yok; hedefleme kaydedilemez.</p>}
-      <p className="text-xs text-slate-400">Her satır = bir ad set. Dil = mesaj dili; ülkeler virgülle (ISO-2, ör. NG, GH). Konsept: a = fiyat odaklı, b = kalite odaklı.</p>
-      <div className="space-y-2">
+      <p className="text-xs text-slate-400">Her satır bir reklam grubu (ad set). Dil, mesaj dilini; ülkeler gösterim ülkesini; hedef kitle ise içerik açısını belirler.</p>
+      <div className="space-y-4">
         {adsets.map((a, i) => (
-          <div key={i} className="flex flex-wrap items-center gap-2 border border-line rounded-lg p-2">
-            <select className="select w-20" value={a.lang} onChange={(e) => update(i, 'lang', e.target.value)}>
-              {LANGS.map((x) => <option key={x.id} value={x.id}>{x.l}</option>)}
-            </select>
-            <input className="input flex-1 min-w-[140px]" value={Array.isArray(a.countries) ? a.countries.join(', ') : a.countries}
-              onChange={(e) => update(i, 'countries', e.target.value.split(',').map((x) => x.trim()))} placeholder="NG, GH, KE" />
-            <select className="select w-28" value={a.concept} onChange={(e) => update(i, 'concept', e.target.value)}>
-              <option value="a">konsept a</option>
-              <option value="b">konsept b</option>
-            </select>
-            <button className="btn btn-ghost text-xs" onClick={() => delRow(i)}>sil</button>
+          <div key={i} className="border border-line rounded-xl p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold">Reklam Grubu {i + 1}</span>
+              <button className="btn btn-ghost text-xs" onClick={() => delRow(i)}>✕ Sil</button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="label mb-1">Mesaj Dili</label>
+                <select className="select" value={a.lang} onChange={(e) => update(i, 'lang', e.target.value)}>
+                  {LANGS.map((x) => <option key={x.id} value={x.id}>{x.l}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="label mb-1">Hedef Müşteri</label>
+                <select className="select" value={a.concept || 'a'} onChange={(e) => update(i, 'concept', e.target.value)}>
+                  {CONCEPT_OPTIONS.map((c) => (
+                    <option key={c.id} value={c.id}>{c.label} — {c.desc}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label className="label mb-1">Hedef Ülkeler</label>
+              <CountryPicker
+                selected={Array.isArray(a.countries) ? a.countries : String(a.countries || '').split(',').map((x) => x.trim()).filter(Boolean)}
+                onChange={(codes) => update(i, 'countries', codes)} />
+            </div>
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-3">
-        <button className="btn btn-ghost text-sm" onClick={addRow} disabled={!hasConfig}>+ ad set ekle</button>
-        <button className="btn btn-primary text-sm" onClick={save} disabled={busy || !hasConfig}>{busy ? 'Kaydediliyor…' : 'Hedeflemeyi kaydet'}</button>
+      <div className="flex flex-wrap items-center gap-3">
+        <button className="btn btn-ghost text-sm" onClick={addRow} disabled={!hasConfig}>+ Reklam Grubu Ekle</button>
+        <button className="btn btn-primary text-sm" onClick={save} disabled={busy || !hasConfig}>{busy ? 'Kaydediliyor…' : 'Hedeflemeyi Kaydet'}</button>
         {msg && <span className="text-sm text-slate-500">{msg}</span>}
       </div>
 
@@ -244,12 +375,16 @@ function SetupSection({ product }) {
           </div>
         </div>
         <div>
-          <label className="label">Günlük bütçe (/ ad set)</label>
-          <input className="input num" type="number" value={daily} onChange={(e) => setDaily(e.target.value)} />
+          <label className="label">Günlük Reklam Bütçesi</label>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-slate-500">$</span>
+            <input className="input num w-24" type="number" value={daily} onChange={(e) => setDaily(e.target.value)} />
+            <span className="text-sm text-slate-500">USD / gün / reklam grubu</span>
+          </div>
         </div>
       </div>
       <button className="btn btn-primary" onClick={buildPlan} disabled={busy || langs.length === 0}>
-        {busy ? 'Çalışıyor…' : '📋 Kampanya planı üret (dry-run)'}
+        {busy ? 'Çalışıyor…' : '📋 Kampanyayı Önizle'}
       </button>
       {error && <div className="text-red text-sm">⚠ {error}</div>}
 
@@ -271,9 +406,9 @@ function SetupSection({ product }) {
             </div>
           ))}
           <button className="btn btn-primary text-sm" onClick={createReal} disabled={busy}>
-            {busy ? 'Kuruluyor…' : '✅ Gerçek kampanyayı kur (PAUSED, harcama yok)'}
+            {busy ? 'Kuruluyor…' : '🚀 Kampanyayı Meta\'ya Kur (Duraklatılmış — harcama yok)'}
           </button>
-          <p className="text-[11px] text-slate-500">Canlı hesaba PAUSED yazar; yayını Ads Manager'da sen başlatırsın.</p>
+          <p className="text-[11px] text-slate-500">Meta hesabına DURAKLATILMIŞ olarak yazar. Yayını sen Ads Manager'dan başlatırsın.</p>
         </div>
       )}
 

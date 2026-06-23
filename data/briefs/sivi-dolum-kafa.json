@@ -1,0 +1,31 @@
+{
+  "slug": "sivi-dolum-kafa",
+  "approved": false,
+  "highlights": [
+    "Türk mühendisliği ile tasarlanmış yüksek viskoziteli sıvılar için ideal çözüm.",
+    "50 gr'dan 1000 gr'a kadar dolum kapasitesi sunar.",
+    "Saatte 250 litre dolum kapasitesi ile hızlı ve verimli.",
+    "Kompakt boyutları ile her alanda kolayca konumlandırılabilir.",
+    "7/24 uzaktan destek ile her zaman yanınızdayız."
+  ],
+  "target_industries": [
+    "Gıda üretimi",
+    "Kimya endüstrisi",
+    "Kozmetik sektörü",
+    "İlaç sanayi"
+  ],
+  "ideal_customer": "Yüksek viskoziteli sıvı ürünler üreten ve dolum verimliliğini artırmak isteyen üreticiler.",
+  "pain_points": [
+    "Yüksek viskoziteli sıvıların dolumunda yaşanan zorluklar.",
+    "Dolum sürecinde zaman kaybı ve verimlilik düşüşü.",
+    "Teknik destek ihtiyacının hızlı karşılanamaması."
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Metal ve dayanıklı materyallerden üretilmiş, endüstriyel bir ortamda, dolum işlemi sırasında gösterilen bir ürün görseli.",
+  "last_updated": "2026-06-23T13:36:11.092Z",
+  "_generated_by": "generate_briefs.js / gpt-4o"
+}

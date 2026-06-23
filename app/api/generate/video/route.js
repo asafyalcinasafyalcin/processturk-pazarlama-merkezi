@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import path from 'node:path';
 import { findProduct } from '@/lib/products';
 import { metaReklamRoot } from '@/lib/paths';
+import { downloadAndSave } from '@/lib/download-asset';
+import { readBrief } from '@/lib/brief';
 import { planAdScript } from '@/lib/scene-plan';
 import { videoImageInput } from '@/lib/product-image';
 import { genVideo, genVoice, genMusic } from '@/lib/providers/gen';
@@ -31,9 +33,11 @@ export async function POST(request) {
     const wantVoice = body.voice !== false;
     const wantMusic = body.music !== false;
     const existing = await getContent(slug);
-    const highlights = product.marketing?.highlights?.length
-      ? product.marketing.highlights
-      : (existing?.copy?.highlights || []);
+    // Brief'ten highlights — varsa brief öncelikli
+    const brief = readBrief(slug);
+    const highlights = brief?.highlights?.length
+      ? brief.highlights
+      : (product.marketing?.highlights?.length ? product.marketing.highlights : (existing?.copy?.highlights || []));
     const videoModel = body.videoModel || 'seedance-2-fast';
 
     // Slug cache: aynı slug+lang+model için ≤7 günlük video varsa tekrar üretme.
@@ -51,8 +55,16 @@ export async function POST(request) {
     // 1) senaryo (fiyatsız, harekete geçirici)
     const plan = await planAdScript({ product, lang, highlights });
 
-    // 2) gerçek ürün görseli (sağlayıcıya göre: fal URL veya higgsfield yerel yol)
+    // 2) gerçek ürün görseli — 4-adımlı öncelik (product-image.js)
     const img = await videoImageInput(product);
+    if (!img) {
+      return NextResponse.json({
+        ok: false,
+        error: 'Kaynak görsel bulunamadı',
+        action: 'upload_image',
+        message: 'Önce ürün fotoğrafı yükleyin (Görsel sekmesi) veya Görsel Üret adımını çalıştırın.',
+      }, { status: 422 });
+    }
 
     // 3) tek 10sn i2v klip (gerçek ürün DOLUM YAPARKEN); kanca + fayda sahnelerine bölünür
     const motion = 'the real machine actively filling product, product flowing into packages, smooth subtle camera push-in then slow pan, medium/wide shot, factory background, premium commercial, realistic';
@@ -96,7 +108,8 @@ export async function POST(request) {
     if (wantVoice && plan.voiceover && !voiceUrl) {
       try {
         const spoken = normalizeForTTS(plan.voiceover, lang, settings.pronounce);
-        voiceUrl = (await genVoice({ text: spoken, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset, force: body.force })).url;
+        // lang geçilir → HF per-language voice map kullanılır
+        voiceUrl = (await genVoice({ text: spoken, lang, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset, force: body.force })).url;
       } catch (e) { console.warn('TTS atlandı:', e.message); }
     }
     if (wantMusic && !musicUrl) {
@@ -110,8 +123,13 @@ export async function POST(request) {
       whatsapp: BRAND.whatsapp, web: BRAND.web, logoPath: LOGO,
     });
 
+    // Render edilmiş videoyu yerel kopyala
+    const { localPath: videoLocalPath } = await downloadAndSave(rendered.publicPath, slug, 'video').catch(() => ({ localPath: null }));
+
     const video = {
-      url: rendered.publicPath, type: 'rendered', lang,
+      url: rendered.publicPath,
+      localPath: videoLocalPath || null,
+      type: 'rendered', lang,
       durationSec: rendered.durationSec, imageSource: img.source,
       voice: Boolean(voiceUrl), music: Boolean(musicUrl), model: videoModel,
       voiceUrl, musicUrl,

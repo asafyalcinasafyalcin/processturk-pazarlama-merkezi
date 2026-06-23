@@ -1,0 +1,29 @@
+{
+  "slug": "etiketleme-yari",
+  "approved": false,
+  "highlights": [
+    "Türk mühendisliği ile tasarlanmış kompakt yapı.",
+    "7/24 uzaktan destek ile kesintisiz hizmet.",
+    "Küresel sevkiyat ile her yerde yanınızdayız."
+  ],
+  "target_industries": [
+    "Gıda ve içecek sektörü",
+    "Kozmetik endüstrisi",
+    "Kimya sektörü",
+    "Ambalaj endüstrisi"
+  ],
+  "ideal_customer": "Yüksek verimlilik ve güvenilirlik arayan orta ölçekli üreticiler.",
+  "pain_points": [
+    "Etiketleme sürecinde zaman kaybı yaşamak istemeyenler.",
+    "Uzaktan destek ile anında çözüm arayan işletmeler.",
+    "Küresel pazarda hızlı sevkiyat ihtiyacı duyanlar."
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Metal gövde ve kompakt tasarımı vurgulayan, endüstriyel bir ortamda kullanım anını gösteren görseller.",
+  "last_updated": "2026-06-23T13:36:30.272Z",
+  "_generated_by": "generate_briefs.js / gpt-4o"
+}

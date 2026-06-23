@@ -1,0 +1,29 @@
+{
+  "slug": "tek-hat-kapatma",
+  "approved": false,
+  "highlights": [
+    "Türk mühendisliği ile geliştirilmiş yüksek kapasiteli kapaklama çözümü.",
+    "Saatte 750-900 adet kapaklama kapasitesi ile üretkenliğinizi artırın.",
+    "Uzaktan 7/24 destek ile her an yanınızdayız.",
+    "Küresel sevkiyat ile ürününüz her yerde!"
+  ],
+  "target_industries": [
+    "Gıda ve içecek üretimi",
+    "Kozmetik sektörü",
+    "Kimya endüstrisi"
+  ],
+  "ideal_customer": "Orta ve büyük ölçekli üretim tesisleri için verimlilik arayan işletmeler.",
+  "pain_points": [
+    "Yüksek kapasiteli üretim ihtiyacı",
+    "Kesintisiz destek ve servis gereksinimi",
+    "Küresel pazarlara hızlı erişim isteği"
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Makine, endüstriyel bir üretim ortamında, metalik gri renkte ve sağlam yapısıyla gösterilmeli.",
+  "last_updated": "2026-06-23T13:36:52.356Z",
+  "_generated_by": "generate_briefs.js / gpt-4o"
+}
