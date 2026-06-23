@@ -58,7 +58,7 @@ export async function POST(request) {
       negative_prompt: negativePrompt,
       image_size: falSize,      // fal için
       aspect_ratio: hfRatio,   // HF için
-      model: 'flux-dev',       // fal default; HF kendi modelini kullanır
+      model: 'flux-schnell',   // fal fallback; flux-schnell ücretsiz tier'da çalışır, HF kendi modelini kullanır
       force: body.force,        // cache bypass
     });
 
