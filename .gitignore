@@ -28,3 +28,8 @@ reklam/campaigns/**/preview-*.png
 reklam/campaigns/**/*.mp4
 reklam/campaigns/**/*-hf-scene-*.jpg
 data/renders/
+
+# Runtime veri — panel yeniden üretir; VPS kendi state'ini tutar
+data/content.json
+data/gen-cache.json
+public/generated/
