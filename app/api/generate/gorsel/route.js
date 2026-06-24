@@ -10,6 +10,7 @@ import { resolveFormat, FAL_TO_HF_RATIO } from '@/lib/platform-format';
 import { downloadAndSave } from '@/lib/download-asset';
 import { addToLibrary } from '@/lib/library';
 import { requireSpendConfirm } from '@/lib/credit-guard';
+import { servedToAbs } from '@/lib/media-store';
 
 function loadMaskotConfig() {
   try {
@@ -76,12 +77,13 @@ export async function POST(request) {
     const prompt = template.buildPrompt(product, lang);
     const negativePrompt = template.buildNegativePrompt ? template.buildNegativePrompt() : undefined;
 
-    // Img2img: Asaf'ın yüklediği makine fotoğrafı varsa bunu kaynak olarak kullan.
-    // Makine yapısı/detayları korunur, yalnızca arka plan/ışık değişir.
-    // NOT: yerel dosya yolu verilir; gen.js bunu fal.storage'a yükleyip public URL'e çevirir
-    // (HF native upload 403/"Forbidden" sorununu baypas eder, fal fallback'i de besler).
-    const uploadedBase = join(process.cwd(), 'public', 'products', slug, 'base.png');
-    const hasUploadedImage = existsSync(uploadedBase);
+    // Img2img kaynağı: önce ürünün ana görseli (content.gorsel — Hazır İçerik Ekle / manuel /
+    // önceki üretim), sonra eski public/products/base.png. Makine yapısı korunur, arka plan/ışık değişir.
+    // NOT: yerel dosya yolu verilir; gen.js bunu fal.storage'a yükleyip public URL'e çevirir.
+    const currContent = await getContent(slug).catch(() => null);
+    const legacyBase = join(process.cwd(), 'public', 'products', slug, 'base.png');
+    const refImage = servedToAbs(currContent?.gorsel?.localPath) || (existsSync(legacyBase) ? legacyBase : null);
+    const hasUploadedImage = Boolean(refImage);
 
     const result = await genImage({
       prompt,
@@ -92,7 +94,7 @@ export async function POST(request) {
       force: body.force,
       ...(maskotSoulId && { soul_id: maskotSoulId }),
       ...(maskotReferenceImage && !hasUploadedImage && { reference_image: maskotReferenceImage }),
-      ...(hasUploadedImage && !maskotSoulId && { reference_image: uploadedBase }),
+      ...(hasUploadedImage && !maskotSoulId && { reference_image: refImage }),
     });
 
     const cdnUrl = result.url;

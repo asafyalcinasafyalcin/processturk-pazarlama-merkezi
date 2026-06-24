@@ -121,6 +121,7 @@ export default function UrunDetay({ product, initialContent }) {
   const [addMsg, setAddMsg] = useState(null);
   const [addPreview, setAddPreview] = useState(null); // { url, type }
   const [credits, setCredits] = useState(null);
+  const [accountOk, setAccountOk] = useState(true); // Higgsfield oturumu sağlam mı (ID yolu için)
 
   // Yükle: ilk content'ten state
   useEffect(() => {
@@ -133,8 +134,8 @@ export default function UrunDetay({ product, initialContent }) {
   useEffect(() => {
     fetch('/api/higgsfield/account')
       .then((r) => r.json())
-      .then((d) => { if (d.ok && typeof d.credits === 'number') setCredits(d.credits); })
-      .catch(() => {});
+      .then((d) => { setAccountOk(Boolean(d.ok)); if (d.ok && typeof d.credits === 'number') setCredits(d.credits); })
+      .catch(() => setAccountOk(false));
   }, []);
 
   useEffect(() => {
@@ -380,8 +381,17 @@ export default function UrunDetay({ product, initialContent }) {
       }
       if (!d.ok) throw new Error(d.error);
       setAddPreview({ url: d.url, type: d.type });
+      // Eklenen medya artık ürünün ana görseli/videosu → iş akışı + önizleme anında güncellenir.
+      const at = new Date().toISOString();
+      if (d.type === 'video') {
+        const v = { url: d.url, localPath: d.url, type: 'manuel', lang: addLang, manual: true, at };
+        setVideoResult(v); setContent((c) => ({ ...c, video: v }));
+      } else {
+        const g = { url: d.url, localPath: d.url, imageSource: addSource === 'dosya' ? 'manuel-yükleme' : addSource, manual: true, at };
+        setGorsel(g); setContent((c) => ({ ...c, gorsel: g }));
+      }
       setAddValue(''); setAddFile(null);
-      setAddMsg('Eklendi ✓ — Varlık Kütüphanesi\'nde. Aşağıdaki kütüphaneden Takvime ekleyip onayla paylaşabilirsin.');
+      setAddMsg('Eklendi ✓ — Bu artık ürünün ana ' + (d.type === 'video' ? 'videosu' : 'görseli') + '. Kütüphaneye düştü; Takvime ekleyip onayla paylaşabilirsin.');
     } catch (e) { setError('Ekleme hatası: ' + e.message); }
     finally { setAddBusy(false); }
   }
@@ -432,6 +442,11 @@ export default function UrunDetay({ product, initialContent }) {
 
         {addSource === 'hf-id' && (
           <div>
+            {!accountOk && (
+              <p className="text-[11px] text-amber bg-amber/10 border border-amber/30 rounded-lg p-2 mb-2">
+                ⚠ Higgsfield oturumu şu an kapalı/süresi dolmuş — ID ile ekleme çalışmayabilir. Bu arada <strong>Dosya</strong> veya <strong>URL</strong> kullan.
+              </p>
+            )}
             <input className="input w-full" placeholder="Higgsfield iş ID'si (ör. 79497836-762a-42c4-...)"
               value={addValue} onChange={(e) => setAddValue(e.target.value)} />
             <p className="text-[11px] text-slate-400 mt-1">Higgsfield'de ürettiğin işi aç → ID'yi kopyala → yapıştır. (Sistem aynı hesapla giriş yapmış olmalı.)</p>
@@ -538,8 +553,8 @@ export default function UrunDetay({ product, initialContent }) {
     <div className="mt-3">
       {/* Başlık */}
       <div className="mb-5 flex items-start gap-4">
-        {uploadedUrl && (
-          <img src={uploadedUrl} alt="Ürün" className="w-14 h-14 rounded-xl object-cover border border-line shrink-0" />
+        {(content.gorsel?.localPath || content.gorsel?.url) && (
+          <img src={content.gorsel?.localPath || content.gorsel?.url} alt="Ürün" className="w-14 h-14 rounded-xl object-cover border border-line shrink-0" />
         )}
         <div>
           <h1 className="font-head font-extrabold text-2xl md:text-3xl">{m.name_tr || product.name_en}</h1>
@@ -700,45 +715,26 @@ export default function UrunDetay({ product, initialContent }) {
           {/* Hazır içerik ekle — ana (önerilen) yol */}
           {renderReadyAdd()}
 
-          {/* Upload */}
-          <section className="card p-5">
-            <h2 className="font-head font-bold mb-1">📷 Makine Fotoğrafı</h2>
-            <p className="text-sm text-slate-500 mb-4">
-              Yüklenen fotoğraf img2img kaynak olur — makine yapısı korunur, arka plan / ışık değişir.
-            </p>
-
-            {uploadedUrl && (
-              <div className="mb-4">
-                <img src={uploadedUrl} alt="Yüklü fotoğraf" className="w-40 h-40 object-cover rounded-xl border border-line" />
-                <div className="text-xs text-ok mt-1">✓ Fotoğraf yüklü</div>
+          {/* Aktif ürün görseli (eklenen/üretilen) — tek görsel kaynağı */}
+          {(content.gorsel?.localPath || content.gorsel?.url || gorselUrl) && (
+            <section className="card p-4">
+              <div className="text-xs text-slate-500 mb-2">Bu ürünün aktif görseli (yayın + video/AI kaynağı):</div>
+              <img src={content.gorsel?.localPath || content.gorsel?.url || gorselUrl} alt="aktif görsel"
+                className="w-full max-w-sm rounded-xl border border-line" />
+              <div className="text-[11px] text-slate-400 mt-1">
+                Kaynak: {content.gorsel?.imageSource || gorsel?.imageSource || '—'}{content.gorsel?.manual ? ' · manuel eklendi' : ''}
               </div>
-            )}
+            </section>
+          )}
 
-            <div className="border-2 border-dashed border-line rounded-xl p-6 text-center cursor-pointer hover:border-navy/40 transition-colors"
-              onClick={() => document.getElementById('file-upload').click()}
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => { e.preventDefault(); setUploadFile(e.dataTransfer.files?.[0] || null); }}>
-              <input type="file" accept="image/jpeg,image/png,image/webp" className="hidden" id="file-upload"
-                onChange={(e) => setUploadFile(e.target.files?.[0] || null)} />
-              <div className="text-2xl mb-2">📁</div>
-              <div className="text-sm text-slate-600">{uploadFile ? uploadFile.name : 'JPG, PNG veya WEBP seçin'}</div>
-              <div className="text-xs text-slate-400 mt-1">tıklayın veya buraya sürükleyin</div>
-            </div>
-
-            {uploadFile && (
-              <button className="btn btn-primary mt-3" onClick={handleUpload} disabled={uploadBusy}>
-                {uploadBusy ? 'Yükleniyor…' : '⬆ Yükle'}
-              </button>
-            )}
-          </section>
-
-          {/* AI Görsel — ikincil yol (kredi yakar) */}
-          <section className="card p-5 opacity-95">
-            <h2 className="font-head font-bold mb-1">🎨 AI Görsel Üret <span className="text-xs font-normal text-amber">(kredi yakar — yalnız gerekirse)</span></h2>
+          {/* AI üret — gelişmiş/ikincil (kredi + Higgsfield oturumu gerekir), varsayılan kapalı */}
+          <details className="card p-0 overflow-hidden">
+            <summary className="cursor-pointer select-none px-5 py-4 text-sm font-semibold text-slate-600 hover:text-navy">
+              ⚙️ Gelişmiş: AI ile görsel üret <span className="font-normal text-amber">(kredi + Higgsfield oturumu gerekir)</span>
+            </summary>
+            <div className="px-5 pb-5 border-t border-line pt-4">
             {credits != null && <p className="text-[11px] text-slate-400 mb-2">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
-            {uploadedUrl && (
-              <div className="text-xs text-ok mb-3">✓ Fotoğraf yüklü — img2img modunda üretilecek (makine yapısı korunur)</div>
-            )}
+            <p className="text-xs text-slate-500 mb-3">Önerilen yol yukarıdaki “Hazır İçerik Ekle”. Burada panel kredi yakarak üretir; eklediğin görsel varsa img2img kaynağı olur.</p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
               {IMAGE_CONCEPTS.map((c) => {
@@ -785,7 +781,8 @@ export default function UrunDetay({ product, initialContent }) {
                 <a href={gorselUrl} download className="btn btn-ghost text-sm mt-2 inline-block">⬇ İndir</a>
               </div>
             )}
-          </section>
+            </div>
+          </details>
         </div>
       )}
 
@@ -881,13 +878,26 @@ export default function UrunDetay({ product, initialContent }) {
         {/* Hazır içerik ekle — ana (önerilen) yol */}
         {renderReadyAdd()}
 
-        <section className="card p-5 space-y-5">
-          <h2 className="font-head font-bold text-lg">🎬 Video Üret <span className="text-xs font-normal text-amber">(kredi yakar — yalnız gerekirse)</span></h2>
-          {credits != null && <p className="text-[11px] text-slate-400 -mt-2">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
+        {/* Aktif ürün videosu (eklenen/üretilen) */}
+        {(content.video?.localPath || content.video?.url || videoUrl) && (
+          <section className="card p-4">
+            <div className="text-xs text-slate-500 mb-2">Bu ürünün aktif videosu:</div>
+            <video src={content.video?.localPath || content.video?.url || videoUrl} controls
+              className="w-full max-w-xs rounded-xl border border-line bg-black" />
+          </section>
+        )}
 
-          {!uploadedUrl && !gorselUrl && (
+        {/* AI video üret — gelişmiş/ikincil (kredi + oturum gerekir), varsayılan kapalı */}
+        <details className="card p-0 overflow-hidden">
+          <summary className="cursor-pointer select-none px-5 py-4 text-sm font-semibold text-slate-600 hover:text-navy">
+            ⚙️ Gelişmiş: AI ile video üret <span className="font-normal text-amber">(kredi + Higgsfield oturumu gerekir)</span>
+          </summary>
+          <div className="px-5 pb-5 border-t border-line pt-4 space-y-5">
+          {credits != null && <p className="text-[11px] text-slate-400">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
+
+          {!content.gorsel?.url && !gorselUrl && (
             <div className="card p-3 border-amber-400/40 text-amber-700 text-sm">
-              ⚠ Video için kaynak görsel gerekli.{' '}
+              ⚠ AI video için kaynak görsel gerekli. Görsel sekmesinden “Hazır İçerik Ekle” ile bir görsel ekle.{' '}
               <button className="underline" onClick={() => setTab('gorsel')}>Görsel sekmesine git →</button>
             </div>
           )}
@@ -982,22 +992,8 @@ export default function UrunDetay({ product, initialContent }) {
             </div>
           )}
 
-          {/* Kendi medyanı yükle */}
-          <div className="border-t border-line pt-4 mt-2">
-            <h3 className="font-semibold text-sm mb-1">📤 Kendi video/görselini yükle</h3>
-            <p className="text-xs text-slate-400 mb-3">
-              Dışarıda hazırladığın video veya görseli yükle — Varlık Kütüphanesi'ne kaydedilir, oradan Takvime ekleyip onayla paylaşabilirsin.
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <input type="file" accept="image/*,video/mp4,video/quicktime,video/webm" className="text-sm"
-                onChange={(e) => setManualFile(e.target.files?.[0] || null)} />
-              <button className="btn btn-ghost text-sm" onClick={handleManualUpload} disabled={manualBusy || !manualFile}>
-                {manualBusy ? '⏳ Yükleniyor…' : '⬆ Yükle ve Kütüphaneye Ekle'}
-              </button>
-            </div>
-            {manualMsg && <p className="text-xs text-ok mt-2">{manualMsg}</p>}
           </div>
-        </section>
+        </details>
         </div>
       )}
 

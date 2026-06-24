@@ -6,6 +6,7 @@
 import { NextResponse } from 'next/server';
 import { addToLibrary } from '@/lib/library';
 import { saveBuffer } from '@/lib/media-store';
+import { patchContent } from '@/lib/content';
 
 export const runtime = 'nodejs';
 export const maxDuration = 120;
@@ -39,10 +40,18 @@ export async function POST(request) {
     const type = isVideo ? 'video' : 'gorsel';
     const { servedUrl } = saveBuffer(buf, { slug, type, ext: EXT[mime] || 'bin' });
 
+    const at = new Date().toISOString();
     const entry = addToLibrary(slug, type, {
       url: servedUrl, localPath: servedUrl, lang, caption: caption || null,
-      manual: true, imageSource: 'manuel-yükleme', at: new Date().toISOString(),
+      manual: true, imageSource: 'manuel-yükleme', at,
     });
+
+    // Yüklenen medyayı ürünün ana görsel/video'su yap → iş akışı tamamlanır + video/AI kaynağı olur.
+    if (type === 'gorsel') {
+      await patchContent(slug, { gorsel: { url: servedUrl, localPath: servedUrl, imageSource: 'manuel-yükleme', manual: true, at } });
+    } else {
+      await patchContent(slug, { video: { url: servedUrl, localPath: servedUrl, type: 'manuel', lang, manual: true, at } });
+    }
 
     return NextResponse.json({ ok: true, entry, url: servedUrl, type });
   } catch (err) {

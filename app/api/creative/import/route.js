@@ -8,14 +8,14 @@ import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { metaReklamRoot, productsJsonPath } from '@/lib/paths';
 import { listCreatives, configPath, creativeDir } from '@/lib/reklam';
-import { saveFromUrl, saveBuffer } from '@/lib/media-store';
+import { saveFromUrl, saveBuffer, kindFromContentType } from '@/lib/media-store';
 import { getJobMedia } from '@/lib/hf-jobs';
 
 export const runtime = 'nodejs';
 export const maxDuration = 600;
 
 const IMG_MIME_EXT = { 'image/jpeg': 'jpg', 'image/jpg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
-const MEDIA_IMG_URL_RE = /^https?:\/\/.+\.(png|jpe?g|webp)(\?.*)?$/i;
+const IMG_EXT_RE = /\.(png|jpe?g|webp)(\?.*)?$/i;
 
 function run(cmd, args, opts = {}) {
   return new Promise((resolve, reject) => {
@@ -61,8 +61,14 @@ export async function POST(request) {
       ({ absPath: mediaPath } = await saveFromUrl(r.url, { slug, type: 'gorsel' }));
     } else if (source === 'url') {
       const url = String(value || '').trim();
-      if (!MEDIA_IMG_URL_RE.test(url)) return NextResponse.json({ ok: false, error: 'Geçerli bir görsel URL girin (png/jpg/webp).' }, { status: 400 });
-      ({ absPath: mediaPath } = await saveFromUrl(url, { slug, type: 'gorsel' }));
+      if (!/^https?:\/\//i.test(url)) return NextResponse.json({ ok: false, error: 'http(s):// ile başlayan bir URL girin.' }, { status: 400 });
+      const saved = await saveFromUrl(url, { slug, type: 'gorsel' });
+      const kind = kindFromContentType(saved.contentType) || (IMG_EXT_RE.test(url) ? 'image' : null);
+      if (kind !== 'image') {
+        try { (await import('node:fs')).unlinkSync(saved.absPath); } catch { /* yoksay */ }
+        return NextResponse.json({ ok: false, error: `Reklam creative için görsel gerekir (content-type: ${saved.contentType || 'bilinmiyor'}).` }, { status: 400 });
+      }
+      mediaPath = saved.absPath;
     } else if (source === 'upload') {
       if (!file) return NextResponse.json({ ok: false, error: 'file zorunlu' }, { status: 400 });
       const ext = IMG_MIME_EXT[file.type || ''];
