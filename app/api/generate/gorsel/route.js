@@ -9,6 +9,7 @@ import { findTemplate } from '@/lib/templates';
 import { resolveFormat, FAL_TO_HF_RATIO } from '@/lib/platform-format';
 import { downloadAndSave } from '@/lib/download-asset';
 import { addToLibrary } from '@/lib/library';
+import { requireSpendConfirm } from '@/lib/credit-guard';
 
 function loadMaskotConfig() {
   try {
@@ -30,6 +31,13 @@ export async function POST(request) {
     const { slug, template: templateId = 'makine-vitrin', lang = 'tr', platforms = ['instagram'], concept = null } = body;
 
     if (!slug) return NextResponse.json({ ok: false, error: 'slug zorunlu' }, { status: 400 });
+
+    // Kredi koruması — manuel modda açık onay gerekir (kredi yakar)
+    const guard = await requireSpendConfirm(body);
+    if (!guard.ok) {
+      return NextResponse.json({ ok: false, requiresConfirm: true, credits: guard.credits, plan: guard.plan,
+        error: 'Manuel mod: görsel üretimi kredi yakar. Onay gerekli.' }, { status: 402 });
+    }
 
     const product = await findProduct(slug);
     if (!product) return NextResponse.json({ ok: false, error: 'Ürün bulunamadı' }, { status: 404 });

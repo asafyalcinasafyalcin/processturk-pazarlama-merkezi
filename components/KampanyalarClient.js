@@ -348,6 +348,13 @@ function CreativeSection({ slug }) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(null);
   const [log, setLog] = useState(null);
+  // hazır creative ekle (HF ID / dosya / URL)
+  const [addSource, setAddSource] = useState('hf-id');
+  const [addValue, setAddValue] = useState('');
+  const [addFile, setAddFile] = useState(null);
+  const [addBrand, setAddBrand] = useState(true);
+  const [addBusy, setAddBusy] = useState(false);
+  const [addMsg, setAddMsg] = useState(null);
 
   const load = useCallback(async () => {
     const res = await fetch(`/api/creative?slug=${slug}`);
@@ -358,13 +365,21 @@ function CreativeSection({ slug }) {
   useEffect(() => { load(); }, [load]);
 
   async function regenerate() {
-    if (!window.confirm('Creative görselleri yeniden üretilecek (mevcut cutout varsa fal kullanılmaz, sadece marka overlay render edilir). Devam?')) return;
     setBusy(true); setErr(null); setLog(null);
     try {
-      const res = await fetch('/api/creative', {
+      const send = (extra) => fetch('/api/creative', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug }),
+        body: JSON.stringify({ slug, ...extra }),
       });
+      let res = await send();
+      if (res.status === 402) {
+        let g = {}; try { g = await res.json(); } catch { /* */ }
+        if (g.requiresConfirm) {
+          const ok = window.confirm(`⚠ Creative yeniden üretimi Higgsfield/fal kredisi yakabilir.\nKalan HF kredisi: ${g.credits ?? '?'}\n\nHazır görselin varsa "Hazır creative ekle" daha ucuz. Yine de yeniden üretilsin mi?`);
+          if (!ok) { setBusy(false); return; }
+          res = await send({ confirmSpend: true });
+        }
+      }
       const d = await res.json();
       if (!d.ok) throw new Error(d.error);
       setCreatives(d.creatives || []);
@@ -373,15 +388,63 @@ function CreativeSection({ slug }) {
     finally { setBusy(false); }
   }
 
+  async function addCreative() {
+    setAddBusy(true); setErr(null); setAddMsg(null);
+    try {
+      let d;
+      if (addSource === 'dosya') {
+        if (!addFile) { setAddMsg('Önce bir dosya seçin.'); return; }
+        const fd = new FormData();
+        fd.append('slug', slug); fd.append('file', addFile); fd.append('brand', String(addBrand));
+        const res = await fetch('/api/creative/import', { method: 'POST', body: fd });
+        d = await res.json();
+      } else {
+        if (!addValue.trim()) { setAddMsg(addSource === 'hf-id' ? 'Higgsfield iş ID girin.' : 'Geçerli bir URL girin.'); return; }
+        const res = await fetch('/api/creative/import', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slug, source: addSource, value: addValue.trim(), brand: addBrand }),
+        });
+        d = await res.json();
+      }
+      if (!d.ok) throw new Error(d.error);
+      setCreatives(d.creatives || []);
+      setAddValue(''); setAddFile(null);
+      setAddMsg(addBrand ? 'Eklendi ✓ — ProcessTürk marka katmanı uygulandı.' : 'Eklendi ✓ — ham görsel creative olarak eklendi.');
+    } catch (e) { setErr('Ekleme hatası: ' + e.message); }
+    finally { setAddBusy(false); }
+  }
+
   return (
     <section className="card p-5 space-y-3">
       <div className="flex items-center justify-between">
         <h2 className="font-head font-bold">🎨 Creative ({creatives.length})</h2>
-        <button className="btn btn-ghost text-sm" onClick={regenerate} disabled={busy || !hasConfig}>{busy ? 'Üretiliyor…' : '↻ Yeniden üret'}</button>
+        <button className="btn btn-ghost text-sm" onClick={regenerate} disabled={busy || !hasConfig}>{busy ? 'Üretiliyor…' : '↻ Yeniden üret (kredi)'}</button>
       </div>
       {!hasConfig && <p className="text-sm text-amber">⚠ Creative config yok; üretilemez. (HD foto + config gerekir.)</p>}
+
+      {/* Hazır creative ekle — kredi yakmayan ana yol */}
+      {hasConfig && (
+        <div className="border border-ok/30 bg-ok/5 rounded-xl p-3">
+          <div className="text-sm font-semibold mb-1">✅ Hazır creative ekle <span className="text-xs font-normal text-slate-500">(kredi yakmaz)</span></div>
+          <p className="text-[11px] text-slate-500 mb-2">
+            Higgsfield'de ürettiğin (veya hazır) görseli getir. <strong>Markala</strong> açık → ProcessTürk navy şablonu + logo render edilir; kapalı → ham görsel doğrudan eklenir.
+          </p>
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            {[['hf-id', '🎯 HF ID'], ['dosya', '📁 Dosya'], ['url', '🔗 URL']].map(([id, label]) => (
+              <button key={id} onClick={() => { setAddSource(id); setAddMsg(null); }} className={`pill text-xs ${addSource === id ? 'pill-active' : 'pill-muted'}`}>{label}</button>
+            ))}
+            <button onClick={() => setAddBrand((b) => !b)} className={`pill text-xs ${addBrand ? 'pill-active' : 'pill-muted'}`}>{addBrand ? '🏷️ Markala: açık' : '🏷️ Markala: kapalı'}</button>
+          </div>
+          {addSource === 'dosya'
+            ? <input type="file" accept="image/png,image/jpeg,image/webp" className="text-sm" onChange={(e) => setAddFile(e.target.files?.[0] || null)} />
+            : <input className="input text-sm w-full" placeholder={addSource === 'hf-id' ? "Higgsfield iş ID'si" : 'https://… .png / .jpg / .webp'} value={addValue} onChange={(e) => setAddValue(e.target.value)} />}
+          <button className="btn btn-primary text-sm mt-2" onClick={addCreative} disabled={addBusy}>{addBusy ? '⏳ Ekleniyor…' : '⬇ Creative Ekle'}</button>
+          {addMsg && <p className="text-xs text-ok mt-1">{addMsg}</p>}
+        </div>
+      )}
+
       {err && <div className="text-red text-sm">⚠ {err}</div>}
-      {creatives.length === 0 && hasConfig && <p className="text-sm text-slate-400">Henüz creative yok — “Yeniden üret”e bas.</p>}
+      {creatives.length === 0 && hasConfig && <p className="text-sm text-slate-400">Henüz creative yok — “Hazır creative ekle” veya “Yeniden üret”.</p>}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {creatives.map((c) => (
           <a key={c.rel} href={`/api/creative-image/${c.rel}`} target="_blank" rel="noreferrer" className="block group">

@@ -112,12 +112,30 @@ export default function UrunDetay({ product, initialContent }) {
   const [activeLang, setActiveLang] = useState(langs[0]);
   const [saveBusy, setSaveBusy] = useState(false);
 
+  // ── Hazır içerik ekle (HF ID / dosya / URL) + kalan kredi ──
+  const [addSource, setAddSource] = useState('hf-id'); // 'hf-id' | 'dosya' | 'url'
+  const [addValue, setAddValue] = useState('');
+  const [addFile, setAddFile] = useState(null);
+  const [addLang, setAddLang] = useState(langs[0]);
+  const [addBusy, setAddBusy] = useState(false);
+  const [addMsg, setAddMsg] = useState(null);
+  const [addPreview, setAddPreview] = useState(null); // { url, type }
+  const [credits, setCredits] = useState(null);
+
   // Yükle: ilk content'ten state
   useEffect(() => {
     if (content.gorsel) setGorsel(content.gorsel);
     if (content.metin?.texts) setTexts(content.metin.texts);
     if (content.video) setVideoResult(content.video);
   }, []); // eslint-disable-line
+
+  // Higgsfield kalan kredi (rozet + kredi onay diyaloğu için)
+  useEffect(() => {
+    fetch('/api/higgsfield/account')
+      .then((r) => r.json())
+      .then((d) => { if (d.ok && typeof d.credits === 'number') setCredits(d.credits); })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     setDraft(content.copy ? JSON.parse(JSON.stringify(content.copy)) : null);
@@ -243,16 +261,13 @@ export default function UrunDetay({ product, initialContent }) {
     try {
       const concept = IMAGE_CONCEPTS.find((c) => c.id === activeConcept) || IMAGE_CONCEPTS[0];
       const templateId = concept.templateId || 'makine-vitrin';
-      const res = await fetch('/api/generate/gorsel', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          slug: product.slug, template: templateId, lang: langs[0],
-          platforms: ['instagram'], concept: activeConcept,
-          customPrompt: concept.isCustom ? customPrompt : undefined,
-          force: true,
-        }),
+      const d = await postGuarded('/api/generate/gorsel', {
+        slug: product.slug, template: templateId, lang: langs[0],
+        platforms: ['instagram'], concept: activeConcept,
+        customPrompt: concept.isCustom ? customPrompt : undefined,
+        force: true,
       });
-      const d = await res.json();
+      if (d.cancelled) { setMsg(d.error); return; }
       if (!d.ok) throw new Error(d.error);
       setGorsel(d.gorsel);
       setContent((c) => ({ ...c, gorsel: d.gorsel }));
@@ -267,11 +282,10 @@ export default function UrunDetay({ product, initialContent }) {
     if (platforms.length === 0) { setError('En az bir platform seçin.'); return; }
     setTextBusy(true); setError(null);
     try {
-      const res = await fetch('/api/generate/metin', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: product.slug, lang, platforms, template: 'makine-vitrin', concept: socialConcept }),
+      const d = await postGuarded('/api/generate/metin', {
+        slug: product.slug, lang, platforms, template: 'makine-vitrin', concept: socialConcept,
       });
-      const d = await res.json();
+      if (d.cancelled) { setMsg(d.error); return; }
       if (!d.ok) throw new Error(d.error);
       setTexts(d.texts);
       setContent((c) => ({ ...c, metin: { texts: d.texts, lang, platforms } }));
@@ -308,15 +322,12 @@ export default function UrunDetay({ product, initialContent }) {
   async function handleGenVideo() {
     setVideoBusy(true); setError(null); startVideoTimer();
     try {
-      const res = await fetch('/api/generate/video', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          slug: product.slug, lang: videoLang, voice: wantVoice, music: false,
-          duration: videoDuration, aspect_ratio: VIDEO_PLATFORMS.find((p) => p.id === videoPlatform)?.ratio || '9:16',
-          platform: videoPlatform, voiceStyle, force: true,
-        }),
+      const d = await postGuarded('/api/generate/video', {
+        slug: product.slug, lang: videoLang, voice: wantVoice, music: false,
+        duration: videoDuration, aspect_ratio: VIDEO_PLATFORMS.find((p) => p.id === videoPlatform)?.ratio || '9:16',
+        platform: videoPlatform, voiceStyle, force: true,
       });
-      const d = await res.json();
+      if (d.cancelled) { setMsg(d.error); return; }
       if (!d.ok) {
         if (d.action === 'upload_image') throw new Error('Kaynak görsel yok. Görsel sekmesinden fotoğraf yükleyin veya önce Görsel Üret çalıştırın.');
         throw new Error(d.error + (d.detail ? ` (${d.detail})` : ''));
@@ -346,6 +357,110 @@ export default function UrunDetay({ product, initialContent }) {
     finally { setManualBusy(false); }
   }
 
+  // ── Hazır içerik ekle: HF ID / URL → /api/library/import, dosya → /api/library/upload ──
+  async function handleReadyAdd() {
+    setAddBusy(true); setAddMsg(null); setError(null);
+    try {
+      let d;
+      if (addSource === 'dosya') {
+        if (!addFile) { setAddMsg('Önce bir dosya seçin.'); return; }
+        const fd = new FormData();
+        fd.append('slug', product.slug);
+        fd.append('file', addFile);
+        fd.append('lang', addLang);
+        const res = await fetch('/api/library/upload', { method: 'POST', body: fd });
+        d = await res.json();
+      } else {
+        if (!addValue.trim()) { setAddMsg(addSource === 'hf-id' ? 'Higgsfield iş ID girin.' : 'Geçerli bir URL girin.'); return; }
+        const res = await fetch('/api/library/import', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slug: product.slug, source: addSource, value: addValue.trim(), lang: addLang }),
+        });
+        d = await res.json();
+      }
+      if (!d.ok) throw new Error(d.error);
+      setAddPreview({ url: d.url, type: d.type });
+      setAddValue(''); setAddFile(null);
+      setAddMsg('Eklendi ✓ — Varlık Kütüphanesi\'nde. Aşağıdaki kütüphaneden Takvime ekleyip onayla paylaşabilirsin.');
+    } catch (e) { setError('Ekleme hatası: ' + e.message); }
+    finally { setAddBusy(false); }
+  }
+
+  // ── Üretim çağrısı (kredi koruması): manuel modda 402 requiresConfirm dönerse onay iste ──
+  async function postGuarded(url, body) {
+    const send = (extra) => fetch(url, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...body, ...extra }),
+    });
+    let res = await send();
+    if (res.status === 402) {
+      let g = {}; try { g = await res.json(); } catch { /* */ }
+      if (g.requiresConfirm) {
+        const kredi = g.credits ?? credits ?? '?';
+        const ok = window.confirm(
+          `⚠ Bu işlem Higgsfield kredisi yakar.\nKalan kredi: ${kredi}\n\n` +
+          `Manuel mod açık — önerilen yol: Higgsfield'de üretip "Hazır İçerik Ekle" ile getirmek.\n\n` +
+          `Yine de panelde üretmek istiyor musun?`
+        );
+        if (!ok) return { ok: false, cancelled: true, error: 'İptal edildi — kredi harcanmadı.' };
+        res = await send({ confirmSpend: true });
+      }
+    }
+    return res.json();
+  }
+
+  // ── Hazır içerik ekle paneli (görsel + video sekmelerinde) ──
+  function renderReadyAdd() {
+    return (
+      <section className="card p-5 border-ok/30 bg-ok/5">
+        <h2 className="font-head font-bold mb-1">✅ Hazır İçerik Ekle <span className="text-xs font-normal text-slate-500">(önerilen — panelde kredi yakmaz)</span></h2>
+        <p className="text-sm text-slate-500 mb-4">
+          Görsel/videoyu Higgsfield'de kendin üret ve kaliteyi orada gör; sonra işe yarayanı buraya getir.
+          İçerik Varlık Kütüphanesi'ne düşer → Takvime ekleyip onayla paylaşırsın.
+        </p>
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          {[['hf-id', '🎯 Higgsfield ID'], ['dosya', '📁 Dosya'], ['url', '🔗 URL']].map(([id, label]) => (
+            <button key={id} onClick={() => { setAddSource(id); setAddMsg(null); }}
+              className={`pill ${addSource === id ? 'pill-active' : 'pill-muted'}`}>{label}</button>
+          ))}
+          <span className="ml-auto flex flex-wrap gap-1.5">
+            {ALL_LANGS.map((l) => (
+              <button key={l} onClick={() => setAddLang(l)} className={`pill text-xs ${l === addLang ? 'pill-active' : 'pill-muted'}`}>{LANG_LABEL[l] || l}</button>
+            ))}
+          </span>
+        </div>
+
+        {addSource === 'hf-id' && (
+          <div>
+            <input className="input w-full" placeholder="Higgsfield iş ID'si (ör. 79497836-762a-42c4-...)"
+              value={addValue} onChange={(e) => setAddValue(e.target.value)} />
+            <p className="text-[11px] text-slate-400 mt-1">Higgsfield'de ürettiğin işi aç → ID'yi kopyala → yapıştır. (Sistem aynı hesapla giriş yapmış olmalı.)</p>
+          </div>
+        )}
+        {addSource === 'url' && (
+          <input className="input w-full" placeholder="https://… .png / .jpg / .webp / .mp4"
+            value={addValue} onChange={(e) => setAddValue(e.target.value)} />
+        )}
+        {addSource === 'dosya' && (
+          <input type="file" accept="image/*,video/mp4,video/quicktime,video/webm" className="text-sm"
+            onChange={(e) => setAddFile(e.target.files?.[0] || null)} />
+        )}
+
+        <button className="btn btn-primary mt-3" onClick={handleReadyAdd} disabled={addBusy}>
+          {addBusy ? '⏳ Ekleniyor…' : '⬇ Panele Ekle'}
+        </button>
+        {addMsg && <p className="text-xs text-ok mt-2">{addMsg}</p>}
+        {addPreview?.url && (
+          <div className="mt-3">
+            {addPreview.type === 'video'
+              ? <video src={addPreview.url} controls className="w-full max-w-xs rounded-xl border border-line bg-black" />
+              : <img src={addPreview.url} alt="eklenen" className="w-full max-w-xs rounded-xl border border-line" />}
+          </div>
+        )}
+      </section>
+    );
+  }
+
   // ── Reklam copy ──
   const variant = draft?.variants?.find((v) => v.id === activeVariant) || draft?.variants?.[0];
   const langData = variant?.by_lang?.[activeLang];
@@ -362,11 +477,8 @@ export default function UrunDetay({ product, initialContent }) {
   async function genCopy() {
     setCopyBusy(true); setError(null);
     try {
-      const res = await fetch('/api/generate/copy', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: product.slug, languages: ALL_LANGS }),
-      });
-      const d = await res.json();
+      const d = await postGuarded('/api/generate/copy', { slug: product.slug, languages: ALL_LANGS });
+      if (d.cancelled) { setMsg(d.error); return; }
       if (!d.ok) throw new Error(d.error);
       setContent((c) => ({ ...c, copy: d.copy }));
       setActiveVariant(d.copy.variants?.[0]?.id || 'A');
@@ -585,6 +697,9 @@ export default function UrunDetay({ product, initialContent }) {
       {/* ═══ GÖRSEL ═══ */}
       {tab === 'gorsel' && (
         <div className="space-y-5">
+          {/* Hazır içerik ekle — ana (önerilen) yol */}
+          {renderReadyAdd()}
+
           {/* Upload */}
           <section className="card p-5">
             <h2 className="font-head font-bold mb-1">📷 Makine Fotoğrafı</h2>
@@ -617,9 +732,10 @@ export default function UrunDetay({ product, initialContent }) {
             )}
           </section>
 
-          {/* AI Görsel */}
-          <section className="card p-5">
-            <h2 className="font-head font-bold mb-3">🎨 AI Görsel Üret</h2>
+          {/* AI Görsel — ikincil yol (kredi yakar) */}
+          <section className="card p-5 opacity-95">
+            <h2 className="font-head font-bold mb-1">🎨 AI Görsel Üret <span className="text-xs font-normal text-amber">(kredi yakar — yalnız gerekirse)</span></h2>
+            {credits != null && <p className="text-[11px] text-slate-400 mb-2">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
             {uploadedUrl && (
               <div className="text-xs text-ok mb-3">✓ Fotoğraf yüklü — img2img modunda üretilecek (makine yapısı korunur)</div>
             )}
@@ -654,8 +770,8 @@ export default function UrunDetay({ product, initialContent }) {
                 placeholder="Görsel için özel açıklama: ortam, renk, ışık, kompozisyon…" />
             )}
 
-            <button className="btn btn-primary" onClick={handleGenGorsel} disabled={gorselBusy}>
-              {gorselBusy ? '⏳ Üretiliyor…' : gorselUrl ? '↻ Yeniden üret' : '⚡ Görsel Üret'}
+            <button className="btn btn-ghost" onClick={handleGenGorsel} disabled={gorselBusy}>
+              {gorselBusy ? '⏳ Üretiliyor…' : gorselUrl ? '↻ Yeniden üret (kredi)' : '⚡ Görsel Üret (kredi)'}
             </button>
 
             {gorselUrl && (
@@ -761,8 +877,13 @@ export default function UrunDetay({ product, initialContent }) {
 
       {/* ═══ VİDEO ═══ */}
       {tab === 'video' && (
+        <div className="space-y-5">
+        {/* Hazır içerik ekle — ana (önerilen) yol */}
+        {renderReadyAdd()}
+
         <section className="card p-5 space-y-5">
-          <h2 className="font-head font-bold text-lg">🎬 Video Üret</h2>
+          <h2 className="font-head font-bold text-lg">🎬 Video Üret <span className="text-xs font-normal text-amber">(kredi yakar — yalnız gerekirse)</span></h2>
+          {credits != null && <p className="text-[11px] text-slate-400 -mt-2">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
 
           {!uploadedUrl && !gorselUrl && (
             <div className="card p-3 border-amber-400/40 text-amber-700 text-sm">
@@ -842,10 +963,10 @@ export default function UrunDetay({ product, initialContent }) {
             )}
           </div>
 
-          <button className="btn btn-primary text-base px-6 py-3" onClick={handleGenVideo} disabled={videoBusy}>
+          <button className="btn btn-ghost text-base px-6 py-3" onClick={handleGenVideo} disabled={videoBusy}>
             {videoBusy
               ? `⏳ Üretiliyor… ${videoElapsed}s (≈3-5 dk)`
-              : videoUrl ? '↻ Yeniden üret' : '🎬 Video Üret'}
+              : videoUrl ? '↻ Yeniden üret (kredi)' : '🎬 Video Üret (kredi)'}
           </button>
 
           {videoUrl && (
@@ -877,6 +998,7 @@ export default function UrunDetay({ product, initialContent }) {
             {manualMsg && <p className="text-xs text-ok mt-2">{manualMsg}</p>}
           </div>
         </section>
+        </div>
       )}
 
       {/* ═══ REKLAM ═══ */}

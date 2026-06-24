@@ -1,9 +1,11 @@
 // Kendi hazırladığın görsel/video'yu yükle → kütüphaneye düşer, takvimden paylaşılabilir.
 // POST multipart/form-data { slug, file, lang?, caption? }
+//
+// Medya data/uploads'a (kalıcı mount) yazılır ve /api/media/<dosya> ile servis edilir —
+// public/ çalışma-zamanı yazımı canlıda sunulmadığı için (bkz. lib/media-store.js).
 import { NextResponse } from 'next/server';
-import fs from 'node:fs';
-import path from 'node:path';
 import { addToLibrary } from '@/lib/library';
+import { saveBuffer } from '@/lib/media-store';
 
 export const runtime = 'nodejs';
 export const maxDuration = 120;
@@ -34,19 +36,15 @@ export async function POST(request) {
     }
 
     const buf = Buffer.from(await file.arrayBuffer());
-    const dir = path.join(process.cwd(), 'public', 'products', slug, 'uploads');
-    fs.mkdirSync(dir, { recursive: true });
-    const fname = `${Date.now()}.${EXT[mime] || 'bin'}`;
-    fs.writeFileSync(path.join(dir, fname), buf);
-
-    const localUrl = `/products/${slug}/uploads/${fname}`;
     const type = isVideo ? 'video' : 'gorsel';
+    const { servedUrl } = saveBuffer(buf, { slug, type, ext: EXT[mime] || 'bin' });
+
     const entry = addToLibrary(slug, type, {
-      url: localUrl, localPath: localUrl, lang, caption: caption || null,
+      url: servedUrl, localPath: servedUrl, lang, caption: caption || null,
       manual: true, imageSource: 'manuel-yükleme', at: new Date().toISOString(),
     });
 
-    return NextResponse.json({ ok: true, entry, url: localUrl, type });
+    return NextResponse.json({ ok: true, entry, url: servedUrl, type });
   } catch (err) {
     console.error('[library/upload]', err);
     return NextResponse.json({ ok: false, error: err.message }, { status: 500 });

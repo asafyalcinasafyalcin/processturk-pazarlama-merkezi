@@ -13,10 +13,11 @@ export default function ArsivClient() {
   const [selected, setSelected] = useState(null);
   const [busy, setBusy] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showArchived, setShowArchived] = useState(false);
 
   async function load() {
     setLoading(true);
-    const res = await fetch('/api/library');
+    const res = await fetch('/api/library?includeArchived=1');
     const d = await res.json();
     if (d.ok) setEntries(d.entries);
     setLoading(false);
@@ -32,8 +33,21 @@ export default function ArsivClient() {
     setBusy(null);
   }
 
+  // Arşivle / geri getir (silmeden gizle)
+  async function archive(a, val) {
+    setBusy(a.id);
+    await fetch('/api/library', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: a.id, archived: val }) });
+    setSelected(null);
+    await load();
+    setBusy(null);
+  }
+
   const products = [...new Map(entries.map((e) => [e.slug, e.productName])).entries()];
-  const shown = entries.filter((a) => (fType === 'all' || a.type === fType) && (fSlug === 'all' || a.slug === fSlug));
+  const archivedCount = entries.filter((a) => a.archived).length;
+  const shown = entries.filter((a) =>
+    (fType === 'all' || a.type === fType) &&
+    (fSlug === 'all' || a.slug === fSlug) &&
+    (showArchived ? a.archived : !a.archived));
 
   const counts = TYPE_ORDER.reduce((acc, t) => {
     acc[t] = t === 'all' ? entries.length : entries.filter((e) => e.type === t).length;
@@ -49,6 +63,10 @@ export default function ArsivClient() {
             {t === 'all' ? 'Hepsi' : TYPE_LABEL[t]} <span className="opacity-60">({counts[t]})</span>
           </button>
         ))}
+        <span className="mx-1 text-slate-300">·</span>
+        <button onClick={() => setShowArchived((s) => !s)} className={`pill ${showArchived ? 'pill-ok' : 'pill-muted'}`}>
+          🗄 Arşiv{archivedCount > 0 ? ` (${archivedCount})` : ''}
+        </button>
       </div>
       {products.length > 1 && (
         <div className="flex flex-wrap gap-2 mb-6">
@@ -125,7 +143,10 @@ export default function ArsivClient() {
                 <a href={selected.localPath || selected.url} download className="btn btn-ghost text-sm">⬇ İndir</a>
               )}
               <Link href={`/urun/${selected.slug}`} className="btn btn-ghost text-sm">Ürüne git →</Link>
-              <button className="btn btn-ghost text-sm text-red ml-auto" disabled={busy === selected.id} onClick={() => remove(selected)}>
+              <button className="btn btn-ghost text-sm ml-auto" disabled={busy === selected.id} onClick={() => archive(selected, !selected.archived)}>
+                {busy === selected.id ? '…' : selected.archived ? '↩ Geri getir' : '🗄 Arşivle'}
+              </button>
+              <button className="btn btn-ghost text-sm text-red" disabled={busy === selected.id} onClick={() => remove(selected)}>
                 {busy === selected.id ? 'Siliniyor…' : '🗑 Sil'}
               </button>
             </div>

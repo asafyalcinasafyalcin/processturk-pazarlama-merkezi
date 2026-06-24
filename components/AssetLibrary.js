@@ -15,9 +15,10 @@ export default function AssetLibrary({ slug }) {
   const [calPlatform, setCalPlatform] = useState('instagram');
   const [calBusy, setCalBusy] = useState(false);
   const [calMsg, setCalMsg] = useState(null);
+  const [showArchived, setShowArchived] = useState(false);
 
   async function load() {
-    const res = await fetch(`/api/assets?slug=${slug}`);
+    const res = await fetch(`/api/assets?slug=${slug}&includeArchived=1`);
     const d = await res.json();
     if (d.ok) setAssets(d.assets);
   }
@@ -27,6 +28,15 @@ export default function AssetLibrary({ slug }) {
     if (!confirm('Bu içeriği kalıcı olarak silmek istediğine emin misin?')) return;
     setBusy(a.id);
     await fetch('/api/assets', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: a.id }) });
+    setSelected(null);
+    await load();
+    setBusy(null);
+  }
+
+  // Arşivle / geri getir (silmeden gizle)
+  async function archive(a, val) {
+    setBusy(a.id);
+    await fetch('/api/assets', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: a.id, archived: val }) });
     setSelected(null);
     await load();
     setBusy(null);
@@ -55,7 +65,11 @@ export default function AssetLibrary({ slug }) {
   }
 
   const langs = [...new Set(assets.map((a) => a.lang))];
-  const shown = assets.filter((a) => (fType === 'all' || a.type === fType) && (fLang === 'all' || a.lang === fLang));
+  const archivedCount = assets.filter((a) => a.archived).length;
+  const shown = assets.filter((a) =>
+    (fType === 'all' || a.type === fType) &&
+    (fLang === 'all' || a.lang === fLang) &&
+    (showArchived ? a.archived : !a.archived));
 
   return (
     <section className="card p-5 mt-6">
@@ -75,6 +89,10 @@ export default function AssetLibrary({ slug }) {
             {langs.length > 1 && ['all', ...langs].map((l) => (
               <button key={l} onClick={() => setFLang(l)} className={`pill ${fLang === l ? 'pill-ok' : 'pill-muted'}`}>{l === 'all' ? 'Tüm diller' : l.toUpperCase()}</button>
             ))}
+            <span className="mx-1 text-slate-300">·</span>
+            <button onClick={() => setShowArchived((s) => !s)} className={`pill ${showArchived ? 'pill-ok' : 'pill-muted'}`}>
+              🗄 Arşiv{archivedCount > 0 ? ` (${archivedCount})` : ''}
+            </button>
           </div>
 
           {shown.length === 0 && <p className="text-sm text-slate-500">Henüz içerik yok. Görsel / video / metin üretince burada birikir.</p>}
@@ -167,7 +185,10 @@ export default function AssetLibrary({ slug }) {
               {(selected.localPath || selected.url) && (
                 <a href={selected.localPath || selected.url} download className="btn btn-ghost text-sm">⬇ İndir</a>
               )}
-              <button className="btn btn-ghost text-sm text-red ml-auto" disabled={busy === selected.id} onClick={() => remove(selected)}>
+              <button className="btn btn-ghost text-sm ml-auto" disabled={busy === selected.id} onClick={() => archive(selected, !selected.archived)}>
+                {busy === selected.id ? '…' : selected.archived ? '↩ Geri getir' : '🗄 Arşivle'}
+              </button>
+              <button className="btn btn-ghost text-sm text-red" disabled={busy === selected.id} onClick={() => remove(selected)}>
                 {busy === selected.id ? 'Siliniyor…' : '🗑 Sil'}
               </button>
             </div>

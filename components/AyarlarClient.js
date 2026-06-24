@@ -35,6 +35,17 @@ export default function AyarlarClient({ initial }) {
     else setError(data.error);
   }
 
+  async function setMode(mode) {
+    setError(null); setMsg(null);
+    const res = await fetch('/api/settings', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ generationMode: mode }),
+    });
+    const data = await res.json();
+    if (data.ok) { setSettings(data.settings); setMsg(mode === 'manuel' ? 'Üretim modu: Manuel (kredi koruması açık)' : 'Üretim modu: Otomatik'); }
+    else setError(data.error);
+  }
+
   async function saveDict(nextEntries) {
     const obj = Object.fromEntries(nextEntries.filter(([k]) => k));
     const res = await fetch('/api/settings', {
@@ -50,6 +61,27 @@ export default function AyarlarClient({ initial }) {
     <div className="space-y-6">
       {error && <div className="card p-3 border-red/40 text-red text-sm">⚠ {error}</div>}
       {msg && <div className="card p-3 text-ok text-sm">✓ {msg}</div>}
+
+      {/* Üretim modu — kredi koruması */}
+      <section className="card p-5">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-head font-bold">Üretim Modu</h2>
+          <span className={`pill ${settings.generationMode === 'otomatik' ? 'pill-amber' : 'pill-ok'}`}>
+            {settings.generationMode === 'otomatik' ? 'Otomatik' : 'Manuel (kredi koruması)'}
+          </span>
+        </div>
+        <p className="text-sm text-slate-500 mb-4">
+          <strong>Manuel</strong> (önerilen): panel kendiliğinden Higgsfield kredisi yakmaz; otomatik görsel/video üretimi
+          açık onay ister. Asıl yol: içeriği Higgsfield'de üretip "Hazır İçerik Ekle" ile getirmek.
+          <strong> Otomatik</strong>: üretim butonları doğrudan çalışır (kredi yakar).
+        </p>
+        <div className="flex gap-2">
+          <button className={`btn text-sm ${settings.generationMode !== 'otomatik' ? 'btn-primary' : 'btn-ghost'}`}
+            onClick={() => setMode('manuel')}>🛡️ Manuel (kredi koruması)</button>
+          <button className={`btn text-sm ${settings.generationMode === 'otomatik' ? 'btn-primary' : 'btn-ghost'}`}
+            onClick={() => setMode('otomatik')}>⚡ Otomatik</button>
+        </div>
+      </section>
 
       {/* Marka sesi */}
       <section className="card p-5">

@@ -144,6 +144,9 @@ def main() -> None:
     p.add_argument("config", type=Path)
     p.add_argument("--sizes", nargs="+", default=None)
     p.add_argument("--force-cutout", action="store_true")
+    # overlay-only: hiç fal/HF çağırma — hazır cutout.png üzerine sadece marka katmanını render et.
+    # (Manuel "hazır creative ekle" yolu için; kredi yakmaz.)
+    p.add_argument("--overlay-only", action="store_true")
     args = p.parse_args()
 
     cfg_path = args.config.resolve()
@@ -158,7 +161,12 @@ def main() -> None:
 
     print("[2/3] Ürün cutout + sahne öğesi")
     cutout = out_dir / "cutout.png"
-    if args.force_cutout or not cutout.exists():
+    if args.overlay_only:
+        # Manuel hazır görsel yolu — fal/HF çağrılmaz; cutout.png hazır olmalı.
+        if not cutout.exists():
+            sys.exit("overlay-only: cutout.png bulunamadı. Hazır görseli cutout.png olarak koyun.")
+        print(f"  · overlay-only: hazır cutout kullanılıyor {cutout}")
+    elif args.force_cutout or not cutout.exists():
         src = (WORKSPACE / cfg["source_image"]).resolve() if not Path(cfg["source_image"]).is_absolute() else Path(cfg["source_image"])
         fal_prep_product.prep(src, cutout, cfg.get("prep_prompt",
             "304 stainless steel granule filling machine, industrial equipment, sharp studio product photo"),
@@ -169,7 +177,13 @@ def main() -> None:
     props = None
     if cfg.get("props_prompt"):
         props = out_dir / "props.png"
-        if args.force_cutout or not props.exists():
+        if args.overlay_only:
+            # overlay-only: yalnız mevcut props kullanılır; fal çağrılmaz.
+            if not props.exists():
+                props = None
+            else:
+                print(f"  · overlay-only: mevcut props {props}")
+        elif args.force_cutout or not props.exists():
             fal_prep_product.gen_prop(cfg["props_prompt"], props)
         else:
             print(f"  · props mevcut: {props}")

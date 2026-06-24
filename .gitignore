@@ -32,4 +32,6 @@ data/renders/
 # Runtime veri — panel yeniden üretir; VPS kendi state'ini tutar
 data/content.json
 data/gen-cache.json
+data/library.json
+data/uploads/
 public/generated/

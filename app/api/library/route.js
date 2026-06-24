@@ -1,35 +1,52 @@
 import { NextResponse } from 'next/server';
-import { listAllLibrary, deleteFromLibrary } from '@/lib/library';
+import { listAllLibrary, deleteFromLibrary, setArchived } from '@/lib/library';
 import { readProducts } from '@/lib/products';
 
 export const dynamic = 'force-dynamic';
 
 // Genel arşiv — tüm ürünlerin üretilmiş/yüklenmiş tüm içerikleri (görsel/video/ses/metin).
-export async function GET() {
+// Varsayılan: arşivlenmiş içerik gizlenir (?includeArchived=1 ile hepsi döner).
+export async function GET(request) {
   try {
+    const includeArchived = new URL(request.url).searchParams.get('includeArchived') === '1';
     const products = await readProducts();
     const nameBySlug = {};
     for (const p of products) nameBySlug[p.slug] = p.marketing?.name_tr || p.name_en || p.slug;
 
-    const entries = listAllLibrary().map((e) => ({
-      id: e.id || e.at,
-      slug: e.slug,
-      productName: nameBySlug[e.slug] || e.slug,
-      type: e.type || 'gorsel',
-      lang: e.lang || 'tr',
-      at: e.at,
-      url: e.url || null,
-      localPath: e.localPath || null,
-      template: e.template || null,
-      concept: e.concept || null,
-      platform: e.platform || null,
-      caption: e.caption || e.text || null,
-      voiceUrl: e.voiceUrl || null,
-      model: e.model || null,
-      manual: Boolean(e.manual),
-    }));
+    const entries = listAllLibrary()
+      .filter((e) => includeArchived || !e.archived)
+      .map((e) => ({
+        id: e.id || e.at,
+        slug: e.slug,
+        productName: nameBySlug[e.slug] || e.slug,
+        type: e.type || 'gorsel',
+        lang: e.lang || 'tr',
+        at: e.at,
+        url: e.url || null,
+        localPath: e.localPath || null,
+        template: e.template || null,
+        concept: e.concept || null,
+        platform: e.platform || null,
+        caption: e.caption || e.text || null,
+        voiceUrl: e.voiceUrl || null,
+        model: e.model || null,
+        manual: Boolean(e.manual),
+        archived: Boolean(e.archived),
+      }));
 
     return NextResponse.json({ ok: true, entries });
+  } catch (err) {
+    return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
+  }
+}
+
+// Arşivle / arşivden çıkar (silmeden gizle)
+export async function PATCH(request) {
+  try {
+    const { id, archived } = await request.json();
+    if (!id) return NextResponse.json({ ok: false, error: 'id zorunlu' }, { status: 400 });
+    const changed = setArchived(id, archived);
+    return NextResponse.json({ ok: true, changed });
   } catch (err) {
     return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
   }

@@ -14,6 +14,7 @@ import { addToLibrary } from '@/lib/library';
 import { BRAND } from '@/lib/brand';
 import { normalizeForTTS } from '@/lib/tts-normalize';
 import { readSettings } from '@/lib/settings';
+import { requireSpendConfirm } from '@/lib/credit-guard';
 
 export const runtime = 'nodejs';
 export const maxDuration = 800;
@@ -27,6 +28,14 @@ export async function POST(request) {
     const body = await request.json();
     const { slug } = body;
     if (!slug) return NextResponse.json({ ok: false, error: 'slug zorunlu' }, { status: 400 });
+
+    // Kredi koruması — manuel modda açık onay gerekir (kredi yakar)
+    const guard = await requireSpendConfirm(body);
+    if (!guard.ok) {
+      return NextResponse.json({ ok: false, requiresConfirm: true, credits: guard.credits, plan: guard.plan,
+        error: 'Manuel mod: video üretimi kredi yakar. Onay gerekli.' }, { status: 402 });
+    }
+
     const product = await findProduct(slug);
     if (!product) return NextResponse.json({ ok: false, error: 'Ürün bulunamadı' }, { status: 404 });
 
