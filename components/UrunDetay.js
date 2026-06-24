@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import AssetLibrary from './AssetLibrary';
+import WorkflowBar from './WorkflowBar';
 import { IMAGE_CONCEPTS } from '@/lib/image-concepts';
 
 const LANG_LABEL = { tr: 'TR', en: 'EN', ar: 'AR', fr: 'FR', ru: 'RU' };
@@ -50,6 +52,7 @@ const ALL_PLATFORMS = [
 ];
 
 export default function UrunDetay({ product, initialContent }) {
+  const router = useRouter();
   const m = product.marketing || {};
   const langs = m.languages?.length ? m.languages : ['tr', 'en'];
 
@@ -57,6 +60,7 @@ export default function UrunDetay({ product, initialContent }) {
   const [content, setContent] = useState(initialContent || {});
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState(null);
+  const [calCount, setCalCount] = useState(0);
 
   // ── Brief ──
   const [brief, setBrief] = useState(null);
@@ -145,6 +149,14 @@ export default function UrunDetay({ product, initialContent }) {
     fetch(`/api/brief?slug=${product.slug}`)
       .then((r) => r.json())
       .then((d) => { if (d.ok && d.brief) setBrief(d.brief); })
+      .catch(() => {});
+  }, [product.slug]);
+
+  // Takvimde bu ürüne ait gönderi sayısı (workflow "Yayın" aşaması için)
+  useEffect(() => {
+    fetch('/api/calendar')
+      .then((r) => r.json())
+      .then((d) => { if (d.ok) setCalCount((d.items || []).filter((it) => it.slug === product.slug).length); })
       .catch(() => {});
   }, [product.slug]);
 
@@ -386,6 +398,30 @@ export default function UrunDetay({ product, initialContent }) {
     ar: 'Gia — kadın, sıcak',    fr: 'Brooks', ru: 'Roman',
   };
 
+  // ── Workflow aşamaları (durum mevcut state'ten) ──
+  const wf = {
+    brief:  Boolean(brief?.approved),
+    gorsel: Boolean(content.gorsel?.url || gorsel?.url),
+    icerik: Object.keys(texts).length > 0 || Boolean(content.metin?.texts),
+    video:  Boolean(content.video?.url || videoResult?.url),
+    reklam: Boolean(content.copy?.variants?.length || draft?.variants?.length),
+    yayin:  calCount > 0,
+  };
+  const workflowSteps = [
+    { id: 'brief',  label: 'Brief',  done: wf.brief,  hint: 'Ürün bilgisi ve öne çıkanlar' },
+    { id: 'gorsel', label: 'Görsel', done: wf.gorsel, hint: 'Ürün görseli üret' },
+    { id: 'icerik', label: 'İçerik', done: wf.icerik, hint: 'Sosyal medya metni' },
+    { id: 'video',  label: 'Video',  done: wf.video,  hint: 'Tanıtım videosu' },
+    { id: 'reklam', label: 'Kopya',  done: wf.reklam, hint: 'Reklam metinleri' },
+    { id: 'yayin',  label: 'Yayın',  done: wf.yayin,  hint: 'Takvime ekle ve onayla' },
+  ];
+  const nextStep = workflowSteps.find((s) => !s.done);
+  const onWorkflowStep = (s) => { if (s.id === 'yayin') router.push('/takvim'); else setTab(s.id); };
+  const stepCTA = {
+    brief: 'Brief\'i doldur ve onayla', gorsel: 'Şimdi görsel üret', icerik: 'Sosyal medya metni üret',
+    video: 'Tanıtım videosu üret', reklam: 'Reklam kopyası üret', yayin: 'Takvime ekle ve yayına hazırla',
+  };
+
   return (
     <div className="mt-3">
       {/* Başlık */}
@@ -398,6 +434,25 @@ export default function UrunDetay({ product, initialContent }) {
           <div className="text-slate-500 text-sm mt-1">{product.category}{product.specs?.capacity ? ` · ${product.specs.capacity}` : ''}</div>
         </div>
       </div>
+
+      {/* Workflow aşama çubuğu */}
+      <WorkflowBar steps={workflowSteps} activeId={tab} onStep={onWorkflowStep} />
+
+      {/* Sıradaki adım yönlendirmesi */}
+      {nextStep ? (
+        <div className="card p-3 mb-4 flex items-center justify-between gap-3 border-red/20 bg-red/5">
+          <div className="text-sm text-navy">
+            <span className="font-semibold">Sıradaki adım:</span> {stepCTA[nextStep.id]}
+          </div>
+          <button className="btn btn-primary text-sm shrink-0" onClick={() => onWorkflowStep(nextStep)}>
+            {nextStep.label} →
+          </button>
+        </div>
+      ) : (
+        <div className="card p-3 mb-4 text-sm text-ok bg-ok/5 border-ok/20">
+          ✓ Tüm aşamalar tamam — içerik takvimde yayına hazır.
+        </div>
+      )}
 
       {error && (
         <div className="card p-3 border-red/40 text-red text-sm mb-4">
