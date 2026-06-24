@@ -10,6 +10,7 @@ import { genVideo, genVoice, genMusic } from '@/lib/providers/gen';
 import { renderAdVideo } from '@/lib/render';
 import { saveRawClip, brandOverlay } from '@/lib/raw-clip';
 import { patchContent, getContent } from '@/lib/content';
+import { addToLibrary } from '@/lib/library';
 import { BRAND } from '@/lib/brand';
 import { normalizeForTTS } from '@/lib/tts-normalize';
 import { readSettings } from '@/lib/settings';
@@ -57,21 +58,18 @@ export async function POST(request) {
     // 1) senaryo (fiyatsız, harekete geçirici)
     const plan = await planAdScript({ product, lang, highlights });
 
-    // 2) gerçek ürün görseli — 4-adımlı öncelik (product-image.js)
+    // 2) gerçek ürün görseli — öncelik sırası (product-image.js).
+    // Görsel yoksa hata vermek yerine text-to-video'ya düşeriz (sistem her zaman üretir).
     const img = await videoImageInput(product);
-    if (!img) {
-      return NextResponse.json({
-        ok: false,
-        error: 'Kaynak görsel bulunamadı',
-        action: 'upload_image',
-        message: 'Önce ürün fotoğrafı yükleyin (Görsel sekmesi) veya Görsel Üret adımını çalıştırın.',
-      }, { status: 422 });
-    }
+    const useT2V = !img;
+    const effectiveModel = useT2V ? 'seedance-2-t2v' : videoModel;
 
-    // 3) tek 10sn i2v klip (gerçek ürün DOLUM YAPARKEN); kanca + fayda sahnelerine bölünür
-    const motion = 'the real machine actively filling product, product flowing into packages, smooth subtle camera push-in then slow pan, medium/wide shot, factory background, premium commercial, realistic';
+    // 3) tek i2v/t2v klip (gerçek ürün DOLUM YAPARKEN); kanca + fayda sahnelerine bölünür
+    const motion = useT2V
+      ? `a premium industrial ${product.category || 'machine'} actively filling product into packages on a factory line, smooth cinematic camera push-in then slow pan, realistic commercial, no text`
+      : 'the real machine actively filling product, product flowing into packages, smooth subtle camera push-in then slow pan, medium/wide shot, factory background, premium commercial, realistic';
     const negative = 'text, letters, numbers, logo, brand name, control panel, screen, monitor, display, UI, buttons, watermark, subtitles, distorted hands, distorted faces, deformed';
-    const clip = await genVideo({ model: videoModel, prompt: motion, negative_prompt: negative, imagePath: img.imagePath, image_url: img.url, aspect_ratio: aspectRatio, resolution: '720p', duration, force: body.force });
+    const clip = await genVideo({ model: effectiveModel, prompt: motion, negative_prompt: negative, imagePath: img?.imagePath, image_url: img?.image_url, aspect_ratio: aspectRatio, resolution: '720p', duration, force: body.force });
     if (!clip.url) throw new Error('Ürün klibi üretilemedi.');
 
     // mode:'raw' → markasız temiz klibi kaydet; brandOverlay ile reklam marka katmanını göm.
@@ -86,12 +84,12 @@ export async function POST(request) {
       const chosen = branded || raw;
       const video = {
         url: chosen.publicPath, type: branded ? 'raw-branded' : 'raw', lang,
-        rawUrl: raw.publicPath, imageSource: img.source, voice: false, music: false,
+        rawUrl: raw.publicPath, imageSource: img?.source || 'text-to-video', voice: false, music: false,
         voiceUrl: null, musicUrl: null,
-        model: videoModel, at: new Date().toISOString(),
+        model: effectiveModel, at: new Date().toISOString(),
       };
       await patchContent(slug, { video, scriptPlan: plan });
-      return NextResponse.json({ ok: true, video, plan, imageSource: img.source, branded: Boolean(branded) });
+      return NextResponse.json({ ok: true, video, plan, imageSource: img?.source || 'text-to-video', branded: Boolean(branded) });
     }
 
     // kanca(0-3sn) + fayda(3-9sn) sahnelerine tek klibi segment olarak ata
@@ -112,6 +110,7 @@ export async function POST(request) {
         const spoken = normalizeForTTS(plan.voiceover, lang, settings.pronounce);
         // lang geçilir → HF per-language voice map kullanılır
         voiceUrl = (await genVoice({ text: spoken, lang, voice: body.voiceName || settings.brandVoice, voiceId: body.voiceName || settings.brandVoice, preset: body.preset || settings.brandPreset, voiceStyle: body.voiceStyle || 'satis', force: body.force })).url;
+        if (voiceUrl) addToLibrary(slug, 'ses', { lang, voiceUrl, url: voiceUrl, text: plan.voiceover, voiceStyle: body.voiceStyle || 'satis', at: new Date().toISOString() });
       } catch (e) { console.warn('TTS atlandı:', e.message); }
     }
     if (wantMusic && !musicUrl) {
@@ -132,13 +131,14 @@ export async function POST(request) {
       url: rendered.publicPath,
       localPath: videoLocalPath || null,
       type: 'rendered', lang, aspectRatio, platform: body.platform || null,
-      durationSec: rendered.durationSec, imageSource: img.source,
-      voice: Boolean(voiceUrl), music: Boolean(musicUrl), model: videoModel,
+      durationSec: rendered.durationSec, imageSource: img?.source || 'text-to-video',
+      voice: Boolean(voiceUrl), music: Boolean(musicUrl), model: effectiveModel,
       voiceUrl, musicUrl,
       at: new Date().toISOString(),
     };
     await patchContent(slug, { video, scriptPlan: plan });
-    return NextResponse.json({ ok: true, video, plan, imageSource: img.source });
+    addToLibrary(slug, 'video', video);
+    return NextResponse.json({ ok: true, video, plan, imageSource: img?.source || 'text-to-video' });
   } catch (err) {
     const detail = err?.body?.detail?.[0];
     return NextResponse.json({ ok: false, error: err.message || 'Üretim başarısız', detail: detail?.msg || null }, { status: 500 });

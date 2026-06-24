@@ -1,40 +1,40 @@
 import { NextResponse } from 'next/server';
-import { listLibrary, deleteFromLibrary } from '@/lib/library';
+import { listAllLibrary, deleteFromLibrary } from '@/lib/library';
+import { readProducts } from '@/lib/products';
 
 export const dynamic = 'force-dynamic';
 
-// Bir ürünün varlık kütüphanesi — üretilen tüm görsel/video/ses/metin sürümleri.
-// Tek kaynak: data/library.json (pipeline'dan bağımsız).
-export async function GET(request) {
+// Genel arşiv — tüm ürünlerin üretilmiş/yüklenmiş tüm içerikleri (görsel/video/ses/metin).
+export async function GET() {
   try {
-    const slug = new URL(request.url).searchParams.get('slug');
-    if (!slug) return NextResponse.json({ ok: false, error: 'slug zorunlu' }, { status: 400 });
-    const entries = listLibrary(slug).map((e) => ({
+    const products = await readProducts();
+    const nameBySlug = {};
+    for (const p of products) nameBySlug[p.slug] = p.marketing?.name_tr || p.name_en || p.slug;
+
+    const entries = listAllLibrary().map((e) => ({
       id: e.id || e.at,
+      slug: e.slug,
+      productName: nameBySlug[e.slug] || e.slug,
       type: e.type || 'gorsel',
-      // Eski AssetLibrary alan adlarıyla uyum (stage)
-      stage: e.type || 'gorsel',
       lang: e.lang || 'tr',
       at: e.at,
       url: e.url || null,
       localPath: e.localPath || null,
       template: e.template || null,
       concept: e.concept || null,
-      imageSource: e.imageSource || null,
-      voiceUrl: e.voiceUrl || null,
-      caption: e.caption || null,
-      text: e.text || null,
       platform: e.platform || null,
+      caption: e.caption || e.text || null,
+      voiceUrl: e.voiceUrl || null,
       model: e.model || null,
       manual: Boolean(e.manual),
     }));
-    return NextResponse.json({ ok: true, assets: entries });
+
+    return NextResponse.json({ ok: true, entries });
   } catch (err) {
     return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
   }
 }
 
-// Bir kütüphane kaydını kalıcı sil
 export async function DELETE(request) {
   try {
     const { id } = await request.json();

@@ -1,11 +1,22 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import PipelinePanel from './PipelinePanel';
 import AssetLibrary from './AssetLibrary';
 import { IMAGE_CONCEPTS } from '@/lib/image-concepts';
 
 const LANG_LABEL = { tr: 'TR', en: 'EN', ar: 'AR', fr: 'FR', ru: 'RU' };
+// Tüm desteklenen diller — içerik/video/reklam her dilde üretilebilir (ürün ayarından bağımsız).
+const ALL_LANGS = ['tr', 'en', 'ar', 'fr', 'ru'];
+
+// Sosyal medya içerik açıları (post-text.js SOCIAL_CONCEPTS ile eş — client-güvenli kopya).
+const SOCIAL_CONCEPTS = [
+  { id: 'tanitim',  label: '📢 Tanıtım' },
+  { id: 'sorun',    label: '🔧 Sorun-Çözüm' },
+  { id: 'sosyal',   label: '⭐ Güven/Referans' },
+  { id: 'egitim',   label: '💡 Eğitici' },
+  { id: 'aciliyet', label: '🔥 Harekete Geçir' },
+  { id: 'sahne',    label: '🏭 Sahne Arkası' },
+];
 
 const TABS = [
   { id: 'brief',  label: '📋 Brief'  },
@@ -69,6 +80,7 @@ export default function UrunDetay({ product, initialContent }) {
   // ── İçerik ──
   const [platforms, setPlatforms] = useState(['instagram']);
   const [lang, setLang] = useState(langs[0]);
+  const [socialConcept, setSocialConcept] = useState('tanitim');
   const [textBusy, setTextBusy] = useState(false);
   const [texts, setTexts] = useState({});
   const [calBusy, setCalBusy] = useState(false);
@@ -84,6 +96,10 @@ export default function UrunDetay({ product, initialContent }) {
   const [videoPlatform, setVideoPlatform] = useState('reels');
   const [videoDuration, setVideoDuration] = useState(15);
   const [voiceStyle, setVoiceStyle] = useState('satis');
+  // ── Manuel medya yükleme (kendi video/görselini yükle) ──
+  const [manualFile, setManualFile] = useState(null);
+  const [manualBusy, setManualBusy] = useState(false);
+  const [manualMsg, setManualMsg] = useState(null);
 
   // ── Reklam copy ──
   const [copyBusy, setCopyBusy] = useState(false);
@@ -110,10 +126,10 @@ export default function UrunDetay({ product, initialContent }) {
       .then((d) => {
         if (!d.ok) return;
         const counts = {};
-        d.assets.filter((a) => a.stage === 'gorsel').forEach((a) => {
-          const t = a.summary || a.note || '';
+        d.assets.filter((a) => a.type === 'gorsel').forEach((a) => {
+          const tag = a.concept || a.template || '';
           IMAGE_CONCEPTS.forEach((c) => {
-            if (t.includes(c.id) || (c.templateId && t.includes(c.templateId))) {
+            if (tag === c.id || (c.templateId && tag === c.templateId)) {
               counts[c.id] = (counts[c.id] || 0) + 1;
             }
           });
@@ -241,7 +257,7 @@ export default function UrunDetay({ product, initialContent }) {
     try {
       const res = await fetch('/api/generate/metin', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: product.slug, lang, platforms, template: 'makine-vitrin' }),
+        body: JSON.stringify({ slug: product.slug, lang, platforms, template: 'makine-vitrin', concept: socialConcept }),
       });
       const d = await res.json();
       if (!d.ok) throw new Error(d.error);
@@ -300,6 +316,24 @@ export default function UrunDetay({ product, initialContent }) {
     finally { setVideoBusy(false); clearInterval(videoTimerRef.current); }
   }
 
+  // ── Manuel medya yükle (kendi hazırladığın video/görsel) ──
+  async function handleManualUpload() {
+    if (!manualFile) return;
+    setManualBusy(true); setManualMsg(null); setError(null);
+    try {
+      const fd = new FormData();
+      fd.append('slug', product.slug);
+      fd.append('file', manualFile);
+      fd.append('lang', videoLang);
+      const res = await fetch('/api/library/upload', { method: 'POST', body: fd });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setManualFile(null);
+      setManualMsg(`Yüklendi ✓ — Varlık Kütüphanesi'nde, oradan Takvime ekleyip paylaşabilirsin.`);
+    } catch (e) { setError('Yükleme hatası: ' + e.message); }
+    finally { setManualBusy(false); }
+  }
+
   // ── Reklam copy ──
   const variant = draft?.variants?.find((v) => v.id === activeVariant) || draft?.variants?.[0];
   const langData = variant?.by_lang?.[activeLang];
@@ -318,7 +352,7 @@ export default function UrunDetay({ product, initialContent }) {
     try {
       const res = await fetch('/api/generate/copy', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: product.slug, languages: langs }),
+        body: JSON.stringify({ slug: product.slug, languages: ALL_LANGS }),
       });
       const d = await res.json();
       if (!d.ok) throw new Error(d.error);
@@ -603,11 +637,24 @@ export default function UrunDetay({ product, initialContent }) {
             {platforms.length === 0 && <p className="text-xs text-red mt-1">En az bir platform seçin.</p>}
           </div>
 
+          {/* İçerik açısı / konsept */}
+          <div>
+            <label className="label mb-2">İçerik açısı</label>
+            <div className="flex flex-wrap gap-2">
+              {SOCIAL_CONCEPTS.map((c) => (
+                <button key={c.id} onClick={() => setSocialConcept(c.id)}
+                  className={`pill ${socialConcept === c.id ? 'pill-active' : 'pill-muted'}`}>
+                  {c.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex flex-wrap items-end gap-3">
             <div>
               <label className="label mb-1">Dil</label>
-              <div className="flex gap-1.5">
-                {langs.map((l) => (
+              <div className="flex flex-wrap gap-1.5">
+                {ALL_LANGS.map((l) => (
                   <button key={l} onClick={() => setLang(l)}
                     className={`pill ${l === lang ? 'pill-active' : 'pill-muted'}`}>
                     {LANG_LABEL[l] || l}
@@ -633,7 +680,8 @@ export default function UrunDetay({ product, initialContent }) {
                       <p className="text-xs text-red">{pt.error}</p>
                     ) : (
                       <>
-                        <textarea className="textarea text-sm" rows={4} defaultValue={pt.caption} />
+                        <textarea key={`${platform}-${lang}-${pt.caption?.slice(0, 12)}`}
+                          className="textarea text-sm leading-relaxed" rows={8} defaultValue={pt.caption} />
                         {pt.hashtags?.length > 0 && (
                           <div className="mt-2 text-[11px] text-slate-500 leading-relaxed">{pt.hashtags.join(' ')}</div>
                         )}
@@ -699,9 +747,9 @@ export default function UrunDetay({ product, initialContent }) {
 
           {/* Dil */}
           <div>
-            <label className="label mb-1">Dil</label>
-            <div className="flex gap-1.5">
-              {langs.map((l) => (
+            <label className="label mb-1">Dil <span className="font-normal text-slate-400">(seslendirme bu dilde)</span></label>
+            <div className="flex flex-wrap gap-1.5">
+              {ALL_LANGS.map((l) => (
                 <button key={l} onClick={() => setVideoLang(l)}
                   className={`pill ${l === videoLang ? 'pill-active' : 'pill-muted'}`}>
                   {LANG_LABEL[l] || l}
@@ -757,6 +805,22 @@ export default function UrunDetay({ product, initialContent }) {
               </div>
             </div>
           )}
+
+          {/* Kendi medyanı yükle */}
+          <div className="border-t border-line pt-4 mt-2">
+            <h3 className="font-semibold text-sm mb-1">📤 Kendi video/görselini yükle</h3>
+            <p className="text-xs text-slate-400 mb-3">
+              Dışarıda hazırladığın video veya görseli yükle — Varlık Kütüphanesi'ne kaydedilir, oradan Takvime ekleyip onayla paylaşabilirsin.
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <input type="file" accept="image/*,video/mp4,video/quicktime,video/webm" className="text-sm"
+                onChange={(e) => setManualFile(e.target.files?.[0] || null)} />
+              <button className="btn btn-ghost text-sm" onClick={handleManualUpload} disabled={manualBusy || !manualFile}>
+                {manualBusy ? '⏳ Yükleniyor…' : '⬆ Yükle ve Kütüphaneye Ekle'}
+              </button>
+            </div>
+            {manualMsg && <p className="text-xs text-ok mt-2">{manualMsg}</p>}
+          </div>
         </section>
       )}
 
@@ -799,8 +863,8 @@ export default function UrunDetay({ product, initialContent }) {
                   </button>
                 ))}
               </div>
-              <div className="flex gap-1.5">
-                {(draft.languages || langs).map((l) => (
+              <div className="flex flex-wrap gap-1.5">
+                {(draft.languages?.length ? draft.languages : ALL_LANGS).map((l) => (
                   <button key={l} onClick={() => setActiveLang(l)}
                     className={`pill ${l === activeLang ? 'pill-active' : 'pill-muted'}`}>
                     {LANG_LABEL[l] || l}
@@ -839,16 +903,6 @@ export default function UrunDetay({ product, initialContent }) {
 
       {/* Varlık Kütüphanesi — her sekmede erişilebilir */}
       <AssetLibrary slug={product.slug} />
-
-      {/* Pipeline — daraltılmış gelişmiş bölüm */}
-      <details className="mt-4">
-        <summary className="cursor-pointer card p-3 text-sm text-slate-500 select-none">
-          ⚙ Teknik Pipeline (Gelişmiş — Metin/Ses/Altyazı/Video aşama sürümleri)
-        </summary>
-        <div className="mt-2">
-          <PipelinePanel slug={product.slug} languages={langs} />
-        </div>
-      </details>
     </div>
   );
 }

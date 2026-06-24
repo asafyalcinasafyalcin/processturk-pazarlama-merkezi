@@ -25,7 +25,7 @@ export default async function KampanyalarPage() {
         Meta Click-to-WhatsApp kampanyalarını kur. Gerçek yayın için META token + Asaf onayı gerekir — hiçbir şey kendiliğinden harcamaz.
       </p>
       <div className="card p-3 border-navy/20 bg-navy/5 text-sm text-navy mb-6">
-        💡 <b>İş akışı:</b> Reklam metinlerini önce ürün sayfasında <b>Kopya</b> sekmesinde üretin, ardından buradan Meta'ya kampanya kurun.
+        💡 <b>İş akışı:</b> Ürün seç → reklam modülünün <b>hazırladığı creative paketini</b> (🎨 Creative) gör → hedeflemeyi ayarla → Meta'ya <b>duraklatılmış</b> kur → yayına aldığında <b>📊 Performans</b> bölümünden o ürünün sonuçlarını çek. Reklam metinleri ürün sayfasındaki <b>Kopya</b> sekmesinde üretilir.
       </div>
       <KampanyalarClient products={list} />
     </div>

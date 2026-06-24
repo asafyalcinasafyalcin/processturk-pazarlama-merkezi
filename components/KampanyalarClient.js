@@ -217,7 +217,7 @@ export default function KampanyalarClient({ products }) {
           <TargetingSection key={`t-${slug}`} slug={slug} />
           <CreativeSection key={`c-${slug}`} slug={slug} />
           <SetupSection key={`s-${slug}`} product={selected} />
-          <ReportSection />
+          <ReportSection key={`r-${slug}`} slug={slug} productName={selected.name} />
         </>
       )}
     </div>
@@ -505,11 +505,12 @@ function SetupSection({ product }) {
 }
 
 /* ---------------- 📊 Rapor ---------------- */
-function ReportSection() {
+function ReportSection({ slug, productName }) {
   const [preset, setPreset] = useState('last_7d');
   const [busy, setBusy] = useState(false);
   const [data, setData] = useState(null);
   const [err, setErr] = useState(null);
+  const [onlyThis, setOnlyThis] = useState(true);
 
   async function run() {
     setBusy(true); setErr(null); setData(null);
@@ -525,9 +526,21 @@ function ReportSection() {
     finally { setBusy(false); }
   }
 
+  // Bu ürünün reklamlarını ad adından eşleştir (slug veya ürün adı tokenları)
+  function matchesProduct(adName) {
+    if (!adName) return false;
+    const hay = adName.toLowerCase();
+    if (slug && hay.includes(slug.toLowerCase())) return true;
+    const tokens = (productName || '').toLowerCase().split(/\s+/).filter((t) => t.length > 3);
+    return tokens.some((t) => hay.includes(t));
+  }
+
+  const allRows = data?.summary || [];
+  const rows = onlyThis ? allRows.filter((r) => matchesProduct(r.ad)) : allRows;
+
   return (
     <section className="card p-5 space-y-3">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-2">
         <h2 className="font-head font-bold">📊 Performans Raporu</h2>
         <div className="flex items-center gap-2">
           <select className="select w-32" value={preset} onChange={(e) => setPreset(e.target.value)}>
@@ -538,16 +551,25 @@ function ReportSection() {
           <button className="btn btn-primary text-sm" onClick={run} disabled={busy}>{busy ? 'Çekiliyor…' : 'Rapor çek'}</button>
         </div>
       </div>
-      <p className="text-xs text-slate-400">READ-ONLY Meta Insights. PAUSED kampanyada veri boş gelir (normal); yayında dolar.</p>
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <p className="text-xs text-slate-400">READ-ONLY Meta Insights. PAUSED kampanyada veri boş gelir (normal); yayında dolar.</p>
+        <label className="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer">
+          <input type="checkbox" className="accent-red" checked={onlyThis} onChange={(e) => setOnlyThis(e.target.checked)} />
+          Sadece bu ürün ({productName})
+        </label>
+      </div>
       {err && <div className="text-red text-sm">⚠ {err}</div>}
-      {data && data.summary?.length === 0 && <p className="text-sm text-slate-500">Veri yok — kampanyalar henüz yayında değil. ({data.total_rows} arşiv satırı)</p>}
-      {data && data.summary?.length > 0 && (
+      {data && allRows.length === 0 && <p className="text-sm text-slate-500">Veri yok — kampanyalar henüz yayında değil. ({data.total_rows} arşiv satırı)</p>}
+      {data && allRows.length > 0 && rows.length === 0 && (
+        <p className="text-sm text-slate-500">Bu ürün için yayında reklam verisi yok. <button className="underline" onClick={() => setOnlyThis(false)}>Tümünü göster</button></p>
+      )}
+      {rows.length > 0 && (
         <table className="w-full text-xs">
           <thead><tr className="text-slate-400 text-left border-b border-line">
             <th className="py-1">Reklam</th><th className="text-right">Harcama</th><th className="text-right">Gösterim</th><th className="text-right">Sohbet</th><th className="text-right">CPL</th>
           </tr></thead>
           <tbody>
-            {data.summary.map((r) => (
+            {rows.map((r) => (
               <tr key={r.ad} className="border-b border-line/50">
                 <td className="py-1 truncate max-w-[200px]">{r.ad}</td>
                 <td className="text-right num">{r.spend}</td>

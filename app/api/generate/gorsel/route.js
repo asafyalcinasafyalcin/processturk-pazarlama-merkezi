@@ -27,7 +27,7 @@ export const maxDuration = 120;
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { slug, template: templateId = 'makine-vitrin', lang = 'tr', platforms = ['instagram'] } = body;
+    const { slug, template: templateId = 'makine-vitrin', lang = 'tr', platforms = ['instagram'], concept = null } = body;
 
     if (!slug) return NextResponse.json({ ok: false, error: 'slug zorunlu' }, { status: 400 });
 
@@ -70,10 +70,10 @@ export async function POST(request) {
 
     // Img2img: Asaf'ın yüklediği makine fotoğrafı varsa bunu kaynak olarak kullan.
     // Makine yapısı/detayları korunur, yalnızca arka plan/ışık değişir.
+    // NOT: yerel dosya yolu verilir; gen.js bunu fal.storage'a yükleyip public URL'e çevirir
+    // (HF native upload 403/"Forbidden" sorununu baypas eder, fal fallback'i de besler).
     const uploadedBase = join(process.cwd(), 'public', 'products', slug, 'base.png');
     const hasUploadedImage = existsSync(uploadedBase);
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:4181';
-    const img2imgUrl = hasUploadedImage ? `${siteUrl}/products/${slug}/base.png` : undefined;
 
     const result = await genImage({
       prompt,
@@ -84,7 +84,7 @@ export async function POST(request) {
       force: body.force,
       ...(maskotSoulId && { soul_id: maskotSoulId }),
       ...(maskotReferenceImage && !hasUploadedImage && { reference_image: maskotReferenceImage }),
-      ...(hasUploadedImage && !maskotSoulId && { image_url: img2imgUrl, reference_image: uploadedBase }),
+      ...(hasUploadedImage && !maskotSoulId && { reference_image: uploadedBase }),
     });
 
     const cdnUrl = result.url;
@@ -99,6 +99,7 @@ export async function POST(request) {
       url: cdnUrl,
       localPath: localPath || null,
       template: templateId,
+      concept,
       lang,
       platforms,
       format: fmt,
