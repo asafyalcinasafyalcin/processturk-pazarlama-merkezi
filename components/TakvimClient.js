@@ -36,10 +36,8 @@ function ContentModal({ item, names, busy, onApprove, onPublish, onRemove, onClo
               </a>
             )}
             {item.videoUrl && (
-              <a href={item.videoUrl} target="_blank" rel="noreferrer"
-                className="h-24 w-24 rounded border border-line bg-black/10 flex items-center justify-center text-red text-2xl">
-                🎬
-              </a>
+              <video src={item.videoUrl} controls preload="metadata" playsInline
+                className="h-24 w-auto rounded object-contain border border-line bg-black" />
             )}
           </div>
         )}
