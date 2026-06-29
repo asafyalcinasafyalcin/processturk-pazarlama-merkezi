@@ -70,6 +70,13 @@ docker run -d \
   --label "traefik.http.routers.pazarlama-https.tls=true" \
   --label "traefik.http.routers.pazarlama-https.tls.certresolver=letsencrypt" \
   --label "traefik.http.services.pazarlama-https.loadbalancer.server.port=4181" \
+  --label "traefik.http.routers.pazarlama-media.entryPoints=https" \
+  --label "traefik.http.routers.pazarlama-media.rule=($HOST_RULE) && PathPrefix(\`/api/media\`)" \
+  --label "traefik.http.routers.pazarlama-media.middlewares=pazarlama-gzip" \
+  --label "traefik.http.routers.pazarlama-media.service=pazarlama-https" \
+  --label "traefik.http.routers.pazarlama-media.tls=true" \
+  --label "traefik.http.routers.pazarlama-media.tls.certresolver=letsencrypt" \
+  --label "traefik.http.routers.pazarlama-media.priority=1000" \
   "$IMAGE_NAME" >/dev/null
 
 attempt=1
