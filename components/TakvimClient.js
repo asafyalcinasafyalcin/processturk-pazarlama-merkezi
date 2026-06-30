@@ -138,7 +138,16 @@ export default function TakvimClient({ initialItems, names }) {
                 <div key={it.id}
                   className="card p-4 cursor-pointer hover:shadow-md transition-shadow"
                   onClick={() => setSelected(it)}>
-                  <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="flex items-start gap-3">
+                    {it.videoUrl ? (
+                      <video src={it.videoUrl} muted playsInline preload="metadata"
+                        className="w-16 h-16 rounded object-cover border border-line bg-black shrink-0" />
+                    ) : it.imageUrl ? (
+                      <img src={it.imageUrl} alt="" loading="lazy"
+                        className="w-16 h-16 rounded object-cover border border-line shrink-0" />
+                    ) : (
+                      <div className="w-16 h-16 rounded border border-line bg-slate-100 grid place-items-center text-slate-300 text-xs shrink-0">—</div>
+                    )}
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <span className="pill pill-muted">{PLATFORM_LABEL[it.platform] || it.platform}</span>
