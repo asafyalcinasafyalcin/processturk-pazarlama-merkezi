@@ -6,6 +6,7 @@ import AssetLibrary from './AssetLibrary';
 import WorkflowBar from './WorkflowBar';
 import { IMAGE_CONCEPTS } from '@/lib/image-concepts';
 import { tierSummary, DEFAULT_TIER } from '@/lib/quality-tiers';
+import { websiteBriefSource } from '@/lib/website-brief';
 import { useOnayModal } from './OnayModal';
 
 // Kalite tier'ları (client-güvenli; quality-tiers.js saf JS). Maliyet farkı UI'da görünür.
@@ -256,6 +257,24 @@ export default function UrunDetay({ product, initialContent }) {
       setImportText('');
       setImportFile(null);
       setBriefMsg('AI brief doldurdu — gözden geçir ve kaydet ✓');
+    } catch (e) { setBriefMsg('⚠ ' + e.message); }
+    finally { setImportBusy(false); }
+  }
+
+  // ── Brief'i web sitesi verisinden üret (website-sync'in getirdiği blok) ──
+  async function handleBriefFromWebsite() {
+    const source = websiteBriefSource(product);
+    if (!source) { setBriefMsg('⚠ Bu ürün web sitesine bağlı değil — önce Siteyle Eşitle.'); return; }
+    setImportBusy(true); setBriefMsg(null);
+    try {
+      const fd = new FormData();
+      fd.append('slug', product.slug);
+      fd.append('text', source);
+      const res = await fetch('/api/brief/import', { method: 'POST', body: fd });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setBrief(d.brief);
+      setBriefMsg('Site verisinden brief üretildi — gözden geçir ve kaydet ✓');
     } catch (e) { setBriefMsg('⚠ ' + e.message); }
     finally { setImportBusy(false); }
   }
@@ -719,6 +738,23 @@ export default function UrunDetay({ product, initialContent }) {
               onChange={(e) => setBrief((b) => ({ ...b, image_notes: e.target.value }))}
               placeholder="Ör: Sarı granüller, beyaz poşetler, sanayi ortamı" />
           </div>
+
+          {/* Web sitesi verisinden otomatik brief */}
+          {product.website && (
+            <div className="flex flex-wrap items-center gap-3 border border-line rounded-xl px-4 py-3">
+              <button
+                className="btn btn-ghost text-sm"
+                onClick={handleBriefFromWebsite}
+                disabled={importBusy}
+                title="Sitedeki ad, özet, teknik özellik ve öne çıkanlardan AI brief üretir"
+              >
+                {importBusy ? '⏳ AI analiz ediyor…' : '🌐 Site Verisinden Doldur'}
+              </button>
+              <a href={product.website.url} target="_blank" rel="noreferrer" className="text-xs text-slate-500 underline">
+                sitedeki ürün sayfası ↗
+              </a>
+            </div>
+          )}
 
           {/* PDF / Metin import */}
           <details className="border border-line rounded-xl">

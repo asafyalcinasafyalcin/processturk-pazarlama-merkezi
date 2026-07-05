@@ -26,12 +26,26 @@ function PageHeader({ count, siteCount, lastSyncAt }) {
   );
 }
 
+// Kart görseli: panelde üretilen/eklenen ana görsel → yoksa web sitesi görseli.
+function cardImage(p, content) {
+  return content?.gorsel?.localPath || content?.gorsel?.url || p.website?.image?.servedUrl || null;
+}
+
 function ProductCard({ p, content }) {
   const m = p.marketing || {};
   const hasCopy = Boolean(content?.copy);
   const hasVideo = Boolean(content?.video?.url);
+  const img = cardImage(p, content);
   return (
     <Link href={`/urun/${p.slug}`} className="card card-hover p-5 flex flex-col">
+      {img ? (
+        <div className="-mx-5 -mt-5 mb-4 h-40 overflow-hidden rounded-t-[1.05rem] bg-white">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={img} alt={m.name_tr || p.name_en} className="w-full h-full object-contain" loading="lazy" />
+        </div>
+      ) : (
+        <div className="-mx-5 -mt-5 mb-4 h-40 rounded-t-[1.05rem] bg-slate-100 flex items-center justify-center text-3xl text-slate-300">📦</div>
+      )}
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="font-head font-bold text-base leading-tight">{m.name_tr || p.name_en}</h3>

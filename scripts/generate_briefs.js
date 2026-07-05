@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url';
 // Marka motoru (env BRAND_ID) — brief prompt'undaki marka adı/bağlamı buradan gelir;
 // BRAND_ID yoksa ProcessTürk varsayılanı (canlı davranış korunur).
 import { BRAND } from '../lib/brand.js';
+import { websiteBriefSource } from '../lib/website-brief.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -80,6 +81,9 @@ async function generateBrief(product, kbExcerpt) {
     image_notes: 'Görsel üretimi için ürünü/ortamı tanımlayan not (renk, materyal, kullanım ortamı)',
   });
 
+  // Web sitesine bağlı üründe sitenin zengin verisi (özet, specs, öne çıkanlar) da prompt'a girer.
+  const siteSource = websiteBriefSource(product);
+
   const prompt = [
     `ÜRÜN: ${m.name_tr || product.name_en} (EN: ${product.name_en})`,
     `Kategori: ${product.category}`,
@@ -87,6 +91,7 @@ async function generateBrief(product, kbExcerpt) {
     m.highlights?.length ? `Mevcut highlights: ${m.highlights.join(', ')}` : '',
     m.audience ? `Hedef kitle: ${m.audience}` : '',
     m.promise ? `Ürün vaadi: ${m.promise}` : '',
+    siteSource ? `\n--- Web Sitesi Ürün Verisi (processturk.com) ---\n${siteSource.slice(0, 2000)}` : '',
     kbExcerpt ? `\n--- İlgili Şirket Bilgisi ---\n${kbExcerpt.slice(0, 800)}` : '',
     `\nŞu JSON şeklini döndür:\n${schema}`,
   ].filter(Boolean).join('\n');

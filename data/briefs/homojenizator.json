@@ -1,0 +1,30 @@
+{
+  "slug": "homojenizator",
+  "approved": false,
+  "highlights": [
+    "Yüksek basınçlı sistem ile etkili yağ globülü parçalama",
+    "Geniş kapasite aralığı: 500 – 10.000 L/h",
+    "Tam otomatik kontrol ile kolay kullanım",
+    "AISI 304 paslanmaz çelik gövde",
+    "150 – 250 bar basınç aralığı"
+  ],
+  "target_industries": [
+    "Süt ve süt ürünleri üretimi",
+    "İçecek endüstrisi",
+    "Gıda işleme tesisleri"
+  ],
+  "ideal_customer": "Süt ve sıvı gıda üreticileri için ideal bir çözümdür.",
+  "pain_points": [
+    "Yağ globüllerinin homojen dağılımı sağlanamaması",
+    "Üretim kapasitesinin yetersiz kalması",
+    "Elle kontrol edilen sistemlerin zorluğu"
+  ],
+  "dont_say": [
+    "Avrupa menşeli",
+    "ithal",
+    "en ucuz"
+  ],
+  "image_notes": "Paslanmaz çelikten yapılmış, endüstriyel bir ortamda çalışan homojenizatörün görseli",
+  "last_updated": "2026-07-05T11:27:34.416Z",
+  "_generated_by": "brief/import / gpt-4o"
+}
