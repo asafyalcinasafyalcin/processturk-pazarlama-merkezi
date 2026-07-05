@@ -44,7 +44,10 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging"
+          "en": "Filling & Packaging",
+          "ar": "التعبئة والتغليف",
+          "fr": "Remplissage & Emballage",
+          "ru": "Наполнение и Упаковка"
         }
       },
       "capacity": "600 – 1000 adet/saat",
@@ -180,7 +183,7 @@
         "servedUrl": "/api/media/granul-dolum-gorsel-1783208582564-wyea.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.916Z",
+      "syncedAt": "2026-07-05T11:45:21.898Z",
       "removedFromSite": null
     }
   },
@@ -267,7 +270,10 @@
         "slug": "etiketleme",
         "name": {
           "tr": "Etiketleme",
-          "en": "Labeling"
+          "en": "Labeling",
+          "ar": "التوسيم",
+          "fr": "Étiquetage",
+          "ru": "Маркировка"
         }
       },
       "capacity": "300 – 600 adet/saat",
@@ -348,7 +354,7 @@
         "servedUrl": "/api/media/manuel-etiketleme-gorsel-1783208582707-17pu.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.917Z",
+      "syncedAt": "2026-07-05T11:45:21.902Z",
       "removedFromSite": null
     }
   },
@@ -397,7 +403,10 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging"
+          "en": "Filling & Packaging",
+          "ar": "التعبئة والتغليف",
+          "fr": "Remplissage & Emballage",
+          "ru": "Наполнение и Упаковка"
         }
       },
       "capacity": "500 – 2.500 adet/saat",
@@ -586,7 +595,7 @@
           "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1783208582647-y2cf.jpg"
         }
       ],
-      "syncedAt": "2026-07-04T23:45:32.916Z",
+      "syncedAt": "2026-07-05T11:45:21.900Z",
       "removedFromSite": null
     }
   },
@@ -635,7 +644,10 @@
         "slug": "etiketleme",
         "name": {
           "tr": "Etiketleme",
-          "en": "Labeling"
+          "en": "Labeling",
+          "ar": "التوسيم",
+          "fr": "Étiquetage",
+          "ru": "Маркировка"
         }
       },
       "capacity": "10 – 25 adet/dak",
@@ -716,7 +728,7 @@
         "servedUrl": "/api/media/etiketleme-yari-gorsel-1783208637895-ok8k.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.917Z",
+      "syncedAt": "2026-07-05T11:45:21.903Z",
       "removedFromSite": null
     }
   },
@@ -765,7 +777,10 @@
         "slug": "etiketleme",
         "name": {
           "tr": "Etiketleme",
-          "en": "Labeling"
+          "en": "Labeling",
+          "ar": "التوسيم",
+          "fr": "Étiquetage",
+          "ru": "Маркировка"
         }
       },
       "capacity": "25 – 40 adet/dak",
@@ -922,7 +937,7 @@
           "servedUrl": "/api/media/etiketleme-oto-gorsel-1783208637913-iftu.jpg"
         }
       ],
-      "syncedAt": "2026-07-04T23:45:32.918Z",
+      "syncedAt": "2026-07-05T11:45:21.903Z",
       "removedFromSite": null
     }
   },
@@ -1009,7 +1024,10 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging"
+          "en": "Filling & Packaging",
+          "ar": "التعبئة والتغليف",
+          "fr": "Remplissage & Emballage",
+          "ru": "Наполнение и Упаковка"
         }
       },
       "capacity": "500 – 1.500 adet/saat",
@@ -1154,7 +1172,7 @@
         "servedUrl": "/api/media/tek-hat-kapatma-gorsel-1783208637929-zy0f.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.919Z",
+      "syncedAt": "2026-07-05T11:45:21.905Z",
       "removedFromSite": null
     }
   },
@@ -1203,7 +1221,10 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging"
+          "en": "Filling & Packaging",
+          "ar": "التعبئة والتغليف",
+          "fr": "Remplissage & Emballage",
+          "ru": "Наполнение и Упаковка"
         }
       },
       "capacity": "1000 – 2400 adet/saat",
@@ -1284,7 +1305,7 @@
         "servedUrl": "/api/media/iki-hat-kapatma-gorsel-1783208637945-vh5z.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.920Z",
+      "syncedAt": "2026-07-05T11:45:21.906Z",
       "removedFromSite": null
     }
   },
@@ -1333,7 +1354,10 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging"
+          "en": "Filling & Packaging",
+          "ar": "التعبئة والتغليف",
+          "fr": "Remplissage & Emballage",
+          "ru": "Наполнение и Упаковка"
         }
       },
       "capacity": "1500 – 3000 kutu/saat",
@@ -1414,7 +1438,7 @@
         "servedUrl": "/api/media/can-kapatma-oto-gorsel-1783208637960-7yh1.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.920Z",
+      "syncedAt": "2026-07-05T11:45:21.908Z",
       "removedFromSite": null
     }
   },
@@ -1466,11 +1490,17 @@
       "url": "http://127.0.0.1:4192/tr/hatlar/sos-uretim-hatti",
       "name": {
         "tr": "Sos Üretim Hattı — SAUCE Serisi",
-        "en": "Sauce Production Line — SAUCE Series"
+        "en": "Sauce Production Line — SAUCE Series",
+        "ar": "خط إنتاج الصلصة — سلسلة SAUCE",
+        "fr": "Ligne de production de sauce — Série SAUCE",
+        "ru": "Линия по производству соусов — Серия SAUCE"
       },
       "summary": {
         "tr": "Üç kapasite seçeneğiyle (500 / 1.000 / 1.500 kg/saat) komple sos hazırlama platformu; opsiyonel dolum-paketleme hattıyla rafa hazır üretim.",
-        "en": "Complete sauce preparation platform with three capacity options (500 / 1,000 / 1,500 kg/h); shelf-ready production with the optional filling & packaging line."
+        "en": "Complete sauce preparation platform with three capacity options (500 / 1,000 / 1,500 kg/h); shelf-ready production with the optional filling & packaging line.",
+        "ar": "منصة تحضير الصلصة الكاملة مع ثلاثة خيارات سعة (500 / 1000 / 1500 كجم / ساعة)؛ إنتاج جاهز للرف مع خط تعبئة وتغليف اختياري.",
+        "fr": "Plateforme complète de préparation de sauce avec trois options de capacité (500 / 1 000 / 1 500 kg/heure) ; production prête à être mise en rayon avec ligne de remplissage-emballage en option.",
+        "ru": "Комплексная платформа для приготовления соусов с тремя вариантами мощности (500 / 1000 / 1500 кг/час); готовое к продаже производство с опциональной линией для заполнения и упаковки."
       },
       "category": {
         "slug": "gida-hatlari",
@@ -1490,108 +1520,188 @@
         {
           "k": {
             "tr": "Soğuk Sos",
-            "en": "Cold sauce"
+            "en": "Cold sauce",
+            "ar": "صلصة باردة",
+            "fr": "Sauce froide",
+            "ru": "Холодный соус"
           },
           "v": {
             "tr": "500 – 1.500 kg/saat (kapasiteye göre)",
-            "en": "500 – 1,500 kg/h (by capacity)"
+            "en": "500 – 1,500 kg/h (by capacity)",
+            "ar": "500 – 1500 كجم / ساعة (حسب السعة)",
+            "fr": "500 – 1 500 kg/heure (selon la capacité)",
+            "ru": "500 – 1500 кг/час (в зависимости от мощности)"
           }
         },
         {
           "k": {
             "tr": "Sıcak Sos",
-            "en": "Hot sauce"
+            "en": "Hot sauce",
+            "ar": "صلصة حارة",
+            "fr": "Sauce chaude",
+            "ru": "Горячий соус"
           },
           "v": {
             "tr": "300 – 1.000 kg/saat (kapasiteye göre)",
-            "en": "300 – 1,000 kg/h (by capacity)"
+            "en": "300 – 1,000 kg/h (by capacity)",
+            "ar": "300 – 1000 كجم / ساعة (حسب السعة)",
+            "fr": "300 – 1 000 kg/heure (selon la capacité)",
+            "ru": "300 – 1000 кг/час (в зависимости от мощности)"
           }
         },
         {
           "k": {
             "tr": "Platform Tankı",
-            "en": "Platform tank"
+            "en": "Platform tank",
+            "ar": "خزان المنصة",
+            "fr": "Réservoir de plateforme",
+            "ru": "Резервуар платформы"
           },
           "v": {
             "tr": "500 / 700 / 1000 L",
-            "en": "500 / 700 / 1000 L"
+            "en": "500 / 700 / 1000 L",
+            "ar": "500 / 700 / 1000 ل",
+            "fr": "500 / 700 / 1000 L",
+            "ru": "500 / 700 / 1000 Л"
           }
         },
         {
           "k": {
             "tr": "Kurulu Güç (platform)",
-            "en": "Installed power (platform)"
+            "en": "Installed power (platform)",
+            "ar": "الطاقة المركبة (المنصة)",
+            "fr": "Puissance installée (plateforme)",
+            "ru": "Установленная мощность (платформа)"
           },
           "v": {
             "tr": "~25 – 30 kW",
-            "en": "~25 – 30 kW"
+            "en": "~25 – 30 kW",
+            "ar": "~25 – 30 كيلو واط",
+            "fr": "~25 – 30 kW",
+            "ru": "~25 – 30 кВт"
           }
         },
         {
           "k": {
             "tr": "Malzeme",
-            "en": "Material"
+            "en": "Material",
+            "ar": "المادة",
+            "fr": "Matériau",
+            "ru": "Материал"
           },
           "v": {
             "tr": "Komple AISI 304",
-            "en": "Complete AISI 304"
+            "en": "Complete AISI 304",
+            "ar": "كامل AISI 304",
+            "fr": "Complet AISI 304",
+            "ru": "Полный AISI 304"
           }
         },
         {
           "k": {
             "tr": "Üretim Süresi",
-            "en": "Manufacturing time"
+            "en": "Manufacturing time",
+            "ar": "مدة الإنتاج",
+            "fr": "Temps de production",
+            "ru": "Время производства"
           },
           "v": {
             "tr": "120 – 150 gün",
-            "en": "120 – 150 days"
+            "en": "120 – 150 days",
+            "ar": "120 – 150 يوم",
+            "fr": "120 – 150 jours",
+            "ru": "120 – 150 дней"
           }
         },
         {
           "k": {
             "tr": "Teslim Şekli",
-            "en": "Delivery term"
+            "en": "Delivery term",
+            "ar": "طريقة التسليم",
+            "fr": "Méthode de livraison",
+            "ru": "Способ доставки"
           },
           "v": {
             "tr": "EXW (fabrika teslim)",
-            "en": "EXW (ex-works)"
+            "en": "EXW (ex-works)",
+            "ar": "EXW (تسليم المصنع)",
+            "fr": "EXW (Ex Works)",
+            "ru": "EXW (с завода)"
           }
         },
         {
           "k": {
             "tr": "Garanti",
-            "en": "Warranty"
+            "en": "Warranty",
+            "ar": "ضمان",
+            "fr": "Garantie",
+            "ru": "Гарантия"
           },
           "v": {
             "tr": "1 yıl",
-            "en": "1 year"
+            "en": "1 year",
+            "ar": "سنة واحدة",
+            "fr": "1 an",
+            "ru": "1 год"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Sos hazırlama platformu (kapasiteye göre 500 / 700 / 1000 L tank)"
+          "tr": "Sos hazırlama platformu (kapasiteye göre 500 / 700 / 1000 L tank)",
+          "en": "Sauce preparation platform (capacity 500 / 700 / 1000 L tank)",
+          "ar": "منصة تحضير الصلصة (سعة 500 / 700 / 1000 لتر خزان)",
+          "fr": "Plateforme de préparation de sauce (capacité 500 / 700 / 1000 L réservoir)",
+          "ru": "Платформа для приготовления соуса (емкость 500 / 700 / 1000 л бак)"
         },
         {
-          "tr": "Lobe pompalı transfer tankı (1 – 2 m³)"
+          "tr": "Lobe pompalı transfer tankı (1 – 2 m³)",
+          "en": "Lobe pump transfer tank (1 – 2 m³)",
+          "ar": "خزان نقل بمضخة لobe (1 – 2 م³)",
+          "fr": "Réservoir de transfert à pompe à lobes (1 – 2 m³)",
+          "ru": "Резервуар для перекачивания с лопастной насосом (1 – 2 м³)"
         },
         {
-          "tr": "CIP temizlik ünitesi (500 L × 3 tank)"
+          "tr": "CIP temizlik ünitesi (500 L × 3 tank)",
+          "en": "CIP cleaning unit (500 L × 3 tanks)",
+          "ar": "وحدة تنظيف CIP (500 لتر × 3 خزانات)",
+          "fr": "Unité de nettoyage CIP (500 L × 3 réservoirs)",
+          "ru": "Установка CIP для очистки (500 л × 3 резервуара)"
         },
         {
-          "tr": "Chiller soğutma ünitesi"
+          "tr": "Chiller soğutma ünitesi",
+          "en": "Chiller cooling unit",
+          "ar": "وحدة تبريد الشيلر",
+          "fr": "Unité de refroidissement par chiller",
+          "ru": "Охлаждающий агрегат чиллера"
         },
         {
-          "tr": "Buhar kazanı (dizel/doğalgaz)"
+          "tr": "Buhar kazanı (dizel/doğalgaz)",
+          "en": "Steam boiler (diesel/natural gas)",
+          "ar": "غلاية بخارية (ديزل/غاز طبيعي)",
+          "fr": "Chaudière à vapeur (diesel/gaz naturel)",
+          "ru": "Паровой котел (дизель/природный газ)"
         },
         {
-          "tr": "Komple paslanmaz proses borulaması (boru, vana, fittings + işçilik)"
+          "tr": "Komple paslanmaz proses borulaması (boru, vana, fittings + işçilik)",
+          "en": "Complete stainless steel process piping (pipe, valve, fittings + labor)",
+          "ar": "أنابيب عملية كاملة من الفولاذ المقاوم للصدأ (أنبوب، صمام، ملحقات + عمالة)",
+          "fr": "Piping de process en acier inoxydable complet (tuyau, vanne, raccords + main-d'œuvre)",
+          "ru": "Полная система трубопроводов из нержавеющей стали (труба, клапан, фитинги + работа)"
         },
         {
-          "tr": "Elektrik panosu ve otomasyon sistemi"
+          "tr": "Elektrik panosu ve otomasyon sistemi",
+          "en": "Electrical panel and automation system",
+          "ar": "لوحة كهربائية ونظام أتمتة",
+          "fr": "Panneau électrique et système d'automatisation",
+          "ru": "Электрическая панель и система автоматизации"
         },
         {
-          "tr": "Su ile test ve devreye alma"
+          "tr": "Su ile test ve devreye alma",
+          "en": "Testing and commissioning with water",
+          "ar": "الاختبار والتشغيل بالماء",
+          "fr": "Test et mise en service avec de l'eau",
+          "ru": "Тестирование и ввод в эксплуатацию с водой"
         }
       ],
       "badge": null,
@@ -1604,7 +1714,10 @@
         {
           "label": {
             "tr": "500 kg/saat",
-            "en": "500 kg/h"
+            "en": "500 kg/h",
+            "ar": "500 كجم/ساعة",
+            "fr": "500 kg/heure",
+            "ru": "500 кг/час"
           },
           "from": 153000,
           "to": 209000,
@@ -1613,7 +1726,10 @@
         {
           "label": {
             "tr": "1.000 kg/saat",
-            "en": "1,000 kg/h"
+            "en": "1,000 kg/h",
+            "ar": "1,000 كجم/ساعة",
+            "fr": "1 000 kg/heure",
+            "ru": "1 000 кг/час"
           },
           "from": 190000,
           "to": 278000,
@@ -1625,7 +1741,7 @@
         "servedUrl": "/api/media/sos-hatti-anahtar-teslim-gorsel-1783208638235-1pmw.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.938Z",
+      "syncedAt": "2026-07-05T11:45:21.928Z",
       "removedFromSite": null
     }
   },
@@ -1682,7 +1798,10 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing"
+          "en": "Dairy Processing",
+          "ar": "معالجة الحليب",
+          "fr": "Transformation du lait",
+          "ru": "Обработка молока"
         }
       },
       "capacity": "500 – 10.000 L/h",
@@ -1852,7 +1971,7 @@
         "servedUrl": "/api/media/homojenizator-gorsel-1783208637970-7wra.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.924Z",
+      "syncedAt": "2026-07-05T11:45:21.909Z",
       "removedFromSite": null
     }
   },
@@ -1909,7 +2028,10 @@
         "slug": "termal-islem",
         "name": {
           "tr": "Termal İşlem",
-          "en": "Thermal Processing"
+          "en": "Thermal Processing",
+          "ar": "العملية الحرارية",
+          "fr": "Processus thermique",
+          "ru": "Термический процесс"
         }
       },
       "capacity": "1.000 – 15.000 L/h",
@@ -2095,7 +2217,7 @@
         "servedUrl": "/api/media/pastorizator-gorsel-1783208637979-ksbd.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.925Z",
+      "syncedAt": "2026-07-05T11:45:21.910Z",
       "removedFromSite": null
     }
   },
@@ -2152,7 +2274,10 @@
         "slug": "yardimci-ekipmanlar",
         "name": {
           "tr": "Yardımcı Ekipmanlar",
-          "en": "Auxiliary Equipment"
+          "en": "Auxiliary Equipment",
+          "ar": "المعدات المساعدة",
+          "fr": "Équipements auxiliaires",
+          "ru": "Вспомогательное оборудование"
         }
       },
       "capacity": "Projeye göre",
@@ -2233,7 +2358,7 @@
         "servedUrl": "/api/media/plakali-esanjor-gorsel-1783208637992-812u.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.925Z",
+      "syncedAt": "2026-07-05T11:45:21.911Z",
       "removedFromSite": null
     }
   },
@@ -2290,7 +2415,10 @@
         "slug": "termal-islem",
         "name": {
           "tr": "Termal İşlem",
-          "en": "Thermal Processing"
+          "en": "Thermal Processing",
+          "ar": "العملية الحرارية",
+          "fr": "Processus thermique",
+          "ru": "Термический процесс"
         }
       },
       "capacity": "1.000 – 10.000 L/h",
@@ -2464,7 +2592,7 @@
         "servedUrl": "/api/media/vakum-evaporator-gorsel-1783208638007-dtw9.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.926Z",
+      "syncedAt": "2026-07-05T11:45:21.912Z",
       "removedFromSite": null
     }
   },
@@ -2521,7 +2649,10 @@
         "slug": "sos-karistirma",
         "name": {
           "tr": "Sos & Karıştırma",
-          "en": "Sauce & Mixing"
+          "en": "Sauce & Mixing",
+          "ar": "صلصة وخلط",
+          "fr": "Sauce & Mélange",
+          "ru": "Соус и Смешивание"
         }
       },
       "capacity": "500 – 5000 L",
@@ -2625,7 +2756,7 @@
         "servedUrl": "/api/media/emulsiyon-mikser-tank-gorsel-1783208638035-zgyj.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.926Z",
+      "syncedAt": "2026-07-05T11:45:21.912Z",
       "removedFromSite": null
     }
   },
@@ -2682,7 +2813,10 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing"
+          "en": "Dairy Processing",
+          "ar": "معالجة الحليب",
+          "fr": "Transformation du lait",
+          "ru": "Обработка молока"
         }
       },
       "capacity": "100 – 2.000 kg",
@@ -2878,7 +3012,7 @@
         "servedUrl": "/api/media/tereyagi-makinesi-gorsel-1783208638052-1ffs.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.927Z",
+      "syncedAt": "2026-07-05T11:45:21.914Z",
       "removedFromSite": null
     }
   },
@@ -2935,7 +3069,10 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing"
+          "en": "Dairy Processing",
+          "ar": "معالجة الحليب",
+          "fr": "Transformation du lait",
+          "ru": "Обработка молока"
         }
       },
       "capacity": "1.000 – 15.000 L/h",
@@ -3123,7 +3260,7 @@
         "servedUrl": "/api/media/krema-seperator-gorsel-1783208638066-yhk0.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.927Z",
+      "syncedAt": "2026-07-05T11:45:21.918Z",
       "removedFromSite": null
     }
   },
@@ -3180,7 +3317,10 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing"
+          "en": "Dairy Processing",
+          "ar": "معالجة الحليب",
+          "fr": "Transformation du lait",
+          "ru": "Обработка молока"
         }
       },
       "capacity": "5.000 – 15.000 L/h",
@@ -3344,7 +3484,7 @@
         "servedUrl": "/api/media/klarifikator-gorsel-1783208638080-bi0p.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.928Z",
+      "syncedAt": "2026-07-05T11:45:21.919Z",
       "removedFromSite": null
     }
   },
@@ -3401,7 +3541,10 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging"
+          "en": "Filling & Packaging",
+          "ar": "التعبئة والتغليف",
+          "fr": "Remplissage & Emballage",
+          "ru": "Наполнение и Упаковка"
         }
       },
       "capacity": "500 L/h – 5.000 pcs/h",
@@ -3573,7 +3716,7 @@
         "servedUrl": "/api/media/yogurt-dolum-makinesi-gorsel-1783208638089-0kcz.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.928Z",
+      "syncedAt": "2026-07-05T11:45:21.919Z",
       "removedFromSite": null
     }
   },
@@ -3630,7 +3773,10 @@
         "slug": "termal-islem",
         "name": {
           "tr": "Termal İşlem",
-          "en": "Thermal Processing"
+          "en": "Thermal Processing",
+          "ar": "العملية الحرارية",
+          "fr": "Processus thermique",
+          "ru": "Термический процесс"
         }
       },
       "capacity": "60 – 200 kg",
@@ -3802,7 +3948,7 @@
         "servedUrl": "/api/media/pisirici-kazan-gorsel-1783208638104-c36j.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.929Z",
+      "syncedAt": "2026-07-05T11:45:21.920Z",
       "removedFromSite": null
     }
   },
@@ -3873,117 +4019,209 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity"
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Вместимость"
           },
           "v": {
             "tr": "6 – 50 ton/gün (proje bazlı daha yüksek)",
-            "en": "6 – 50 ton/day (higher on request)"
+            "en": "6 – 50 ton/day (higher on request)",
+            "ar": "6 – 50 طن/يوم (أعلى بناءً على المشروع)",
+            "fr": "6 – 50 tonnes/jour (plus élevé selon le projet)",
+            "ru": "6 – 50 тонн/день (больше по проекту)"
           }
         },
         {
           "k": {
             "tr": "Brix Aralığı",
-            "en": "Brix range"
+            "en": "Brix range",
+            "ar": "نطاق بيريكس",
+            "fr": "Plage de Brix",
+            "ru": "Диапазон Брикс"
           },
           "v": {
             "tr": "Hedefe göre 28 – 36 brix",
-            "en": "28 – 36 brix by target"
+            "en": "28 – 36 brix by target",
+            "ar": "الهدف 28 – 36 بيريكس",
+            "fr": "Cible 28 – 36 brix",
+            "ru": "Цель 28 – 36 брикс"
           }
         },
         {
           "k": {
             "tr": "Proses",
-            "en": "Process"
+            "en": "Process",
+            "ar": "العملية",
+            "fr": "Processus",
+            "ru": "Процесс"
           },
           "v": {
             "tr": "Hot-break / cold-break opsiyonlu",
-            "en": "Hot-break / cold-break optional"
+            "en": "Hot-break / cold-break optional",
+            "ar": "خيار الكسر الساخن / الكسر البارد",
+            "fr": "Option hot-break / cold-break",
+            "ru": "Опция горячего/холодного разрыва"
           }
         },
         {
           "k": {
             "tr": "Dolum Tipi",
-            "en": "Filling type"
+            "en": "Filling type",
+            "ar": "نوع التعبئة",
+            "fr": "Type de remplissage",
+            "ru": "Тип заполнения"
           },
           "v": {
             "tr": "Aseptik torba, teneke, kavanoz veya bulk",
-            "en": "Aseptic bag, can, jar or bulk"
+            "en": "Aseptic bag, can, jar or bulk",
+            "ar": "كيس معقم، علبة، جرة أو بالجملة",
+            "fr": "Sac aseptique, boîte, pot ou en vrac",
+            "ru": "Аseptический пакет, банка, банка или в большом объеме"
           }
         },
         {
           "k": {
             "tr": "Malzeme",
-            "en": "Material"
+            "en": "Material",
+            "ar": "المادة",
+            "fr": "Matériau",
+            "ru": "Материал"
           },
           "v": {
             "tr": "Ürün temas: AISI 304 / 316 opsiyonlu",
-            "en": "Product contact: AISI 304 / 316"
+            "en": "Product contact: AISI 304 / 316",
+            "ar": "تواصل المنتج: AISI 304 / 316 اختياري",
+            "fr": "Contact produit : AISI 304 / 316 en option",
+            "ru": "Контакт с продуктом: AISI 304 / 316 по выбору"
           }
         },
         {
           "k": {
             "tr": "Kontrol",
-            "en": "Control"
+            "en": "Control",
+            "ar": "التحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
           },
           "v": {
             "tr": "PLC + HMI",
-            "en": "PLC + HMI"
+            "en": "PLC + HMI",
+            "ar": "PLC + HMI",
+            "fr": "PLC + HMI",
+            "ru": "PLC + HMI"
           }
         },
         {
           "k": {
             "tr": "Temizlik",
-            "en": "Cleaning"
+            "en": "Cleaning",
+            "ar": "التنظيف",
+            "fr": "Nettoyage",
+            "ru": "Очистка"
           },
           "v": {
             "tr": "Manuel / yarı / otomatik CIP",
-            "en": "Manual / semi / automatic CIP"
+            "en": "Manual / semi / automatic CIP",
+            "ar": "يدوي / نصف / CIP تلقائي",
+            "fr": "CIP manuel / semi-automatique / automatique",
+            "ru": "Ручной / полуавтоматический / автоматический CIP"
           }
         },
         {
           "k": {
             "tr": "Devreye Alma",
-            "en": "Commissioning"
+            "en": "Commissioning",
+            "ar": "تشغيل",
+            "fr": "Mise en service",
+            "ru": "Пусконаладка"
           },
           "v": {
             "tr": "Anahtar teslim",
-            "en": "Turnkey"
+            "en": "Turnkey",
+            "ar": "تسليم المفتاح",
+            "fr": "Clé en main",
+            "ru": "Под ключ"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Domates kabul ve yıkama sistemi"
+          "tr": "Domates kabul ve yıkama sistemi",
+          "en": "Tomato receiving and washing system",
+          "ar": "نظام استلام وغسل الطماطم",
+          "fr": "Système de réception et de lavage des tomates",
+          "ru": "Система приема и мойки томатов"
         },
         {
-          "tr": "Ayıklama ve taşıma bantları"
+          "tr": "Ayıklama ve taşıma bantları",
+          "en": "Sorting and conveyor belts",
+          "ar": "أحزمة الفرز والنقل",
+          "fr": "Bandes de tri et de transport",
+          "ru": "Сортировочные и конвейерные ленты"
         },
         {
-          "tr": "Kırma ve ön ısıtma grubu (hot/cold-break)"
+          "tr": "Kırma ve ön ısıtma grubu (hot/cold-break)",
+          "en": "Crushing and pre-heating group (hot/cold-break)",
+          "ar": "مجموعة التكسير والتسخين المسبق (كسر ساخن/بارد)",
+          "fr": "Groupe de concassage et de préchauffage (casse chaude/froide)",
+          "ru": "Группа дробления и предварительного нагрева (горячий/холодный разрыв)"
         },
         {
-          "tr": "Pulper & refiner sistemi"
+          "tr": "Pulper & refiner sistemi",
+          "en": "Pulper & refiner system",
+          "ar": "نظام الطاحن والمصفى",
+          "fr": "Système de pulpe et de raffineur",
+          "ru": "Система пульпера и рафинирования"
         },
         {
-          "tr": "Vakum evaporasyon ünitesi"
+          "tr": "Vakum evaporasyon ünitesi",
+          "en": "Vacuum evaporation unit",
+          "ar": "وحدة التبخر تحت الفراغ",
+          "fr": "Unité d'évaporation sous vide",
+          "ru": "Вакуумный испарительный блок"
         },
         {
-          "tr": "Pastörizasyon / sterilizasyon sistemi"
+          "tr": "Pastörizasyon / sterilizasyon sistemi",
+          "en": "Pasteurization / sterilization system",
+          "ar": "نظام البسترة / التعقيم",
+          "fr": "Système de pasteurisation / stérilisation",
+          "ru": "Система пастеризации / стерилизации"
         },
         {
-          "tr": "Aseptik veya tenekeli dolum hattı"
+          "tr": "Aseptik veya tenekeli dolum hattı",
+          "en": "Aseptic or canned filling line",
+          "ar": "خط التعبئة المعقمة أو المعلبة",
+          "fr": "Ligne de remplissage aseptique ou en conserve",
+          "ru": "Аseptическая или консервная линия розлива"
         },
         {
-          "tr": "CIP temizlik sistemi"
+          "tr": "CIP temizlik sistemi",
+          "en": "CIP cleaning system",
+          "ar": "نظام التنظيف CIP",
+          "fr": "Système de nettoyage CIP",
+          "ru": "Система CIP очистки"
         },
         {
-          "tr": "Transfer pompaları ve proses tankları"
+          "tr": "Transfer pompaları ve proses tankları",
+          "en": "Transfer pumps and process tanks",
+          "ar": "مضخات النقل وخزانات العمليات",
+          "fr": "Pompes de transfert et cuves de processus",
+          "ru": "Насосы для перекачки и процессные резервуары"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon sistemi"
+          "tr": "Elektrik pano, PLC ve otomasyon sistemi",
+          "en": "Electrical panel, PLC and automation system",
+          "ar": "لوحة كهربائية، PLC ونظام الأتمتة",
+          "fr": "Panneau électrique, PLC et système d'automatisation",
+          "ru": "Электрическая панель, PLC и система автоматизации"
         },
         {
-          "tr": "Kurulum, test üretimi ve operatör eğitimi"
+          "tr": "Kurulum, test üretimi ve operatör eğitimi",
+          "en": "Installation, test production and operator training",
+          "ar": "التركيب، إنتاج الاختبار وتدريب المشغلين",
+          "fr": "Installation, production de test et formation des opérateurs",
+          "ru": "Установка, тестовое производство и обучение операторов"
         }
       ],
       "badge": {
@@ -4000,7 +4238,7 @@
         "servedUrl": "/api/media/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.930Z",
+      "syncedAt": "2026-07-05T11:45:21.921Z",
       "removedFromSite": null
     }
   },
@@ -4071,67 +4309,129 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity"
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Вместимость"
           },
           "v": {
             "tr": "1 – 8 ton/gün",
-            "en": "1 – 8 ton/day"
+            "en": "1 – 8 ton/day",
+            "ar": "1 – 8 طن/يوم",
+            "fr": "1 – 8 tonnes/jour",
+            "ru": "1 – 8 тонн/день"
           }
         },
         {
           "k": {
             "tr": "Ürünler",
-            "en": "Products"
+            "en": "Products",
+            "ar": "المنتجات",
+            "fr": "Produits",
+            "ru": "Продукты"
           },
           "v": {
             "tr": "Mayonez, ketçap, sos",
-            "en": "Mayo, ketchup, sauce"
+            "en": "Mayo, ketchup, sauce",
+            "ar": "مايونيز، كاتشب، صلصة",
+            "fr": "Mayonnaise, ketchup, sauce",
+            "ru": "Майонез, кетчуп, соус"
           }
         },
         {
           "k": {
             "tr": "Reçete desteği",
-            "en": "Recipe support"
+            "en": "Recipe support",
+            "ar": "دعم الوصفة",
+            "fr": "Support de recette",
+            "ru": "Поддержка рецепта"
           },
           "v": {
             "tr": "Var",
-            "en": "Included"
+            "en": "Included",
+            "ar": "متاح",
+            "fr": "Disponible",
+            "ru": "Доступно"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Hammadde hazırlama ve tartım"
+          "tr": "Hammadde hazırlama ve tartım",
+          "en": "Raw material preparation and weighing",
+          "ar": "تحضير المواد الخام والوزن",
+          "fr": "Préparation et pesée des matières premières",
+          "ru": "Подготовка и взвешивание сырья"
         },
         {
-          "tr": "Ürün hazırlama tankları"
+          "tr": "Ürün hazırlama tankları",
+          "en": "Product preparation tanks",
+          "ar": "خزانات تحضير المنتج",
+          "fr": "Réservoirs de préparation des produits",
+          "ru": "Резервуары для подготовки продукта"
         },
         {
-          "tr": "Yüksek kesme / emülsiyon mikser tankı"
+          "tr": "Yüksek kesme / emülsiyon mikser tankı",
+          "en": "High shear/emulsion mixer tank",
+          "ar": "خزان خلاط عالي القص/استحلاب",
+          "fr": "Réservoir de mélangeur à haute cisaillement/émulsion",
+          "ru": "Резервуар для высокоскоростного/эмульсионного смесителя"
         },
         {
-          "tr": "Vakum mikser ve deaerasyon"
+          "tr": "Vakum mikser ve deaerasyon",
+          "en": "Vacuum mixer and deaeration",
+          "ar": "خلاط فراغ وإزالة الهواء",
+          "fr": "Mélangeur sous vide et désaération",
+          "ru": "Вакуумный смеситель и дегазация"
         },
         {
-          "tr": "Homojenizatör"
+          "tr": "Homojenizatör",
+          "en": "Homogenizer",
+          "ar": "مجانس",
+          "fr": "Homogénéisateur",
+          "ru": "Гомогенизатор"
         },
         {
-          "tr": "Pastörizasyon / ısıl işlem ünitesi"
+          "tr": "Pastörizasyon / ısıl işlem ünitesi",
+          "en": "Pasteurization/thermal processing unit",
+          "ar": "وحدة البسترة/المعالجة الحرارية",
+          "fr": "Unité de pasteurisation/traitement thermique",
+          "ru": "Установка пастеризации/термической обработки"
         },
         {
-          "tr": "Tampon tanklar ve transfer pompaları"
+          "tr": "Tampon tanklar ve transfer pompaları",
+          "en": "Buffer tanks and transfer pumps",
+          "ar": "خزانات العازلة ومضخات النقل",
+          "fr": "Réservoirs tampons et pompes de transfert",
+          "ru": "Буферные резервуары и насосы для перекачки"
         },
         {
-          "tr": "Dolum ve kapaklama hattı"
+          "tr": "Dolum ve kapaklama hattı",
+          "en": "Filling and capping line",
+          "ar": "خط التعبئة والتغطية",
+          "fr": "Ligne de remplissage et de capsulage",
+          "ru": "Линия розлива и укупорки"
         },
         {
-          "tr": "Etiketleme / paketleme"
+          "tr": "Etiketleme / paketleme",
+          "en": "Labeling / packaging",
+          "ar": "التوسيم / التعبئة",
+          "fr": "Étiquetage / emballage",
+          "ru": "Маркировка / упаковка"
         },
         {
-          "tr": "CIP temizlik sistemi"
+          "tr": "CIP temizlik sistemi",
+          "en": "CIP cleaning system",
+          "ar": "نظام تنظيف CIP",
+          "fr": "Système de nettoyage CIP",
+          "ru": "Система CIP очистки"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon"
+          "tr": "Elektrik pano, PLC ve otomasyon",
+          "en": "Electrical panel, PLC and automation",
+          "ar": "لوحة كهربائية، PLC وأتمتة",
+          "fr": "Panneau électrique, PLC et automatisation",
+          "ru": "Электрический щит, PLC и автоматизация"
         }
       ],
       "badge": null,
@@ -4146,7 +4446,7 @@
         "servedUrl": "/api/media/sos-mayonez-ketcap-hatti-gorsel-1783208638139-5d10.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.931Z",
+      "syncedAt": "2026-07-05T11:45:21.923Z",
       "removedFromSite": null
     }
   },
@@ -4217,64 +4517,122 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity"
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Вместимость"
           },
           "v": {
             "tr": "1.000 – 15.000 L/gün",
-            "en": "1,000 – 15,000 L/day"
+            "en": "1,000 – 15,000 L/day",
+            "ar": "1.000 – 15.000 لتر/يوم",
+            "fr": "1.000 – 15.000 L/jour",
+            "ru": "1.000 – 15.000 л/день"
           }
         },
         {
           "k": {
             "tr": "Isı geri kazanımı",
-            "en": "Heat recovery"
+            "en": "Heat recovery",
+            "ar": "استعادة الحرارة",
+            "fr": "Récupération de chaleur",
+            "ru": "Восстановление тепла"
           },
           "v": {
             "tr": "%90'a kadar",
-            "en": "Up to 90%"
+            "en": "Up to 90%",
+            "ar": "حتى 90%",
+            "fr": "Jusqu'à 90%",
+            "ru": "До 90%"
           }
         },
         {
           "k": {
             "tr": "Genişleme",
-            "en": "Expansion"
+            "en": "Expansion",
+            "ar": "توسع",
+            "fr": "Expansion",
+            "ru": "Расширение"
           },
           "v": {
             "tr": "Peynir/yoğurt",
-            "en": "Cheese/yoghurt"
+            "en": "Cheese/yoghurt",
+            "ar": "جبن/زبادي",
+            "fr": "Fromage/yaourt",
+            "ru": "Сыр/йогурт"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Çiğ süt kabul ve soğutma tankı"
+          "tr": "Çiğ süt kabul ve soğutma tankı",
+          "en": "Raw milk reception and cooling tank",
+          "ar": "خزان استقبال الحليب الخام والتبريد",
+          "fr": "Réception et cuve de refroidissement du lait cru",
+          "ru": "Прием и охлаждение сырого молока"
         },
         {
-          "tr": "Filtrasyon ve klarifikasyon"
+          "tr": "Filtrasyon ve klarifikasyon",
+          "en": "Filtration and clarification",
+          "ar": "الترشيح والتوضيح",
+          "fr": "Filtration et clarification",
+          "ru": "Фильтрация и clarification"
         },
         {
-          "tr": "Krema separatörü ve standardizasyon"
+          "tr": "Krema separatörü ve standardizasyon",
+          "en": "Cream separator and standardization",
+          "ar": "فاصل الكريمة والتوحيد",
+          "fr": "Séparateur de crème et standardisation",
+          "ru": "Сепаратор сливок и стандартизация"
         },
         {
-          "tr": "Pastörizatör (plakalı eşanjör)"
+          "tr": "Pastörizatör (plakalı eşanjör)",
+          "en": "Pasteurizer (plate heat exchanger)",
+          "ar": "بسترة (مبادل حراري صفيحي)",
+          "fr": "Pasteurisateur (échangeur de chaleur à plaques)",
+          "ru": "Пастеризатор (пластинчатый теплообменник)"
         },
         {
-          "tr": "Homojenizatör"
+          "tr": "Homojenizatör",
+          "en": "Homogenizer",
+          "ar": "مجانس",
+          "fr": "Homogénéisateur",
+          "ru": "Гомогенизатор"
         },
         {
-          "tr": "İzoleli depolama tankları"
+          "tr": "İzoleli depolama tankları",
+          "en": "Insulated storage tanks",
+          "ar": "خزانات تخزين معزولة",
+          "fr": "Cuves de stockage isolées",
+          "ru": "Изолированные резервуары для хранения"
         },
         {
-          "tr": "Dolum hattı (şişe/pouch/karton)"
+          "tr": "Dolum hattı (şişe/pouch/karton)",
+          "en": "Filling line (bottle/pouch/carton)",
+          "ar": "خط التعبئة (زجاجة/كيس/كرتون)",
+          "fr": "Ligne de remplissage (bouteille/sachet/carton)",
+          "ru": "Линия розлива (бутылка/пакет/коробка)"
         },
         {
-          "tr": "CIP temizlik sistemi"
+          "tr": "CIP temizlik sistemi",
+          "en": "CIP cleaning system",
+          "ar": "نظام تنظيف CIP",
+          "fr": "Système de nettoyage CIP",
+          "ru": "Система CIP очистки"
         },
         {
-          "tr": "Transfer pompaları ve boru hattı"
+          "tr": "Transfer pompaları ve boru hattı",
+          "en": "Transfer pumps and piping",
+          "ar": "مضخات النقل وأنابيب",
+          "fr": "Pompes de transfert et tuyauterie",
+          "ru": "Насосы для перекачки и трубопровод"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon"
+          "tr": "Elektrik pano, PLC ve otomasyon",
+          "en": "Electrical panel, PLC and automation",
+          "ar": "لوحة كهربائية، PLC وأتمتة",
+          "fr": "Panneau électrique, PLC et automatisation",
+          "ru": "Электрический щит, PLC и автоматизация"
         }
       ],
       "badge": null,
@@ -4303,7 +4661,7 @@
           "servedUrl": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638162-5nnq.jpg"
         }
       ],
-      "syncedAt": "2026-07-04T23:45:32.931Z",
+      "syncedAt": "2026-07-05T11:45:21.924Z",
       "removedFromSite": null
     }
   },
@@ -4374,64 +4732,122 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity"
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Ёмкость"
           },
           "v": {
             "tr": "500 – 2.500 adet/saat",
-            "en": "500 – 2,500 pcs/h"
+            "en": "500 – 2,500 pcs/h",
+            "ar": "500 – 2,500 وحدة/ساعة",
+            "fr": "500 – 2 500 unités/heure",
+            "ru": "500 – 2 500 единиц/час"
           }
         },
         {
           "k": {
             "tr": "Ürün",
-            "en": "Product"
+            "en": "Product",
+            "ar": "المنتج",
+            "fr": "Produit",
+            "ru": "Продукт"
           },
           "v": {
             "tr": "Sıvı / viskoz",
-            "en": "Liquid / viscous"
+            "en": "Liquid / viscous",
+            "ar": "سائل / لزج",
+            "fr": "Liquide / visqueux",
+            "ru": "Жидкий / вязкий"
           }
         },
         {
           "k": {
             "tr": "Entegrasyon",
-            "en": "Integration"
+            "en": "Integration",
+            "ar": "التكامل",
+            "fr": "Intégration",
+            "ru": "Интеграция"
           },
           "v": {
             "tr": "Dolum+kapak+etiket",
-            "en": "Fill+cap+label"
+            "en": "Fill+cap+label",
+            "ar": "التعبئة + الغطاء + الملصق",
+            "fr": "Remplissage + bouchon + étiquette",
+            "ru": "Заполнение + крышка + этикетка"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Ürün besleme ve tampon tank"
+          "tr": "Ürün besleme ve tampon tank",
+          "en": "Product feeding and buffer tank",
+          "ar": "نظام تغذية المنتج وخزان العازل",
+          "fr": "Alimentation du produit et réservoir tampon",
+          "ru": "Подача продукта и буферный бак"
         },
         {
-          "tr": "Servo dolum ünitesi"
+          "tr": "Servo dolum ünitesi",
+          "en": "Servo filling unit",
+          "ar": "وحدة التعبئة السيرفو",
+          "fr": "Unité de remplissage servo",
+          "ru": "Серво-наполнительная установка"
         },
         {
-          "tr": "Kapak besleme ve kapaklama"
+          "tr": "Kapak besleme ve kapaklama",
+          "en": "Cap feeding and capping",
+          "ar": "تغذية الأغطية والتغطية",
+          "fr": "Alimentation des couvercles et capsulage",
+          "ru": "Подача крышек и укупорка"
         },
         {
-          "tr": "Etiketleme ünitesi"
+          "tr": "Etiketleme ünitesi",
+          "en": "Labeling unit",
+          "ar": "وحدة وضع العلامات",
+          "fr": "Unité d'étiquetage",
+          "ru": "Этикетировочная установка"
         },
         {
-          "tr": "Kodlama (tarih/lot) sistemi"
+          "tr": "Kodlama (tarih/lot) sistemi",
+          "en": "Coding (date/lot) system",
+          "ar": "نظام الترميز (تاريخ / دفعة)",
+          "fr": "Système de codage (date/lot)",
+          "ru": "Система кодирования (дата/партия)"
         },
         {
-          "tr": "Konveyör ve akümülasyon sistemi"
+          "tr": "Konveyör ve akümülasyon sistemi",
+          "en": "Conveyor and accumulation system",
+          "ar": "نظام النقل والتجميع",
+          "fr": "Système de convoyage et d'accumulation",
+          "ru": "Конвейерная и аккумуляционная система"
         },
         {
-          "tr": "Koli / paketleme ünitesi"
+          "tr": "Koli / paketleme ünitesi",
+          "en": "Box / packaging unit",
+          "ar": "وحدة التعبئة / التغليف",
+          "fr": "Unité de boîte / d'emballage",
+          "ru": "Упаковочная единица / упаковка"
         },
         {
-          "tr": "Paletleme"
+          "tr": "Paletleme",
+          "en": "Palletizing",
+          "ar": "تجميع على منصات",
+          "fr": "Palettisation",
+          "ru": "Палетизация"
         },
         {
-          "tr": "CIP / temizlik (sıvı ürünlerde)"
+          "tr": "CIP / temizlik (sıvı ürünlerde)",
+          "en": "CIP / cleaning (in liquid products)",
+          "ar": "CIP / التنظيف (في المنتجات السائلة)",
+          "fr": "CIP / nettoyage (dans les produits liquides)",
+          "ru": "CIP / очистка (в жидких продуктах)"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon"
+          "tr": "Elektrik pano, PLC ve otomasyon",
+          "en": "Electrical panel, PLC and automation",
+          "ar": "لوحة كهربائية، PLC وأتمتة",
+          "fr": "Panneau électrique, PLC et automatisation",
+          "ru": "Электрическая панель, PLC и автоматизация"
         }
       ],
       "badge": null,
@@ -4442,7 +4858,7 @@
         "servedUrl": "/api/media/dolum-paketleme-hatti-gorsel-1783208638185-vvvc.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.932Z",
+      "syncedAt": "2026-07-05T11:45:21.925Z",
       "removedFromSite": null
     }
   },
@@ -4499,7 +4915,10 @@
         "slug": "icecek-hatlari",
         "name": {
           "tr": "İçecek & Meyve Suyu",
-          "en": "Beverage & Juice"
+          "en": "Beverage & Juice",
+          "ar": "المشروبات وعصير الفواكه",
+          "fr": "Boisson & Jus de Fruits",
+          "ru": "Напитки и Фруктовые Соки"
         }
       },
       "capacity": "2 – 12 ton/gün",
@@ -4510,64 +4929,122 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity"
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Ёмкость"
           },
           "v": {
             "tr": "2 – 12 ton/gün",
-            "en": "2 – 12 ton/day"
+            "en": "2 – 12 ton/day",
+            "ar": "2 – 12 طن/يوم",
+            "fr": "2 – 12 tonnes/jour",
+            "ru": "2 – 12 тонн/день"
           }
         },
         {
           "k": {
             "tr": "Çıktı",
-            "en": "Output"
+            "en": "Output",
+            "ar": "الإنتاج",
+            "fr": "Sortie",
+            "ru": "Выход"
           },
           "v": {
             "tr": "Su / konsantre",
-            "en": "Juice / concentrate"
+            "en": "Juice / concentrate",
+            "ar": "ماء / مركز",
+            "fr": "Eau / concentré",
+            "ru": "Вода / концентрат"
           }
         },
         {
           "k": {
             "tr": "Dolum",
-            "en": "Filling"
+            "en": "Filling",
+            "ar": "التعبئة",
+            "fr": "Remplissage",
+            "ru": "Заполнение"
           },
           "v": {
             "tr": "Sıcak / aseptik",
-            "en": "Hot / aseptic"
+            "en": "Hot / aseptic",
+            "ar": "ساخن / معقم",
+            "fr": "Chaud / aseptique",
+            "ru": "Горячий / асептический"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Meyve kabul ve yıkama sistemi"
+          "tr": "Meyve kabul ve yıkama sistemi",
+          "en": "Fruit reception and washing system",
+          "ar": "نظام استقبال وغسيل الفواكه",
+          "fr": "Système de réception et de lavage des fruits",
+          "ru": "Система приема и мойки фруктов"
         },
         {
-          "tr": "Ayıklama bandı"
+          "tr": "Ayıklama bandı",
+          "en": "Sorting conveyor",
+          "ar": "حزام الفرز",
+          "fr": "Convoyeur de tri",
+          "ru": "Конвейер сортировки"
         },
         {
-          "tr": "Parçalama ve presleme"
+          "tr": "Parçalama ve presleme",
+          "en": "Cutting and pressing",
+          "ar": "القطع والضغط",
+          "fr": "Découpage et pressage",
+          "ru": "Резка и прессование"
         },
         {
-          "tr": "Enzim / berraklaştırma ve filtrasyon"
+          "tr": "Enzim / berraklaştırma ve filtrasyon",
+          "en": "Enzyme / clarification and filtration",
+          "ar": "إنزيم / توضيح وترشيح",
+          "fr": "Enzyme / clarification et filtration",
+          "ru": "Энзим / осветление и фильтрация"
         },
         {
-          "tr": "Pastörizasyon ünitesi"
+          "tr": "Pastörizasyon ünitesi",
+          "en": "Pasteurization unit",
+          "ar": "وحدة البسترة",
+          "fr": "Unité de pasteurisation",
+          "ru": "Установка пастеризации"
         },
         {
-          "tr": "Vakum evaporasyon (konsantre)"
+          "tr": "Vakum evaporasyon (konsantre)",
+          "en": "Vacuum evaporation (concentration)",
+          "ar": "تبخير تحت الفراغ (تركيز)",
+          "fr": "Évaporation sous vide (concentration)",
+          "ru": "Вакуумная выпарка (концентрация)"
         },
         {
-          "tr": "Aseptik veya sıcak dolum hattı"
+          "tr": "Aseptik veya sıcak dolum hattı",
+          "en": "Aseptic or hot filling line",
+          "ar": "خط التعبئة المعقمة أو الساخنة",
+          "fr": "Ligne de remplissage aseptique ou chaud",
+          "ru": "Аseptическая или горячая линия розлива"
         },
         {
-          "tr": "Tampon tanklar ve transfer pompaları"
+          "tr": "Tampon tanklar ve transfer pompaları",
+          "en": "Buffer tanks and transfer pumps",
+          "ar": "خزانات العازلة ومضخات النقل",
+          "fr": "Réservoirs tampons et pompes de transfert",
+          "ru": "Буферные резервуары и насосы для перекачки"
         },
         {
-          "tr": "CIP temizlik sistemi"
+          "tr": "CIP temizlik sistemi",
+          "en": "CIP cleaning system",
+          "ar": "نظام تنظيف CIP",
+          "fr": "Système de nettoyage CIP",
+          "ru": "Система CIP очистки"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon"
+          "tr": "Elektrik pano, PLC ve otomasyon",
+          "en": "Electrical panel, PLC and automation",
+          "ar": "لوحة كهربائية، PLC وأتمتة",
+          "fr": "Panneau électrique, PLC et automatisation",
+          "ru": "Электрическая панель, PLC и автоматизация"
         }
       ],
       "badge": null,
@@ -4578,7 +5055,7 @@
         "servedUrl": "/api/media/meyve-suyu-konsantre-hatti-gorsel-1783208638201-qrxl.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.933Z",
+      "syncedAt": "2026-07-05T11:45:21.926Z",
       "removedFromSite": null
     }
   },
@@ -4635,7 +5112,10 @@
         "slug": "soguk-zincir",
         "name": {
           "tr": "Soğuk Zincir & Depolama",
-          "en": "Cold Chain & Storage"
+          "en": "Cold Chain & Storage",
+          "ar": "سلسلة التبريد والتخزين",
+          "fr": "Chaîne du Froid & Stockage",
+          "ru": "Холодная цепь и хранение"
         }
       },
       "capacity": "20 – 1000 m³",
@@ -4646,58 +5126,108 @@
         {
           "k": {
             "tr": "Hacim",
-            "en": "Volume"
+            "en": "Volume",
+            "ar": "حجم",
+            "fr": "Volume",
+            "ru": "Объем"
           },
           "v": {
             "tr": "20 – 1000 m³",
-            "en": "20 – 1000 m³"
+            "en": "20 – 1000 m³",
+            "ar": "20 – 1000 م³",
+            "fr": "20 – 1000 m³",
+            "ru": "20 – 1000 м³"
           }
         },
         {
           "k": {
             "tr": "Sıcaklık",
-            "en": "Temperature"
+            "en": "Temperature",
+            "ar": "درجة الحرارة",
+            "fr": "Température",
+            "ru": "Температура"
           },
           "v": {
             "tr": "+4 / -18 / -25 °C",
-            "en": "+4 / -18 / -25 °C"
+            "en": "+4 / -18 / -25 °C",
+            "ar": "+4 / -18 / -25 °C",
+            "fr": "+4 / -18 / -25 °C",
+            "ru": "+4 / -18 / -25 °C"
           }
         },
         {
           "k": {
             "tr": "Kurulum",
-            "en": "Install"
+            "en": "Install",
+            "ar": "تركيب",
+            "fr": "Installation",
+            "ru": "Установка"
           },
           "v": {
             "tr": "Modüler / hızlı",
-            "en": "Modular / fast"
+            "en": "Modular / fast",
+            "ar": "وحدات / سريعة",
+            "fr": "Modulaire / rapide",
+            "ru": "Модульный / быстрый"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Yalıtımlı panel gövde (poliüretan sandviç)"
+          "tr": "Yalıtımlı panel gövde (poliüretan sandviç)",
+          "en": "Insulated panel body (polyurethane sandwich)",
+          "ar": "هيكل لوحة معزولة (ساندويتش بولي يوريثان)",
+          "fr": "Corps de panneau isolé (sandwich en polyuréthane)",
+          "ru": "Изолированный панельный корпус (полиуретановый сэндвич)"
         },
         {
-          "tr": "Soğuk oda kapıları"
+          "tr": "Soğuk oda kapıları",
+          "en": "Cold room doors",
+          "ar": "أبواب الغرفة الباردة",
+          "fr": "Portes de chambre froide",
+          "ru": "Двери холодной комнаты"
         },
         {
-          "tr": "Kondenser ve evaporatör grubu"
+          "tr": "Kondenser ve evaporatör grubu",
+          "en": "Condenser and evaporator group",
+          "ar": "مجموعة المكثف والمبخر",
+          "fr": "Groupe de condenseur et d'évaporateur",
+          "ru": "Группа конденсатора и испарителя"
         },
         {
-          "tr": "Kompresör / soğutma sistemi"
+          "tr": "Kompresör / soğutma sistemi",
+          "en": "Compressor / cooling system",
+          "ar": "ضاغط / نظام التبريد",
+          "fr": "Compresseur / système de refroidissement",
+          "ru": "Компрессор / система охлаждения"
         },
         {
-          "tr": "Sıcaklık kontrol ve otomasyon"
+          "tr": "Sıcaklık kontrol ve otomasyon",
+          "en": "Temperature control and automation",
+          "ar": "التحكم في درجة الحرارة والأتمتة",
+          "fr": "Contrôle de la température et automatisation",
+          "ru": "Контроль температуры и автоматизация"
         },
         {
-          "tr": "Alarm ve uzaktan izleme"
+          "tr": "Alarm ve uzaktan izleme",
+          "en": "Alarm and remote monitoring",
+          "ar": "الإنذار والمراقبة عن بُعد",
+          "fr": "Alarme et surveillance à distance",
+          "ru": "Сигнализация и удаленный мониторинг"
         },
         {
-          "tr": "Zemin yalıtımı / rampa"
+          "tr": "Zemin yalıtımı / rampa",
+          "en": "Floor insulation / ramp",
+          "ar": "عزل الأرضية / المنحدر",
+          "fr": "Isolation du sol / rampe",
+          "ru": "Изоляция пола / рампа"
         },
         {
-          "tr": "Elektrik pano ve dağıtım"
+          "tr": "Elektrik pano ve dağıtım",
+          "en": "Electrical panel and distribution",
+          "ar": "لوحة كهربائية وتوزيع",
+          "fr": "Panneau électrique et distribution",
+          "ru": "Электрическая панель и распределение"
         }
       ],
       "badge": null,
@@ -4708,7 +5238,7 @@
         "servedUrl": "/api/media/soguk-depolama-konteyner-sistemi-gorsel-1783208638224-kqn6.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-04T23:45:32.933Z",
+      "syncedAt": "2026-07-05T11:45:21.927Z",
       "removedFromSite": null
     }
   },
@@ -5008,7 +5538,7 @@
           "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638259-hwpd.jpg"
         }
       ],
-      "syncedAt": "2026-07-04T23:45:32.938Z",
+      "syncedAt": "2026-07-05T11:45:21.928Z",
       "removedFromSite": null
     }
   }

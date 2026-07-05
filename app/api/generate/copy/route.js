@@ -4,6 +4,7 @@ import { buildCopyPrompt } from '@/lib/brand';
 import { genStructured } from '@/lib/providers/gen';
 import { patchContent } from '@/lib/content';
 import { readBrief } from '@/lib/brief';
+import { websiteLangSnippet } from '@/lib/website-brief';
 
 export const runtime = 'nodejs';
 export const maxDuration = 120;
@@ -26,7 +27,9 @@ export async function POST(request) {
     const perLang = {};
     let highlights = briefHighlights;
     for (const lang of langs) {
-      const { system, prompt } = buildCopyPrompt(product, lang, briefHighlights);
+      // Sitede o dilde RESMİ çeviri varsa metin onu temel alır (AR/FR/RU dil kalitesi).
+      const siteSnippet = websiteLangSnippet(product, lang);
+      const { system, prompt } = buildCopyPrompt(product, lang, briefHighlights, siteSnippet);
       const parsed = await genStructured({ system, prompt });
       if (!parsed?.variants?.length) {
         return NextResponse.json({ ok: false, error: `Metin üretilemedi (${lang}). Tekrar deneyin.` }, { status: 502 });

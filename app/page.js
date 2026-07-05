@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { readProducts } from '@/lib/products';
 import { readAllContent } from '@/lib/content';
 import { syncWebsiteProducts, getWebsiteSyncStatus } from '@/lib/website-sync';
+import { marketingStatus, matchesFilter, FILTERS } from '@/lib/marketing-status';
 import WebsiteSyncButton from './website-sync-button';
 
 export const dynamic = 'force-dynamic';
@@ -31,11 +32,24 @@ function cardImage(p, content) {
   return content?.gorsel?.localPath || content?.gorsel?.url || p.website?.image?.servedUrl || null;
 }
 
-function ProductCard({ p, content }) {
+// Ürünün pazarlama durumuna göre üst köşe rozeti.
+function StatusBadge({ status, product }) {
+  if (product.website?.removedFromSite) {
+    return <span className="pill pill-muted" title="Web sitesinde artık yayında değil">🌐 kaldırıldı</span>;
+  }
+  const onSite = Boolean(product.website);
+  if (status.ready && !status.steps.campaign) {
+    return <span className="pill" style={{ background: '#fff4e5', color: '#b45309' }} title="Reklama hazır ama Meta kampanyası yok">⚡ kampanyasız</span>;
+  }
+  if (status.ready) return <span className="pill pill-ok" title="Reklama hazır">✓ hazır</span>;
+  if (onSite) return <span className="pill" style={{ background: '#fde8ec', color: '#c81e4a' }} title="Sitede yayında ama reklamı eksik">● reklam eksik</span>;
+  return <span className="pill pill-muted">taslak</span>;
+}
+
+function ProductCard({ p, content, status }) {
   const m = p.marketing || {};
-  const hasCopy = Boolean(content?.copy);
-  const hasVideo = Boolean(content?.video?.url);
   const img = cardImage(p, content);
+  const S = status.steps;
   return (
     <Link href={`/urun/${p.slug}`} className="card card-hover p-5 flex flex-col">
       {img ? (
@@ -52,9 +66,8 @@ function ProductCard({ p, content }) {
           <div className="text-xs text-slate-500 mt-0.5">{p.category}</div>
         </div>
         <span className="flex flex-col items-end gap-1">
-          {p.hd ? <span className="pill pill-ok">HD</span> : <span className="pill pill-muted">SD</span>}
-          {p.website && !p.website.removedFromSite && <span className="pill pill-muted" title={p.website.url}>🌐 site</span>}
-          {p.website?.removedFromSite && <span className="pill pill-muted" title="Web sitesinde artık yayında değil">🌐 kaldırıldı</span>}
+          <StatusBadge status={status} product={p} />
+          {p.website && !p.website.removedFromSite && <span className="pill pill-muted text-[10px]" title={p.website.url}>🌐 site</span>}
         </span>
       </div>
 
@@ -65,9 +78,13 @@ function ProductCard({ p, content }) {
         {m.audience && <div>🎯 {m.audience}</div>}
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-2 text-[11px]">
-        <span className={`pill ${hasCopy ? 'pill-ok' : 'pill-muted'}`}>Metin: {hasCopy ? 'var' : 'yok'}</span>
-        <span className={`pill ${hasVideo ? 'pill-ok' : 'pill-muted'}`}>Video: {hasVideo ? 'var' : 'yok'}</span>
+      <div className="mt-4 flex flex-wrap gap-1.5 text-[11px]">
+        <span className={`pill ${S.brief ? 'pill-ok' : 'pill-muted'}`}>Brief</span>
+        <span className={`pill ${S.copy ? 'pill-ok' : 'pill-muted'}`}>Metin</span>
+        <span className={`pill ${S.gorsel ? 'pill-ok' : 'pill-muted'}`}>Görsel</span>
+        <span className={`pill ${S.creative ? 'pill-ok' : 'pill-muted'}`}>Creative{status.creativesCount ? ` ${status.creativesCount}` : ''}</span>
+        <span className={`pill ${S.video ? 'pill-ok' : 'pill-muted'}`}>Video</span>
+        <span className={`pill ${S.campaign ? 'pill-ok' : 'pill-muted'}`}>Kampanya</span>
       </div>
 
       <div className="mt-5 pt-4 border-t border-line text-sm text-red font-head font-bold">İçerik üret →</div>
@@ -75,7 +92,31 @@ function ProductCard({ p, content }) {
   );
 }
 
-export default async function HomePage() {
+// Filtre çubuğu — server component, linklerle çalışır (?durum=...).
+function FilterBar({ active, counts }) {
+  return (
+    <div className="flex flex-wrap gap-2 mb-6">
+      {FILTERS.map((f) => {
+        const on = active === f.key || (f.key === 'all' && !active);
+        const n = counts[f.key] ?? 0;
+        return (
+          <Link
+            key={f.key}
+            href={f.key === 'all' ? '/' : `/?durum=${f.key}`}
+            className={`pill ${on ? 'pill-ok' : 'pill-muted'} !text-xs !px-3 !py-1.5`}
+            style={on ? undefined : { cursor: 'pointer' }}
+          >
+            {f.label} <span className="opacity-60">{n}</span>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+export default async function HomePage({ searchParams }) {
+  const sp = await searchParams;
+  const filter = sp?.durum || 'all';
   let products = [];
   let contentMap = {};
   let error = null;
@@ -91,6 +132,13 @@ export default async function HomePage() {
   }
 
   const siteCount = products.filter((p) => p.website && !p.website.removedFromSite).length;
+
+  // Her ürünün pazarlama durumu (bir kez hesapla; hem sayaç hem filtre hem kart kullanır).
+  const withStatus = products.map((p) => ({ p, content: contentMap[p.slug], status: marketingStatus(p, contentMap[p.slug]) }));
+  const counts = Object.fromEntries(
+    FILTERS.map((f) => [f.key, withStatus.filter(({ p, status }) => matchesFilter(f.key, status, p)).length]),
+  );
+  const shown = withStatus.filter(({ p, status }) => matchesFilter(filter, status, p));
 
   return (
     <div className="px-4 md:px-10 py-8 max-w-7xl mx-auto">
@@ -110,8 +158,14 @@ export default async function HomePage() {
         </div>
       )}
 
+      {products.length > 0 && <FilterBar active={sp?.durum} counts={counts} />}
+
+      {shown.length === 0 && products.length > 0 && (
+        <div className="card p-8 text-center text-sm text-slate-500">Bu filtrede ürün yok.</div>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {products.map((p) => <ProductCard key={p.slug} p={p} content={contentMap[p.slug]} />)}
+        {shown.map(({ p, content, status }) => <ProductCard key={p.slug} p={p} content={content} status={status} />)}
       </div>
     </div>
   );

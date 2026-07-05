@@ -1526,7 +1526,71 @@
       "imageSource": "website",
       "at": "2026-07-04T23:43:57.972Z"
     },
-    "updated_at": "2026-07-04T23:43:57.974Z"
+    "updated_at": "2026-07-05T11:42:31.515Z",
+    "copy": {
+      "variants": [
+        {
+          "id": "A",
+          "angle": "ozellik",
+          "by_lang": {
+            "fr": {
+              "headline": "Système haute pression, efficacité assurée",
+              "primary": "Découvrez comment notre homogénéisateur divise efficacement les globules de graisse avec un système de pression allant jusqu'à 250 bar. Conçu pour les produits laitiers et liquides, il garantit des résultats homogènes. Message us on WhatsApp pour plus d'informations.",
+              "description": "Conception robuste et ingénierie de confiance.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "B",
+          "angle": "kapasite",
+          "by_lang": {
+            "fr": {
+              "headline": "Capacités variées pour tous vos besoins",
+              "primary": "Avec une capacité de 500 à 10.000 L/h, notre homogénéisateur s'adapte parfaitement à vos besoins de production. Optimisez votre processus laitier avec une technologie de pointe. Pour plus de détails, contactez-nous sur WhatsApp.",
+              "description": "Capacité et performance adaptées à vos exigences.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "C",
+          "angle": "dayanıklılık",
+          "by_lang": {
+            "fr": {
+              "headline": "Qualité durable, performance garantie",
+              "primary": "Fabriqué en acier inoxydable AISI 304, notre homogénéisateur offre une durabilité exceptionnelle. Profitez de performances fiables même sous haute pression. Contactez-nous sur WhatsApp pour découvrir ses avantages.",
+              "description": "Matériaux de qualité pour une longévité accrue.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        },
+        {
+          "id": "D",
+          "angle": "sorun-çözüm",
+          "by_lang": {
+            "fr": {
+              "headline": "Solution aux globules de graisse tenaces",
+              "primary": "Dites adieu aux problèmes de globules de graisse avec notre système haute pression. Simple à utiliser et entièrement automatisé, il transforme vos produits laitiers avec efficacité. Pour résoudre vos problèmes de traitement, écrivez-nous sur WhatsApp.",
+              "description": "Une solution innovante pour des résultats parfaits.",
+              "cta": "Message us on WhatsApp"
+            }
+          }
+        }
+      ],
+      "highlights": [
+        "Yüksek basınçlı sistem ile etkili yağ globülü parçalama",
+        "Geniş kapasite aralığı: 500 – 10.000 L/h",
+        "Tam otomatik kontrol ile kolay kullanım",
+        "AISI 304 paslanmaz çelik gövde",
+        "150 – 250 bar basınç aralığı"
+      ],
+      "languages": [
+        "fr"
+      ],
+      "model": "openai/gpt-4o-mini",
+      "at": "2026-07-05T11:42:31.509Z"
+    }
   },
   "pastorizator": {
     "gorsel": {
