@@ -6,6 +6,12 @@ Satış Fiyatı = Satınalma × 1.15 (Excel'de hazır). openpyxl gerekmez — st
 
 Excel güncellenince: python3 scripts/import_prices.py  → products.json yenilenir.
 Reklam config'leri price_num/specs'i buradan alır.
+
+BİRLEŞTİRME KURALI (silme yok): products.json artık web sitesi eşitlemesiyle (lib/website-sync.js)
+paylaşılıyor. Bu script mevcut dosyayı EZMEZ; kayıt bazında birleştirir:
+  · Excel'de olan kayıt → fiyat + spec alanları güncellenir; `marketing`/`website` blokları
+    ve site sahipliğindeki alanlar (website'e bağlı kayıtta name_en/category) KORUNUR.
+  · Excel'de olmayan kayıt (siteden gelenler dahil) → dokunulmaz.
 """
 import json
 import re
@@ -123,9 +129,44 @@ def main():
             "hd": hd,
         })
 
+    # Mevcut katalogla BİRLEŞTİR — website-sync'in eklediği kayıtlar/bloklar silinmez.
+    existing = []
+    if OUT.exists():
+        try:
+            existing = json.loads(OUT.read_text(encoding="utf-8"))
+        except Exception:
+            existing = []
+    by_key = {}
+    for rec in existing:
+        by_key[rec.get("code") or rec.get("slug")] = rec
+        by_key.setdefault(rec.get("slug"), rec)
+
+    merged_count = 0
+    for p in products:
+        rec = by_key.get(p["code"]) or by_key.get(p["slug"])
+        if rec is None:
+            existing.append(p)  # Excel'de yeni ürün → aynen ekle
+            continue
+        merged_count += 1
+        site_owned = bool(rec.get("website"))  # site bağlıysa ad/kategori siteden gelir
+        rec["price_usd"] = p["price_usd"]      # RESMİ satış fiyatı daima Excel'den
+        rec["price_text"] = p["price_text"]
+        if not site_owned:
+            rec["name_en"] = p["name_en"]
+            rec["category"] = p["category"]
+        rec.setdefault("specs", {})
+        for k, v in p["specs"].items():
+            if v:
+                rec["specs"][k] = v            # Excel teknik verisi otoritedir
+        if p["video"] and not rec.get("video"):
+            rec["video"] = p["video"]
+        if p["source_image"] and not rec.get("source_image"):
+            rec["source_image"] = p["source_image"]
+            rec["hd"] = p["hd"]
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(products, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"{len(products)} ürün → {OUT}")
+    OUT.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"{len(products)} Excel ürünü işlendi ({merged_count} birleştirildi) → toplam {len(existing)} kayıt → {OUT}")
     for p in products:
         flag = "HD" if p["hd"] else "lo"
         print(f"  {p['slug']:<22} {p['price_text']:>10}  [{flag}] {p['source_image']}")

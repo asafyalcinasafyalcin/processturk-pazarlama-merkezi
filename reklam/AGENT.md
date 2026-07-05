@@ -62,7 +62,10 @@ analiz/optimizasyon. **Durum:** `campaigns/HEDEFLEME-MATRISI.md` (plan) + `../da
 
 ## Kaynaklar (tek kaynaktan beslen — kopya tutma)
 
-- **Fiyat (RESMİ satış fiyatı):** `../data/products.json` — `machine_list_chatbot_products_satis_fiyatli.xlsx`'ten `scripts/import_prices.py` ile üretilir. Excel güncellenince script'i yeniden çalıştır. Reklam config'leri fiyatı/specs'i buradan alır; elle uydurma yok.
+- **Ürün kataloğu (TEK KAYNAK = WEB SİTESİ):** `../data/products.json` iki kaynaktan beslenir; İKİSİ DE BİRLEŞTİRİR, SİLMEZ:
+  1. **Web sitesi eşitlemesi** (`../lib/website-sync.js`) — Processturk_Web_Sitesi `/api/export/products` beslemesinden yayınlanan tüm makine+hatları çeker: ad, kategori (ürün grubu), özet, specs, görsel, video siteden gelir; görseller `data/uploads`'a indirilip Varlık Kütüphanesi'ne eklenir. Panel ana sayfası açılınca otomatik (10 dk TTL); elle: panel "🌐 Siteyle Eşitle" butonu, `POST /api/website-sync` veya `node scripts/sync-website.mjs`. Sitede yeni ürün → panelde otomatik belirir. Kayıttaki `website` bloğu sitenin tam sürümüdür (i18n adlar, rozet, kamuya açık fiyat, site URL'i) — çok dilli reklam kopyası buradan beslenir. Siteden kalkan ürün SİLİNMEZ, `website.removedFromSite` ile işaretlenir; kampanya creative'leri hep ürünün yanında kalır.
+  2. **Fiyat (RESMİ satış fiyatı):** `machine_list_chatbot_products_satis_fiyatli.xlsx` → `scripts/import_prices.py`. Excel fiyatı her zaman kazanır; site fiyatı yalnız kayıtta fiyat yokken ve sitede `priceConfirmed` iken kullanılır. Reklam config'leri fiyatı/specs'i products.json'dan alır; elle uydurma yok.
+  - Eşitleme mevcut kaydın slug/code'unu ASLA değiştirmez → `campaigns/*/creatives/<slug>/` bağlı kalır. Eski slug ↔ site slug eşlemesi `lib/website-sync.js` DEFAULT_ALIASES tablosunda; yeni istisna `data/website-sync.json` → `aliases` ile eklenir.
 - Ek teknik specs (gerekirse): `../../Processturk_Satis_Dolum_Makinaları/landing-v2/data/siteContent.ts`
 - Kurumsal bilgi: `../../_core/knowledge-base/PROCESSTURK_MASTER_KNOWLEDGE_BASE.md`
 - Marka sesi: `../../_core/brand-voice/PROCESSTURK_KURUMSAL_ILETISIM_DILI.md`

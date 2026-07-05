@@ -1,19 +1,27 @@
 import Link from 'next/link';
 import { readProducts } from '@/lib/products';
 import { readAllContent } from '@/lib/content';
+import { syncWebsiteProducts, getWebsiteSyncStatus } from '@/lib/website-sync';
+import WebsiteSyncButton from './website-sync-button';
 
 export const dynamic = 'force-dynamic';
 
-function PageHeader({ count }) {
+function PageHeader({ count, siteCount, lastSyncAt }) {
+  const syncLabel = lastSyncAt
+    ? new Date(lastSyncAt).toLocaleString('tr-TR', { dateStyle: 'short', timeStyle: 'short' })
+    : 'henüz yok';
   return (
     <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
       <div>
         <h1 className="font-head font-extrabold text-2xl md:text-3xl">Ürünler</h1>
-        <p className="text-slate-400 mt-1 text-sm">
-          {count} ürün · katalog tek kaynaktan (<span className="font-mono">products.json</span>) okunuyor
+        <p className="text-slate-500 mt-1 text-sm">
+          {count} ürün · {siteCount} tanesi web sitesine bağlı · son eşitleme: {syncLabel}
         </p>
       </div>
-      <Link href="/urun/yeni" className="btn btn-primary">+ Yeni Ürün Ekle</Link>
+      <div className="flex items-center gap-2">
+        <WebsiteSyncButton />
+        <Link href="/urun/yeni" className="btn btn-primary">+ Yeni Ürün Ekle</Link>
+      </div>
     </div>
   );
 }
@@ -27,14 +35,18 @@ function ProductCard({ p, content }) {
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="font-head font-bold text-base leading-tight">{m.name_tr || p.name_en}</h3>
-          <div className="text-xs text-slate-400 mt-0.5">{p.category}</div>
+          <div className="text-xs text-slate-500 mt-0.5">{p.category}</div>
         </div>
-        {p.hd ? <span className="pill pill-ok">HD</span> : <span className="pill pill-muted">SD</span>}
+        <span className="flex flex-col items-end gap-1">
+          {p.hd ? <span className="pill pill-ok">HD</span> : <span className="pill pill-muted">SD</span>}
+          {p.website && !p.website.removedFromSite && <span className="pill pill-muted" title={p.website.url}>🌐 site</span>}
+          {p.website?.removedFromSite && <span className="pill pill-muted" title="Web sitesinde artık yayında değil">🌐 kaldırıldı</span>}
+        </span>
       </div>
 
       <div className="mt-4 num text-xl text-red font-extrabold">{p.price_text || '—'}</div>
 
-      <div className="mt-3 text-xs text-slate-400 space-y-1">
+      <div className="mt-3 text-xs text-slate-500 space-y-1">
         {p.specs?.capacity && <div>⚙ {p.specs.capacity}</div>}
         {m.audience && <div>🎯 {m.audience}</div>}
       </div>
@@ -53,6 +65,10 @@ export default async function HomePage() {
   let products = [];
   let contentMap = {};
   let error = null;
+  // Web sitesi kataloğuyla otomatik eşitleme (TTL'li — 10 dk içinde tekrar çalışmaz,
+  // site kapalıysa sessizce geçer; panel her durumda açılır).
+  await syncWebsiteProducts({ maxImageDownloads: 4 }).catch(() => null);
+  const syncStatus = getWebsiteSyncStatus();
   try {
     products = await readProducts();
     contentMap = await readAllContent();
@@ -60,9 +76,11 @@ export default async function HomePage() {
     error = err.message;
   }
 
+  const siteCount = products.filter((p) => p.website && !p.website.removedFromSite).length;
+
   return (
-    <div className="px-6 md:px-10 py-8 max-w-7xl mx-auto">
-      <PageHeader count={products.length} />
+    <div className="px-4 md:px-10 py-8 max-w-7xl mx-auto">
+      <PageHeader count={products.length} siteCount={siteCount} lastSyncAt={syncStatus.lastSyncAt} />
 
       {error && (
         <div className="card p-4 border-red/40 text-sm text-red mb-6">

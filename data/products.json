@@ -3,7 +3,7 @@
     "code": "PRO-FILLING-GFM-001",
     "slug": "granul-dolum",
     "name_en": "Granule Filling Machine",
-    "category": "Filling / Granule",
+    "category": "Filling & Packaging",
     "price_usd": 1150,
     "price_text": "1,150 USD",
     "specs": {
@@ -15,8 +15,174 @@
       "voltage": "230 V / 50 Hz"
     },
     "video": "",
-    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/granul-dolum.png",
-    "hd": true
+    "source_image": "data/uploads/granul-dolum-gorsel-1783208582564-wyea.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Granül Dolum Makinesi",
+      "promise": "Zeytin, pirinç, nohut, fasulye, tuz ve tohum gibi granül ürünler için vibrasyon sistemli hassas dolum.",
+      "hero_number": "600 – 1000 adet/saat"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "granul-dolum-makinesi",
+      "url": "http://127.0.0.1:4192/tr/makineler/granul-dolum-makinesi",
+      "name": {
+        "tr": "Granül Dolum Makinesi",
+        "en": "Granule Filling Machine",
+        "ar": "آلة تعبئة الحبيبات",
+        "fr": "Machine de remplissage de granulés",
+        "ru": "Гранульная упаковочная машина"
+      },
+      "summary": {
+        "tr": "Zeytin, pirinç, nohut, fasulye, tuz ve tohum gibi granül ürünler için vibrasyon sistemli hassas dolum.",
+        "en": "Vibration-system precise filling for granular products such as olives, rice, chickpeas, beans, salt and seeds.",
+        "ar": "ملء دقيق بنظام اهتزازي للمنتجات الحبيبية مثل الزيتون والأرز والحمص والفاصوليا والملح والبذور.",
+        "fr": "Remplissage précis avec un système de vibration pour des produits granulaires tels que les olives, le riz, les pois chiches, les haricots, le sel et les graines.",
+        "ru": "Точное заполнение с вибрационной системой для гранулированных продуктов, таких как оливки, рис, нут, фасоль, соль и семена."
+      },
+      "category": {
+        "slug": "dolum-paketleme",
+        "name": {
+          "tr": "Dolum & Paketleme",
+          "en": "Filling & Packaging"
+        }
+      },
+      "capacity": "600 – 1000 adet/saat",
+      "deliveryWeeks": "4 – 6 hafta",
+      "automation": "yari",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Dolum Sistemi",
+            "en": "Filling system",
+            "ar": "نظام التعبئة",
+            "fr": "Système de remplissage",
+            "ru": "Система заполнения"
+          },
+          "v": {
+            "tr": "Vibrasyon",
+            "en": "Vibration",
+            "ar": "اهتزاز",
+            "fr": "Vibration",
+            "ru": "Вибрация"
+          }
+        },
+        {
+          "k": {
+            "tr": "Dozaj",
+            "en": "Dosing",
+            "ar": "جرعة",
+            "fr": "Dosage",
+            "ru": "Дозировка"
+          },
+          "v": {
+            "tr": "Ürün ve ağırlığa göre değişken",
+            "en": "Variable by product and weight",
+            "ar": "متغير حسب المنتج والوزن",
+            "fr": "Variable selon le produit et le poids",
+            "ru": "Переменная в зависимости от продукта и веса"
+          }
+        },
+        {
+          "k": {
+            "tr": "Güç",
+            "en": "Power",
+            "ar": "طاقة",
+            "fr": "Puissance",
+            "ru": "Мощность"
+          },
+          "v": {
+            "tr": "1.000 W · 220 V",
+            "en": "1,000 W · 220 V",
+            "ar": "1000 واط · 220 فولت",
+            "fr": "1 000 W · 220 V",
+            "ru": "1000 Вт · 220 В"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ölçüler",
+            "en": "Dimensions",
+            "ar": "الأبعاد",
+            "fr": "Dimensions",
+            "ru": "Размеры"
+          },
+          "v": {
+            "tr": "500 × 500 × 1500 mm",
+            "en": "500 × 500 × 1500 mm",
+            "ar": "500 × 500 × 1500 مم",
+            "fr": "500 × 500 × 1500 mm",
+            "ru": "500 × 500 × 1500 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde",
+            "en": "Body",
+            "ar": "الجسم",
+            "fr": "Corps",
+            "ru": "Корпус"
+          },
+          "v": {
+            "tr": "AISI 304 paslanmaz",
+            "en": "AISI 304 stainless",
+            "ar": "الفولاذ المقاوم للصدأ AISI 304",
+            "fr": "Acier inoxydable AISI 304",
+            "ru": "Нержавеющая сталь AISI 304"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control",
+            "ar": "تحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
+          },
+          "v": {
+            "tr": "Dokunmatik panel",
+            "en": "Touch panel",
+            "ar": "لوحة لمس",
+            "fr": "Panneau tactile",
+            "ru": "Сенсорная панель"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Ağırlık bazlı hassas dozaj",
+          "en": "Weight-based precise dosing",
+          "ar": "جرعة دقيقة تعتمد على الوزن",
+          "fr": "Dosage précis basé sur le poids",
+          "ru": "Точное дозирование по весу"
+        },
+        {
+          "tr": "Paslanmaz 304 gövde",
+          "en": "Stainless 304 body",
+          "ar": "هيكل من الفولاذ المقاوم للصدأ 304",
+          "fr": "Corps en acier inoxydable 304",
+          "ru": "Корпус из нержавеющей стали 304"
+        },
+        {
+          "tr": "Kolay temizlik",
+          "en": "Easy cleaning",
+          "ar": "سهلة التنظيف",
+          "fr": "Nettoyage facile",
+          "ru": "Легкость в очистке"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/granul-dolum-makinesi.jpg",
+        "servedUrl": "/api/media/granul-dolum-gorsel-1783208582564-wyea.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.916Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-LFH-001",
@@ -59,69 +225,510 @@
   {
     "code": "PRO-FILLING-MLM-001",
     "slug": "manuel-etiketleme",
-    "name_en": "Manual Labelling Machine",
-    "category": "Labelling",
+    "name_en": "Manual Labeling Machine",
+    "category": "Labeling",
     "price_usd": 345,
     "price_text": "345 USD",
     "specs": {
-      "filled_products": "",
+      "filled_products": "Bottle, Jar, Cylindrical container",
       "filling_range": "",
-      "capacity": "",
+      "capacity": "300 – 600 pcs/h",
       "size": "45 x 30 x 20 cm",
       "power": "",
       "voltage": ""
     },
     "video": "",
     "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Manual Labelling Machine.jpeg",
-    "hd": false
+    "hd": true,
+    "marketing": {
+      "name_tr": "Manuel Etiketleme Makinesi",
+      "promise": "Yuvarlak kaplara ekonomik, elle beslemeli etiketleme.",
+      "hero_number": "300 – 600 adet/saat"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "manuel-etiketleme-makinesi",
+      "url": "http://127.0.0.1:4192/tr/makineler/manuel-etiketleme-makinesi",
+      "name": {
+        "tr": "Manuel Etiketleme Makinesi",
+        "en": "Manual Labeling Machine",
+        "ar": "آلة وضع العلامات اليدوية",
+        "fr": "Machine d'étiquetage manuelle",
+        "ru": "Ручная этикетировочная машина"
+      },
+      "summary": {
+        "tr": "Yuvarlak kaplara ekonomik, elle beslemeli etiketleme.",
+        "en": "Economical manual-feed labeling for round containers.",
+        "ar": "وسم يدوي اقتصادي للأوعية الدائرية.",
+        "fr": "Étiquetage économique à alimentation manuelle pour récipients ronds.",
+        "ru": "Экономическая, ручная подача этикетировщика для круглых контейнеров."
+      },
+      "category": {
+        "slug": "etiketleme",
+        "name": {
+          "tr": "Etiketleme",
+          "en": "Labeling"
+        }
+      },
+      "capacity": "300 – 600 adet/saat",
+      "deliveryWeeks": "2 – 4 hafta",
+      "automation": "manuel",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Çap aralığı",
+            "en": "Diameter",
+            "ar": "نطاق القطر",
+            "fr": "Plage de diamètre",
+            "ru": "Диапазон диаметра"
+          },
+          "v": {
+            "tr": "20 – 120 mm",
+            "en": "20 – 120 mm",
+            "ar": "20 - 120 مم",
+            "fr": "20 – 120 mm",
+            "ru": "20 – 120 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "الطاقة الاستيعابية",
+            "fr": "Capacité",
+            "ru": "Вместимость"
+          },
+          "v": {
+            "tr": "300 – 600 adet/saat",
+            "en": "300 – 600 pcs/h",
+            "ar": "300 - 600 قطعة/ساعة",
+            "fr": "300 – 600 pièces/heure",
+            "ru": "300 – 600 штук/час"
+          }
+        },
+        {
+          "k": {
+            "tr": "Tip",
+            "en": "Type",
+            "ar": "النوع",
+            "fr": "Type",
+            "ru": "Тип"
+          },
+          "v": {
+            "tr": "Manuel",
+            "en": "Manual",
+            "ar": "يدوي",
+            "fr": "Manuel",
+            "ru": "Ручной"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Elektriksiz",
+          "en": "No electricity",
+          "ar": "بدون كهرباء",
+          "fr": "Sans électricité",
+          "ru": "Без электричества"
+        },
+        {
+          "tr": "Taşınabilir",
+          "en": "Portable",
+          "ar": "قابل للنقل",
+          "fr": "Portable",
+          "ru": "Портативный"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/manuel-etiketleme-makinesi.jpg",
+        "servedUrl": "/api/media/manuel-etiketleme-gorsel-1783208582707-17pu.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.917Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-LFM4-001",
     "slug": "sivi-dolum-4nozul",
-    "name_en": "Liquid Filling Machine (4 nozzles)",
-    "category": "Filling / Liquid",
+    "name_en": "4x1 Servo Linear Filling Machine",
+    "category": "Filling & Packaging",
     "price_usd": 33350,
     "price_text": "33,350 USD",
     "specs": {
       "filled_products": "All liquid products",
       "filling_range": "",
       "capacity": "Depends on number of nozzles; 400 ml 1000 pcs/hour with 4 nozzles",
-      "size": "",
+      "size": "1280 × 800 × 2270 mm",
       "power": "2000 Watt",
       "voltage": "380 V / 50 Hz"
     },
     "video": "",
-    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Liquid Filling Machine (4 nozzles).png",
-    "hd": true
+    "source_image": "data/uploads/sivi-dolum-4nozul-gorsel-1783208582580-8up8.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "4x1 Servo Lineer Dolum Makinesi",
+      "promise": "Volumetrik servo dolum sistemli 4 enjektörlü lineer makine; nozüller şişe dibinden yükselerek doldurur, köpüklü ürünlerde köpürmeyi önler.",
+      "hero_number": "500 – 2.500 adet/saat"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "sivi-dolum-hatti",
+      "url": "http://127.0.0.1:4192/tr/makineler/sivi-dolum-hatti",
+      "name": {
+        "tr": "4x1 Servo Lineer Dolum Makinesi",
+        "en": "4x1 Servo Linear Filling Machine",
+        "ar": "آلة تعبئة خطية سيرفو 4x1",
+        "fr": "Machine de remplissage linéaire servo 4x1",
+        "ru": "4x1 Серво линейная заполняющая машина"
+      },
+      "summary": {
+        "tr": "Volumetrik servo dolum sistemli 4 enjektörlü lineer makine; nozüller şişe dibinden yükselerek doldurur, köpüklü ürünlerde köpürmeyi önler.",
+        "en": "4-injector linear machine with volumetric servo filling; nozzles rise from the bottle bottom while filling, preventing foam in foamy products.",
+        "ar": "نظام تعبئة سيرفو حجمي مع 4 حقن؛ الفوهات تملأ من قاع الزجاجة، مما يمنع الرغوة في المنتجات الفوارة.",
+        "fr": "Système de remplissage volumétrique servo avec 4 injecteurs ; les buses remplissent depuis le fond de la bouteille, empêchant la formation de mousse dans les produits pétillants.",
+        "ru": "Объемная сервоприводная система заполнения с 4 инжекторами; насадки заполняют снизу бутылки, предотвращая образование пены в газированных продуктах."
+      },
+      "category": {
+        "slug": "dolum-paketleme",
+        "name": {
+          "tr": "Dolum & Paketleme",
+          "en": "Filling & Packaging"
+        }
+      },
+      "capacity": "500 – 2.500 adet/saat",
+      "deliveryWeeks": "6 – 10 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Dolum Sistemi",
+            "en": "Filling system",
+            "ar": "نظام التعبئة",
+            "fr": "Système de remplissage",
+            "ru": "Система заполнения"
+          },
+          "v": {
+            "tr": "Volumetrik (servo)",
+            "en": "Volumetric (servo)",
+            "ar": "حجمي (سيرفو)",
+            "fr": "Volumétrique (servo)",
+            "ru": "Объемный (серво)"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Вместимость"
+          },
+          "v": {
+            "tr": "500 – 2.500 adet/saat (1000 ml)",
+            "en": "500 – 2,500 pcs/h (1000 ml)",
+            "ar": "500 – 2500 وحدة/ساعة (1000 مل)",
+            "fr": "500 – 2500 unités/heure (1000 ml)",
+            "ru": "500 – 2500 единиц/час (1000 мл)"
+          }
+        },
+        {
+          "k": {
+            "tr": "Enjektör",
+            "en": "Injectors",
+            "ar": "حقن",
+            "fr": "Injecteur",
+            "ru": "Инжектор"
+          },
+          "v": {
+            "tr": "4 adet (artırılabilir)",
+            "en": "4 pcs (expandable)",
+            "ar": "4 وحدات (قابلة للتوسيع)",
+            "fr": "4 unités (extensibles)",
+            "ru": "4 единицы (расширяемые)"
+          }
+        },
+        {
+          "k": {
+            "tr": "Dolum Hassasiyeti",
+            "en": "Filling precision",
+            "ar": "دقة التعبئة",
+            "fr": "Précision de remplissage",
+            "ru": "Точность заполнения"
+          },
+          "v": {
+            "tr": "1/1000",
+            "en": "1/1000",
+            "ar": "1/1000",
+            "fr": "1/1000",
+            "ru": "1/1000"
+          }
+        },
+        {
+          "k": {
+            "tr": "Güç",
+            "en": "Power",
+            "ar": "الطاقة",
+            "fr": "Puissance",
+            "ru": "Мощность"
+          },
+          "v": {
+            "tr": "2,8 kW · 220 – 380 V",
+            "en": "2.8 kW · 220 – 380 V",
+            "ar": "2.8 كيلو واط · 220 – 380 فولت",
+            "fr": "2,8 kW · 220 – 380 V",
+            "ru": "2,8 кВт · 220 – 380 В"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ölçüler",
+            "en": "Dimensions",
+            "ar": "الأبعاد",
+            "fr": "Dimensions",
+            "ru": "Размеры"
+          },
+          "v": {
+            "tr": "1280 × 800 × 2270 mm",
+            "en": "1280 × 800 × 2270 mm",
+            "ar": "1280 × 800 × 2270 مم",
+            "fr": "1280 × 800 × 2270 mm",
+            "ru": "1280 × 800 × 2270 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Hava Tüketimi",
+            "en": "Air consumption",
+            "ar": "استهلاك الهواء",
+            "fr": "Consommation d'air",
+            "ru": "Потребление воздуха"
+          },
+          "v": {
+            "tr": "6 lt/dk",
+            "en": "6 l/min",
+            "ar": "6 لتر/دقيقة",
+            "fr": "6 lt/min",
+            "ru": "6 л/мин"
+          }
+        },
+        {
+          "k": {
+            "tr": "Konveyör",
+            "en": "Conveyor",
+            "ar": "ناقل",
+            "fr": "Convoyeur",
+            "ru": "Конвейер"
+          },
+          "v": {
+            "tr": "6 m",
+            "en": "6 m",
+            "ar": "6 م",
+            "fr": "6 m",
+            "ru": "6 м"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde",
+            "en": "Body",
+            "ar": "الجسم",
+            "fr": "Corps",
+            "ru": "Корпус"
+          },
+          "v": {
+            "tr": "AISI 304 paslanmaz",
+            "en": "AISI 304 stainless",
+            "ar": "الفولاذ المقاوم للصدأ AISI 304",
+            "fr": "Acier inoxydable AISI 304",
+            "ru": "Нержавеющая сталь AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Servo damlatmasız nozul",
+          "en": "Servo drip-free nozzle",
+          "ar": "فوهة سيرفو خالية من التنقيط",
+          "fr": "Buse servo sans goutte",
+          "ru": "Серво-сопло без капель"
+        },
+        {
+          "tr": "PLC dokunmatik kontrol",
+          "en": "PLC touch control",
+          "ar": "تحكم باللمس PLC",
+          "fr": "Contrôle tactile PLC",
+          "ru": "Сенсорное управление PLC"
+        },
+        {
+          "tr": "Hızlı format değişimi",
+          "en": "Quick format change",
+          "ar": "تغيير تنسيق سريع",
+          "fr": "Changement de format rapide",
+          "ru": "Быстрая смена формата"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/sivi-dolum-hatti.jpg",
+        "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1783208582580-8up8.jpg"
+      },
+      "gallery": [
+        {
+          "source": "http://127.0.0.1:4192/img/products/sivi-dolum-hatti-detay.jpg",
+          "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1783208582647-y2cf.jpg"
+        }
+      ],
+      "syncedAt": "2026-07-04T23:45:32.916Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-SALM-001",
     "slug": "etiketleme-yari",
-    "name_en": "Semi Automatic Labelling Machine",
-    "category": "Labelling",
+    "name_en": "Semi-Automatic Labeling Machine",
+    "category": "Labeling",
     "price_usd": 1035,
     "price_text": "1,035 USD",
     "specs": {
-      "filled_products": "",
+      "filled_products": "Bottle, Jar, Cylindrical container",
       "filling_range": "",
-      "capacity": "",
+      "capacity": "10 – 25 pcs/min",
       "size": "Machine size 60 x 50 x 150 cm; labelling unit 45 x 30 x 20 cm",
       "power": "300 Watt",
       "voltage": "230 V / 50 Hz"
     },
     "video": "",
     "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Semi Automatic Labelling Machine.jpeg",
-    "hd": false
+    "hd": true,
+    "marketing": {
+      "name_tr": "Yarı Otomatik Etiketleme Makinesi",
+      "promise": "Tek operatörle hızlı ve düzgün etiketleme.",
+      "hero_number": "10 – 25 adet/dak"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "yari-otomatik-etiketleme",
+      "url": "http://127.0.0.1:4192/tr/makineler/yari-otomatik-etiketleme",
+      "name": {
+        "tr": "Yarı Otomatik Etiketleme Makinesi",
+        "en": "Semi-Automatic Labeling Machine",
+        "ar": "آلة وسم نصف آلية",
+        "fr": "Machine d'étiquetage semi-automatique",
+        "ru": "Полуавтоматическая этикетировочная машина"
+      },
+      "summary": {
+        "tr": "Tek operatörle hızlı ve düzgün etiketleme.",
+        "en": "Fast, neat labeling with a single operator.",
+        "ar": "وسم سريع ودقيق مع مشغل واحد.",
+        "fr": "Étiquetage rapide et précis avec un seul opérateur.",
+        "ru": "Быстрая и точная этикетировка с одним оператором."
+      },
+      "category": {
+        "slug": "etiketleme",
+        "name": {
+          "tr": "Etiketleme",
+          "en": "Labeling"
+        }
+      },
+      "capacity": "10 – 25 adet/dak",
+      "deliveryWeeks": "3 – 5 hafta",
+      "automation": "yari",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "الطاقة الاستيعابية",
+            "fr": "Capacité",
+            "ru": "Вместимость"
+          },
+          "v": {
+            "tr": "10 – 25 adet/dak",
+            "en": "10 – 25 pcs/min",
+            "ar": "10 – 25 قطعة / دقيقة",
+            "fr": "10 – 25 pièces/min",
+            "ru": "10 – 25 шт/мин"
+          }
+        },
+        {
+          "k": {
+            "tr": "Etiket",
+            "en": "Label",
+            "ar": "ملصق",
+            "fr": "Étiquette",
+            "ru": "Этикетка"
+          },
+          "v": {
+            "tr": "Tek / çift",
+            "en": "Single / double",
+            "ar": "مفرد / مزدوج",
+            "fr": "Simple / double",
+            "ru": "Одиночная / двойная"
+          }
+        },
+        {
+          "k": {
+            "tr": "Güç",
+            "en": "Power",
+            "ar": "الطاقة",
+            "fr": "Puissance",
+            "ru": "Мощность"
+          },
+          "v": {
+            "tr": "180 W",
+            "en": "180 W",
+            "ar": "180 واط",
+            "fr": "180 W",
+            "ru": "180 Вт"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Sensörlü konumlama",
+          "en": "Sensor positioning",
+          "ar": "تحديد المواقع المعتمد على المستشعر",
+          "fr": "Positionnement basé sur des capteurs",
+          "ru": "Сенсорное позиционирование"
+        },
+        {
+          "tr": "Hız ayarı",
+          "en": "Speed control",
+          "ar": "ضبط السرعة",
+          "fr": "Régulation de la vitesse",
+          "ru": "Регулировка скорости"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/yari-otomatik-etiketleme.jpg",
+        "servedUrl": "/api/media/etiketleme-yari-gorsel-1783208637895-ok8k.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.917Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-FALC-001",
     "slug": "etiketleme-oto",
-    "name_en": "Full Automatic Labelling Machine with Cabin",
-    "category": "Labelling",
+    "name_en": "Full-Automatic Labeling (Cabin)",
+    "category": "Labeling",
     "price_usd": 7475,
     "price_text": "7,475 USD",
     "specs": {
-      "filled_products": "",
+      "filled_products": "Bottle, Jar, Can, Cylindrical container",
       "filling_range": "",
       "capacity": "10-40 bottles/min.",
       "size": "60 x 50 x 150 cm",
@@ -129,8 +736,195 @@
       "voltage": "230 V / 50 Hz"
     },
     "video": "https://www.youtube.com/watch?v=V8V1cd4XeVU&t=14s",
-    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/etiketleme-oto.png",
-    "hd": true
+    "source_image": "data/uploads/etiketleme-oto-gorsel-1783208637907-1jl8.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Tam Otomatik Etiketleme (Kabinli)",
+      "promise": "Konveyörlü, yüksek hızlı tam otomatik etiketleme istasyonu.",
+      "hero_number": "25 – 40 adet/dak"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "tam-otomatik-etiketleme",
+      "url": "http://127.0.0.1:4192/tr/makineler/tam-otomatik-etiketleme",
+      "name": {
+        "tr": "Tam Otomatik Etiketleme (Kabinli)",
+        "en": "Full-Automatic Labeling (Cabin)",
+        "ar": "وضع العلامات التلقائي بالكامل (نوع الكابينة)",
+        "fr": "Étiquetage entièrement automatique (type cabine)",
+        "ru": "Полностью автоматическая этикетировка (кабинного типа)"
+      },
+      "summary": {
+        "tr": "Konveyörlü, yüksek hızlı tam otomatik etiketleme istasyonu.",
+        "en": "Conveyorized, high-speed fully automatic labeling station.",
+        "ar": "محطة وضع العلامات التلقائي بالكامل عالية السرعة مع ناقل.",
+        "fr": "Station d'étiquetage entièrement automatique à haute vitesse avec convoyeur.",
+        "ru": "Конвейерная, высокоскоростная полностью автоматическая этикетировочная станция."
+      },
+      "category": {
+        "slug": "etiketleme",
+        "name": {
+          "tr": "Etiketleme",
+          "en": "Labeling"
+        }
+      },
+      "capacity": "25 – 40 adet/dak",
+      "deliveryWeeks": "6 – 10 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Etiketleme Hızı",
+            "en": "Labeling speed",
+            "ar": "سرعة التسمية",
+            "fr": "Vitesse d'étiquetage",
+            "ru": "Скорость нанесения этикеток"
+          },
+          "v": {
+            "tr": "10 – 40 şişe/dk",
+            "en": "10 – 40 bottles/min",
+            "ar": "10 – 40 زجاجة/دقيقة",
+            "fr": "10 – 40 bouteilles/min",
+            "ru": "10 – 40 бутылок/мин"
+          }
+        },
+        {
+          "k": {
+            "tr": "Etiket Boyu",
+            "en": "Label length",
+            "ar": "طول الملصق",
+            "fr": "Longueur de l'étiquette",
+            "ru": "Длина этикетки"
+          },
+          "v": {
+            "tr": "30 – 250 mm",
+            "en": "30 – 250 mm",
+            "ar": "30 – 250 مم",
+            "fr": "30 – 250 mm",
+            "ru": "30 – 250 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Etiket Eni",
+            "en": "Label width",
+            "ar": "عرض الملصق",
+            "fr": "Largeur de l'étiquette",
+            "ru": "Ширина этикетки"
+          },
+          "v": {
+            "tr": "40 – 90 mm",
+            "en": "40 – 90 mm",
+            "ar": "40 – 90 مم",
+            "fr": "40 – 90 mm",
+            "ru": "40 – 90 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Rulo",
+            "en": "Roll",
+            "ar": "لفة",
+            "fr": "Rouleau",
+            "ru": "Катушка"
+          },
+          "v": {
+            "tr": "İç 18 – 50 mm · dış 200 mm",
+            "en": "Core 18 – 50 mm · OD 200 mm",
+            "ar": "الداخل 18 – 50 مم · الخارج 200 مم",
+            "fr": "Intérieur 18 – 50 mm · extérieur 200 mm",
+            "ru": "Внутренний 18 – 50 мм · внешний 200 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Güç",
+            "en": "Power",
+            "ar": "الطاقة",
+            "fr": "Puissance",
+            "ru": "Мощность"
+          },
+          "v": {
+            "tr": "750 W · 230 V",
+            "en": "750 W · 230 V",
+            "ar": "750 واط · 230 فولت",
+            "fr": "750 W · 230 V",
+            "ru": "750 Вт · 230 В"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ölçüler",
+            "en": "Dimensions",
+            "ar": "الأبعاد",
+            "fr": "Dimensions",
+            "ru": "Габариты"
+          },
+          "v": {
+            "tr": "700 × 2200 × 1700 mm",
+            "en": "700 × 2200 × 1700 mm",
+            "ar": "700 × 2200 × 1700 مم",
+            "fr": "700 × 2200 × 1700 mm",
+            "ru": "700 × 2200 × 1700 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Özellikler",
+            "en": "Features",
+            "ar": "الميزات",
+            "fr": "Caractéristiques",
+            "ru": "Особенности"
+          },
+          "v": {
+            "tr": "Şeffaf etiket sensörü · reçete hafızası · güvenlik kabini",
+            "en": "Transparent-label sensor · recipe memory · safety cabin",
+            "ar": "حساس الملصق الشفاف · ذاكرة الوصفة · خزانة الأمان",
+            "fr": "Capteur d'étiquette transparent · mémoire de recette · armoire de sécurité",
+            "ru": "Датчик прозрачной этикетки · память рецептов · защитный шкаф"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Konveyör entegre",
+          "en": "Conveyor integrated",
+          "ar": "ناقل مدمج",
+          "fr": "Convoyeur intégré",
+          "ru": "Интегрированный конвейер"
+        },
+        {
+          "tr": "Tarih kodlama opsiyonu",
+          "en": "Date coding option",
+          "ar": "خيار ترميز التاريخ",
+          "fr": "Option de codage de date",
+          "ru": "Опция кодирования даты"
+        },
+        {
+          "tr": "Paslanmaz kabin",
+          "en": "Stainless cabin",
+          "ar": "كابينة من الفولاذ المقاوم للصدأ",
+          "fr": "Cabine en acier inoxydable",
+          "ru": "Нержавеющая кабина"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/tam-otomatik-etiketleme.jpg",
+        "servedUrl": "/api/media/etiketleme-oto-gorsel-1783208637907-1jl8.jpg"
+      },
+      "gallery": [
+        {
+          "source": "http://127.0.0.1:4192/img/products/tam-otomatik-etiketleme-detay.jpg",
+          "servedUrl": "/api/media/etiketleme-oto-gorsel-1783208637913-iftu.jpg"
+        }
+      ],
+      "syncedAt": "2026-07-04T23:45:32.918Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-FALC304-001",
@@ -173,12 +967,12 @@
   {
     "code": "PRO-FILLING-OLCM-001",
     "slug": "tek-hat-kapatma",
-    "name_en": "One Line Capping Machine",
-    "category": "Capping",
+    "name_en": "Single-Lane Capping Machine",
+    "category": "Filling & Packaging",
     "price_usd": 28175,
     "price_text": "28,175 USD",
     "specs": {
-      "filled_products": "",
+      "filled_products": "Jar, Bottle",
       "filling_range": "",
       "capacity": "750-900 pcs/hour",
       "size": "100 x 2500 x 2000 cm",
@@ -187,17 +981,192 @@
     },
     "video": "",
     "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/One Line Capping Machine.jpeg",
-    "hd": false
+    "hd": true,
+    "marketing": {
+      "name_tr": "Tek Hat Kapak Kapatma Makinesi",
+      "promise": "Kavanoz ve şişeler için otomatik kapak kapatma.",
+      "hero_number": "500 – 1.500 adet/saat"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "tek-hat-kapak-kapatma",
+      "url": "http://127.0.0.1:4192/tr/makineler/tek-hat-kapak-kapatma",
+      "name": {
+        "tr": "Tek Hat Kapak Kapatma Makinesi",
+        "en": "Single-Lane Capping Machine",
+        "ar": "آلة إغلاق الأغطية ذات الخط الواحد",
+        "fr": "Machine de fermeture de bouchons à ligne unique",
+        "ru": "Однолинейная машина для закрытия крышек"
+      },
+      "summary": {
+        "tr": "Kavanoz ve şişeler için otomatik kapak kapatma.",
+        "en": "Automatic capping for jars and bottles.",
+        "ar": "إغلاق الأغطية تلقائياً للبرطمانات والقوارير.",
+        "fr": "Fermeture automatique des bouchons pour bocaux et bouteilles.",
+        "ru": "Автоматическое закрытие крышек для банок и бутылок."
+      },
+      "category": {
+        "slug": "dolum-paketleme",
+        "name": {
+          "tr": "Dolum & Paketleme",
+          "en": "Filling & Packaging"
+        }
+      },
+      "capacity": "500 – 1.500 adet/saat",
+      "deliveryWeeks": "6 – 10 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Ёмкость"
+          },
+          "v": {
+            "tr": "500 – 1.500 adet/saat",
+            "en": "500 – 1,500 pcs/h",
+            "ar": "500 – 1,500 وحدة/ساعة",
+            "fr": "500 – 1 500 unités/heure",
+            "ru": "500 – 1 500 единиц/час"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kapak",
+            "en": "Cap",
+            "ar": "غطاء",
+            "fr": "Capuchon",
+            "ru": "Крышка"
+          },
+          "v": {
+            "tr": "Vidalı · plastik/metal",
+            "en": "Screw · plastic/metal",
+            "ar": "ملولب · بلاستيك/معدن",
+            "fr": "Vis · plastique/métal",
+            "ru": "Винтовой · пластик/металл"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control",
+            "ar": "تحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
+          },
+          "v": {
+            "tr": "Sensör + hız kontrolü",
+            "en": "Sensor + speed control",
+            "ar": "حساس + التحكم في السرعة",
+            "fr": "Capteur + contrôle de la vitesse",
+            "ru": "Датчик + управление скоростью"
+          }
+        },
+        {
+          "k": {
+            "tr": "Güç",
+            "en": "Power",
+            "ar": "الطاقة",
+            "fr": "Puissance",
+            "ru": "Мощность"
+          },
+          "v": {
+            "tr": "0,55 kW · 230 V",
+            "en": "0.55 kW · 230 V",
+            "ar": "0.55 كيلو واط · 230 فولت",
+            "fr": "0,55 kW · 230 V",
+            "ru": "0,55 кВт · 230 В"
+          }
+        },
+        {
+          "k": {
+            "tr": "Hava",
+            "en": "Air",
+            "ar": "هواء",
+            "fr": "Air",
+            "ru": "Воздух"
+          },
+          "v": {
+            "tr": "4 – 6 bar",
+            "en": "4 – 6 bar",
+            "ar": "4 – 6 بار",
+            "fr": "4 – 6 bars",
+            "ru": "4 – 6 бар"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ölçüler",
+            "en": "Dimensions",
+            "ar": "الأبعاد",
+            "fr": "Dimensions",
+            "ru": "Размеры"
+          },
+          "v": {
+            "tr": "750 × 650 × 1550 mm",
+            "en": "750 × 650 × 1550 mm",
+            "ar": "750 × 650 × 1550 مم",
+            "fr": "750 × 650 × 1550 mm",
+            "ru": "750 × 650 × 1550 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde",
+            "en": "Body",
+            "ar": "الجسم",
+            "fr": "Corps",
+            "ru": "Корпус"
+          },
+          "v": {
+            "tr": "AISI 304 paslanmaz",
+            "en": "AISI 304 stainless",
+            "ar": "الفولاذ المقاوم للصدأ AISI 304",
+            "fr": "Acier inoxydable AISI 304",
+            "ru": "Нержавеющая сталь AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Tork ayarı",
+          "en": "Torque control",
+          "ar": "ضبط العزم",
+          "fr": "Réglage du couple",
+          "ru": "Регулировка крутящего момента"
+        },
+        {
+          "tr": "Sızdırmaz kapatma",
+          "en": "Leak-proof closure",
+          "ar": "إغلاق مضاد للتسرب",
+          "fr": "Fermeture étanche",
+          "ru": "Герметичное закрытие"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/tek-hat-kapak-kapatma.jpg",
+        "servedUrl": "/api/media/tek-hat-kapatma-gorsel-1783208637929-zy0f.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.919Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-TLCM-001",
     "slug": "iki-hat-kapatma",
-    "name_en": "Two Line Capping Machine",
-    "category": "Capping",
+    "name_en": "Dual-Lane Capping Machine",
+    "category": "Filling & Packaging",
     "price_usd": 37375,
     "price_text": "37,375 USD",
     "specs": {
-      "filled_products": "",
+      "filled_products": "Jar, Bottle",
       "filling_range": "",
       "capacity": "1500 pcs/hour",
       "size": "100 x 4800 x 2000 cm",
@@ -206,17 +1175,128 @@
     },
     "video": "https://www.youtube.com/watch?v=p3y3Y5WL4CY&t=3s",
     "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Two Line Capping Machine.jpeg",
-    "hd": false
+    "hd": true,
+    "marketing": {
+      "name_tr": "Çift Hat Kapak Kapatma Makinesi",
+      "promise": "Yüksek kapasiteli çift hatlı kapak kapatma.",
+      "hero_number": "1000 – 2400 adet/saat"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "cift-hat-kapak-kapatma",
+      "url": "http://127.0.0.1:4192/tr/makineler/cift-hat-kapak-kapatma",
+      "name": {
+        "tr": "Çift Hat Kapak Kapatma Makinesi",
+        "en": "Dual-Lane Capping Machine",
+        "ar": "آلة إغلاق الأغطية ذات الخطين المزدوجين",
+        "fr": "Machine de fermeture de bouchons à double ligne",
+        "ru": "Машина для закрытия крышек двойной линии"
+      },
+      "summary": {
+        "tr": "Yüksek kapasiteli çift hatlı kapak kapatma.",
+        "en": "High-capacity dual-lane capping.",
+        "ar": "إغلاق أغطية ذات سعة عالية بخطين مزدوجين.",
+        "fr": "Fermeture de bouchons à double ligne à haute capacité.",
+        "ru": "Закрытие крышек двойной линии с высокой мощностью."
+      },
+      "category": {
+        "slug": "dolum-paketleme",
+        "name": {
+          "tr": "Dolum & Paketleme",
+          "en": "Filling & Packaging"
+        }
+      },
+      "capacity": "1000 – 2400 adet/saat",
+      "deliveryWeeks": "8 – 12 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Вместимость"
+          },
+          "v": {
+            "tr": "1000 – 2400 adet/saat",
+            "en": "1000 – 2400 pcs/h",
+            "ar": "1000 – 2400 وحدة/ساعة",
+            "fr": "1000 – 2400 unités/heure",
+            "ru": "1000 – 2400 единиц/час"
+          }
+        },
+        {
+          "k": {
+            "tr": "Hat",
+            "en": "Lanes",
+            "ar": "خط",
+            "fr": "Ligne",
+            "ru": "Линия"
+          },
+          "v": {
+            "tr": "2",
+            "en": "2",
+            "ar": "2",
+            "fr": "2",
+            "ru": "2"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kapak besleme",
+            "en": "Cap feed",
+            "ar": "تغذية الأغطية",
+            "fr": "Alimentation en bouchons",
+            "ru": "Подача крышек"
+          },
+          "v": {
+            "tr": "Otomatik",
+            "en": "Automatic",
+            "ar": "تلقائي",
+            "fr": "Automatique",
+            "ru": "Автоматический"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Çift hat verimi",
+          "en": "Dual-lane throughput",
+          "ar": "كفاءة الخط المزدوج",
+          "fr": "Efficacité de la double ligne",
+          "ru": "Эффективность двойной линии"
+        },
+        {
+          "tr": "Otomatik kapak besleme",
+          "en": "Automatic cap feed",
+          "ar": "تغذية أغطية تلقائية",
+          "fr": "Alimentation automatique en bouchons",
+          "ru": "Автоматическая подача крышек"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/cift-hat-kapak-kapatma.jpg",
+        "servedUrl": "/api/media/iki-hat-kapatma-gorsel-1783208637945-vh5z.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.920Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-CCM-001",
     "slug": "can-kapatma-oto",
-    "name_en": "Can Capping Machine",
-    "category": "Capping / Can",
+    "name_en": "Can Seaming Machine",
+    "category": "Filling & Packaging",
     "price_usd": 48300,
     "price_text": "48,300 USD",
     "specs": {
-      "filled_products": "",
+      "filled_products": "Tomato paste, Canned vegetables, Ready-to-eat food",
       "filling_range": "",
       "capacity": "1000 pcs/hour",
       "size": "",
@@ -224,8 +1304,119 @@
       "voltage": "380 V"
     },
     "video": "",
-    "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Can Capping Machine .png",
-    "hd": false
+    "source_image": "data/uploads/can-kapatma-oto-gorsel-1783208637960-7yh1.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Konserve Kapatma (Sıvama) Makinesi",
+      "promise": "Teneke konserve kutuları için çift kıvrım sıvama.",
+      "hero_number": "1500 – 3000 kutu/saat"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "konserve-kapatma-makinesi",
+      "url": "http://127.0.0.1:4192/tr/makineler/konserve-kapatma-makinesi",
+      "name": {
+        "tr": "Konserve Kapatma (Sıvama) Makinesi",
+        "en": "Can Seaming Machine",
+        "ar": "آلة غلق العلب",
+        "fr": "Machine de Sertissage de Conserves",
+        "ru": "Машина для запечатывания консервов"
+      },
+      "summary": {
+        "tr": "Teneke konserve kutuları için çift kıvrım sıvama.",
+        "en": "Double-seam closing for tin cans.",
+        "ar": "تجعيد مزدوج لعلب الصفيح.",
+        "fr": "Double ourlet pour boîtes de conserve en fer-blanc.",
+        "ru": "Двойная завальцовка для жестяных консервных банок."
+      },
+      "category": {
+        "slug": "dolum-paketleme",
+        "name": {
+          "tr": "Dolum & Paketleme",
+          "en": "Filling & Packaging"
+        }
+      },
+      "capacity": "1500 – 3000 kutu/saat",
+      "deliveryWeeks": "8 – 12 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "القدرة",
+            "fr": "Capacité",
+            "ru": "Ёмкость"
+          },
+          "v": {
+            "tr": "1500 – 3000 kutu/saat",
+            "en": "1500 – 3000 cans/h",
+            "ar": "1500 – 3000 علبة/ساعة",
+            "fr": "1500 – 3000 boîtes/heure",
+            "ru": "1500 – 3000 банк/час"
+          }
+        },
+        {
+          "k": {
+            "tr": "Çap",
+            "en": "Diameter",
+            "ar": "القطر",
+            "fr": "Diamètre",
+            "ru": "Диаметр"
+          },
+          "v": {
+            "tr": "52 – 153 mm",
+            "en": "52 – 153 mm",
+            "ar": "52 – 153 مم",
+            "fr": "52 – 153 mm",
+            "ru": "52 – 153 мм"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kıvrım",
+            "en": "Seam",
+            "ar": "التجعيد",
+            "fr": "Ourlet",
+            "ru": "Завальцовка"
+          },
+          "v": {
+            "tr": "Çift kıvrım",
+            "en": "Double seam",
+            "ar": "تجعيد مزدوج",
+            "fr": "Double ourlet",
+            "ru": "Двойная завальцовка"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Hava sızdırmaz",
+          "en": "Air-tight",
+          "ar": "محكم الغلق",
+          "fr": "Hermétique",
+          "ru": "Герметичный"
+        },
+        {
+          "tr": "Çoklu çap",
+          "en": "Multi-diameter",
+          "ar": "متعدد الأقطار",
+          "fr": "Multi-diamètre",
+          "ru": "Многодиаметр"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/konserve-kapatma-makinesi.jpg",
+        "servedUrl": "/api/media/can-kapatma-oto-gorsel-1783208637960-7yh1.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.920Z",
+      "removedFromSite": null
+    }
   },
   {
     "code": "PRO-FILLING-SACCM-001",
@@ -245,5 +1436,3580 @@
     "video": "",
     "source_image": "Processturk_Satis_Dolum_Makinaları/landing-page/content/images/Semi Automatic Can Capping Machine.jpeg",
     "hd": false
+  },
+  {
+    "code": "PRO-LINE-SAUCE-001",
+    "slug": "sos-hatti-anahtar-teslim",
+    "name_en": "Sauce Production Line — SAUCE Series",
+    "category": "Food Processing Lines",
+    "price_usd": 0,
+    "price_text": "On request (project-based)",
+    "specs": {
+      "filled_products": "Ketchup, mayonnaise, tomato paste, hot sauce and high-viscosity sauces",
+      "scope": "Cooking + mixing + filling + capping + labelling + packaging — complete line",
+      "capacity": "[KAPASİTE — ör. X ton/gün — ASAF GİRECEK]",
+      "delivery": "Turnkey: installation + commissioning + operator training included",
+      "material": "Food-grade 304 stainless steel",
+      "power": "~25 – 30 kW"
+    },
+    "video": "",
+    "source_image": "data/uploads/sos-hatti-anahtar-teslim-gorsel-1783208638235-1pmw.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Sos Üretim Hattı — SAUCE Serisi",
+      "promise": "Üç kapasite seçeneğiyle (500 / 1.000 / 1.500 kg/saat) komple sos hazırlama platformu; opsiyonel dolum-paketleme hattıyla rafa hazır üretim.",
+      "hero_number": "500 – 1.500 kg/saat (soğuk)"
+    },
+    "website": {
+      "type": "line",
+      "slug": "sos-uretim-hatti",
+      "url": "http://127.0.0.1:4192/tr/hatlar/sos-uretim-hatti",
+      "name": {
+        "tr": "Sos Üretim Hattı — SAUCE Serisi",
+        "en": "Sauce Production Line — SAUCE Series"
+      },
+      "summary": {
+        "tr": "Üç kapasite seçeneğiyle (500 / 1.000 / 1.500 kg/saat) komple sos hazırlama platformu; opsiyonel dolum-paketleme hattıyla rafa hazır üretim.",
+        "en": "Complete sauce preparation platform with three capacity options (500 / 1,000 / 1,500 kg/h); shelf-ready production with the optional filling & packaging line."
+      },
+      "category": {
+        "slug": "gida-hatlari",
+        "name": {
+          "tr": "Gıda İşleme Hatları",
+          "en": "Food Processing Lines",
+          "ar": "خطوط معالجة الطعام",
+          "fr": "Lignes de transformation des aliments",
+          "ru": "Линии переработки пищи"
+        }
+      },
+      "capacity": "500 – 1.500 kg/saat (soğuk)",
+      "deliveryWeeks": "17 – 22 hafta",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Soğuk Sos",
+            "en": "Cold sauce"
+          },
+          "v": {
+            "tr": "500 – 1.500 kg/saat (kapasiteye göre)",
+            "en": "500 – 1,500 kg/h (by capacity)"
+          }
+        },
+        {
+          "k": {
+            "tr": "Sıcak Sos",
+            "en": "Hot sauce"
+          },
+          "v": {
+            "tr": "300 – 1.000 kg/saat (kapasiteye göre)",
+            "en": "300 – 1,000 kg/h (by capacity)"
+          }
+        },
+        {
+          "k": {
+            "tr": "Platform Tankı",
+            "en": "Platform tank"
+          },
+          "v": {
+            "tr": "500 / 700 / 1000 L",
+            "en": "500 / 700 / 1000 L"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kurulu Güç (platform)",
+            "en": "Installed power (platform)"
+          },
+          "v": {
+            "tr": "~25 – 30 kW",
+            "en": "~25 – 30 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Malzeme",
+            "en": "Material"
+          },
+          "v": {
+            "tr": "Komple AISI 304",
+            "en": "Complete AISI 304"
+          }
+        },
+        {
+          "k": {
+            "tr": "Üretim Süresi",
+            "en": "Manufacturing time"
+          },
+          "v": {
+            "tr": "120 – 150 gün",
+            "en": "120 – 150 days"
+          }
+        },
+        {
+          "k": {
+            "tr": "Teslim Şekli",
+            "en": "Delivery term"
+          },
+          "v": {
+            "tr": "EXW (fabrika teslim)",
+            "en": "EXW (ex-works)"
+          }
+        },
+        {
+          "k": {
+            "tr": "Garanti",
+            "en": "Warranty"
+          },
+          "v": {
+            "tr": "1 yıl",
+            "en": "1 year"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Sos hazırlama platformu (kapasiteye göre 500 / 700 / 1000 L tank)"
+        },
+        {
+          "tr": "Lobe pompalı transfer tankı (1 – 2 m³)"
+        },
+        {
+          "tr": "CIP temizlik ünitesi (500 L × 3 tank)"
+        },
+        {
+          "tr": "Chiller soğutma ünitesi"
+        },
+        {
+          "tr": "Buhar kazanı (dizel/doğalgaz)"
+        },
+        {
+          "tr": "Komple paslanmaz proses borulaması (boru, vana, fittings + işçilik)"
+        },
+        {
+          "tr": "Elektrik panosu ve otomasyon sistemi"
+        },
+        {
+          "tr": "Su ile test ve devreye alma"
+        }
+      ],
+      "badge": null,
+      "price": {
+        "from": 153000,
+        "to": 278000,
+        "currency": "EUR"
+      },
+      "variants": [
+        {
+          "label": {
+            "tr": "500 kg/saat",
+            "en": "500 kg/h"
+          },
+          "from": 153000,
+          "to": 209000,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "1.000 kg/saat",
+            "en": "1,000 kg/h"
+          },
+          "from": 190000,
+          "to": 278000,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/line-urun-sos-uretim-hatti.jpg",
+        "servedUrl": "/api/media/sos-hatti-anahtar-teslim-gorsel-1783208638235-1pmw.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.938Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-HOMOJENIZATOR",
+    "slug": "homojenizator",
+    "name_en": "Homogenizer",
+    "category": "Dairy Processing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Milk, Cream, Beverage, Sauce",
+      "filling_range": "",
+      "capacity": "500 – 10.000 L/h",
+      "size": "",
+      "power": "7,5 – 55 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/homojenizator-gorsel-1783208637970-7wra.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Homojenizatör",
+      "audience": "",
+      "promise": "Süt ve sıvı gıdalarda yağ globüllerini parçalayan yüksek basınçlı sistem.",
+      "hero_number": "500 – 10.000 L/h",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.764Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "homojenizator",
+      "url": "http://127.0.0.1:4192/tr/makineler/homojenizator",
+      "name": {
+        "tr": "Homojenizatör",
+        "en": "Homogenizer",
+        "ar": "مجانس",
+        "fr": "Homogénéisateur",
+        "ru": "Гомогенизатор"
+      },
+      "summary": {
+        "tr": "Süt ve sıvı gıdalarda yağ globüllerini parçalayan yüksek basınçlı sistem.",
+        "en": "High-pressure system breaking fat globules in milk and liquid foods.",
+        "ar": "نظام عالي الضغط يكسر الكرات الدهنية في الحليب والأطعمة السائلة.",
+        "fr": "Un système haute pression qui décompose les globules de graisse dans le lait et les aliments liquides.",
+        "ru": "Высоконапорная система, которая разбивает жировыеglobules в молоке и жидких пищевых продуктах."
+      },
+      "category": {
+        "slug": "sut-isleme",
+        "name": {
+          "tr": "Süt İşleme",
+          "en": "Dairy Processing"
+        }
+      },
+      "capacity": "500 – 10.000 L/h",
+      "deliveryWeeks": "8 – 14 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "500 – 10.000 L/h",
+            "en": "500 – 10.000 L/h",
+            "ar": "500 – 10.000 L/h",
+            "fr": "500 – 10.000 L/h",
+            "ru": "500 – 10.000 L/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Basınç",
+            "en": "Pressure",
+            "ar": "الضغط",
+            "fr": "Pression",
+            "ru": "Давление"
+          },
+          "v": {
+            "tr": "150 – 250 bar",
+            "en": "150 – 250 bar",
+            "ar": "150 – 250 bar",
+            "fr": "150 – 250 bar",
+            "ru": "150 – 250 bar"
+          }
+        },
+        {
+          "k": {
+            "tr": "Motor Gücü",
+            "en": "Motor Power",
+            "ar": "قدرة المحرك",
+            "fr": "Puissance moteur",
+            "ru": "Мощность двигателя"
+          },
+          "v": {
+            "tr": "7,5 – 55 kW",
+            "en": "7,5 – 55 kW",
+            "ar": "7,5 – 55 kW",
+            "fr": "7,5 – 55 kW",
+            "ru": "7,5 – 55 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde Malzemesi",
+            "en": "Body Material",
+            "ar": "مادة الهيكل",
+            "fr": "Matériau du corps",
+            "ru": "Материал корпуса"
+          },
+          "v": {
+            "tr": "AISI 304",
+            "en": "AISI 304",
+            "ar": "AISI 304",
+            "fr": "AISI 304",
+            "ru": "AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Yüksek basınç",
+          "en": "High pressure",
+          "ar": "ضغط عالٍ",
+          "fr": "Haute pression",
+          "ru": "Высокое давление"
+        },
+        {
+          "tr": "Homojen kıvam",
+          "en": "Homogeneous texture",
+          "ar": "قوام متجانس",
+          "fr": "Consistance homogène",
+          "ru": "Однородная консистенция"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "500 L/h",
+            "en": "500 L/h",
+            "ar": "500 L/h",
+            "fr": "500 L/h",
+            "ru": "500 L/h"
+          },
+          "from": 18975,
+          "to": 18975,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "1.000 L/h",
+            "en": "1.000 L/h",
+            "ar": "1.000 L/h",
+            "fr": "1.000 L/h",
+            "ru": "1.000 L/h"
+          },
+          "from": 22425,
+          "to": 22425,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "2.000 L/h",
+            "en": "2.000 L/h",
+            "ar": "2.000 L/h",
+            "fr": "2.000 L/h",
+            "ru": "2.000 L/h"
+          },
+          "from": 27025,
+          "to": 27025,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "3.000 L/h",
+            "en": "3.000 L/h",
+            "ar": "3.000 L/h",
+            "fr": "3.000 L/h",
+            "ru": "3.000 L/h"
+          },
+          "from": 30475,
+          "to": 30475,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "5.000 L/h",
+            "en": "5.000 L/h",
+            "ar": "5.000 L/h",
+            "fr": "5.000 L/h",
+            "ru": "5.000 L/h"
+          },
+          "from": 38525,
+          "to": 38525,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "10.000 L/h",
+            "en": "10.000 L/h",
+            "ar": "10.000 L/h",
+            "fr": "10.000 L/h",
+            "ru": "10.000 L/h"
+          },
+          "from": 66125,
+          "to": 66125,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/homojenizator.jpg",
+        "servedUrl": "/api/media/homojenizator-gorsel-1783208637970-7wra.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.924Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-PASTORIZATOR",
+    "slug": "pastorizator",
+    "name_en": "Pasteurizer",
+    "category": "Thermal Processing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Milk, Fruit juice, Beverage",
+      "filling_range": "",
+      "capacity": "1.000 – 15.000 L/h",
+      "size": "",
+      "power": "4,4 – 15 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/pastorizator-gorsel-1783208637979-ksbd.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Pastörizatör",
+      "audience": "",
+      "promise": "Plakalı ısı geri kazanımlı sürekli pastörizasyon ünitesi.",
+      "hero_number": "1.000 – 15.000 L/h",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.764Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "pastorizator",
+      "url": "http://127.0.0.1:4192/tr/makineler/pastorizator",
+      "name": {
+        "tr": "Pastörizatör",
+        "en": "Pasteurizer",
+        "ar": "بسترة",
+        "fr": "Pasteuriseur",
+        "ru": "Пастеризатор"
+      },
+      "summary": {
+        "tr": "Plakalı ısı geri kazanımlı sürekli pastörizasyon ünitesi.",
+        "en": "Continuous pasteurization unit with plate heat recovery.",
+        "ar": "وحدة بسترة مستمرة مع استرجاع حرارة الألواح.",
+        "fr": "Unité de pasteurisation continue à récupération de chaleur par plaques.",
+        "ru": "Непрерывная установка для пастеризации с пластинчатым теплообменником."
+      },
+      "category": {
+        "slug": "termal-islem",
+        "name": {
+          "tr": "Termal İşlem",
+          "en": "Thermal Processing"
+        }
+      },
+      "capacity": "1.000 – 15.000 L/h",
+      "deliveryWeeks": "8 – 14 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "1.000 – 15.000 L/h",
+            "en": "1.000 – 15.000 L/h",
+            "ar": "1.000 – 15.000 L/h",
+            "fr": "1.000 – 15.000 L/h",
+            "ru": "1.000 – 15.000 L/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Elektrik Tüketimi",
+            "en": "Power Consumption",
+            "ar": "استهلاك الكهرباء",
+            "fr": "Consommation électrique",
+            "ru": "Энергопотребление"
+          },
+          "v": {
+            "tr": "4,4 – 15 kW",
+            "en": "4,4 – 15 kW",
+            "ar": "4,4 – 15 kW",
+            "fr": "4,4 – 15 kW",
+            "ru": "4,4 – 15 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Buhar Tüketimi",
+            "en": "Steam Consumption",
+            "ar": "استهلاك البخار",
+            "fr": "Consommation de vapeur",
+            "ru": "Расход пара"
+          },
+          "v": {
+            "tr": "70 – 210 kg/h",
+            "en": "70 – 210 kg/h",
+            "ar": "70 – 210 kg/h",
+            "fr": "70 – 210 kg/h",
+            "ru": "70 – 210 kg/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control",
+            "ar": "التحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
+          },
+          "v": {
+            "tr": "PLC",
+            "en": "PLC",
+            "ar": "PLC",
+            "fr": "PLC",
+            "ru": "PLC"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde Malzemesi",
+            "en": "Body Material",
+            "ar": "مادة الهيكل",
+            "fr": "Matériau du corps",
+            "ru": "Материал корпуса"
+          },
+          "v": {
+            "tr": "AISI 304",
+            "en": "AISI 304",
+            "ar": "AISI 304",
+            "fr": "AISI 304",
+            "ru": "AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Enerji geri kazanımı",
+          "en": "Energy recovery",
+          "ar": "استرجاع الطاقة",
+          "fr": "Récupération d'énergie",
+          "ru": "Восстановление энергии"
+        },
+        {
+          "tr": "Otomatik kontrol",
+          "en": "Automatic control",
+          "ar": "التحكم التلقائي",
+          "fr": "Contrôle automatique",
+          "ru": "Автоматическое управление"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "1.000 L/h",
+            "en": "1.000 L/h",
+            "ar": "1.000 L/h",
+            "fr": "1.000 L/h",
+            "ru": "1.000 L/h"
+          },
+          "from": 50025,
+          "to": 50025,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "2.000 L/h",
+            "en": "2.000 L/h",
+            "ar": "2.000 L/h",
+            "fr": "2.000 L/h",
+            "ru": "2.000 L/h"
+          },
+          "from": 53475,
+          "to": 53475,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "3.000 L/h",
+            "en": "3.000 L/h",
+            "ar": "3.000 L/h",
+            "fr": "3.000 L/h",
+            "ru": "3.000 L/h"
+          },
+          "from": 61525,
+          "to": 61525,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "5.000 L/h",
+            "en": "5.000 L/h",
+            "ar": "5.000 L/h",
+            "fr": "5.000 L/h",
+            "ru": "5.000 L/h"
+          },
+          "from": 64975,
+          "to": 64975,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "10.000 L/h",
+            "en": "10.000 L/h",
+            "ar": "10.000 L/h",
+            "fr": "10.000 L/h",
+            "ru": "10.000 L/h"
+          },
+          "from": 77625,
+          "to": 77625,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "15.000 L/h",
+            "en": "15.000 L/h",
+            "ar": "15.000 L/h",
+            "fr": "15.000 L/h",
+            "ru": "15.000 L/h"
+          },
+          "from": 97750,
+          "to": 97750,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/pastorizator.jpg",
+        "servedUrl": "/api/media/pastorizator-gorsel-1783208637979-ksbd.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.925Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-PLAKALI-ESANJOR",
+    "slug": "plakali-esanjor",
+    "name_en": "Plate Heat Exchanger",
+    "category": "Auxiliary Equipment",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Milk, Fruit juice, Liquid food",
+      "filling_range": "",
+      "capacity": "Projeye göre",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/plakali-esanjor-gorsel-1783208637992-812u.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Plakalı Eşanjör",
+      "audience": "",
+      "promise": "Kompakt, yüksek verimli ısı transfer ünitesi.",
+      "hero_number": "Projeye göre",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.765Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "plakali-esanjor",
+      "url": "http://127.0.0.1:4192/tr/makineler/plakali-esanjor",
+      "name": {
+        "tr": "Plakalı Eşanjör",
+        "en": "Plate Heat Exchanger",
+        "ar": "مبادل حراري صفيحي",
+        "fr": "Échangeur de chaleur à plaques",
+        "ru": "Пластинчатый теплообменник"
+      },
+      "summary": {
+        "tr": "Kompakt, yüksek verimli ısı transfer ünitesi.",
+        "en": "Compact, high-efficiency heat transfer unit.",
+        "ar": "وحدة نقل حراري مدمجة عالية الكفاءة.",
+        "fr": "Unité de transfert de chaleur compacte et à haut rendement.",
+        "ru": "Компактное, высокоэффективное теплообменное устройство."
+      },
+      "category": {
+        "slug": "yardimci-ekipmanlar",
+        "name": {
+          "tr": "Yardımcı Ekipmanlar",
+          "en": "Auxiliary Equipment"
+        }
+      },
+      "capacity": "Projeye göre",
+      "deliveryWeeks": "4 – 8 hafta",
+      "automation": "tam",
+      "material": "AISI 316",
+      "specs": [
+        {
+          "k": {
+            "tr": "Tip",
+            "en": "Type",
+            "ar": "النوع",
+            "fr": "Type",
+            "ru": "Тип"
+          },
+          "v": {
+            "tr": "Plakalı",
+            "en": "Plate",
+            "ar": "صفيحة",
+            "fr": "Plaque",
+            "ru": "Пластина"
+          }
+        },
+        {
+          "k": {
+            "tr": "Malzeme",
+            "en": "Material",
+            "ar": "المادة",
+            "fr": "Matériau",
+            "ru": "Материал"
+          },
+          "v": {
+            "tr": "AISI 316 plaka",
+            "en": "AISI 316 plates",
+            "ar": "صفيحة AISI 316",
+            "fr": "Plaque AISI 316",
+            "ru": "Пластина AISI 316"
+          }
+        },
+        {
+          "k": {
+            "tr": "Bağlantı",
+            "en": "Connection",
+            "ar": "الاتصال",
+            "fr": "Connexion",
+            "ru": "Соединение"
+          },
+          "v": {
+            "tr": "Modüler",
+            "en": "Modular",
+            "ar": "مودولاري",
+            "fr": "Modulaire",
+            "ru": "Модульный"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Yüksek verim",
+          "en": "High efficiency",
+          "ar": "كفاءة عالية",
+          "fr": "Haute efficacité",
+          "ru": "Высокая эффективность"
+        },
+        {
+          "tr": "Modüler kapasite",
+          "en": "Modular capacity",
+          "ar": "سعة معيارية",
+          "fr": "Capacité modulaire",
+          "ru": "Модульная мощность"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/plakali-esanjor.jpg",
+        "servedUrl": "/api/media/plakali-esanjor-gorsel-1783208637992-812u.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.925Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-VAKUM-EVAPORATOR",
+    "slug": "vakum-evaporator",
+    "name_en": "Vacuum Evaporator",
+    "category": "Thermal Processing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Tomato, Fruit puree, Concentrate",
+      "filling_range": "",
+      "capacity": "1.000 – 10.000 L/h",
+      "size": "",
+      "power": "6,5 – 20 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/vakum-evaporator-gorsel-1783208638007-dtw9.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Vakum Evaporatör",
+      "audience": "",
+      "promise": "Domates ve meyvede brikse kadar düşük sıcaklıkta konsantrasyon.",
+      "hero_number": "1.000 – 10.000 L/h",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.765Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "vakum-evaporator",
+      "url": "http://127.0.0.1:4192/tr/makineler/vakum-evaporator",
+      "name": {
+        "tr": "Vakum Evaporatör",
+        "en": "Vacuum Evaporator",
+        "ar": "مكثف فراغي",
+        "fr": "Évaporateur sous vide",
+        "ru": "Вакуумный испаритель"
+      },
+      "summary": {
+        "tr": "Domates ve meyvede brikse kadar düşük sıcaklıkta konsantrasyon.",
+        "en": "Low-temperature concentration to target brix for tomato and fruit.",
+        "ar": "تركيز عند درجة حرارة منخفضة تصل إلى القوام في الطماطم والفواكه.",
+        "fr": "Concentration à basse température jusqu'à Brix dans les tomates et les fruits.",
+        "ru": "Концентрация при низкой температуре до Брикса в томатах и фруктах."
+      },
+      "category": {
+        "slug": "termal-islem",
+        "name": {
+          "tr": "Termal İşlem",
+          "en": "Thermal Processing"
+        }
+      },
+      "capacity": "1.000 – 10.000 L/h",
+      "deliveryWeeks": "12 – 18 hafta",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "1.000 – 10.000 L/h",
+            "en": "1.000 – 10.000 L/h",
+            "ar": "1.000 – 10.000 L/h",
+            "fr": "1.000 – 10.000 L/h",
+            "ru": "1.000 – 10.000 L/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Elektrik Tüketimi",
+            "en": "Power Consumption",
+            "ar": "استهلاك الكهرباء",
+            "fr": "Consommation électrique",
+            "ru": "Энергопотребление"
+          },
+          "v": {
+            "tr": "6,5 – 20 kW",
+            "en": "6,5 – 20 kW",
+            "ar": "6,5 – 20 kW",
+            "fr": "6,5 – 20 kW",
+            "ru": "6,5 – 20 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Buhar Tüketimi",
+            "en": "Steam Consumption",
+            "ar": "استهلاك البخار",
+            "fr": "Consommation de vapeur",
+            "ru": "Расход пара"
+          },
+          "v": {
+            "tr": "80 – 190 kg/h",
+            "en": "80 – 190 kg/h",
+            "ar": "80 – 190 kg/h",
+            "fr": "80 – 190 kg/h",
+            "ru": "80 – 190 kg/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control",
+            "ar": "التحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
+          },
+          "v": {
+            "tr": "PLC",
+            "en": "PLC",
+            "ar": "PLC",
+            "fr": "PLC",
+            "ru": "PLC"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde Malzemesi",
+            "en": "Body Material",
+            "ar": "مادة الهيكل",
+            "fr": "Matériau du corps",
+            "ru": "Материал корпуса"
+          },
+          "v": {
+            "tr": "AISI 304",
+            "en": "AISI 304",
+            "ar": "AISI 304",
+            "fr": "AISI 304",
+            "ru": "AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Renk & aroma korur",
+          "en": "Preserves color & aroma",
+          "ar": "يحافظ على اللون والرائحة",
+          "fr": "Préserve la couleur et l'arôme",
+          "ru": "Сохраняет цвет и аромат"
+        },
+        {
+          "tr": "Otomatik brix",
+          "en": "Automatic brix",
+          "ar": "بريكس تلقائي",
+          "fr": "Brix automatique",
+          "ru": "Автоматический Брикс"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "1.000 L/h",
+            "en": "1.000 L/h",
+            "ar": "1.000 L/h",
+            "fr": "1.000 L/h",
+            "ru": "1.000 L/h"
+          },
+          "from": 27025,
+          "to": 27025,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "2.000 L/h",
+            "en": "2.000 L/h",
+            "ar": "2.000 L/h",
+            "fr": "2.000 L/h",
+            "ru": "2.000 L/h"
+          },
+          "from": 34500,
+          "to": 34500,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "3.000 L/h",
+            "en": "3.000 L/h",
+            "ar": "3.000 L/h",
+            "fr": "3.000 L/h",
+            "ru": "3.000 L/h"
+          },
+          "from": 43125,
+          "to": 43125,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "5.000 L/h",
+            "en": "5.000 L/h",
+            "ar": "5.000 L/h",
+            "fr": "5.000 L/h",
+            "ru": "5.000 L/h"
+          },
+          "from": 57500,
+          "to": 57500,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "10.000 L/h",
+            "en": "10.000 L/h",
+            "ar": "10.000 L/h",
+            "fr": "10.000 L/h",
+            "ru": "10.000 L/h"
+          },
+          "from": 86250,
+          "to": 86250,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/vakum-evaporator.jpg",
+        "servedUrl": "/api/media/vakum-evaporator-gorsel-1783208638007-dtw9.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.926Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-EMULSIYON-MIKSER-TANK",
+    "slug": "emulsiyon-mikser-tank",
+    "name_en": "Emulsion & Mixing Tank",
+    "category": "Sauce & Mixing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Mayonnaise, Ketchup, Sauce, Cream",
+      "filling_range": "",
+      "capacity": "500 – 5000 L",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/emulsiyon-mikser-tank-gorsel-1783208638035-zgyj.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Emülsiyon & Mikser Tankı",
+      "audience": "",
+      "promise": "Mayonez, ketçap ve sosta mükemmel kıvam için yüksek kesme mikseri.",
+      "hero_number": "500 – 5000 L",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.765Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "emulsiyon-mikser-tank",
+      "url": "http://127.0.0.1:4192/tr/makineler/emulsiyon-mikser-tank",
+      "name": {
+        "tr": "Emülsiyon & Mikser Tankı",
+        "en": "Emulsion & Mixing Tank",
+        "ar": "خزان امتصاص ومزج",
+        "fr": "Réservoir d'émulsion et de mélangeur",
+        "ru": "Эмульсионный и смесительный бак"
+      },
+      "summary": {
+        "tr": "Mayonez, ketçap ve sosta mükemmel kıvam için yüksek kesme mikseri.",
+        "en": "High-shear mixer for perfect texture in mayo, ketchup and sauce.",
+        "ar": "خلاط عالي القص لتحقيق قوام مثالي في المايونيز والكاتشب والصلصات.",
+        "fr": "Mélangeur haute coupe pour une consistance parfaite dans la mayonnaise, le ketchup et les sauces.",
+        "ru": "Высокоскоростной смеситель для идеальной консистенции майонеза, кетчупа и соусов."
+      },
+      "category": {
+        "slug": "sos-karistirma",
+        "name": {
+          "tr": "Sos & Karıştırma",
+          "en": "Sauce & Mixing"
+        }
+      },
+      "capacity": "500 – 5000 L",
+      "deliveryWeeks": "8 – 12 hafta",
+      "automation": "yari",
+      "material": "AISI 316",
+      "specs": [
+        {
+          "k": {
+            "tr": "Hacim",
+            "en": "Volume",
+            "ar": "الحجم",
+            "fr": "Volume",
+            "ru": "Объем"
+          },
+          "v": {
+            "tr": "500 – 5000 L",
+            "en": "500 – 5000 L",
+            "ar": "500 – 5000 لتر",
+            "fr": "500 – 5000 L",
+            "ru": "500 – 5000 л"
+          }
+        },
+        {
+          "k": {
+            "tr": "Karıştırıcı",
+            "en": "Agitator",
+            "ar": "خلاط",
+            "fr": "Mélangeur",
+            "ru": "Смеситель"
+          },
+          "v": {
+            "tr": "Yüksek kesme + sıyırıcı",
+            "en": "High-shear + scraper",
+            "ar": "خلط عالي القص + مكشطة",
+            "fr": "Haute coupe + grattoir",
+            "ru": "Высокоскоростной + скребок"
+          }
+        },
+        {
+          "k": {
+            "tr": "Isıtma",
+            "en": "Heating",
+            "ar": "التسخين",
+            "fr": "Chauffage",
+            "ru": "Нагрев"
+          },
+          "v": {
+            "tr": "Ceketli buhar",
+            "en": "Steam jacket",
+            "ar": "بخار مغطى",
+            "fr": "Vapeur double enveloppe",
+            "ru": "Пар под рубашкой"
+          }
+        },
+        {
+          "k": {
+            "tr": "Temizlik",
+            "en": "Cleaning",
+            "ar": "التنظيف",
+            "fr": "Nettoyage",
+            "ru": "Очистка"
+          },
+          "v": {
+            "tr": "CIP uyumlu",
+            "en": "CIP-compatible",
+            "ar": "متوافق مع CIP",
+            "fr": "Conforme CIP",
+            "ru": "Совместим с CIP"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Yüksek kesme mikseri",
+          "en": "High-shear mixer",
+          "ar": "خلاط عالي القص",
+          "fr": "Mélangeur haute coupe",
+          "ru": "Высокоскоростной смеситель"
+        },
+        {
+          "tr": "CIP uyumlu",
+          "en": "CIP-compatible",
+          "ar": "متوافق مع CIP",
+          "fr": "Conforme CIP",
+          "ru": "Совместим с CIP"
+        },
+        {
+          "tr": "Sıcaklık kontrolü",
+          "en": "Temperature control",
+          "ar": "تحكم في درجة الحرارة",
+          "fr": "Contrôle de température",
+          "ru": "Контроль температуры"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/emulsiyon-mikser-tank.jpg",
+        "servedUrl": "/api/media/emulsiyon-mikser-tank-gorsel-1783208638035-zgyj.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.926Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-TEREYAGI-MAKINESI",
+    "slug": "tereyagi-makinesi",
+    "name_en": "Butter Machine",
+    "category": "Dairy Processing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Butter, Cream, Separated products",
+      "filling_range": "",
+      "capacity": "100 – 2.000 kg",
+      "size": "",
+      "power": "1,1 – 5,5 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/tereyagi-makinesi-gorsel-1783208638052-1ffs.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Tereyağı Makinesi",
+      "audience": "",
+      "promise": "Pastörize kremayı fiziksel yayıklama ile tereyağına dönüştüren paslanmaz sistem.",
+      "hero_number": "100 – 2.000 kg",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.765Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "tereyagi-makinesi",
+      "url": "http://127.0.0.1:4192/tr/makineler/tereyagi-makinesi",
+      "name": {
+        "tr": "Tereyağı Makinesi",
+        "en": "Butter Machine",
+        "ar": "آلة الزبدة",
+        "fr": "Machine à beurre",
+        "ru": "Машина для масла"
+      },
+      "summary": {
+        "tr": "Pastörize kremayı fiziksel yayıklama ile tereyağına dönüştüren paslanmaz sistem.",
+        "en": "A stainless system that converts pasteurized cream into butter through physical separation.",
+        "ar": "نظام مصنوع من الفولاذ المقاوم للصدأ يحول الكريمة المبسترة إلى زبدة من خلال الفصل الفيزيائي.",
+        "fr": "Un système en acier inoxydable qui transforme la crème pasteurisée en beurre par séparation physique.",
+        "ru": "Нержавеющая система, которая превращает пастеризованные сливки в масло с помощью физического отделения."
+      },
+      "category": {
+        "slug": "sut-isleme",
+        "name": {
+          "tr": "Süt İşleme",
+          "en": "Dairy Processing"
+        }
+      },
+      "capacity": "100 – 2.000 kg",
+      "deliveryWeeks": "",
+      "automation": "yari",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "100 – 2.000 kg",
+            "en": "100 – 2.000 kg",
+            "ar": "100 – 2.000 kg",
+            "fr": "100 – 2.000 kg",
+            "ru": "100 – 2.000 kg"
+          }
+        },
+        {
+          "k": {
+            "tr": "Motor Gücü",
+            "en": "Motor Power",
+            "ar": "قدرة المحرك",
+            "fr": "Puissance moteur",
+            "ru": "Мощность двигателя"
+          },
+          "v": {
+            "tr": "1,1 – 5,5 kW",
+            "en": "1,1 – 5,5 kW",
+            "ar": "1,1 – 5,5 kW",
+            "fr": "1,1 – 5,5 kW",
+            "ru": "1,1 – 5,5 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Devir",
+            "en": "Rotation Speed",
+            "ar": "سرعة الدوران",
+            "fr": "Vitesse de rotation",
+            "ru": "Обороты"
+          },
+          "v": {
+            "tr": "19 rpm",
+            "en": "19 rpm",
+            "ar": "19 rpm",
+            "fr": "19 rpm",
+            "ru": "19 rpm"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde Malzemesi",
+            "en": "Body Material",
+            "ar": "مادة الهيكل",
+            "fr": "Matériau du corps",
+            "ru": "Материал корпуса"
+          },
+          "v": {
+            "tr": "AISI 304",
+            "en": "AISI 304",
+            "ar": "AISI 304",
+            "fr": "AISI 304",
+            "ru": "AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "AISI 304 gıda-temas paslanmaz gövde",
+          "en": "AISI 304 food-contact stainless body",
+          "ar": "هيكل من الفولاذ المقاوم للصدأ AISI 304 مخصص للطعام",
+          "fr": "Corps en acier inoxydable AISI 304 au contact alimentaire",
+          "ru": "Корпус из нержавеющей стали AISI 304 для контакта с пищей"
+        },
+        {
+          "tr": "Yılmaz marka yavaş devirli redüktör",
+          "en": "Yılmaz brand slow-speed reducer",
+          "ar": "مخفض سرعة بطيء من علامة يلمز",
+          "fr": "Réducteur à vitesse lente de marque Yılmaz",
+          "ru": "Редуктор медленного хода марки Yılmaz"
+        },
+        {
+          "tr": "Acı su çıkış ve DN50 temizlik kapağı",
+          "en": "Bitter water outlet and DN50 cleaning cover",
+          "ar": "مخرج مياه مريرة وغطاء تنظيف DN50",
+          "fr": "Sortie d'eau amère et couvercle de nettoyage DN50",
+          "ru": "Выход горькой воды и крышка для очистки DN50"
+        },
+        {
+          "tr": "100 – 2.000 kg kapasite seçenekleri",
+          "en": "100 – 2,000 kg capacity options",
+          "ar": "خيارات سعة من 100 – 2000 كجم",
+          "fr": "Options de capacité de 100 à 2 000 kg",
+          "ru": "Варианты емкости от 100 до 2000 кг"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "100 kg",
+            "en": "100 kg",
+            "ar": "100 kg",
+            "fr": "100 kg",
+            "ru": "100 kg"
+          },
+          "from": 3450,
+          "to": 3450,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "200 kg",
+            "en": "200 kg",
+            "ar": "200 kg",
+            "fr": "200 kg",
+            "ru": "200 kg"
+          },
+          "from": 8625,
+          "to": 8625,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "350 kg",
+            "en": "350 kg",
+            "ar": "350 kg",
+            "fr": "350 kg",
+            "ru": "350 kg"
+          },
+          "from": 10925,
+          "to": 10925,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "500 kg",
+            "en": "500 kg",
+            "ar": "500 kg",
+            "fr": "500 kg",
+            "ru": "500 kg"
+          },
+          "from": 13225,
+          "to": 13225,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "1.000 kg",
+            "en": "1.000 kg",
+            "ar": "1.000 kg",
+            "fr": "1.000 kg",
+            "ru": "1.000 kg"
+          },
+          "from": 18975,
+          "to": 18975,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "1.500 kg",
+            "en": "1.500 kg",
+            "ar": "1.500 kg",
+            "fr": "1.500 kg",
+            "ru": "1.500 kg"
+          },
+          "from": 22425,
+          "to": 22425,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "2.000 kg",
+            "en": "2.000 kg",
+            "ar": "2.000 kg",
+            "fr": "2.000 kg",
+            "ru": "2.000 kg"
+          },
+          "from": 27025,
+          "to": 27025,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/tereyagi-makinesi.jpg",
+        "servedUrl": "/api/media/tereyagi-makinesi-gorsel-1783208638052-1ffs.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.927Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-KREMA-SEPERATOR",
+    "slug": "krema-seperator",
+    "name_en": "Cream Separator",
+    "category": "Dairy Processing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Cream, Skim milk, Cream separation",
+      "filling_range": "",
+      "capacity": "1.000 – 15.000 L/h",
+      "size": "",
+      "power": "0,75 – 18,5 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/krema-seperator-gorsel-1783208638066-yhk0.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Krema Seperatör",
+      "audience": "",
+      "promise": "Süt içindeki yağı merkezkaç kuvvetiyle ayıran tam otomatik separatör.",
+      "hero_number": "1.000 – 15.000 L/h",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.767Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "krema-seperator",
+      "url": "http://127.0.0.1:4192/tr/makineler/krema-seperator",
+      "name": {
+        "tr": "Krema Seperatör",
+        "en": "Cream Separator",
+        "ar": "فاصل كريمة",
+        "fr": "Séparateur de crème",
+        "ru": "Сепаратор сливок"
+      },
+      "summary": {
+        "tr": "Süt içindeki yağı merkezkaç kuvvetiyle ayıran tam otomatik separatör.",
+        "en": "Fully automatic separator that separates fat in milk using centrifugal force.",
+        "ar": "فاصل أوتوماتيكي بالكامل يفصل الدهون في الحليب باستخدام القوة الطرد المركزي.",
+        "fr": "Séparateur entièrement automatique qui sépare les graisses du lait par force centrifuge.",
+        "ru": "Полностью автоматический сепаратор, который отделяет жир в молоке с помощью центробежной силы."
+      },
+      "category": {
+        "slug": "sut-isleme",
+        "name": {
+          "tr": "Süt İşleme",
+          "en": "Dairy Processing"
+        }
+      },
+      "capacity": "1.000 – 15.000 L/h",
+      "deliveryWeeks": "",
+      "automation": "tam",
+      "material": "AISI 316 / DIN 1.4462",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "1.000 – 15.000 L/h",
+            "en": "1.000 – 15.000 L/h",
+            "ar": "1.000 – 15.000 L/h",
+            "fr": "1.000 – 15.000 L/h",
+            "ru": "1.000 – 15.000 L/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Devir",
+            "en": "Rotation Speed",
+            "ar": "سرعة الدوران",
+            "fr": "Vitesse de rotation",
+            "ru": "Обороты"
+          },
+          "v": {
+            "tr": "7.250 rpm",
+            "en": "7.250 rpm",
+            "ar": "7.250 rpm",
+            "fr": "7.250 rpm",
+            "ru": "7.250 rpm"
+          }
+        },
+        {
+          "k": {
+            "tr": "Tambur",
+            "en": "Drum",
+            "ar": "الطبل",
+            "fr": "Tambour",
+            "ru": "Барабан"
+          },
+          "v": {
+            "tr": "AISI 316 / DIN 1.4462",
+            "en": "AISI 316 / DIN 1.4462",
+            "ar": "AISI 316 / DIN 1.4462",
+            "fr": "AISI 316 / DIN 1.4462",
+            "ru": "AISI 316 / DIN 1.4462"
+          }
+        },
+        {
+          "k": {
+            "tr": "Motor Gücü",
+            "en": "Motor Power",
+            "ar": "قدرة المحرك",
+            "fr": "Puissance moteur",
+            "ru": "Мощность двигателя"
+          },
+          "v": {
+            "tr": "0,75 – 18,5 kW",
+            "en": "0,75 – 18,5 kW",
+            "ar": "0,75 – 18,5 kW",
+            "fr": "0,75 – 18,5 kW",
+            "ru": "0,75 – 18,5 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control",
+            "ar": "التحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
+          },
+          "v": {
+            "tr": "Siemens PLC",
+            "en": "Siemens PLC",
+            "ar": "Siemens PLC",
+            "fr": "Siemens PLC",
+            "ru": "Siemens PLC"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Siemens PLC ile tam otomatik çalışma",
+          "en": "Fully automatic operation with Siemens PLC",
+          "ar": "تشغيل أوتوماتيكي بالكامل مع PLC من سيمنز",
+          "fr": "Fonctionnement entièrement automatique avec PLC Siemens",
+          "ru": "Полностью автоматическая работа с PLC Siemens"
+        },
+        {
+          "tr": "AISI 316 / DIN 1.4462 dubleks tambur",
+          "en": "AISI 316 / DIN 1.4462 duplex drum",
+          "ar": "أسطوانة مزدوجة AISI 316 / DIN 1.4462",
+          "fr": "Tambour duplex AISI 316 / DIN 1.4462",
+          "ru": "Дуплексный барабан AISI 316 / DIN 1.4462"
+        },
+        {
+          "tr": "7.250 rpm yüksek devir ayırma",
+          "en": "High-speed separation at 7,250 rpm",
+          "ar": "فصل عالي السرعة عند 7250 دورة في الدقيقة",
+          "fr": "Séparation à haute vitesse à 7 250 tr/min",
+          "ru": "Высокоскоростное отделение на 7250 об/мин"
+        },
+        {
+          "tr": "Otomatik temizleme ve acı su deşarjı",
+          "en": "Automatic cleaning and bitter water discharge",
+          "ar": "تنظيف أوتوماتيكي وتصريف مياه مريرة",
+          "fr": "Nettoyage automatique et décharge d'eau amère",
+          "ru": "Автоматическая очистка и сброс горькой воды"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "1.000 L/h",
+            "en": "1.000 L/h",
+            "ar": "1.000 L/h",
+            "fr": "1.000 L/h",
+            "ru": "1.000 L/h"
+          },
+          "from": 13225,
+          "to": 13225,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "2.000 L/h",
+            "en": "2.000 L/h",
+            "ar": "2.000 L/h",
+            "fr": "2.000 L/h",
+            "ru": "2.000 L/h"
+          },
+          "from": 14375,
+          "to": 14375,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "5.000 L/h",
+            "en": "5.000 L/h",
+            "ar": "5.000 L/h",
+            "fr": "5.000 L/h",
+            "ru": "5.000 L/h"
+          },
+          "from": 64975,
+          "to": 64975,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "10.000 L/h",
+            "en": "10.000 L/h",
+            "ar": "10.000 L/h",
+            "fr": "10.000 L/h",
+            "ru": "10.000 L/h"
+          },
+          "from": 77625,
+          "to": 77625,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "15.000 L/h",
+            "en": "15.000 L/h",
+            "ar": "15.000 L/h",
+            "fr": "15.000 L/h",
+            "ru": "15.000 L/h"
+          },
+          "from": 110975,
+          "to": 110975,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/krema-seperator.jpg",
+        "servedUrl": "/api/media/krema-seperator-gorsel-1783208638066-yhk0.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.927Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-KLARIFIKATOR",
+    "slug": "klarifikator",
+    "name_en": "Clarifier (Cleaning Separator)",
+    "category": "Dairy Processing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Milk clarification, Sediment separation, Foreign matter cleaning",
+      "filling_range": "",
+      "capacity": "5.000 – 15.000 L/h",
+      "size": "",
+      "power": "7,5 – 15 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/klarifikator-gorsel-1783208638080-bi0p.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Klarifikatör (Temizleme Separatörü)",
+      "audience": "",
+      "promise": "Sütteki tortu, katı parçacık ve yabancı maddeleri ayıran yüksek devirli separatör.",
+      "hero_number": "5.000 – 15.000 L/h",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.767Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "klarifikator",
+      "url": "http://127.0.0.1:4192/tr/makineler/klarifikator",
+      "name": {
+        "tr": "Klarifikatör (Temizleme Separatörü)",
+        "en": "Clarifier (Cleaning Separator)",
+        "ar": "منظف (فاصل تنظيف)",
+        "fr": "Clarificateur (Séparateur de nettoyage)",
+        "ru": "Кларификатор (Очистительный сепаратор)"
+      },
+      "summary": {
+        "tr": "Sütteki tortu, katı parçacık ve yabancı maddeleri ayıran yüksek devirli separatör.",
+        "en": "High-speed separator that separates sediment, solid particles, and foreign materials in milk.",
+        "ar": "فاصل عالي السرعة يفصل الرواسب والجزيئات الصلبة والمواد الأجنبية في الحليب.",
+        "fr": "Séparateur à haute vitesse qui sépare les sédiments, les particules solides et les matières étrangères dans le lait.",
+        "ru": "Высокоскоростной сепаратор, который отделяет осадок, твердые частицы и инородные вещества в молоке."
+      },
+      "category": {
+        "slug": "sut-isleme",
+        "name": {
+          "tr": "Süt İşleme",
+          "en": "Dairy Processing"
+        }
+      },
+      "capacity": "5.000 – 15.000 L/h",
+      "deliveryWeeks": "",
+      "automation": "tam",
+      "material": "DIN 1.4462",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "5.000 – 15.000 L/h",
+            "en": "5.000 – 15.000 L/h",
+            "ar": "5.000 – 15.000 L/h",
+            "fr": "5.000 – 15.000 L/h",
+            "ru": "5.000 – 15.000 L/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Devir",
+            "en": "Rotation Speed",
+            "ar": "سرعة الدوران",
+            "fr": "Vitesse de rotation",
+            "ru": "Обороты"
+          },
+          "v": {
+            "tr": "7.500 rpm",
+            "en": "7.500 rpm",
+            "ar": "7.500 rpm",
+            "fr": "7.500 rpm",
+            "ru": "7.500 rpm"
+          }
+        },
+        {
+          "k": {
+            "tr": "Tambur",
+            "en": "Drum",
+            "ar": "الطبل",
+            "fr": "Tambour",
+            "ru": "Барабан"
+          },
+          "v": {
+            "tr": "DIN 1.4462",
+            "en": "DIN 1.4462",
+            "ar": "DIN 1.4462",
+            "fr": "DIN 1.4462",
+            "ru": "DIN 1.4462"
+          }
+        },
+        {
+          "k": {
+            "tr": "Motor Gücü",
+            "en": "Motor Power",
+            "ar": "قدرة المحرك",
+            "fr": "Puissance moteur",
+            "ru": "Мощность двигателя"
+          },
+          "v": {
+            "tr": "7,5 – 15 kW",
+            "en": "7,5 – 15 kW",
+            "ar": "7,5 – 15 kW",
+            "fr": "7,5 – 15 kW",
+            "ru": "7,5 – 15 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Sıcaklık Aralığı",
+            "en": "Temperature Range",
+            "ar": "نطاق درجة الحرارة",
+            "fr": "Plage de température",
+            "ru": "Диапазон температур"
+          },
+          "v": {
+            "tr": "25 – 95 °C",
+            "en": "25 – 95 °C",
+            "ar": "25 – 95 °C",
+            "fr": "25 – 95 °C",
+            "ru": "25 – 95 °C"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "DIN 1.4462 dubleks yüksek devir tambur",
+          "en": "DIN 1.4462 duplex high-speed drum",
+          "ar": "أسطوانة مزدوجة عالية السرعة DIN 1.4462",
+          "fr": "Tambour à haute vitesse duplex DIN 1.4462",
+          "ru": "Высокоскоростной дуплексный барабан DIN 1.4462"
+        },
+        {
+          "tr": "Otomatik temizleme ve katı parçacık tutucu",
+          "en": "Automatic cleaning and solid particle retention",
+          "ar": "تنظيف أوتوماتيكي واحتجاز الجزيئات الصلبة",
+          "fr": "Nettoyage automatique et rétention des particules solides",
+          "ru": "Автоматическая очистка и удержание твердых частиц"
+        },
+        {
+          "tr": "25 – 95 °C çalışma aralığı",
+          "en": "25 – 95 °C operating range",
+          "ar": "نطاق تشغيل 25 – 95 درجة مئوية",
+          "fr": "Plage de fonctionnement de 25 à 95 °C",
+          "ru": "Рабочий диапазон от 25 до 95 °C"
+        },
+        {
+          "tr": "Siemens PLC kontrol",
+          "en": "Siemens PLC control",
+          "ar": "تحكم PLC من سيمنز",
+          "fr": "Contrôle PLC Siemens",
+          "ru": "Управление PLC Siemens"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "5.000 L/h",
+            "en": "5.000 L/h",
+            "ar": "5.000 L/h",
+            "fr": "5.000 L/h",
+            "ru": "5.000 L/h"
+          },
+          "from": 61525,
+          "to": 61525,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "10.000 L/h",
+            "en": "10.000 L/h",
+            "ar": "10.000 L/h",
+            "fr": "10.000 L/h",
+            "ru": "10.000 L/h"
+          },
+          "from": 73025,
+          "to": 73025,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "15.000 L/h",
+            "en": "15.000 L/h",
+            "ar": "15.000 L/h",
+            "fr": "15.000 L/h",
+            "ru": "15.000 L/h"
+          },
+          "from": 106375,
+          "to": 106375,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/klarifikator.jpg",
+        "servedUrl": "/api/media/klarifikator-gorsel-1783208638080-bi0p.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.928Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-YOGURT-DOLUM-MAKINESI",
+    "slug": "yogurt-dolum-makinesi",
+    "name_en": "Yogurt Filling Machine",
+    "category": "Filling & Packaging",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Yogurt, Ayran, Milk, Kefir",
+      "filling_range": "",
+      "capacity": "500 L/h – 5.000 pcs/h",
+      "size": "",
+      "power": "1 – 4 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/yogurt-dolum-makinesi-gorsel-1783208638089-0kcz.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Yoğurt Dolum Makinesi",
+      "audience": "",
+      "promise": "Süt, yoğurt ve ayranı hassas gramajla dolduran PLC kontrollü dolum makinesi.",
+      "hero_number": "500 L/h – 5.000 pcs/h",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.768Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "yogurt-dolum-makinesi",
+      "url": "http://127.0.0.1:4192/tr/makineler/yogurt-dolum-makinesi",
+      "name": {
+        "tr": "Yoğurt Dolum Makinesi",
+        "en": "Yogurt Filling Machine",
+        "ar": "آلة تعبئة الزبادي",
+        "fr": "Machine de remplissage de yaourt",
+        "ru": "Машина для наполнения йогурта"
+      },
+      "summary": {
+        "tr": "Süt, yoğurt ve ayranı hassas gramajla dolduran PLC kontrollü dolum makinesi.",
+        "en": "PLC-controlled filling machine that fills milk, yogurt, and ayran with precise weight.",
+        "ar": "آلة تعبئة تتحكم فيها PLC تعبئ الحليب والزبادي واللبن الرائب بوزن دقيق.",
+        "fr": "Machine de remplissage contrôlée par PLC qui remplit le lait, le yaourt et le lait ribot avec un poids précis.",
+        "ru": "Машина для наполнения с управлением PLC, которая заполняет молоко, йогурт и айран с точным весом."
+      },
+      "category": {
+        "slug": "dolum-paketleme",
+        "name": {
+          "tr": "Dolum & Paketleme",
+          "en": "Filling & Packaging"
+        }
+      },
+      "capacity": "500 L/h – 5.000 pcs/h",
+      "deliveryWeeks": "",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "500 L/h – 5.000 pcs/h",
+            "en": "500 L/h – 5.000 pcs/h",
+            "ar": "500 L/h – 5.000 pcs/h",
+            "fr": "500 L/h – 5.000 pcs/h",
+            "ru": "500 L/h – 5.000 pcs/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Elektrik Tüketimi",
+            "en": "Power Consumption",
+            "ar": "استهلاك الكهرباء",
+            "fr": "Consommation électrique",
+            "ru": "Энергопотребление"
+          },
+          "v": {
+            "tr": "1 – 4 kW",
+            "en": "1 – 4 kW",
+            "ar": "1 – 4 kW",
+            "fr": "1 – 4 kW",
+            "ru": "1 – 4 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control",
+            "ar": "التحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
+          },
+          "v": {
+            "tr": "PLC + 17\" touch",
+            "en": "PLC + 17\" touch",
+            "ar": "PLC + 17\" touch",
+            "fr": "PLC + 17\" touch",
+            "ru": "PLC + 17\" touch"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde Malzemesi",
+            "en": "Body Material",
+            "ar": "مادة الهيكل",
+            "fr": "Matériau du corps",
+            "ru": "Материал корпуса"
+          },
+          "v": {
+            "tr": "AISI 304",
+            "en": "AISI 304",
+            "ar": "AISI 304",
+            "fr": "AISI 304",
+            "ru": "AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "AISI 304 gıda-temas paslanmaz gövde",
+          "en": "AISI 304 food-contact stainless body",
+          "ar": "هيكل من الفولاذ المقاوم للصدأ AISI 304 مخصص للطعام",
+          "fr": "Corps en acier inoxydable AISI 304 au contact alimentaire",
+          "ru": "Корпус из нержавеющей стали AISI 304 для контакта с пищей"
+        },
+        {
+          "tr": "17 inç renkli dokunmatik PLC panel",
+          "en": "17-inch color touch PLC panel",
+          "ar": "لوحة PLC تعمل باللمس ملونة بحجم 17 بوصة",
+          "fr": "Panneau PLC tactile couleur de 17 pouces",
+          "ru": "Цветная сенсорная панель PLC размером 17 дюймов"
+        },
+        {
+          "tr": "Nozullu sıvı + döner tablalı kap dolum",
+          "en": "Nozzle liquid + rotary table cup filling",
+          "ar": "تعبئة سائلة بفوهة + تعبئة أكواب على طاولة دوارة",
+          "fr": "Remplissage liquide à buse + remplissage de tasses sur table tournante",
+          "ru": "Заполнение жидкостью с насадкой + заполнение чашек на вращающемся столе"
+        },
+        {
+          "tr": "Alüminyum folyo kapak ve tarih baskısı",
+          "en": "Aluminum foil cap and date printing",
+          "ar": "غطاء من الألمنيوم وطبعة تاريخ",
+          "fr": "Couvercle en aluminium et impression de date",
+          "ru": "Алюминиевая крышка и печать даты"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "500 L/h · 2 nozul",
+            "en": "500 L/h · 2 nozul",
+            "ar": "500 L/h · 2 nozul",
+            "fr": "500 L/h · 2 nozul",
+            "ru": "500 L/h · 2 nozul"
+          },
+          "from": 18975,
+          "to": 18975,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "1.000 L/h · 4 nozul",
+            "en": "1.000 L/h · 4 nozul",
+            "ar": "1.000 L/h · 4 nozul",
+            "fr": "1.000 L/h · 4 nozul",
+            "ru": "1.000 L/h · 4 nozul"
+          },
+          "from": 25875,
+          "to": 25875,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "1.500 pcs/h",
+            "en": "1.500 pcs/h",
+            "ar": "1.500 pcs/h",
+            "fr": "1.500 pcs/h",
+            "ru": "1.500 pcs/h"
+          },
+          "from": 27025,
+          "to": 27025,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "2.500 pcs/h",
+            "en": "2.500 pcs/h",
+            "ar": "2.500 pcs/h",
+            "fr": "2.500 pcs/h",
+            "ru": "2.500 pcs/h"
+          },
+          "from": 38525,
+          "to": 38525,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "5.000 pcs/h",
+            "en": "5.000 pcs/h",
+            "ar": "5.000 pcs/h",
+            "fr": "5.000 pcs/h",
+            "ru": "5.000 pcs/h"
+          },
+          "from": 64975,
+          "to": 64975,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/yogurt-dolum-makinesi.jpg",
+        "servedUrl": "/api/media/yogurt-dolum-makinesi-gorsel-1783208638089-0kcz.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.928Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-PISIRICI-KAZAN",
+    "slug": "pisirici-kazan",
+    "name_en": "Cooking Kettle (Complete Set)",
+    "category": "Thermal Processing",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Melted cheese, Curd / whey, Jam & marmalade, Sauce & concentrate",
+      "filling_range": "",
+      "capacity": "60 – 200 kg",
+      "size": "",
+      "power": "11 – 18 kW",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/pisirici-kazan-gorsel-1783208638104-c36j.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Pişirici Kazan (Complete Set)",
+      "audience": "",
+      "promise": "Vakumlu, PLC kontrollü, reçeteye göre çalışan çok amaçlı pişirme kazanı.",
+      "hero_number": "60 – 200 kg",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.769Z"
+    },
+    "website": {
+      "type": "machine",
+      "slug": "pisirici-kazan",
+      "url": "http://127.0.0.1:4192/tr/makineler/pisirici-kazan",
+      "name": {
+        "tr": "Pişirici Kazan (Complete Set)",
+        "en": "Cooking Kettle (Complete Set)",
+        "ar": "غلاية طهي (مجموعة كاملة)",
+        "fr": "Chaudière de cuisson (Ensemble complet)",
+        "ru": "Кулинарный котел (Полный комплект)"
+      },
+      "summary": {
+        "tr": "Vakumlu, PLC kontrollü, reçeteye göre çalışan çok amaçlı pişirme kazanı.",
+        "en": "Vacuum, PLC-controlled, multi-purpose cooking kettle that operates according to recipes.",
+        "ar": "غلاية طهي متعددة الأغراض تعمل بالتحكم PLC والفراغ وفقًا للوصفات.",
+        "fr": "Chaudière de cuisson polyvalente contrôlée par PLC et sous vide fonctionnant selon des recettes.",
+        "ru": "Многофункциональный кулинарный котел с вакуумом, управляемый PLC, работающий по рецептам."
+      },
+      "category": {
+        "slug": "termal-islem",
+        "name": {
+          "tr": "Termal İşlem",
+          "en": "Thermal Processing"
+        }
+      },
+      "capacity": "60 – 200 kg",
+      "deliveryWeeks": "",
+      "automation": "tam",
+      "material": "AISI 304",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity",
+            "ar": "السعة",
+            "fr": "Capacité",
+            "ru": "Производительность"
+          },
+          "v": {
+            "tr": "60 – 200 kg",
+            "en": "60 – 200 kg",
+            "ar": "60 – 200 kg",
+            "fr": "60 – 200 kg",
+            "ru": "60 – 200 kg"
+          }
+        },
+        {
+          "k": {
+            "tr": "Motor Gücü",
+            "en": "Motor Power",
+            "ar": "قدرة المحرك",
+            "fr": "Puissance moteur",
+            "ru": "Мощность двигателя"
+          },
+          "v": {
+            "tr": "11 – 18 kW",
+            "en": "11 – 18 kW",
+            "ar": "11 – 18 kW",
+            "fr": "11 – 18 kW",
+            "ru": "11 – 18 kW"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control",
+            "ar": "التحكم",
+            "fr": "Contrôle",
+            "ru": "Управление"
+          },
+          "v": {
+            "tr": "PLC",
+            "en": "PLC",
+            "ar": "PLC",
+            "fr": "PLC",
+            "ru": "PLC"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde Malzemesi",
+            "en": "Body Material",
+            "ar": "مادة الهيكل",
+            "fr": "Matériau du corps",
+            "ru": "Материал корпуса"
+          },
+          "v": {
+            "tr": "AISI 304",
+            "en": "AISI 304",
+            "ar": "AISI 304",
+            "fr": "AISI 304",
+            "ru": "AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Vakumlu düşük-sıcaklık pişirme",
+          "en": "Vacuum low-temperature cooking",
+          "ar": "طهي بالفراغ في درجات حرارة منخفضة",
+          "fr": "Cuisson sous vide à basse température",
+          "ru": "Приготовление при низкой температуре с вакуумом"
+        },
+        {
+          "tr": "Ayarlanabilir 11 – 18 kW kırma motoru",
+          "en": "Adjustable 11 – 18 kW crushing motor",
+          "ar": "محرك سحق قابل للتعديل بقوة 11 – 18 كيلو واط",
+          "fr": "Moteur de broyage réglable de 11 à 18 kW",
+          "ru": "Регулируемый дробильный мотор мощностью 11 – 18 кВт"
+        },
+        {
+          "tr": "Tam PLC otomasyon ve reçete programı",
+          "en": "Full PLC automation and recipe program",
+          "ar": "أتمتة PLC كاملة وبرنامج وصفة",
+          "fr": "Automatisation PLC complète et programme de recette",
+          "ru": "Полная автоматизация PLC и программа рецептов"
+        },
+        {
+          "tr": "Pnömatik kapak ve güvenlik ekipmanı",
+          "en": "Pneumatic lid and safety equipment",
+          "ar": "غطاء هوائي ومعدات أمان",
+          "fr": "Couvercle pneumatique et équipement de sécurité",
+          "ru": "Пневматическая крышка и оборудование безопасности"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "60 kg",
+            "en": "60 kg",
+            "ar": "60 kg",
+            "fr": "60 kg",
+            "ru": "60 kg"
+          },
+          "from": 86250,
+          "to": 86250,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "80 kg",
+            "en": "80 kg",
+            "ar": "80 kg",
+            "fr": "80 kg",
+            "ru": "80 kg"
+          },
+          "from": 97750,
+          "to": 97750,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "100 kg",
+            "en": "100 kg",
+            "ar": "100 kg",
+            "fr": "100 kg",
+            "ru": "100 kg"
+          },
+          "from": 109250,
+          "to": 109250,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "160 kg",
+            "en": "160 kg",
+            "ar": "160 kg",
+            "fr": "160 kg",
+            "ru": "160 kg"
+          },
+          "from": 132250,
+          "to": 132250,
+          "currency": "EUR"
+        },
+        {
+          "label": {
+            "tr": "200 kg",
+            "en": "200 kg",
+            "ar": "200 kg",
+            "fr": "200 kg",
+            "ru": "200 kg"
+          },
+          "from": 143750,
+          "to": 143750,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/pisirici-kazan.jpg",
+        "servedUrl": "/api/media/pisirici-kazan-gorsel-1783208638104-c36j.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.929Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-SALCA-DOMATES-ISLEME-HATTI",
+    "slug": "salca-domates-isleme-hatti",
+    "name_en": "Tomato Paste & Processing Line",
+    "category": "Food Processing Lines",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Yeni domates/salça yatırımcısı, Mevcut konserve fabrikasını modernize edenler, Salça ihracatçısı & fason üretici, Kooperatif ve tarımsal işletmeler",
+      "filling_range": "",
+      "capacity": "6 – 50 ton/day (higher on request)",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Salça & Domates İşleme Hattı",
+      "audience": "",
+      "promise": "Yıkamadan dolum-paketlemeye tam otomasyonlu, hijyenik salça üretim hattı.",
+      "hero_number": "6 – 50 ton/gün",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.769Z"
+    },
+    "website": {
+      "type": "line",
+      "slug": "salca-domates-isleme-hatti",
+      "url": "http://127.0.0.1:4192/tr/hatlar/salca-domates-isleme-hatti",
+      "name": {
+        "tr": "Salça & Domates İşleme Hattı",
+        "en": "Tomato Paste & Processing Line",
+        "ar": "خط معالجة و صناعة معجون الطماطم",
+        "fr": "Ligne de traitement et de production de pâte de tomate",
+        "ru": "Линия по переработке и производству томатной пасты"
+      },
+      "summary": {
+        "tr": "Yıkamadan dolum-paketlemeye tam otomasyonlu, hijyenik salça üretim hattı.",
+        "en": "Fully automated, hygienic tomato paste line from washing to fill-pack.",
+        "ar": "خط إنتاج معجون الطماطم المؤتمت بالكامل، والذي يشمل كافة المراحل من الغسيل إلى التعبئة والتغليف.",
+        "fr": "Ligne de production de pâte de tomate entièrement automatisée et hygiénique, allant du lavage au remplissage-emballage.",
+        "ru": "Полностью автоматизированная, гигиеничная линия по производству томатной пасты от мойки до розлива-упаковки."
+      },
+      "category": {
+        "slug": "gida-hatlari",
+        "name": {
+          "tr": "Gıda İşleme Hatları",
+          "en": "Food Processing Lines",
+          "ar": "خطوط معالجة الطعام",
+          "fr": "Lignes de transformation des aliments",
+          "ru": "Линии переработки пищи"
+        }
+      },
+      "capacity": "6 – 50 ton/gün",
+      "deliveryWeeks": "14 – 26 hafta",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity"
+          },
+          "v": {
+            "tr": "6 – 50 ton/gün (proje bazlı daha yüksek)",
+            "en": "6 – 50 ton/day (higher on request)"
+          }
+        },
+        {
+          "k": {
+            "tr": "Brix Aralığı",
+            "en": "Brix range"
+          },
+          "v": {
+            "tr": "Hedefe göre 28 – 36 brix",
+            "en": "28 – 36 brix by target"
+          }
+        },
+        {
+          "k": {
+            "tr": "Proses",
+            "en": "Process"
+          },
+          "v": {
+            "tr": "Hot-break / cold-break opsiyonlu",
+            "en": "Hot-break / cold-break optional"
+          }
+        },
+        {
+          "k": {
+            "tr": "Dolum Tipi",
+            "en": "Filling type"
+          },
+          "v": {
+            "tr": "Aseptik torba, teneke, kavanoz veya bulk",
+            "en": "Aseptic bag, can, jar or bulk"
+          }
+        },
+        {
+          "k": {
+            "tr": "Malzeme",
+            "en": "Material"
+          },
+          "v": {
+            "tr": "Ürün temas: AISI 304 / 316 opsiyonlu",
+            "en": "Product contact: AISI 304 / 316"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kontrol",
+            "en": "Control"
+          },
+          "v": {
+            "tr": "PLC + HMI",
+            "en": "PLC + HMI"
+          }
+        },
+        {
+          "k": {
+            "tr": "Temizlik",
+            "en": "Cleaning"
+          },
+          "v": {
+            "tr": "Manuel / yarı / otomatik CIP",
+            "en": "Manual / semi / automatic CIP"
+          }
+        },
+        {
+          "k": {
+            "tr": "Devreye Alma",
+            "en": "Commissioning"
+          },
+          "v": {
+            "tr": "Anahtar teslim",
+            "en": "Turnkey"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Domates kabul ve yıkama sistemi"
+        },
+        {
+          "tr": "Ayıklama ve taşıma bantları"
+        },
+        {
+          "tr": "Kırma ve ön ısıtma grubu (hot/cold-break)"
+        },
+        {
+          "tr": "Pulper & refiner sistemi"
+        },
+        {
+          "tr": "Vakum evaporasyon ünitesi"
+        },
+        {
+          "tr": "Pastörizasyon / sterilizasyon sistemi"
+        },
+        {
+          "tr": "Aseptik veya tenekeli dolum hattı"
+        },
+        {
+          "tr": "CIP temizlik sistemi"
+        },
+        {
+          "tr": "Transfer pompaları ve proses tankları"
+        },
+        {
+          "tr": "Elektrik pano, PLC ve otomasyon sistemi"
+        },
+        {
+          "tr": "Kurulum, test üretimi ve operatör eğitimi"
+        }
+      ],
+      "badge": {
+        "tr": "Sektör Lideri",
+        "en": "Sector Leader",
+        "ar": "رائد الصناعة",
+        "fr": "Leader du secteur",
+        "ru": "Лидер отрасли"
+      },
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/line-urun-salca-domates-isleme-hatti.jpg",
+        "servedUrl": "/api/media/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.930Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-SOS-MAYONEZ-KETCAP-HATTI",
+    "slug": "sos-mayonez-ketcap-hatti",
+    "name_en": "Sauce, Mayonnaise & Ketchup Line",
+    "category": "Food Processing Lines",
+    "price_usd": 0,
+    "price_text": "153,000 – 278,000 EUR",
+    "specs": {
+      "filled_products": "Sos/mayonez markası kurmak isteyenler, Ürün gamını genişleten gıda üreticisi, Private-label & fason üretici, HORECA tedarikçisi",
+      "filling_range": "",
+      "capacity": "1 – 8 ton/day",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/sos-mayonez-ketcap-hatti-gorsel-1783208638139-5d10.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Sos, Mayonez & Ketçap Hattı",
+      "audience": "",
+      "promise": "Yüksek kesme mikseri ve emülsiyon grubuyla mükemmel kıvam.",
+      "hero_number": "1 – 8 ton/gün",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.769Z"
+    },
+    "website": {
+      "type": "line",
+      "slug": "sos-mayonez-ketcap-hatti",
+      "url": "http://127.0.0.1:4192/tr/hatlar/sos-mayonez-ketcap-hatti",
+      "name": {
+        "tr": "Sos, Mayonez & Ketçap Hattı",
+        "en": "Sauce, Mayonnaise & Ketchup Line",
+        "ar": "خط الصلصة والمايونيز والكاتشب",
+        "fr": "Ligne de sauces, mayonnaise et ketchup",
+        "ru": "Линия соусов, майонеза и кетчупа"
+      },
+      "summary": {
+        "tr": "Yüksek kesme mikseri ve emülsiyon grubuyla mükemmel kıvam.",
+        "en": "Perfect texture with high-shear mixer and emulsion group.",
+        "ar": "الاتساق المثالي مع خلاط عالي القص ومجموعة استحلاب.",
+        "fr": "Consistance parfaite avec un mélangeur à haute coupe et groupe d'émulsification.",
+        "ru": "Идеальная консистенция с высокоскоростным смесителем и группой эмульсии."
+      },
+      "category": {
+        "slug": "gida-hatlari",
+        "name": {
+          "tr": "Gıda İşleme Hatları",
+          "en": "Food Processing Lines",
+          "ar": "خطوط معالجة الطعام",
+          "fr": "Lignes de transformation des aliments",
+          "ru": "Линии переработки пищи"
+        }
+      },
+      "capacity": "1 – 8 ton/gün",
+      "deliveryWeeks": "8 – 14 hafta",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity"
+          },
+          "v": {
+            "tr": "1 – 8 ton/gün",
+            "en": "1 – 8 ton/day"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ürünler",
+            "en": "Products"
+          },
+          "v": {
+            "tr": "Mayonez, ketçap, sos",
+            "en": "Mayo, ketchup, sauce"
+          }
+        },
+        {
+          "k": {
+            "tr": "Reçete desteği",
+            "en": "Recipe support"
+          },
+          "v": {
+            "tr": "Var",
+            "en": "Included"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Hammadde hazırlama ve tartım"
+        },
+        {
+          "tr": "Ürün hazırlama tankları"
+        },
+        {
+          "tr": "Yüksek kesme / emülsiyon mikser tankı"
+        },
+        {
+          "tr": "Vakum mikser ve deaerasyon"
+        },
+        {
+          "tr": "Homojenizatör"
+        },
+        {
+          "tr": "Pastörizasyon / ısıl işlem ünitesi"
+        },
+        {
+          "tr": "Tampon tanklar ve transfer pompaları"
+        },
+        {
+          "tr": "Dolum ve kapaklama hattı"
+        },
+        {
+          "tr": "Etiketleme / paketleme"
+        },
+        {
+          "tr": "CIP temizlik sistemi"
+        },
+        {
+          "tr": "Elektrik pano, PLC ve otomasyon"
+        }
+      ],
+      "badge": null,
+      "price": {
+        "from": 153000,
+        "to": 278000,
+        "currency": "EUR"
+      },
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/line-urun-sos-mayonez-ketcap-hatti.jpg",
+        "servedUrl": "/api/media/sos-mayonez-ketcap-hatti-gorsel-1783208638139-5d10.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.931Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-SUT-ISLEME-PASTORIZASYON-HATTI",
+    "slug": "sut-isleme-pastorizasyon-hatti",
+    "name_en": "Milk Processing & Pasteurization Line",
+    "category": "Food Processing Lines",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Yeni mandıra/süt yatırımcısı, Çiftlikten-rafa entegre üretici, Peynir/yoğurt hattına geçiş planlayan, Bölgesel süt toplama merkezi",
+      "filling_range": "",
+      "capacity": "1,000 – 15,000 L/day",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/sut-isleme-pastorizasyon-hatti-gorsel-1783208638155-w0rn.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Süt İşleme & Pastörizasyon Hattı",
+      "audience": "",
+      "promise": "Mandıra ve endüstriyel tesisler için hijyen odaklı, enerji verimli çözüm.",
+      "hero_number": "1.000 L/gün – 20 ton/gün",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.792Z"
+    },
+    "website": {
+      "type": "line",
+      "slug": "sut-isleme-pastorizasyon-hatti",
+      "url": "http://127.0.0.1:4192/tr/hatlar/sut-isleme-pastorizasyon-hatti",
+      "name": {
+        "tr": "Süt İşleme & Pastörizasyon Hattı",
+        "en": "Milk Processing & Pasteurization Line",
+        "ar": "خط معالجة وحفظ الحليب",
+        "fr": "Ligne de traitement et de pasteurisation du lait",
+        "ru": "Линия обработки и пастеризации молока"
+      },
+      "summary": {
+        "tr": "Mandıra ve endüstriyel tesisler için hijyen odaklı, enerji verimli çözüm.",
+        "en": "Hygiene-focused, energy-efficient solution for dairies and industrial plants.",
+        "ar": "حل يركز على النظافة وكفاءة الطاقة للمزارع والمرافق الصناعية.",
+        "fr": "Une solution axée sur l'hygiène et économe en énergie pour les laiteries et les installations industrielles.",
+        "ru": "Гигиеничное и энергоэффективное решение для молокозаводов и промышленных объектов."
+      },
+      "category": {
+        "slug": "gida-hatlari",
+        "name": {
+          "tr": "Gıda İşleme Hatları",
+          "en": "Food Processing Lines",
+          "ar": "خطوط معالجة الطعام",
+          "fr": "Lignes de transformation des aliments",
+          "ru": "Линии переработки пищи"
+        }
+      },
+      "capacity": "1.000 L/gün – 20 ton/gün",
+      "deliveryWeeks": "10 – 20 hafta",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity"
+          },
+          "v": {
+            "tr": "1.000 – 15.000 L/gün",
+            "en": "1,000 – 15,000 L/day"
+          }
+        },
+        {
+          "k": {
+            "tr": "Isı geri kazanımı",
+            "en": "Heat recovery"
+          },
+          "v": {
+            "tr": "%90'a kadar",
+            "en": "Up to 90%"
+          }
+        },
+        {
+          "k": {
+            "tr": "Genişleme",
+            "en": "Expansion"
+          },
+          "v": {
+            "tr": "Peynir/yoğurt",
+            "en": "Cheese/yoghurt"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Çiğ süt kabul ve soğutma tankı"
+        },
+        {
+          "tr": "Filtrasyon ve klarifikasyon"
+        },
+        {
+          "tr": "Krema separatörü ve standardizasyon"
+        },
+        {
+          "tr": "Pastörizatör (plakalı eşanjör)"
+        },
+        {
+          "tr": "Homojenizatör"
+        },
+        {
+          "tr": "İzoleli depolama tankları"
+        },
+        {
+          "tr": "Dolum hattı (şişe/pouch/karton)"
+        },
+        {
+          "tr": "CIP temizlik sistemi"
+        },
+        {
+          "tr": "Transfer pompaları ve boru hattı"
+        },
+        {
+          "tr": "Elektrik pano, PLC ve otomasyon"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "Anahtar Teslim Tesis — 20 ton/gün · Süt + Yoğurt",
+            "en": "Turnkey Plant — 20 tons/day · Milk + Yoghurt",
+            "ar": "مصنع تسليم مفتاح — 20 طن/يوم · حليب + زبادي",
+            "fr": "Usine clé en main — 20 t/jour · Lait + Yaourt",
+            "ru": "Завод под ключ — 20 т/день · молоко + йогурт"
+          },
+          "from": 1460000,
+          "to": 1600000,
+          "currency": "EUR"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/line-urun-sut-isleme-pastorizasyon-hatti.jpg",
+        "servedUrl": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638155-w0rn.jpg"
+      },
+      "gallery": [
+        {
+          "source": "http://127.0.0.1:4192/img/generated/line-urun-anahtar-teslim-sut-yogurt-tesisi.jpg",
+          "servedUrl": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638162-5nnq.jpg"
+        }
+      ],
+      "syncedAt": "2026-07-04T23:45:32.931Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-DOLUM-PAKETLEME-HATTI",
+    "slug": "dolum-paketleme-hatti",
+    "name_en": "Filling & Packaging Line",
+    "category": "Food Processing Lines",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Ambalajlı ürüne geçen üretici, Yağ/sos/içecek/deterjan dolum ihtiyacı, Fason dolum & kontrat paketleme, Kapasite artışı planlayan fabrika",
+      "filling_range": "",
+      "capacity": "500 – 2,500 pcs/h",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/dolum-paketleme-hatti-gorsel-1783208638185-vvvc.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Dolum & Paketleme Hattı",
+      "audience": "",
+      "promise": "Sıvı ve viskoz ürünler için dolum, kapaklama, etiketleme entegrasyonu.",
+      "hero_number": "500 – 2.500 adet/saat",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.794Z"
+    },
+    "website": {
+      "type": "line",
+      "slug": "dolum-paketleme-hatti",
+      "url": "http://127.0.0.1:4192/tr/hatlar/dolum-paketleme-hatti",
+      "name": {
+        "tr": "Dolum & Paketleme Hattı",
+        "en": "Filling & Packaging Line",
+        "ar": "خط التعبئة والتغليف",
+        "fr": "Ligne de remplissage et d'emballage",
+        "ru": "Линия розлива и упаковки"
+      },
+      "summary": {
+        "tr": "Sıvı ve viskoz ürünler için dolum, kapaklama, etiketleme entegrasyonu.",
+        "en": "Filling, capping and labeling integration for liquid and viscous products.",
+        "ar": "تكامل لملء السائل والمنتجات اللزجة، والتركيب، ووضع العلامات.",
+        "fr": "Intégration pour le remplissage, le capsulage et l'étiquetage de produits liquides et visqueux.",
+        "ru": "Интеграция для розлива, укупорки и маркировки жидких и вязких продуктов."
+      },
+      "category": {
+        "slug": "gida-hatlari",
+        "name": {
+          "tr": "Gıda İşleme Hatları",
+          "en": "Food Processing Lines",
+          "ar": "خطوط معالجة الطعام",
+          "fr": "Lignes de transformation des aliments",
+          "ru": "Линии переработки пищи"
+        }
+      },
+      "capacity": "500 – 2.500 adet/saat",
+      "deliveryWeeks": "6 – 12 hafta",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity"
+          },
+          "v": {
+            "tr": "500 – 2.500 adet/saat",
+            "en": "500 – 2,500 pcs/h"
+          }
+        },
+        {
+          "k": {
+            "tr": "Ürün",
+            "en": "Product"
+          },
+          "v": {
+            "tr": "Sıvı / viskoz",
+            "en": "Liquid / viscous"
+          }
+        },
+        {
+          "k": {
+            "tr": "Entegrasyon",
+            "en": "Integration"
+          },
+          "v": {
+            "tr": "Dolum+kapak+etiket",
+            "en": "Fill+cap+label"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Ürün besleme ve tampon tank"
+        },
+        {
+          "tr": "Servo dolum ünitesi"
+        },
+        {
+          "tr": "Kapak besleme ve kapaklama"
+        },
+        {
+          "tr": "Etiketleme ünitesi"
+        },
+        {
+          "tr": "Kodlama (tarih/lot) sistemi"
+        },
+        {
+          "tr": "Konveyör ve akümülasyon sistemi"
+        },
+        {
+          "tr": "Koli / paketleme ünitesi"
+        },
+        {
+          "tr": "Paletleme"
+        },
+        {
+          "tr": "CIP / temizlik (sıvı ürünlerde)"
+        },
+        {
+          "tr": "Elektrik pano, PLC ve otomasyon"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/line-urun-dolum-paketleme-hatti.jpg",
+        "servedUrl": "/api/media/dolum-paketleme-hatti-gorsel-1783208638185-vvvc.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.932Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-MEYVE-SUYU-KONSANTRE-HATTI",
+    "slug": "meyve-suyu-konsantre-hatti",
+    "name_en": "Fruit Juice & Concentrate Line",
+    "category": "Beverage & Juice",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Meyve suyu markası yatırımcısı, Meyve bölgesinde katma değer arayan üretici, Konsantre ihracatçısı, Ürün gamını genişleten içecek fabrikası",
+      "filling_range": "",
+      "capacity": "2 – 12 ton/day",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/meyve-suyu-konsantre-hatti-gorsel-1783208638201-qrxl.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Meyve Suyu & Konsantre Hattı",
+      "audience": "",
+      "promise": "Meyveden berrak/bulanık suya ve konsantreye tam proses.",
+      "hero_number": "2 – 12 ton/gün",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.795Z"
+    },
+    "website": {
+      "type": "line",
+      "slug": "meyve-suyu-konsantre-hatti",
+      "url": "http://127.0.0.1:4192/tr/hatlar/meyve-suyu-konsantre-hatti",
+      "name": {
+        "tr": "Meyve Suyu & Konsantre Hattı",
+        "en": "Fruit Juice & Concentrate Line",
+        "ar": "خط عصير الفواكه والتركيز",
+        "fr": "Ligne de jus de fruits et de concentré",
+        "ru": "Линия фруктового сока и концентрата"
+      },
+      "summary": {
+        "tr": "Meyveden berrak/bulanık suya ve konsantreye tam proses.",
+        "en": "Full process from fruit to clear/cloudy juice and concentrate.",
+        "ar": "عملية كاملة من الفاكهة إلى العصير الصافي / الغائم والتركيز.",
+        "fr": "Processus complet de la fruit au jus clair / trouble et au concentré.",
+        "ru": "Полный процесс от фрукта до ясного/помутневшего сока и концентрата."
+      },
+      "category": {
+        "slug": "icecek-hatlari",
+        "name": {
+          "tr": "İçecek & Meyve Suyu",
+          "en": "Beverage & Juice"
+        }
+      },
+      "capacity": "2 – 12 ton/gün",
+      "deliveryWeeks": "10 – 20 hafta",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Kapasite",
+            "en": "Capacity"
+          },
+          "v": {
+            "tr": "2 – 12 ton/gün",
+            "en": "2 – 12 ton/day"
+          }
+        },
+        {
+          "k": {
+            "tr": "Çıktı",
+            "en": "Output"
+          },
+          "v": {
+            "tr": "Su / konsantre",
+            "en": "Juice / concentrate"
+          }
+        },
+        {
+          "k": {
+            "tr": "Dolum",
+            "en": "Filling"
+          },
+          "v": {
+            "tr": "Sıcak / aseptik",
+            "en": "Hot / aseptic"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Meyve kabul ve yıkama sistemi"
+        },
+        {
+          "tr": "Ayıklama bandı"
+        },
+        {
+          "tr": "Parçalama ve presleme"
+        },
+        {
+          "tr": "Enzim / berraklaştırma ve filtrasyon"
+        },
+        {
+          "tr": "Pastörizasyon ünitesi"
+        },
+        {
+          "tr": "Vakum evaporasyon (konsantre)"
+        },
+        {
+          "tr": "Aseptik veya sıcak dolum hattı"
+        },
+        {
+          "tr": "Tampon tanklar ve transfer pompaları"
+        },
+        {
+          "tr": "CIP temizlik sistemi"
+        },
+        {
+          "tr": "Elektrik pano, PLC ve otomasyon"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/line-urun-meyve-suyu-konsantre-hatti.jpg",
+        "servedUrl": "/api/media/meyve-suyu-konsantre-hatti-gorsel-1783208638201-qrxl.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.933Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-SOGUK-DEPOLAMA-KONTEYNER-SISTEMI",
+    "slug": "soguk-depolama-konteyner-sistemi",
+    "name_en": "Cold Storage & Container System",
+    "category": "Cold Chain & Storage",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "Gıda/lojistik soğuk zincir ihtiyacı, İhracatçı & distribütör, İlaç/laboratuvar soğuk depolama, Hasat sonrası muhafaza yapan tarımsal işletme",
+      "filling_range": "",
+      "capacity": "20 – 1000 m³",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "",
+    "source_image": "data/uploads/soguk-depolama-konteyner-sistemi-gorsel-1783208638224-kqn6.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Soğuk Depolama & Konteyner Sistemi",
+      "audience": "",
+      "promise": "Gıda, lojistik, ilaç ve laboratuvar için modüler soğuk depo.",
+      "hero_number": "20 – 1000 m³",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.795Z"
+    },
+    "website": {
+      "type": "line",
+      "slug": "soguk-depolama-konteyner-sistemi",
+      "url": "http://127.0.0.1:4192/tr/hatlar/soguk-depolama-konteyner-sistemi",
+      "name": {
+        "tr": "Soğuk Depolama & Konteyner Sistemi",
+        "en": "Cold Storage & Container System",
+        "ar": "نظام التخزين البارد والحاويات",
+        "fr": "Système de stockage à froid et de conteneurs",
+        "ru": "Система холодного хранения и контейнеров"
+      },
+      "summary": {
+        "tr": "Gıda, lojistik, ilaç ve laboratuvar için modüler soğuk depo.",
+        "en": "Modular cold storage for food, logistics, pharma and labs.",
+        "ar": "تخزين بارد معياري للمواد الغذائية واللوجستيات والأدوية والمختبرات.",
+        "fr": "Stockage à froid modulaire pour l'alimentation, la logistique, les produits pharmaceutiques et les laboratoires.",
+        "ru": "Модульное холодное хранение для продуктов питания, логистики, фармацевтики и лабораторий."
+      },
+      "category": {
+        "slug": "soguk-zincir",
+        "name": {
+          "tr": "Soğuk Zincir & Depolama",
+          "en": "Cold Chain & Storage"
+        }
+      },
+      "capacity": "20 – 1000 m³",
+      "deliveryWeeks": "8 – 16 hafta",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Hacim",
+            "en": "Volume"
+          },
+          "v": {
+            "tr": "20 – 1000 m³",
+            "en": "20 – 1000 m³"
+          }
+        },
+        {
+          "k": {
+            "tr": "Sıcaklık",
+            "en": "Temperature"
+          },
+          "v": {
+            "tr": "+4 / -18 / -25 °C",
+            "en": "+4 / -18 / -25 °C"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kurulum",
+            "en": "Install"
+          },
+          "v": {
+            "tr": "Modüler / hızlı",
+            "en": "Modular / fast"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "Yalıtımlı panel gövde (poliüretan sandviç)"
+        },
+        {
+          "tr": "Soğuk oda kapıları"
+        },
+        {
+          "tr": "Kondenser ve evaporatör grubu"
+        },
+        {
+          "tr": "Kompresör / soğutma sistemi"
+        },
+        {
+          "tr": "Sıcaklık kontrol ve otomasyon"
+        },
+        {
+          "tr": "Alarm ve uzaktan izleme"
+        },
+        {
+          "tr": "Zemin yalıtımı / rampa"
+        },
+        {
+          "tr": "Elektrik pano ve dağıtım"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/generated/line-urun-soguk-depolama-konteyner-sistemi.jpg",
+        "servedUrl": "/api/media/soguk-depolama-konteyner-sistemi-gorsel-1783208638224-kqn6.jpg"
+      },
+      "gallery": [],
+      "syncedAt": "2026-07-04T23:45:32.933Z",
+      "removedFromSite": null
+    }
+  },
+  {
+    "code": "WEB-MODULER-SALCA-SISTEMI-MACLINE",
+    "slug": "moduler-salca-sistemi-macline",
+    "name_en": "Modular Tomato Paste & Sauce System — MACLINE Series",
+    "category": "Food Processing Lines",
+    "price_usd": 0,
+    "price_text": "",
+    "specs": {
+      "filled_products": "",
+      "filling_range": "",
+      "capacity": "6,000 – 12,000 kg/day",
+      "size": "",
+      "power": "",
+      "voltage": ""
+    },
+    "video": "https://www.youtube.com/watch?v=8Jp3qaovePs",
+    "source_image": "data/uploads/moduler-salca-sistemi-macline-gorsel-1783208638243-bliy.jpg",
+    "hd": true,
+    "marketing": {
+      "name_tr": "Modüler Salça & Sos Sistemi — MACLINE Serisi",
+      "audience": "",
+      "promise": "Kompakt platform üzerine kurulu, vakumlu pişirme teknolojili modüler salça ve sos üretim sistemi. 6.000–12.000 kg/gün kapasite; ECO'dan JUICE'a beş paket.",
+      "hero_number": "6.000 – 12.000 kg/gün",
+      "countries": [],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "notes": "Web sitesinden otomatik eklendi",
+      "created_at": "2026-07-04T23:43:02.796Z"
+    },
+    "website": {
+      "type": "line",
+      "slug": "moduler-salca-sistemi-macline",
+      "url": "http://127.0.0.1:4192/tr/hatlar/moduler-salca-sistemi-macline",
+      "name": {
+        "tr": "Modüler Salça & Sos Sistemi — MACLINE Serisi",
+        "en": "Modular Tomato Paste & Sauce System — MACLINE Series",
+        "ar": "نظام صلصة و صلصة مودولاري - سلسلة MACLINE",
+        "fr": "Système Modulaire de Concentré de Tomate & Sauce — Série MACLINE",
+        "ru": "Модульная система томатной пасты и соусов — серия MACLINE"
+      },
+      "summary": {
+        "tr": "Kompakt platform üzerine kurulu, vakumlu pişirme teknolojili modüler salça ve sos üretim sistemi. 6.000–12.000 kg/gün kapasite; ECO'dan JUICE'a beş paket.",
+        "en": "Modular tomato paste and sauce production system built on a compact platform with vacuum cooking technology. 6,000–12,000 kg/day capacity; five packages from ECO to JUICE.",
+        "ar": "نظام إنتاج صلصة و صلصة مودولاري يعتمد على تكنولوجيا الطهي بالفراغ، مثبت على منصة مدمجة. سعة 6,000-12,000 كجم/يوم؛ خمسة حزم من ECO إلى JUICE.",
+        "fr": "Système modulaire de production de concentré de tomate et de sauce sur plateforme compacte avec cuisson sous vide. Capacité 6 000–12 000 kg/jour ; cinq packs d'ECO à JUICE.",
+        "ru": "Модульная система производства томатной пасты и соусов с вакуумной технологией варки, установленная на компактной платформе. Вместимость 6,000–12,000 кг/день; пять пакетов от ECO до JUICE."
+      },
+      "category": {
+        "slug": "gida-hatlari",
+        "name": {
+          "tr": "Gıda İşleme Hatları",
+          "en": "Food Processing Lines",
+          "ar": "خطوط معالجة الطعام",
+          "fr": "Lignes de transformation des aliments",
+          "ru": "Линии переработки пищи"
+        }
+      },
+      "capacity": "6.000 – 12.000 kg/gün",
+      "deliveryWeeks": "",
+      "automation": "",
+      "material": "",
+      "specs": [
+        {
+          "k": {
+            "tr": "Teknoloji",
+            "en": "Technology",
+            "ar": "تكنولوجيا",
+            "fr": "Technologie",
+            "ru": "Технология"
+          },
+          "v": {
+            "tr": "Vakumlu pişirme + entegre soğutma",
+            "en": "Vacuum cooking + integrated cooling",
+            "ar": "الطهي بالفراغ + التبريد المتكامل",
+            "fr": "Cuisson sous vide + refroidissement intégré",
+            "ru": "Вакуумная варка + интегрированное охлаждение"
+          }
+        },
+        {
+          "k": {
+            "tr": "Platform",
+            "en": "Platform",
+            "ar": "المنصة",
+            "fr": "Plateforme",
+            "ru": "Платформа"
+          },
+          "v": {
+            "tr": "Kompakt tek platform üzeri sistem",
+            "en": "Single compact platform system",
+            "ar": "نظام مثبت على منصة مدمجة واحدة",
+            "fr": "Système sur plateforme compacte unique",
+            "ru": "Система на одной компактной платформе"
+          }
+        },
+        {
+          "k": {
+            "tr": "Kapasite Aralığı",
+            "en": "Capacity Range",
+            "ar": "نطاق السعة",
+            "fr": "Plage de capacité",
+            "ru": "Диапазон мощности"
+          },
+          "v": {
+            "tr": "6.000 – 12.000 kg/gün",
+            "en": "6,000 – 12,000 kg/day",
+            "ar": "6,000 – 12,000 كجم/يوم",
+            "fr": "6 000 – 12 000 kg/jour",
+            "ru": "6,000 – 12,000 кг/день"
+          }
+        },
+        {
+          "k": {
+            "tr": "Dolum",
+            "en": "Filling",
+            "ar": "التعبئة",
+            "fr": "Remplissage",
+            "ru": "Заполнение"
+          },
+          "v": {
+            "tr": "100–900 g yarı otomatik dolum başlığı",
+            "en": "100–900 g semi-automatic filling head",
+            "ar": "رأس تعبئة نصف أوتوماتيكي يتراوح بين 100-900 جرام",
+            "fr": "Tête de remplissage semi-automatique 100–900 g",
+            "ru": "Полуавтоматическая головка для заполнения 100–900 г"
+          }
+        },
+        {
+          "k": {
+            "tr": "Gövde",
+            "en": "Body",
+            "ar": "الجسم",
+            "fr": "Corps",
+            "ru": "Корпус"
+          },
+          "v": {
+            "tr": "AISI 304 paslanmaz çelik",
+            "en": "AISI 304 stainless steel",
+            "ar": "الفولاذ المقاوم للصدأ AISI 304",
+            "fr": "Acier inoxydable AISI 304",
+            "ru": "Нержавеющая сталь AISI 304"
+          }
+        }
+      ],
+      "highlights": [
+        {
+          "tr": "200 L Yıkama Havuzu",
+          "en": "200 L Washing Pool",
+          "ar": "200 لتر حوض غسيل",
+          "fr": "Bassin de lavage 200 L",
+          "ru": "200 л мойка"
+        },
+        {
+          "tr": "400 L Ön Isıtma Tankı",
+          "en": "400 L Pre-heating Tank",
+          "ar": "400 لتر خزان تسخين مسبق",
+          "fr": "Cuve de préchauffage 400 L",
+          "ru": "400 л бак предварительного нагрева"
+        },
+        {
+          "tr": "Turbo Çıkarıcı (500 kg/h)",
+          "en": "Turbo Extractor (500 kg/h)",
+          "ar": "مستخرج توربيني (500 كجم/ساعة)",
+          "fr": "Extracteur turbo (500 kg/h)",
+          "ru": "Турбо экстрактор (500 кг/ч)"
+        },
+        {
+          "tr": "Vakumlu Pişirme Kazanı (800 L)",
+          "en": "Vacuum Cooking Kettle (800 L)",
+          "ar": "وعاء طهي مفرغ (800 لتر)",
+          "fr": "Cuve de cuisson sous vide (800 L)",
+          "ru": "Вакуумная варочная чаша (800 л)"
+        },
+        {
+          "tr": "Karıştırmalı Bekletme Tankı",
+          "en": "Agitated Holding Tank",
+          "ar": "خزان انتظار مع خلاط",
+          "fr": "Cuve de maintien agitée",
+          "ru": "Резервуар с мешалкой"
+        },
+        {
+          "tr": "Pastörizatör (200 kg/h)",
+          "en": "Pasteurizer (200 kg/h)",
+          "ar": "مبستر (200 كجم/ساعة)",
+          "fr": "Pasteurisateur (200 kg/h)",
+          "ru": "Пастеризатор (200 кг/ч)"
+        },
+        {
+          "tr": "Homojenizatör Pompası (250 bar)",
+          "en": "Homogenizer Pump (250 bar)",
+          "ar": "مضخة هوموجينيزر (250 بار)",
+          "fr": "Pompe homogénéisatrice (250 bar)",
+          "ru": "Гомогенизирующий насос (250 бар)"
+        },
+        {
+          "tr": "100–900 g Yarı Otomatik Dolum Başlığı",
+          "en": "100–900 g Semi-Automatic Filling Head",
+          "ar": "رأس تعبئة نصف أوتوماتيكي (100–900 جرام)",
+          "fr": "Tête de remplissage semi-automatique 100–900 g",
+          "ru": "Полуавтоматическая насадка для заполнения (100–900 г)"
+        },
+        {
+          "tr": "Kavanoz Kapatma Ünitesi",
+          "en": "Jar Capping Unit",
+          "ar": "وحدة إغلاق برطمانات",
+          "fr": "Unité de capsulage de bocaux",
+          "ru": "Устройство для закрытия банок"
+        }
+      ],
+      "badge": null,
+      "price": null,
+      "variants": [
+        {
+          "label": {
+            "tr": "MACLINE ECO — Standart Domates İşleme (6.000 kg/gün)",
+            "en": "MACLINE ECO — Standard Tomato Processing (6,000 kg/day)",
+            "ar": "MACLINE ECO - معالجة الطماطم القياسية (6,000 كجم/يوم)",
+            "fr": "MACLINE ECO — Traitement standard de la tomate (6 000 kg/jour)",
+            "ru": "MACLINE ECO — стандартная обработка томатов (6,000 кг/день)"
+          },
+          "from": 65000,
+          "to": 65000,
+          "currency": "USD"
+        },
+        {
+          "label": {
+            "tr": "MACLINE PLUS — Yerleşik Homojenizatörlü (6.000 kg/gün)",
+            "en": "MACLINE PLUS — With Built-in Homogenizer (6,000 kg/day)",
+            "ar": "MACLINE PLUS - مع خلاط مدمج (6,000 كجم/يوم)",
+            "fr": "MACLINE PLUS — Avec homogénéisateur intégré (6 000 kg/jour)",
+            "ru": "MACLINE PLUS — с встроенным гомогенизатором (6,000 кг/день)"
+          },
+          "from": 75000,
+          "to": 75000,
+          "currency": "USD"
+        },
+        {
+          "label": {
+            "tr": "MACLINE PRO — Çift Konsantre & Çift Hat (12.000 kg/gün)",
+            "en": "MACLINE PRO — Dual Concentrate & Dual Line (12,000 kg/day)",
+            "ar": "MACLINE PRO - وحدة تركيز مزدوجة وخط مزدوج (12,000 كجم/يوم)",
+            "fr": "MACLINE PRO — Double concentration & double ligne (12 000 kg/jour)",
+            "ru": "MACLINE PRO — двойная концентрирующая установка и двойная линия (12,000 кг/день)"
+          },
+          "from": 105000,
+          "to": 105000,
+          "currency": "USD"
+        },
+        {
+          "label": {
+            "tr": "MACLINE PREMIUM — Biber İşleme Hattı Dahil (12.000 kg/gün)",
+            "en": "MACLINE PREMIUM — Pepper Processing Line Included (12,000 kg/day)",
+            "ar": "MACLINE PREMIUM - بما في ذلك خط معالجة الفلفل (12,000 كجم/يوم)",
+            "fr": "MACLINE PREMIUM — Ligne de traitement du poivron incluse (12 000 kg/jour)",
+            "ru": "MACLINE PREMIUM — включая линию обработки перца (12,000 кг/день)"
+          },
+          "from": 135000,
+          "to": 135000,
+          "currency": "USD"
+        },
+        {
+          "label": {
+            "tr": "MACLINE JUICE — Meyve İşleme & Filtre (10.000 kg/gün)",
+            "en": "MACLINE JUICE — Fruit Processing & Filtration (10,000 kg/day)",
+            "ar": "MACLINE JUICE - معالجة الفواكه والترشيح (10,000 كجم/يوم)",
+            "fr": "MACLINE JUICE — Traitement des fruits & filtration (10 000 kg/jour)",
+            "ru": "MACLINE JUICE — обработка фруктов и фильтрация (10,000 кг/день)"
+          },
+          "from": 85000,
+          "to": 85000,
+          "currency": "USD"
+        }
+      ],
+      "image": {
+        "source": "http://127.0.0.1:4192/img/products/macline-eco.jpg",
+        "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638243-bliy.jpg"
+      },
+      "gallery": [
+        {
+          "source": "http://127.0.0.1:4192/img/products/macline-eco.jpg",
+          "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638243-bliy.jpg"
+        },
+        {
+          "source": "http://127.0.0.1:4192/img/products/macline-plus.jpg",
+          "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638249-4nax.jpg"
+        },
+        {
+          "source": "http://127.0.0.1:4192/img/products/macline-pro.jpg",
+          "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638253-szcd.jpg"
+        },
+        {
+          "source": "http://127.0.0.1:4192/img/products/macline-premium.jpg",
+          "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638259-hwpd.jpg"
+        }
+      ],
+      "syncedAt": "2026-07-04T23:45:32.938Z",
+      "removedFromSite": null
+    }
   }
 ]

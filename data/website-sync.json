@@ -1,0 +1,13 @@
+{
+  "lastSyncAt": "2026-07-04T23:45:32.939Z",
+  "base": "http://127.0.0.1:4192",
+  "aliases": {},
+  "lastResult": {
+    "added": [],
+    "linked": [],
+    "updated": 26,
+    "imagesDownloaded": 0,
+    "pendingImages": 0,
+    "removedFromSite": []
+  }
+}
