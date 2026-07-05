@@ -22,6 +22,13 @@
 | **sivi-dolum-hat** | 28.750 | b (kalite/mühendislik) | hat/kapasite + Türk müh. + Avrupa bileşen; danışmanlık tonu | AR→Körfez · EN→Afrika-EN · FR→Afrika-FR | bal/tahin/sos üreticisi, hatta geçen |
 | **sivi-dolum-4nozul** | 33.350 | b (kalite/kapasite) | yüksek kapasite + Avrupa bileşen; mühendislik | AR→Körfez · EN→Afrika-EN · FR→Afrika-FR | yüksek hacim sıvı üretici |
 
+## C3 — Üretim hatları / anahtar teslim (komple fabrika)
+> Tek makine değil **fabrikanın tamamı** satılır. Fiyat sabit verilmez (proje bazlı); reklamda kapasite öne çıkar, CTA teklif almaya yönlendirir.
+
+| Ürün | Fiyat | Konsept | Lider açı / üslup | Diller → coğrafya | Kitle |
+|------|-------|---------|-------------------|-------------------|-------|
+| **sos-hatti-anahtar-teslim** | proje bazlı | **A/B** (a+b) | A: komple anahtar-teslim fabrika (kurulum+eğitim dahil) · B: Türk müh. + gıda 304 + Avrupa bileşen | EN→Afrika-EN · FR→Afrika-FR · AR→Körfez · RU→Orta Asya | sos/ketçap/mayonez üreticisi, fabrika kuran yeni yatırımcı, hatta geçen KOBİ |
+
 **Üslup notları:**
 - **Afrika (EN/FR):** pratik, net, fiyat+güven; "Türkiye'den, kurulum+destek". francophone-africa-guide: doğrudan, ilişki odaklı.
 - **Körfez (AR):** premium, kalite/hijyen/marka; fiyatı öne çıkarma, "gıda sınıfı 304 + Avrupa bileşen". gulf-cultural-guide: resmî, saygı dili, kalite vurgusu.

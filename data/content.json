@@ -88,7 +88,7 @@
       "model": "openai/gpt-4o-mini",
       "at": "2026-06-19T11:54:24.185Z"
     },
-    "updated_at": "2026-06-20T10:56:34.888Z",
+    "updated_at": "2026-06-24T11:17:43.127Z",
     "image": {
       "url": "https://v3b.fal.media/files/b/0a9ecc12/tkNim6P0StRIZSInI0LLy.jpg",
       "model": "flux-schnell",
@@ -515,6 +515,14 @@
           "at": null
         }
       }
+    },
+    "gorsel": {
+      "url": "/api/media/granul-dolum-gorsel-1782299863118-vqx6.png",
+      "localPath": "/api/media/granul-dolum-gorsel-1782299863118-vqx6.png",
+      "imageSource": "url",
+      "manual": true,
+      "hfJobId": null,
+      "at": "2026-06-24T11:17:43.125Z"
     }
   },
   "sivi-dolum-hat": {
@@ -618,18 +626,39 @@
       "model": "openai/gpt-4o-mini",
       "at": "2026-06-19T09:21:47.267Z"
     },
-    "updated_at": "2026-06-19T09:24:36.078Z",
+    "updated_at": "2026-06-23T14:21:19.161Z",
     "image": {
       "url": "https://v3b.fal.media/files/b/0a9ee76d/RcXosNyiktv_JPMw_KCkY.jpg",
       "model": "flux-schnell",
       "at": "2026-06-19T09:24:36.077Z"
     },
     "video": {
-      "url": "https://v3b.fal.media/files/b/0a9ee77b/MtyT8JrPDcLA_-FoFTrqL_video.mp4",
-      "model": "seedance-2-fast",
-      "duration": 5,
-      "aspect": "9:16",
-      "at": "2026-06-19T09:24:36.077Z"
+      "url": "https://v3b.fal.media/files/b/0aa0252a/kO4gKg2tcgICtByi6o50X_video-dolum-en.mp4",
+      "localPath": "https://v3b.fal.media/files/b/0aa0252a/kO4gKg2tcgICtByi6o50X_video-dolum-en.mp4",
+      "type": "reklam",
+      "imageSource": "reklam",
+      "lang": "en",
+      "at": "2026-06-28T19:19:09.475559Z"
+    },
+    "gorsel": {
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FMwRRO9WqieYDdbEylDsZP4FyE/hf_20260623_141826_2dfafa06-bc08-4b7e-847c-f4173a57e023.png",
+      "localPath": "/generated/sivi-dolum-hat/gorsel/sivi-dolum-hat-gorsel-1782224473866.png",
+      "template": "muhendis-anlatim",
+      "lang": "tr",
+      "platforms": [
+        "instagram"
+      ],
+      "format": {
+        "ratio": "4:5",
+        "w": 1080,
+        "h": 1350,
+        "label": "Feed (4:5)",
+        "falSize": "portrait_4_3"
+      },
+      "provider": "higgsfield",
+      "model": "gpt_image_2",
+      "imageSource": "real",
+      "at": "2026-06-23T14:21:19.157Z"
     }
   },
   "etiketleme-oto": {
@@ -733,7 +762,7 @@
       "model": "openai/gpt-4o-mini",
       "at": "2026-06-19T09:22:00.127Z"
     },
-    "updated_at": "2026-06-19T09:27:25.008Z",
+    "updated_at": "2026-07-04T23:43:57.920Z",
     "image": {
       "url": "https://v3b.fal.media/files/b/0a9ee77d/RwqSmWdH4GMw693RyHvqd.jpg",
       "model": "flux-schnell",
@@ -745,6 +774,12 @@
       "duration": 5,
       "aspect": "9:16",
       "at": "2026-06-19T09:27:25.003Z"
+    },
+    "gorsel": {
+      "url": "/api/media/etiketleme-oto-gorsel-1783208637907-1jl8.jpg",
+      "localPath": "/api/media/etiketleme-oto-gorsel-1783208637907-1jl8.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.916Z"
     }
   },
   "sivi-dolum-kafa": {
@@ -848,7 +883,7 @@
       "model": "openai/gpt-4o-mini",
       "at": "2026-06-19T10:32:28.547Z"
     },
-    "updated_at": "2026-06-19T10:35:09.284Z",
+    "updated_at": "2026-06-23T13:59:36.384Z",
     "image": {
       "url": "https://v3b.fal.media/files/b/0a9ee912/kgrNnrW0ObVO1WHRVulDG.jpg",
       "model": "flux-schnell",
@@ -860,6 +895,249 @@
       "duration": 5,
       "aspect": "9:16",
       "at": "2026-06-19T10:35:09.279Z"
+    },
+    "pipelines": {
+      "tr": {
+        "text": {
+          "status": "approved",
+          "data": {
+            "hook": "Dünyanın her yerinde üretime hazır!",
+            "benefitB": "Kompakt ve verimli tasarım",
+            "voiceover": "Türk mühendisliği ile tasarlanmış Liquid Filling Head, yüksek viskoziteli sıvılarda saatte 250 litre dolum kapasitesi sunarak üretiminizi hızlandırır. 50 gr'dan 1000 gr'a kadar dolum kapasitesiyle baharat, kuruyemiş ve granül gıda ürünlerini kolayca doldurun. Kompakt boyutları sayesinde her alana uyum sağlar. Küresel sevkiyat, uzman kurulum ve 7/24 uzaktan destek ile her an yanınızdayız. Hemen bizimle iletişime geçin ve üretime başlayın!",
+            "scenes": [
+              {
+                "type": "hook",
+                "durationSec": 3,
+                "caption": "Dünyanın her yerinde üretime hazır!"
+              },
+              {
+                "type": "benefit",
+                "durationSec": 6,
+                "captionLines": [
+                  "Ürün tipine göre 250 litre/saat",
+                  "Kompakt ve verimli tasarım"
+                ]
+              },
+              {
+                "type": "trust",
+                "durationSec": 4,
+                "lines": [
+                  "Türkiye'de üretim — Türk mühendisliği",
+                  "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+                ]
+              },
+              {
+                "type": "spec",
+                "durationSec": 3,
+                "title": "TEKNİK ÖZELLİK",
+                "specLines": [
+                  "Kapasite: ürün tipine göre 250 litre/saat"
+                ]
+              },
+              {
+                "type": "cta",
+                "durationSec": 4,
+                "title": "Ülkenize sevkiyat ve fiyat için WhatsApp'tan yazın",
+                "whatsapp": "905527062723",
+                "web": "processturk.com"
+              }
+            ],
+            "capacity": "ürün tipine göre 250 litre/saat",
+            "specLines": [
+              "Kapasite: ürün tipine göre 250 litre/saat"
+            ],
+            "trustLines": [
+              "Türkiye'de üretim — Türk mühendisliği",
+              "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+            ],
+            "totalSec": 20
+          },
+          "inputHash": null,
+          "cost": 0.002,
+          "at": "2026-06-23T13:59:10.030Z",
+          "versions": [
+            {
+              "vid": "v-mqqpnbny-pzd",
+              "data": {
+                "hook": "Dünyanın her yerinde üretime hazır!",
+                "benefitB": "Kompakt ve verimli tasarım",
+                "voiceover": "Türk mühendisliği ile tasarlanmış Liquid Filling Head, yüksek viskoziteli sıvılarda saatte 250 litre dolum kapasitesi sunarak üretiminizi hızlandırır. 50 gr'dan 1000 gr'a kadar dolum kapasitesiyle baharat, kuruyemiş ve granül gıda ürünlerini kolayca doldurun. Kompakt boyutları sayesinde her alana uyum sağlar. Küresel sevkiyat, uzman kurulum ve 7/24 uzaktan destek ile her an yanınızdayız. Hemen bizimle iletişime geçin ve üretime başlayın!",
+                "scenes": [
+                  {
+                    "type": "hook",
+                    "durationSec": 3,
+                    "caption": "Dünyanın her yerinde üretime hazır!"
+                  },
+                  {
+                    "type": "benefit",
+                    "durationSec": 6,
+                    "captionLines": [
+                      "Ürün tipine göre 250 litre/saat",
+                      "Kompakt ve verimli tasarım"
+                    ]
+                  },
+                  {
+                    "type": "trust",
+                    "durationSec": 4,
+                    "lines": [
+                      "Türkiye'de üretim — Türk mühendisliği",
+                      "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+                    ]
+                  },
+                  {
+                    "type": "spec",
+                    "durationSec": 3,
+                    "title": "TEKNİK ÖZELLİK",
+                    "specLines": [
+                      "Kapasite: ürün tipine göre 250 litre/saat"
+                    ]
+                  },
+                  {
+                    "type": "cta",
+                    "durationSec": 4,
+                    "title": "Ülkenize sevkiyat ve fiyat için WhatsApp'tan yazın",
+                    "whatsapp": "905527062723",
+                    "web": "processturk.com"
+                  }
+                ],
+                "capacity": "ürün tipine göre 250 litre/saat",
+                "specLines": [
+                  "Kapasite: ürün tipine göre 250 litre/saat"
+                ],
+                "trustLines": [
+                  "Türkiye'de üretim — Türk mühendisliği",
+                  "Küresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+                ],
+                "totalSec": 20
+              },
+              "cost": 0.002,
+              "at": "2026-06-23T13:59:10.030Z",
+              "note": null
+            }
+          ],
+          "currentVid": "v-mqqpnbny-pzd"
+        },
+        "voice": {
+          "status": "draft",
+          "data": {
+            "url": "/generated/_tts/tts-tr-1782223176377.mp3",
+            "voice": "onyx",
+            "spoken": "Türk mühendisliği ile tasarlanmış Liquid Filling Head, yüksek viskoziteli sıvılarda saatte iki yüz elli litre dolum kapasitesi sunarak üretiminizi hızlandırır. elli gr'dan bin gr'a kadar dolum kapasitesiyle baharat, kuruyemiş ve granül gıda ürünlerini kolayca doldurun. Kompakt boyutları sayesinde her alana uyum sağlar. Küresel sevkiyat, uzman kurulum ve yedi yirmi dört uzaktan destek ile her an yanınızdayız. Hemen bizimle iletişime geçin ve üretime başlayın!"
+          },
+          "inputHash": "c5954d2cac66378e",
+          "cost": 0.03,
+          "at": "2026-06-23T13:59:36.384Z",
+          "versions": [
+            {
+              "vid": "v-mqqpnqsr-kns",
+              "data": {
+                "url": "/generated/_tts/tts-tr-1782223169636.mp3",
+                "voice": "onyx",
+                "spoken": "Türk mühendisliği ile tasarlanmış Liquid Filling Head, yüksek viskoziteli sıvılarda saatte iki yüz elli litre dolum kapasitesi sunarak üretiminizi hızlandırır. elli gr'dan bin gr'a kadar dolum kapasitesiyle baharat, kuruyemiş ve granül gıda ürünlerini kolayca doldurun. Kompakt boyutları sayesinde her alana uyum sağlar. Küresel sevkiyat, uzman kurulum ve yedi yirmi dört uzaktan destek ile her an yanınızdayız. Hemen bizimle iletişime geçin ve üretime başlayın!"
+              },
+              "cost": 0.03,
+              "at": "2026-06-23T13:59:29.643Z",
+              "note": null
+            },
+            {
+              "vid": "v-mqqpnw00-kln",
+              "data": {
+                "url": "/generated/_tts/tts-tr-1782223176377.mp3",
+                "voice": "onyx",
+                "spoken": "Türk mühendisliği ile tasarlanmış Liquid Filling Head, yüksek viskoziteli sıvılarda saatte iki yüz elli litre dolum kapasitesi sunarak üretiminizi hızlandırır. elli gr'dan bin gr'a kadar dolum kapasitesiyle baharat, kuruyemiş ve granül gıda ürünlerini kolayca doldurun. Kompakt boyutları sayesinde her alana uyum sağlar. Küresel sevkiyat, uzman kurulum ve yedi yirmi dört uzaktan destek ile her an yanınızdayız. Hemen bizimle iletişime geçin ve üretime başlayın!"
+              },
+              "cost": 0.03,
+              "at": "2026-06-23T13:59:36.384Z",
+              "note": null
+            }
+          ],
+          "currentVid": "v-mqqpnw00-kln"
+        },
+        "subtitle": {
+          "status": "approved",
+          "data": {
+            "srt": "1\n00:00:00,000 --> 00:00:03,000\nDünyanın her yerinde üretime hazır!\n\n2\n00:00:03,000 --> 00:00:09,000\nÜrün tipine göre 250 litre/saat\nKompakt ve verimli tasarım\n\n3\n00:00:09,000 --> 00:00:13,000\nTürkiye'de üretim — Türk mühendisliği\nKüresel sevkiyat · 7/24 uzaktan destek + servis ağı\n\n4\n00:00:13,000 --> 00:00:16,000\nTEKNİK ÖZELLİK\n\n5\n00:00:16,000 --> 00:00:20,000\nÜlkenize sevkiyat ve fiyat için WhatsApp'tan yazın\n",
+            "cues": [
+              {
+                "start": 0,
+                "end": 3,
+                "text": "Dünyanın her yerinde üretime hazır!"
+              },
+              {
+                "start": 3,
+                "end": 9,
+                "text": "Ürün tipine göre 250 litre/saat\nKompakt ve verimli tasarım"
+              },
+              {
+                "start": 9,
+                "end": 13,
+                "text": "Türkiye'de üretim — Türk mühendisliği\nKüresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+              },
+              {
+                "start": 13,
+                "end": 16,
+                "text": "TEKNİK ÖZELLİK"
+              },
+              {
+                "start": 16,
+                "end": 20,
+                "text": "Ülkenize sevkiyat ve fiyat için WhatsApp'tan yazın"
+              }
+            ],
+            "totalSec": 20
+          },
+          "inputHash": "8ef2acca64dfcfc0",
+          "cost": 0,
+          "at": "2026-06-23T13:59:27.480Z",
+          "versions": [
+            {
+              "vid": "v-mqqpnp4o-aj6",
+              "data": {
+                "srt": "1\n00:00:00,000 --> 00:00:03,000\nDünyanın her yerinde üretime hazır!\n\n2\n00:00:03,000 --> 00:00:09,000\nÜrün tipine göre 250 litre/saat\nKompakt ve verimli tasarım\n\n3\n00:00:09,000 --> 00:00:13,000\nTürkiye'de üretim — Türk mühendisliği\nKüresel sevkiyat · 7/24 uzaktan destek + servis ağı\n\n4\n00:00:13,000 --> 00:00:16,000\nTEKNİK ÖZELLİK\n\n5\n00:00:16,000 --> 00:00:20,000\nÜlkenize sevkiyat ve fiyat için WhatsApp'tan yazın\n",
+                "cues": [
+                  {
+                    "start": 0,
+                    "end": 3,
+                    "text": "Dünyanın her yerinde üretime hazır!"
+                  },
+                  {
+                    "start": 3,
+                    "end": 9,
+                    "text": "Ürün tipine göre 250 litre/saat\nKompakt ve verimli tasarım"
+                  },
+                  {
+                    "start": 9,
+                    "end": 13,
+                    "text": "Türkiye'de üretim — Türk mühendisliği\nKüresel sevkiyat · 7/24 uzaktan destek + servis ağı"
+                  },
+                  {
+                    "start": 13,
+                    "end": 16,
+                    "text": "TEKNİK ÖZELLİK"
+                  },
+                  {
+                    "start": 16,
+                    "end": 20,
+                    "text": "Ülkenize sevkiyat ve fiyat için WhatsApp'tan yazın"
+                  }
+                ],
+                "totalSec": 20
+              },
+              "cost": 0,
+              "at": "2026-06-23T13:59:27.480Z",
+              "note": null
+            }
+          ],
+          "currentVid": "v-mqqpnp4o-aj6"
+        },
+        "video": {
+          "status": "empty",
+          "data": null,
+          "inputHash": null,
+          "cost": 0,
+          "at": null
+        }
+      }
     }
   },
   "sivi-dolum-4nozul": {
@@ -951,11 +1229,33 @@
       "model": "openai/gpt-4o-mini",
       "at": "2026-06-22T14:02:43.211Z"
     },
-    "updated_at": "2026-06-22T14:03:25.000Z",
+    "updated_at": "2026-06-28T19:34:13.820Z",
     "image": {
       "url": "/api/media/sivi-dolum-4nozul-hf-scene-feed.png",
       "model": "higgsfield/scene",
       "at": "2026-06-22T14:03:25.000Z"
+    },
+    "gorsel": {
+      "url": "/api/media/sivi-dolum-4nozul-gorsel-1782675190808-asv4.png",
+      "localPath": "/api/media/sivi-dolum-4nozul-gorsel-1782675190808-asv4.png",
+      "imageSource": "manuel-yükleme",
+      "manual": true,
+      "at": "2026-06-28T19:33:10.814Z"
+    },
+    "metin": {
+      "texts": {
+        "instagram": {
+          "caption": "",
+          "hashtags": [],
+          "error": "OpenAI 429: {\n    \"error\": {\n        \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/gu"
+        }
+      },
+      "lang": "tr",
+      "platforms": [
+        "instagram"
+      ],
+      "template": "makine-vitrin",
+      "at": "2026-06-28T19:34:13.816Z"
     }
   },
   "etiketleme-oto-304": {
@@ -1149,5 +1449,227 @@
       "model": "higgsfield/scene",
       "at": "2026-06-22T14:03:25.000Z"
     }
+  },
+  "sos-hatti-anahtar-teslim": {
+    "updated_at": "2026-06-28T22:05:28.190Z",
+    "gorsel": {
+      "url": "/api/media/sos-hatti-anahtar-teslim-gorsel-1782672891687-3g8a.png",
+      "localPath": "/api/media/sos-hatti-anahtar-teslim-gorsel-1782672891687-3g8a.png",
+      "imageSource": "reklam",
+      "at": "2026-06-28T18:54:51.768Z"
+    },
+    "metin": {
+      "texts": {
+        "instagram": {
+          "caption": "",
+          "hashtags": [],
+          "error": "OpenAI 429: {\n    \"error\": {\n        \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/gu"
+        }
+      },
+      "lang": "tr",
+      "platforms": [
+        "instagram"
+      ],
+      "template": "makine-vitrin",
+      "at": "2026-06-28T22:05:28.188Z"
+    }
+  },
+  "manuel-etiketleme": {
+    "gorsel": {
+      "url": "/api/media/manuel-etiketleme-gorsel-1783208582707-17pu.jpg",
+      "localPath": "/api/media/manuel-etiketleme-gorsel-1783208582707-17pu.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:02.732Z"
+    },
+    "updated_at": "2026-07-04T23:43:02.746Z"
+  },
+  "etiketleme-yari": {
+    "gorsel": {
+      "url": "/api/media/etiketleme-yari-gorsel-1783208637895-ok8k.jpg",
+      "localPath": "/api/media/etiketleme-yari-gorsel-1783208637895-ok8k.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.899Z"
+    },
+    "updated_at": "2026-07-04T23:43:57.901Z"
+  },
+  "tek-hat-kapatma": {
+    "gorsel": {
+      "url": "/api/media/tek-hat-kapatma-gorsel-1783208637929-zy0f.jpg",
+      "localPath": "/api/media/tek-hat-kapatma-gorsel-1783208637929-zy0f.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.931Z"
+    },
+    "updated_at": "2026-07-04T23:43:57.933Z"
+  },
+  "iki-hat-kapatma": {
+    "gorsel": {
+      "url": "/api/media/iki-hat-kapatma-gorsel-1783208637945-vh5z.jpg",
+      "localPath": "/api/media/iki-hat-kapatma-gorsel-1783208637945-vh5z.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.949Z"
+    },
+    "updated_at": "2026-07-04T23:43:57.951Z"
+  },
+  "can-kapatma-oto": {
+    "gorsel": {
+      "url": "/api/media/can-kapatma-oto-gorsel-1783208637960-7yh1.jpg",
+      "localPath": "/api/media/can-kapatma-oto-gorsel-1783208637960-7yh1.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.963Z"
+    },
+    "updated_at": "2026-07-04T23:43:57.965Z"
+  },
+  "homojenizator": {
+    "gorsel": {
+      "url": "/api/media/homojenizator-gorsel-1783208637970-7wra.jpg",
+      "localPath": "/api/media/homojenizator-gorsel-1783208637970-7wra.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.972Z"
+    },
+    "updated_at": "2026-07-04T23:43:57.974Z"
+  },
+  "pastorizator": {
+    "gorsel": {
+      "url": "/api/media/pastorizator-gorsel-1783208637979-ksbd.jpg",
+      "localPath": "/api/media/pastorizator-gorsel-1783208637979-ksbd.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.981Z"
+    },
+    "updated_at": "2026-07-04T23:43:57.983Z"
+  },
+  "plakali-esanjor": {
+    "gorsel": {
+      "url": "/api/media/plakali-esanjor-gorsel-1783208637992-812u.jpg",
+      "localPath": "/api/media/plakali-esanjor-gorsel-1783208637992-812u.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:57.995Z"
+    },
+    "updated_at": "2026-07-04T23:43:57.999Z"
+  },
+  "vakum-evaporator": {
+    "gorsel": {
+      "url": "/api/media/vakum-evaporator-gorsel-1783208638007-dtw9.jpg",
+      "localPath": "/api/media/vakum-evaporator-gorsel-1783208638007-dtw9.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.012Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.016Z"
+  },
+  "emulsiyon-mikser-tank": {
+    "gorsel": {
+      "url": "/api/media/emulsiyon-mikser-tank-gorsel-1783208638035-zgyj.jpg",
+      "localPath": "/api/media/emulsiyon-mikser-tank-gorsel-1783208638035-zgyj.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.043Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.045Z"
+  },
+  "tereyagi-makinesi": {
+    "gorsel": {
+      "url": "/api/media/tereyagi-makinesi-gorsel-1783208638052-1ffs.jpg",
+      "localPath": "/api/media/tereyagi-makinesi-gorsel-1783208638052-1ffs.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.056Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.059Z"
+  },
+  "krema-seperator": {
+    "gorsel": {
+      "url": "/api/media/krema-seperator-gorsel-1783208638066-yhk0.jpg",
+      "localPath": "/api/media/krema-seperator-gorsel-1783208638066-yhk0.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.068Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.070Z"
+  },
+  "klarifikator": {
+    "gorsel": {
+      "url": "/api/media/klarifikator-gorsel-1783208638080-bi0p.jpg",
+      "localPath": "/api/media/klarifikator-gorsel-1783208638080-bi0p.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.083Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.084Z"
+  },
+  "yogurt-dolum-makinesi": {
+    "gorsel": {
+      "url": "/api/media/yogurt-dolum-makinesi-gorsel-1783208638089-0kcz.jpg",
+      "localPath": "/api/media/yogurt-dolum-makinesi-gorsel-1783208638089-0kcz.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.093Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.094Z"
+  },
+  "pisirici-kazan": {
+    "gorsel": {
+      "url": "/api/media/pisirici-kazan-gorsel-1783208638104-c36j.jpg",
+      "localPath": "/api/media/pisirici-kazan-gorsel-1783208638104-c36j.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.113Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.115Z"
+  },
+  "salca-domates-isleme-hatti": {
+    "gorsel": {
+      "url": "/api/media/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg",
+      "localPath": "/api/media/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.127Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.131Z"
+  },
+  "sos-mayonez-ketcap-hatti": {
+    "gorsel": {
+      "url": "/api/media/sos-mayonez-ketcap-hatti-gorsel-1783208638139-5d10.jpg",
+      "localPath": "/api/media/sos-mayonez-ketcap-hatti-gorsel-1783208638139-5d10.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.142Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.144Z"
+  },
+  "sut-isleme-pastorizasyon-hatti": {
+    "gorsel": {
+      "url": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638155-w0rn.jpg",
+      "localPath": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638155-w0rn.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.166Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.175Z"
+  },
+  "dolum-paketleme-hatti": {
+    "gorsel": {
+      "url": "/api/media/dolum-paketleme-hatti-gorsel-1783208638185-vvvc.jpg",
+      "localPath": "/api/media/dolum-paketleme-hatti-gorsel-1783208638185-vvvc.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.191Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.193Z"
+  },
+  "meyve-suyu-konsantre-hatti": {
+    "gorsel": {
+      "url": "/api/media/meyve-suyu-konsantre-hatti-gorsel-1783208638201-qrxl.jpg",
+      "localPath": "/api/media/meyve-suyu-konsantre-hatti-gorsel-1783208638201-qrxl.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.204Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.209Z"
+  },
+  "soguk-depolama-konteyner-sistemi": {
+    "gorsel": {
+      "url": "/api/media/soguk-depolama-konteyner-sistemi-gorsel-1783208638224-kqn6.jpg",
+      "localPath": "/api/media/soguk-depolama-konteyner-sistemi-gorsel-1783208638224-kqn6.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.229Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.231Z"
+  },
+  "moduler-salca-sistemi-macline": {
+    "gorsel": {
+      "url": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638243-bliy.jpg",
+      "localPath": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638243-bliy.jpg",
+      "imageSource": "website",
+      "at": "2026-07-04T23:43:58.260Z"
+    },
+    "updated_at": "2026-07-04T23:43:58.262Z"
   }
 }

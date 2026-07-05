@@ -15,11 +15,13 @@ import { BRAND } from '@/lib/brand';
 import { normalizeForTTS } from '@/lib/tts-normalize';
 import { readSettings } from '@/lib/settings';
 import { requireSpendConfirm } from '@/lib/credit-guard';
+import { resolveTier, videoModelForTier, videoResolutionForTier, DEFAULT_TIER } from '@/lib/quality-tiers';
 
 export const runtime = 'nodejs';
 export const maxDuration = 800;
 
-const LOGO = path.join(metaReklamRoot(), 'assets', 'processturk-logo-white.png');
+// Logo dosya adı marka kaydından (BRAND.logoWhite) — BRAND_ID yoksa ProcessTürk varsayılanı.
+const LOGO = path.join(metaReklamRoot(), 'assets', BRAND.logoWhite);
 
 // TAM PIPELINE: senaryo (fiyatsız) → gerçek ürün görseli → 10sn i2v klip → seslendirme
 // + müzik → ffmpeg render (logo intro/outro + spec kartı + altyazı) → 9:16 mp4.
@@ -48,7 +50,18 @@ export async function POST(request) {
     const highlights = brief?.highlights?.length
       ? brief.highlights
       : (product.marketing?.highlights?.length ? product.marketing.highlights : (existing?.copy?.highlights || []));
-    const videoModel = body.videoModel || 'seedance-2-fast';
+    // ── KALİTE TIER → MODEL + ÇÖZÜNÜRLÜK ─────────────────────────────────────
+    // Sabit 'seedance-2-fast' (economy) + '720p' KALDIRILDI (Asaf kalite şikayeti).
+    // Öncelik: body.videoModel (açık model) > body.tier > ayarların varsayılanı (premium).
+    // Sağlayıcı: HF tek video motoru (seedance_2_0) → fal model adı HF'e uymazsa gen.js
+    // zaten düşürür; fal aktifse premium=kling-v3-pro/seedance-2 1080p.
+    const settingsPre = await readSettings();
+    const effVideoProvider = (process.env.GEN_VIDEO_PROVIDER || process.env.GEN_PROVIDER || 'fal').toLowerCase();
+    const tierReq = body.tier || settingsPre.videoTier || DEFAULT_TIER;
+    const { tier: resolvedTier, corrected: tierCorrected } = resolveTier(tierReq);
+    if (tierCorrected) console.warn(`[generate/video] Geçersiz tier "${tierReq}" → "${resolvedTier}" (varsayılan premium)`);
+    const videoModel = body.videoModel || videoModelForTier(resolvedTier, effVideoProvider === 'higgsfield' ? 'higgsfield' : 'fal');
+    const resolution = body.resolution || videoResolutionForTier(resolvedTier);
     const aspectRatio = body.aspect_ratio || '9:16';
     const duration = Math.min(Math.max(body.duration || 15, 10), 20); // 10-20sn arası
 
@@ -78,7 +91,7 @@ export async function POST(request) {
       ? `a premium industrial ${product.category || 'machine'} actively filling product into packages on a factory line, smooth cinematic camera push-in then slow pan, realistic commercial, no text`
       : 'the real machine actively filling product, product flowing into packages, smooth subtle camera push-in then slow pan, medium/wide shot, factory background, premium commercial, realistic';
     const negative = 'text, letters, numbers, logo, brand name, control panel, screen, monitor, display, UI, buttons, watermark, subtitles, distorted hands, distorted faces, deformed';
-    const clip = await genVideo({ model: effectiveModel, prompt: motion, negative_prompt: negative, imagePath: img?.imagePath, image_url: img?.image_url, aspect_ratio: aspectRatio, resolution: '720p', duration, force: body.force });
+    const clip = await genVideo({ model: effectiveModel, prompt: motion, negative_prompt: negative, imagePath: img?.imagePath, image_url: img?.image_url, aspect_ratio: aspectRatio, resolution, duration, force: body.force });
     if (!clip.url) throw new Error('Ürün klibi üretilemedi.');
 
     // mode:'raw' → markasız temiz klibi kaydet; brandOverlay ile reklam marka katmanını göm.
@@ -142,6 +155,7 @@ export async function POST(request) {
       type: 'rendered', lang, aspectRatio, platform: body.platform || null,
       durationSec: rendered.durationSec, imageSource: img?.source || 'text-to-video',
       voice: Boolean(voiceUrl), music: Boolean(musicUrl), model: effectiveModel,
+      tier: resolvedTier, resolution,
       voiceUrl, musicUrl,
       at: new Date().toISOString(),
     };

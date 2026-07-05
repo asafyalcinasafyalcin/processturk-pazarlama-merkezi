@@ -4,6 +4,7 @@ import { promisify } from 'node:util';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { BRAND } from '@/lib/brand';
 
 const execAsync = promisify(exec);
 
@@ -42,7 +43,7 @@ async function extractProductWithGPT(textContent, openaiKey) {
     hero_number: 'Öne çıkan rakam veya başlangıç fiyatı',
   });
 
-  const system = `Sen ProcessTürk için ürün veri kartı çıkarıyorsun.
+  const system = `Sen ${BRAND.promptName} için ürün veri kartı çıkarıyorsun.
 Verilen metin makine kataloğu veya teknik doküman olabilir.
 KURAL: Fiyat bilgisi hero_number'a SADECE "X$'dan başlar" biçiminde ekle, ham rakam değil.
 SADECE minified JSON döndür — açıklama yok.`;

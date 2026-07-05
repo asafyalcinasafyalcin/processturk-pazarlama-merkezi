@@ -5,7 +5,7 @@ Gerçek ürün fotoğrafını reklamda kullanılabilir hale getirir:
   2) fal.ai clarity-upscaler ile detay/keskinlik (makinenin FORMUNU korur — hayali üretmez),
   3) fal.ai birefnet ile arka plan temizleme → şeffaf cutout PNG.
 
-Sonuç: navy stüdyo zeminine oturtulabilen, gerçek ProcessTürk makinesine sadık, net görsel.
+Sonuç: navy stüdyo zeminine oturtulabilen, gerçek ürüne/makineye sadık, net görsel.
 
 Kullanım:
   python3 fal_prep_product.py --src .../granul-dolum.jpeg --out cutout.png \

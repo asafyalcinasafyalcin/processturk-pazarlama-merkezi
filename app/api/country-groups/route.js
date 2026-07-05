@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import fs from 'node:fs';
 import path from 'node:path';
+import { stateFile } from '@/lib/paths';
 
-const FILE = path.join(process.cwd(), 'data', 'saved-country-groups.json');
+const FILE = stateFile('saved-country-groups.json'); // kiracı-izole
 
 function readGroups() {
   if (!fs.existsSync(FILE)) return [];

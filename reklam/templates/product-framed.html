@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="__LANG__" dir="__DIR__">
+<head>
+<meta charset="utf-8">
+<!--
+  Marka "çerçeveli kart" reklam şablonu (v3) — renk/site/ad token'lardan (white-label).
+  Tek master ürün fotoğrafı → bulanık zemin + ortada tam ürün (kırpısız kart) + üst/alt marka katmanı.
+  Story (9:16) için üst/alt platform güvenli alanı (__ST__/__SB__) bırakılır; feed/square'de gerekmez.
+  Doldurucu: scripts/make_framed.py
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@500;600;700&family=Cairo:wght@700;800;900&family=Noto+Sans+Arabic:wght@500;600;700&display=swap');
+  :root{ --navy:__NAVY__; --red:__RED__; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:__W__px;height:__H__px;overflow:hidden}
+  .stage{position:relative;width:__W__px;height:__H__px;overflow:hidden;color:#fff;
+    font-family:'Inter','Noto Sans Arabic',system-ui,sans-serif;background:var(--navy)}
+  /* aynı görselin bulanık/koyu kopyası — yan boşlukları premium doldurur */
+  .bg{position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;
+    filter:blur(26px) brightness(.42) saturate(.9);z-index:0}
+  .tint{position:absolute;inset:0;z-index:1;
+    background:radial-gradient(120% 78% at 50% 46%,rgba(7,23,57,.12),rgba(5,14,35,.80))}
+  .grid{position:absolute;inset:0;z-index:2;display:grid;grid-template-rows:auto 1fr auto;
+    padding:__ST__px 40px __SB__px;gap:10px;align-items:__ALIGN__}
+  .top{display:flex;flex-direction:column;align-items:flex-start}
+  .logo{height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+  .badge{display:inline-block;font-family:'Inter','Noto Sans Arabic';font-weight:600;font-size:__BADGE_FS__px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.30);
+    padding:.5em .9em;border-radius:999px;white-space:nowrap;margin-top:13px}
+  .name{font-family:'Montserrat','Cairo';font-weight:800;font-size:__NAME_FS__px;line-height:1.03;
+    letter-spacing:-.01em;margin-top:15px;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+  .mid{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden}
+  .fg{max-width:100%;max-height:__FGMAX__px;width:auto;height:auto;border-radius:18px;
+    box-shadow:0 18px 50px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.10)}
+  .bot{display:flex;flex-direction:column;align-items:flex-start}
+  .price{font-family:'Montserrat','Cairo';display:flex;align-items:baseline;gap:.3em;flex-wrap:wrap}
+  .price .pre{font-weight:700;font-size:__PRICE_PRE_FS__px;opacity:.95}
+  .price .num{font-weight:900;font-size:__PRICE_FS__px;color:var(--red);letter-spacing:-.01em;
+    text-shadow:0 2px 12px rgba(0,0,0,.45)}
+  .sub{font-family:'Inter','Noto Sans Arabic';font-weight:600;font-size:__SUB_FS__px;margin-top:4px;opacity:.96}
+  .trust{font-family:'Inter','Noto Sans Arabic';font-weight:500;font-size:__TRUST_FS__px;margin-top:3px;color:rgba(255,255,255,.82)}
+  .cta{display:inline-flex;align-items:center;gap:.55em;background:var(--red);color:#fff;
+    font-family:'Montserrat','Cairo';font-weight:800;font-size:__CTA_FS__px;padding:.62em 1.15em;border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,.35);margin-top:14px}
+  .cta::before{content:"";width:.9em;height:.9em;border-radius:50%;background:#fff}
+  .site{font-family:'Inter','Noto Sans Arabic';font-weight:600;font-size:18px;color:rgba(255,255,255,.6);
+    letter-spacing:.04em;margin-top:10px;direction:ltr;unicode-bidi:isolate}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <img class="bg" src="__SCENE__" alt="">
+    <div class="tint"></div>
+    <div class="grid">
+      <div class="top">
+        <img class="logo" src="__LOGO__" alt="__BRAND__">
+        <span class="badge">__BADGE_LINE__</span>
+        <div class="name">__NAME__</div>
+      </div>
+      <div class="mid"><img class="fg" src="__SCENE__" alt=""></div>
+      <div class="bot">
+        <div class="price"><span class="pre">__PRICE_PRE__</span><span class="num">__PRICE_NUM__</span></div>
+        <div class="sub">__SUB__</div>
+        <div class="trust">__TRUST__</div>
+        <div class="cta">__CTA__</div>
+        <div class="site">__SITE__</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

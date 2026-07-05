@@ -21,6 +21,7 @@ Kullanım:
 """
 import argparse
 import json
+import os
 import subprocess
 import sys
 import urllib.request
@@ -29,18 +30,33 @@ from pathlib import Path
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 
+# Marka motoru (Python) — _core/brands/<BRAND_ID>.json (env BRAND_ID). BRAND_ID yoksa
+# ProcessTürk varsayılanı → canlı davranış korunur. Kod içinde sabit marka string'i KALMAZ.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from brand import BRAND as _BR   # noqa: E402
+
+# Kaynak fotoğrafın uzun-kenar tavanı (küçültme). Eskiden 1600px SABİT'ti → premium'da
+# bilgi kaybı (Asaf kalite şikayeti). Artık PARAMETRE: --max-edge CLI ya da HF_SCENE_MAX_EDGE
+# env; 0 = küçültme YOK (orijinal çözünürlük). Varsayılan 2560 (HF upload'ın güvenli tavanı).
+DEFAULT_MAX_EDGE = int(os.environ.get("HF_SCENE_MAX_EDGE", "2560"))
+
 REKLAM = Path(__file__).resolve().parent.parent           # .../reklam
 CENTER = REKLAM.parent                                     # .../Processturk_Pazarlama_Merkezi
 AI_ROOT = CENTER.parent                                    # .../PROCESSTURK AI
-PRODUCTS = json.loads((CENTER / "data" / "products.json").read_text(encoding="utf-8"))
+# Ürün verisi: PRODUCTS_JSON_PATH env (kiracı-izole yol; Node bunu paths.js'ten geçirir)
+# > CENTER/data/products.json (varsayılan/processturk). Panel bunu çağırırken env set eder.
+_PRODUCTS_PATH = Path(os.environ["PRODUCTS_JSON_PATH"]) if os.environ.get("PRODUCTS_JSON_PATH") \
+    else CENTER / "data" / "products.json"
+PRODUCTS = json.loads(_PRODUCTS_PATH.read_text(encoding="utf-8"))
 CREATIVES = REKLAM / "campaigns" / "C1-hazir-makineler" / "creatives"
 SRC_DIR = REKLAM / "assets" / "hf-src"
 
 # Meta formatları → Higgsfield product_photoshoot oranı (4:5 desteklenmiyor → 3:4)
 RATIOS = {"feed": "3:4", "story": "9:16", "square": "1:1"}
 
-BRAND = ("ProcessTürk — Turkish industrial machinery manufacturer; brand colors deep "
-         "navy #1A2B5F and red #D71920; premium, trustworthy, technical B2B")
+# Marka bağlamı marka kaydından (brand.py) — BRAND_ID yoksa ProcessTürk varsayılanı.
+BRAND = _BR["hf_brand_context"]
+_N = _BR["name"]   # ürün bağlamlarında marka adı
 
 # Makine yüzeyinde hiçbir yazı/logo/rakam olmasın — marka katmanını biz overlay ederiz.
 NOTEXT = ("no text, no brand name, no logo, no readable labels, no digits anywhere on the "
@@ -48,45 +64,46 @@ NOTEXT = ("no text, no brand name, no logo, no readable labels, no digits anywhe
           "uncluttered negative space at top and bottom for logo and price overlay; "
           "photo-real, premium, food-grade industrial workshop")
 
-# Ürün-bazlı lifestyle senaryosu (slug → (product_context, scene_prompt))
+# Ürün-bazlı lifestyle senaryosu (slug → (product_context, scene_prompt)).
+# product_context marka adıyla başlar → _N ile marka-farkındalıklı (f-string).
 SCENES = {
     "granul-dolum": (
-        "ProcessTürk 304 stainless steel semi-automatic granule filling machine actively "
+        f"{_N} 304 stainless steel semi-automatic granule filling machine actively "
         "filling small jars with colorful spices, nuts and pulses",
         "the real granule filling machine in action, filling clear jars with colorful dried "
         "spices, nuts and pulses pouring as motion, gloved hands placing a jar, warm "
         "professional lighting with subtle deep-navy brand tones",
     ),
     "sivi-dolum-hat": (
-        "ProcessTürk stainless steel liquid filling line filling glass jars with golden honey, "
+        f"{_N} stainless steel liquid filling line filling glass jars with golden honey, "
         "tahini and high-viscosity liquids on a production line",
         "the real liquid filling line in action, a clean golden stream of honey filling a row "
         "of glass jars on the line, gloved hands, modern food production hall, warm premium "
         "lighting with subtle deep-navy brand tones",
     ),
     "sivi-dolum-4nozul": (
-        "ProcessTürk 4-nozzle stainless steel liquid filling machine filling multiple bottles "
+        f"{_N} 4-nozzle stainless steel liquid filling machine filling multiple bottles "
         "simultaneously with liquid product, high capacity",
         "the real 4-nozzle liquid filling machine in action, four parallel streams filling "
         "bottles at once, dynamic high-capacity production line, modern food plant, warm "
         "premium lighting with subtle deep-navy brand tones",
     ),
     "etiketleme-oto": (
-        "ProcessTürk full automatic labelling machine with cabin applying labels to bottles "
+        f"{_N} full automatic labelling machine with cabin applying labels to bottles "
         "moving on a conveyor",
         "the real automatic labelling machine in action, glossy bottles moving on the conveyor "
         "as clean wrap-around labels are applied, modern bottling line, warm premium lighting "
         "with subtle deep-navy brand tones",
     ),
     "etiketleme-oto-304": (
-        "ProcessTürk full automatic 304 stainless steel labelling machine with cabin labelling "
+        f"{_N} full automatic 304 stainless steel labelling machine with cabin labelling "
         "bottles on a hygienic food-grade line",
         "the real 304 stainless labelling machine with cabin in action, bottles moving through "
         "the stainless cabin as labels are applied, hygienic food-grade bottling line, warm "
         "premium lighting with subtle deep-navy brand tones",
     ),
     "etiketleme-304-kabinsiz": (
-        "ProcessTürk full automatic 304 stainless steel labelling machine without cabin "
+        f"{_N} full automatic 304 stainless steel labelling machine without cabin "
         "applying labels to bottles on a stainless platform",
         "the real 304 stainless labelling platform in action, bottles rotating as wrap-around "
         "labels are applied, open stainless line in a modern food workshop, warm premium "
@@ -95,8 +112,10 @@ SCENES = {
 }
 
 
-def src_for(slug: str) -> Path:
-    """products.json'daki source_image'i max 1600px JPG'e küçült (Higgsfield upload limiti)."""
+def src_for(slug: str, max_edge: int = DEFAULT_MAX_EDGE) -> Path:
+    """products.json'daki source_image'i uzun-kenar <= max_edge olacak şekilde JPG'e hazırlar.
+    max_edge=0 → küçültme YOK (orijinal çözünürlük). Kalite: premium'da yüksek çözünürlük korunur.
+    (Eskiden 1600px SABİT idi; darboğaz açıldı — bkz. DEFAULT_MAX_EDGE.)"""
     prod = next((p for p in PRODUCTS if p["slug"] == slug), None)
     if not prod:
         sys.exit(f"Ürün bulunamadı: {slug}")
@@ -104,27 +123,31 @@ def src_for(slug: str) -> Path:
     if not raw.exists():
         sys.exit(f"Kaynak foto yok: {raw}")
     SRC_DIR.mkdir(parents=True, exist_ok=True)
-    out = SRC_DIR / f"{slug}.jpg"
+    # Farklı max_edge değerlerinin önbelleği çakışmasın (1600 çıktısı 2560'ı gölgelemesin).
+    tag = "orig" if max_edge <= 0 else str(max_edge)
+    out = SRC_DIR / f"{slug}-{tag}.jpg"
     if out.exists():
         return out
     im = Image.open(raw).convert("RGB")
     w, h = im.size
-    m = 1600
-    if max(w, h) > m:
+    if max_edge > 0 and max(w, h) > max_edge:
+        m = max_edge
         if h >= w:
             im = im.resize((round(w * m / h), m), Image.LANCZOS)
         else:
             im = im.resize((m, round(h * m / w)), Image.LANCZOS)
-    im.save(out, quality=90)
-    print(f"  · kaynak küçültüldü → {out.name} {im.size}")
+        print(f"  · kaynak {max_edge}px'e küçültüldü → {out.name} {im.size}")
+    else:
+        print(f"  · kaynak korundu (küçültme yok) → {out.name} {im.size}")
+    im.save(out, quality=92)
     return out
 
 
-def generate(slug: str, ratios: list) -> None:
+def generate(slug: str, ratios: list, max_edge: int = DEFAULT_MAX_EDGE) -> None:
     if slug not in SCENES:
         sys.exit(f"Sahne tanımı yok: {slug}")
     product_ctx, scene = SCENES[slug]
-    img = src_for(slug)
+    img = src_for(slug, max_edge)
     out_dir = CREATIVES / slug
     out_dir.mkdir(parents=True, exist_ok=True)
     prompt = f"{scene}; {NOTEXT}"
@@ -158,10 +181,12 @@ def main() -> None:
     p.add_argument("slugs", nargs="*", help="ürün slug(ları); boş = 6 HD ürün")
     p.add_argument("--ratios", nargs="+", default=None,
                    help="feed/story/square veya 3:4/9:16/1:1 (boş = hepsi)")
+    p.add_argument("--max-edge", type=int, default=DEFAULT_MAX_EDGE,
+                   help=f"kaynak foto uzun-kenar tavanı px (0 = küçültme yok/orijinal; vars. {DEFAULT_MAX_EDGE})")
     args = p.parse_args()
     slugs = args.slugs or list(SCENES.keys())
     for s in slugs:
-        generate(s, args.ratios or [])
+        generate(s, args.ratios or [], args.max_edge)
     print("\nBitti.")
 
 

@@ -29,8 +29,12 @@ APP_ROOT = ROOT.parent                           # Processturk_Pazarlama_Merkezi
 CSV_PATH = APP_ROOT / "data" / "meta_insights.csv"
 COLS = ["date", "campaign", "adset", "ad", "spend", "impressions", "reach", "clicks",
         "cpm", "conversations", "cpl"]
-CONV_KEYS = ("messaging_conversation_started", "messaging_first_reply",
-             "onsite_conversion.total_messaging_connection")
+# GERÇEK "sohbet başladı" — Ads Manager "Messaging conversations started" ile birebir.
+# DİKKAT: messaging_conversation_started_7d, messaging_first_reply ve total_messaging_connection
+# Meta tarafından çoğu zaman AYNI olayı 3 ayrı action_type ile raporlar → toplamak sayıyı 3 KATINA
+# şişirir. Bu yüzden YALNIZ conversation_started metriğini, tek seferlik sayıyoruz.
+CONV_PRIMARY = "onsite_conversion.messaging_conversation_started_7d"
+CONV_FALLBACK = "messaging_conversation_started"
 
 
 def _env() -> dict:
@@ -60,16 +64,24 @@ def _get(env: dict, path: str, params: dict) -> dict:
 
 
 def _conversations(actions) -> int:
+    """Tek bir gerçek sohbet sayısı döndürür (3 katına şişirmez).
+    Önce 7-günlük conversation_started metriğini; yoksa conversation_started varyantını alır;
+    first_reply / connection metriklerini ASLA toplamaya katmaz."""
     if not actions:
         return 0
-    total = 0
+    primary = None
+    fallback = None
     for a in actions:
-        if any(k in a.get("action_type", "") for k in CONV_KEYS):
-            try:
-                total += int(float(a.get("value", 0)))
-            except (TypeError, ValueError):
-                pass
-    return total
+        at = a.get("action_type", "")
+        try:
+            val = int(float(a.get("value", 0)))
+        except (TypeError, ValueError):
+            continue
+        if at == CONV_PRIMARY:
+            primary = val
+        elif CONV_FALLBACK in at and "first_reply" not in at and "connection" not in at:
+            fallback = max(fallback or 0, val)
+    return primary if primary is not None else (fallback or 0)
 
 
 def main() -> None:

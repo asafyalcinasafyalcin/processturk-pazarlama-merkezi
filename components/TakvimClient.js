@@ -21,10 +21,10 @@ function ContentModal({ item, names, busy, onApprove, onPublish, onRemove, onClo
           <div className="flex items-center gap-2 flex-wrap">
             <span className="pill pill-muted">{pl}</span>
             <span className={`pill ${STATUS[item.status].cls}`}>{STATUS[item.status].label}</span>
-            <span className="text-xs text-slate-400">{names[item.slug] || item.slug} · {item.lang?.toUpperCase()}</span>
-            {item.variantId && <span className="text-xs text-slate-400">varyant {item.variantId}</span>}
+            <span className="text-xs text-slate-500">{names[item.slug] || item.slug} · {item.lang?.toUpperCase()}</span>
+            {item.variantId && <span className="text-xs text-slate-500">varyant {item.variantId}</span>}
           </div>
-          <button className="text-slate-400 hover:text-slate-700 text-lg" onClick={onClose}>✕</button>
+          <button className="text-slate-500 hover:text-slate-700 text-lg" onClick={onClose}>✕</button>
         </div>
 
         {/* Görsel/Video önizleme */}
@@ -44,7 +44,7 @@ function ContentModal({ item, names, busy, onApprove, onPublish, onRemove, onClo
 
         {/* Tam metin */}
         <div className="mb-4">
-          <div className="text-xs text-slate-400 mb-1">Metin / Açıklama</div>
+          <div className="text-xs text-slate-500 mb-1">Metin / Açıklama</div>
           <div className="bg-slate-50 border border-line rounded-xl p-4 text-sm text-slate-700 whitespace-pre-line max-h-64 overflow-y-auto">
             {item.caption || '(metin yok)'}
           </div>
@@ -119,7 +119,7 @@ export default function TakvimClient({ initialItems, names }) {
   return (
     <div className="space-y-8">
       {items.length === 0 && (
-        <div className="card p-10 text-center text-slate-400">
+        <div className="card p-10 text-center text-slate-500">
           Takvim boş. Bir ürünün detayından <b>"Takvime ekle"</b> ile gönderi oluştur.
         </div>
       )}
@@ -151,14 +151,14 @@ export default function TakvimClient({ initialItems, names }) {
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <span className="pill pill-muted">{PLATFORM_LABEL[it.platform] || it.platform}</span>
-                        <span className="text-xs text-slate-400">{names[it.slug] || it.slug} · {it.lang?.toUpperCase()}{it.variantId ? ` · ${it.variantId}` : ''}</span>
+                        <span className="text-xs text-slate-500">{names[it.slug] || it.slug} · {it.lang?.toUpperCase()}{it.variantId ? ` · ${it.variantId}` : ''}</span>
                         {REAL.includes(it.platform)
                           ? <span className="text-[10px] text-ok">otomatik yayın</span>
                           : <span className="text-[10px] text-amber">assisted</span>}
                       </div>
                       <p className="text-sm text-slate-600 line-clamp-2">{it.caption || '(metin yok)'}</p>
                       <div className="flex gap-2 mt-1">
-                        {it.imageUrl && <span className="text-[10px] text-slate-400">🖼 görsel</span>}
+                        {it.imageUrl && <span className="text-[10px] text-slate-500">🖼 görsel</span>}
                         {it.videoUrl && <span className="text-[10px] text-red">🎬 video</span>}
                         <span className="text-[10px] text-slate-300 ml-auto">tıkla için detay →</span>
                       </div>

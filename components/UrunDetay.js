@@ -5,6 +5,12 @@ import { useRouter } from 'next/navigation';
 import AssetLibrary from './AssetLibrary';
 import WorkflowBar from './WorkflowBar';
 import { IMAGE_CONCEPTS } from '@/lib/image-concepts';
+import { tierSummary, DEFAULT_TIER } from '@/lib/quality-tiers';
+import { useOnayModal } from './OnayModal';
+
+// Kalite tier'ları (client-güvenli; quality-tiers.js saf JS). Maliyet farkı UI'da görünür.
+const IMAGE_TIER_LIST = tierSummary('image');
+const VIDEO_TIER_LIST = tierSummary('video');
 
 const LANG_LABEL = { tr: 'TR', en: 'EN', ar: 'AR', fr: 'FR', ru: 'RU' };
 // Tüm desteklenen diller — içerik/video/reklam her dilde üretilebilir (ürün ayarından bağımsız).
@@ -25,7 +31,7 @@ const TABS = [
   { id: 'gorsel', label: '🖼️ Görsel' },
   { id: 'icerik', label: '✍️ İçerik' },
   { id: 'video',  label: '🎬 Video'  },
-  { id: 'reklam', label: '📣 Kopya' },
+  { id: 'reklam', label: '📣 Reklam Metni' },
 ];
 
 
@@ -61,6 +67,7 @@ export default function UrunDetay({ product, initialContent }) {
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState(null);
   const [calCount, setCalCount] = useState(0);
+  const [onayModal, onayIste] = useOnayModal(); // marka-uyumlu para-onay (native confirm yerine)
 
   // ── Brief ──
   const [brief, setBrief] = useState(null);
@@ -76,10 +83,14 @@ export default function UrunDetay({ product, initialContent }) {
   const [uploadedUrl, setUploadedUrl] = useState(null);
   const [activeTemplate, setActiveTemplate] = useState('makine-vitrin');
   const [activeConcept, setActiveConcept] = useState('vitrin');
+  const [imageProvider, setImageProvider] = useState('fal'); // 'fal' | 'higgsfield' — görsel motoru
+  const [imageTier, setImageTier] = useState(DEFAULT_TIER);   // economy|standard|premium — VARSAYILAN premium
   const [customPrompt, setCustomPrompt] = useState('');
   const [libCounts, setLibCounts] = useState({});
   const [gorselBusy, setGorselBusy] = useState(false);
   const [gorsel, setGorsel] = useState(null);
+  const [reklamSyncBusy, setReklamSyncBusy] = useState(false);
+  const [libRefresh, setLibRefresh] = useState(0); // AssetLibrary'yi yeniden mount etmek için
 
   // ── İçerik ──
   const [platforms, setPlatforms] = useState(['instagram']);
@@ -99,6 +110,7 @@ export default function UrunDetay({ product, initialContent }) {
   const videoTimerRef = useRef(null);
   const [videoPlatform, setVideoPlatform] = useState('reels');
   const [videoDuration, setVideoDuration] = useState(15);
+  const [videoTier, setVideoTier] = useState(DEFAULT_TIER);   // economy|standard|premium — VARSAYILAN premium
   const [voiceStyle, setVoiceStyle] = useState('satis');
   // ── Manuel medya yükleme (kendi video/görselini yükle) ──
   const [manualFile, setManualFile] = useState(null);
@@ -162,6 +174,27 @@ export default function UrunDetay({ product, initialContent }) {
   }, [product.slug]); // eslint-disable-line
 
   useEffect(() => () => clearInterval(videoTimerRef.current), []);
+
+  // ── Brief metni taslak koruması (localStorage + beforeunload) ──────────────
+  // Uzun yapıştırılan brief metni yanlışlıkla kaybolmasın (sekme kapama/yenileme).
+  const draftKey = `brief-import-draft:${product.slug}`;
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(draftKey);
+      if (saved && !importText) setImportText(saved);
+    } catch { /* localStorage yoksa sorun değil */ }
+  }, []); // eslint-disable-line
+  useEffect(() => {
+    try {
+      if (importText.trim()) localStorage.setItem(draftKey, importText);
+      else localStorage.removeItem(draftKey);
+    } catch { /* */ }
+    const onBeforeUnload = (e) => {
+      if (importText.trim()) { e.preventDefault(); e.returnValue = ''; }
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, [importText]); // eslint-disable-line
 
   // Brief yükle
   useEffect(() => {
@@ -266,6 +299,8 @@ export default function UrunDetay({ product, initialContent }) {
         slug: product.slug, template: templateId, lang: langs[0],
         platforms: ['instagram'], concept: activeConcept,
         customPrompt: concept.isCustom ? customPrompt : undefined,
+        provider: imageProvider,
+        tier: imageTier,
         force: true,
       });
       if (d.cancelled) { setMsg(d.error); return; }
@@ -276,6 +311,23 @@ export default function UrunDetay({ product, initialContent }) {
       setMsg(d.gorsel.imageSource === 'img2img' ? 'Görsel üretildi (makine fotoğrafından) ✓' : 'Görsel üretildi ✓');
     } catch (e) { setError('Görsel hatası: ' + e.message); }
     finally { setGorselBusy(false); }
+  }
+
+  // ── Reklam creative'lerini içe aktar (reklam/campaigns → kütüphane) ──
+  async function handleReklamSync() {
+    setReklamSyncBusy(true); setError(null);
+    try {
+      const res = await fetch('/api/reklam-sync', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: product.slug }),
+      });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setMsg(d.imported > 0 ? `${d.imported} reklam görseli/videosu içe aktarıldı ✓` : 'Yeni reklam içeriği yok (hepsi zaten panelde).');
+      setLibRefresh((n) => n + 1);   // Varlık Kütüphanesi'ni tazele
+      router.refresh();              // ana görsel / server içeriğini tazele
+    } catch (e) { setError('Reklam içe aktarma hatası: ' + e.message); }
+    finally { setReklamSyncBusy(false); }
   }
 
   // ── Metin üret ──
@@ -326,7 +378,7 @@ export default function UrunDetay({ product, initialContent }) {
       const d = await postGuarded('/api/generate/video', {
         slug: product.slug, lang: videoLang, voice: wantVoice, music: false,
         duration: videoDuration, aspect_ratio: VIDEO_PLATFORMS.find((p) => p.id === videoPlatform)?.ratio || '9:16',
-        platform: videoPlatform, voiceStyle, force: true,
+        platform: videoPlatform, voiceStyle, tier: videoTier, force: true,
       });
       if (d.cancelled) { setMsg(d.error); return; }
       if (!d.ok) {
@@ -407,11 +459,20 @@ export default function UrunDetay({ product, initialContent }) {
       let g = {}; try { g = await res.json(); } catch { /* */ }
       if (g.requiresConfirm) {
         const kredi = g.credits ?? credits ?? '?';
-        const ok = window.confirm(
-          `⚠ Bu işlem Higgsfield kredisi yakar.\nKalan kredi: ${kredi}\n\n` +
-          `Manuel mod açık — önerilen yol: Higgsfield'de üretip "Hazır İçerik Ekle" ile getirmek.\n\n` +
-          `Yine de panelde üretmek istiyor musun?`
-        );
+        // İşlem türüne göre tier + tahmini maliyeti göster (bilinçli para kararı).
+        const isVideo = /video/.test(url);
+        const tierId = body.tier || (isVideo ? videoTier : imageTier);
+        const tierObj = (isVideo ? VIDEO_TIER_LIST : IMAGE_TIER_LIST).find((t) => t.id === tierId);
+        const ok = await onayIste({
+          baslik: isVideo ? 'Video üretimi' : 'Görsel üretimi',
+          mesaj: 'Bu işlem Higgsfield/fal kredisi yakar. Manuel mod açık — önerilen yol: '
+            + 'Higgsfield\'de üretip "Hazır İçerik Ekle" ile getirmek. Yine de panelde üretilsin mi?',
+          tier: tierObj ? tierObj.label : (tierId || '—'),
+          kredi,
+          maliyet: tierObj?.costLabel,
+          onayLabel: isVideo ? 'Videoyu üret (kredi)' : 'Görseli üret (kredi)',
+          ipucu: 'Ekonomi tier daha az kredi yakar; kalite ihtiyacına göre seçilebilir.',
+        });
         if (!ok) return { ok: false, cancelled: true, error: 'İptal edildi — kredi harcanmadı.' };
         res = await send({ confirmSpend: true });
       }
@@ -449,7 +510,7 @@ export default function UrunDetay({ product, initialContent }) {
             )}
             <input className="input w-full" placeholder="Higgsfield iş ID'si (ör. 79497836-762a-42c4-...)"
               value={addValue} onChange={(e) => setAddValue(e.target.value)} />
-            <p className="text-[11px] text-slate-400 mt-1">Higgsfield'de ürettiğin işi aç → ID'yi kopyala → yapıştır. (Sistem aynı hesapla giriş yapmış olmalı.)</p>
+            <p className="text-[11px] text-slate-500 mt-1">Higgsfield'de ürettiğin işi aç → ID'yi kopyala → yapıştır. (Sistem aynı hesapla giriş yapmış olmalı.)</p>
           </div>
         )}
         {addSource === 'url' && (
@@ -539,7 +600,7 @@ export default function UrunDetay({ product, initialContent }) {
     { id: 'gorsel', label: 'Görsel', done: wf.gorsel, hint: 'Ürün görseli üret' },
     { id: 'icerik', label: 'İçerik', done: wf.icerik, hint: 'Sosyal medya metni' },
     { id: 'video',  label: 'Video',  done: wf.video,  hint: 'Tanıtım videosu' },
-    { id: 'reklam', label: 'Kopya',  done: wf.reklam, hint: 'Reklam metinleri' },
+    { id: 'reklam', label: 'Reklam Metni', done: wf.reklam, hint: 'Reklam metinleri' },
     { id: 'yayin',  label: 'Yayın',  done: wf.yayin,  hint: 'Takvime ekle ve onayla' },
   ];
   const nextStep = workflowSteps.find((s) => !s.done);
@@ -551,6 +612,7 @@ export default function UrunDetay({ product, initialContent }) {
 
   return (
     <div className="mt-3">
+      {onayModal}
       {/* Başlık */}
       <div className="mb-5 flex items-start gap-4">
         {(content.gorsel?.localPath || content.gorsel?.url) && (
@@ -630,7 +692,7 @@ export default function UrunDetay({ product, initialContent }) {
                 </div>
               ))}
               {(brief?.highlights || []).length === 0 && (
-                <p className="text-sm text-slate-400">Henüz özellik eklenmedi. Brief AI tarafından otomatik doldurulabilir.</p>
+                <p className="text-sm text-slate-500">Henüz özellik eklenmedi. Brief AI tarafından otomatik doldurulabilir.</p>
               )}
               <button className="btn btn-ghost text-sm" onClick={addHighlight}>+ Özellik ekle</button>
             </div>
@@ -644,7 +706,7 @@ export default function UrunDetay({ product, initialContent }) {
           </div>
 
           <div>
-            <label className="label mb-1">Kesinlikle söylenmeyecekler <span className="font-normal text-slate-400">(virgülle ayır)</span></label>
+            <label className="label mb-1">Kesinlikle söylenmeyecekler <span className="font-normal text-slate-500">(virgülle ayır)</span></label>
             <input className="input"
               value={(brief?.dont_say || []).join(', ')}
               onChange={(e) => setBrief((b) => ({ ...b, dont_say: e.target.value.split(',').map((x) => x.trim()).filter(Boolean) }))}
@@ -679,7 +741,7 @@ export default function UrunDetay({ product, initialContent }) {
                   className="text-sm"
                   onChange={(e) => setImportFile(e.target.files?.[0] || null)}
                 />
-                {importFile && <span className="text-xs text-slate-400">{importFile.name}</span>}
+                {importFile && <span className="text-xs text-slate-500">{importFile.name}</span>}
               </div>
               <button
                 className="btn btn-primary text-sm"
@@ -688,7 +750,7 @@ export default function UrunDetay({ product, initialContent }) {
               >
                 {importBusy ? '⏳ AI analiz ediyor…' : '⚡ AI ile Doldur'}
               </button>
-              <p className="text-xs text-slate-400">AI çıktıyı gözden geçir, düzenle, ardından kaydet.</p>
+              <p className="text-xs text-slate-500">AI çıktıyı gözden geçir, düzenle, ardından kaydet.</p>
             </div>
           </details>
 
@@ -712,6 +774,16 @@ export default function UrunDetay({ product, initialContent }) {
       {/* ═══ GÖRSEL ═══ */}
       {tab === 'gorsel' && (
         <div className="space-y-5">
+          {/* Reklam kampanyası creative'lerini içe aktar (otomatik de gelir; bu manuel tazeleme) */}
+          <section className="card p-4 flex flex-wrap items-center justify-between gap-3 border-navy/20 bg-navy/3">
+            <div className="text-sm text-slate-600">
+              📣 <strong>Reklam görselleri</strong> — kampanyada üretilenler bu ürüne otomatik gelir. Yenilemek için:
+            </div>
+            <button className="btn btn-ghost text-sm shrink-0" onClick={handleReklamSync} disabled={reklamSyncBusy}>
+              {reklamSyncBusy ? '⏳ Aktarılıyor…' : '↻ Reklam görsellerini içe aktar'}
+            </button>
+          </section>
+
           {/* Hazır içerik ekle — ana (önerilen) yol */}
           {renderReadyAdd()}
 
@@ -721,20 +793,59 @@ export default function UrunDetay({ product, initialContent }) {
               <div className="text-xs text-slate-500 mb-2">Bu ürünün aktif görseli (yayın + video/AI kaynağı):</div>
               <img src={content.gorsel?.localPath || content.gorsel?.url || gorselUrl} alt="aktif görsel"
                 className="w-full max-w-sm rounded-xl border border-line" />
-              <div className="text-[11px] text-slate-400 mt-1">
+              <div className="text-[11px] text-slate-500 mt-1">
                 Kaynak: {content.gorsel?.imageSource || gorsel?.imageSource || '—'}{content.gorsel?.manual ? ' · manuel eklendi' : ''}
               </div>
             </section>
           )}
 
-          {/* AI üret — gelişmiş/ikincil (kredi + Higgsfield oturumu gerekir), varsayılan kapalı */}
+          {/* AI üret — gelişmiş/ikincil (motor seçilebilir: fal.ai / Higgsfield), varsayılan kapalı */}
           <details className="card p-0 overflow-hidden">
             <summary className="cursor-pointer select-none px-5 py-4 text-sm font-semibold text-slate-600 hover:text-navy">
-              ⚙️ Gelişmiş: AI ile görsel üret <span className="font-normal text-amber">(kredi + Higgsfield oturumu gerekir)</span>
+              ⚙️ Gelişmiş: AI ile görsel üret <span className="font-normal text-amber">{imageProvider === 'higgsfield' ? '(kredi + Higgsfield oturumu gerekir)' : '(fal.ai · kredi)'}</span>
             </summary>
             <div className="px-5 pb-5 border-t border-line pt-4">
-            {credits != null && <p className="text-[11px] text-slate-400 mb-2">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
-            <p className="text-xs text-slate-500 mb-3">Önerilen yol yukarıdaki “Hazır İçerik Ekle”. Burada panel kredi yakarak üretir; eklediğin görsel varsa img2img kaynağı olur.</p>
+            {/* Motor seçimi: fal.ai (varsayılan) / Higgsfield */}
+            <div className="mb-3">
+              <span className="label mb-1 block">Görsel motoru</span>
+              <div className="flex flex-wrap gap-1.5">
+                {[['fal', '⚡ fal.ai'], ['higgsfield', '🌀 Higgsfield']].map(([id, lbl]) => (
+                  <button key={id} onClick={() => setImageProvider(id)}
+                    className={`pill ${imageProvider === id ? 'pill-active' : 'pill-muted'}`}>{lbl}</button>
+                ))}
+              </div>
+              {imageProvider === 'higgsfield' && !accountOk && (
+                <p className="text-[11px] text-amber bg-amber/10 border border-amber/30 rounded-lg p-2 mt-2">
+                  ⚠ Higgsfield oturumu kapalı/süresi dolmuş olabilir — fal.ai'ye otomatik düşer ya da fal'ı seç.
+                </p>
+              )}
+            </div>
+
+            {/* KALİTE TIER — varsayılan PREMIUM (Asaf kalite kararı). Maliyet farkı görünür. */}
+            <div className="mb-3">
+              <span className="label mb-1 block">Kalite tier'ı <span className="font-normal text-slate-500">(maliyet farkı görünür)</span></span>
+              <div className="flex flex-wrap gap-1.5">
+                {IMAGE_TIER_LIST.map((t) => {
+                  const model = imageProvider === 'higgsfield' ? t.hfModel : t.falModel;
+                  return (
+                    <button key={t.id} onClick={() => setImageTier(t.id)}
+                      title={`${t.desc} · model: ${model} · maliyet ${t.costLabel}`}
+                      className={`pill ${imageTier === t.id ? 'pill-active' : 'pill-muted'}`}>
+                      {t.label} <span className="opacity-60">· {t.costLabel}</span>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="text-[11px] text-slate-500 mt-1">
+                Seçili: <strong>{IMAGE_TIER_LIST.find((t) => t.id === imageTier)?.label}</strong> →
+                model <strong>{imageProvider === 'higgsfield'
+                  ? IMAGE_TIER_LIST.find((t) => t.id === imageTier)?.hfModel
+                  : IMAGE_TIER_LIST.find((t) => t.id === imageTier)?.falModel}</strong>
+                {imageTier === 'premium' ? ' · en yüksek kalite (varsayılan)' : ''}
+              </p>
+            </div>
+            {imageProvider === 'higgsfield' && credits != null && <p className="text-[11px] text-slate-500 mb-2">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
+            <p className="text-xs text-slate-500 mb-3">Önerilen yol yukarıdaki “Hazır İçerik Ekle”. Burada panel kredi/ücret yakarak üretir; eklediğin görsel varsa img2img kaynağı olur (gerçek makineye sadık kalır).</p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
               {IMAGE_CONCEPTS.map((c) => {
@@ -752,7 +863,7 @@ export default function UrunDetay({ product, initialContent }) {
                     )}
                     <div className="text-xl mb-1">{c.emoji}</div>
                     <div className="font-semibold text-xs">{c.label}</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5 line-clamp-2">{c.desc}</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5 line-clamp-2">{c.desc}</div>
                     {c.requiresSoulId && <div className="text-[9px] text-ok mt-1">● Soul ID aktif</div>}
                   </button>
                 );
@@ -773,7 +884,7 @@ export default function UrunDetay({ product, initialContent }) {
             {gorselUrl && (
               <div className="mt-4">
                 <img src={gorselUrl} alt="Üretilen görsel" className="w-full max-w-sm rounded-xl border border-line" />
-                <div className="text-xs text-slate-400 mt-1">
+                <div className="text-xs text-slate-500 mt-1">
                   {gorsel?.imageSource === 'img2img' ? '✓ img2img (makine korundu)' : 'text2img'}
                   {gorsel?.localPath ? ' · yerel kopya' : ' · CDN'}
                   {gorsel?.provider ? ` · ${gorsel.provider}` : ''}
@@ -893,7 +1004,7 @@ export default function UrunDetay({ product, initialContent }) {
             ⚙️ Gelişmiş: AI ile video üret <span className="font-normal text-amber">(kredi + Higgsfield oturumu gerekir)</span>
           </summary>
           <div className="px-5 pb-5 border-t border-line pt-4 space-y-5">
-          {credits != null && <p className="text-[11px] text-slate-400">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
+          {credits != null && <p className="text-[11px] text-slate-500">Higgsfield kalan kredi: <strong>{credits}</strong></p>}
 
           {!content.gorsel?.url && !gorselUrl && (
             <div className="card p-3 border-amber-400/40 text-amber-700 text-sm">
@@ -914,10 +1025,32 @@ export default function UrunDetay({ product, initialContent }) {
                   }`}>
                   <div className="text-lg">{p.icon}</div>
                   <div className="text-xs font-semibold mt-1">{p.label}</div>
-                  <div className="text-[10px] text-slate-400">{p.ratio} · {p.defaultDur}sn</div>
+                  <div className="text-[10px] text-slate-500">{p.ratio} · {p.defaultDur}sn</div>
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* KALİTE TIER — varsayılan PREMIUM (1080p+). Maliyet farkı görünür. */}
+          <div>
+            <label className="label mb-2">Kalite tier'ı <span className="font-normal text-slate-500">(çözünürlük + model; maliyet farkı görünür)</span></label>
+            <div className="grid grid-cols-3 gap-2">
+              {VIDEO_TIER_LIST.map((t) => (
+                <button key={t.id} onClick={() => setVideoTier(t.id)}
+                  title={`${t.desc} · model: ${t.falModel}/${t.hfModel} · maliyet ${t.costLabel}`}
+                  className={`border rounded-xl p-2 text-left transition text-xs ${
+                    videoTier === t.id ? 'border-red bg-red/5 font-semibold' : 'border-line hover:border-slate-400'
+                  }`}>
+                  <div>{t.label}</div>
+                  <div className="text-[10px] text-slate-500">{t.resolution} · {t.costLabel}</div>
+                </button>
+              ))}
+            </div>
+            <p className="text-[11px] text-slate-500 mt-1">
+              Seçili: <strong>{VIDEO_TIER_LIST.find((t) => t.id === videoTier)?.label}</strong> ·
+              çözünürlük <strong>{VIDEO_TIER_LIST.find((t) => t.id === videoTier)?.resolution}</strong>
+              {videoTier === 'premium' ? ' (varsayılan · en yüksek kalite)' : ''}
+            </p>
           </div>
 
           {/* Süre */}
@@ -926,14 +1059,14 @@ export default function UrunDetay({ product, initialContent }) {
             <input type="range" min={10} max={20} step={5} value={videoDuration}
               onChange={(e) => setVideoDuration(Number(e.target.value))}
               className="w-full accent-red" />
-            <div className="flex justify-between text-[10px] text-slate-400">
+            <div className="flex justify-between text-[10px] text-slate-500">
               <span>10sn</span><span>15sn</span><span>20sn</span>
             </div>
           </div>
 
           {/* Dil */}
           <div>
-            <label className="label mb-1">Dil <span className="font-normal text-slate-400">(seslendirme bu dilde)</span></label>
+            <label className="label mb-1">Dil <span className="font-normal text-slate-500">(seslendirme bu dilde)</span></label>
             <div className="flex flex-wrap gap-1.5">
               {ALL_LANGS.map((l) => (
                 <button key={l} onClick={() => setVideoLang(l)}
@@ -961,13 +1094,13 @@ export default function UrunDetay({ product, initialContent }) {
                       voiceStyle === vs.id ? 'border-red bg-red/5 font-semibold' : 'border-line hover:border-slate-400'
                     }`}>
                     <div>{vs.label}</div>
-                    <div className="text-slate-400 text-[10px]">{vs.desc}</div>
+                    <div className="text-slate-500 text-[10px]">{vs.desc}</div>
                   </button>
                 ))}
               </div>
             )}
             {wantVoice && voiceStyle !== 'maskot' && (
-              <div className="text-[11px] text-slate-400 mt-1">
+              <div className="text-[11px] text-slate-500 mt-1">
                 Higgsfield TTS · {voiceCharLabel[videoLang] || 'Roman'}
               </div>
             )}
@@ -986,8 +1119,8 @@ export default function UrunDetay({ product, initialContent }) {
               <div className="flex gap-2 mt-2 items-center flex-wrap">
                 <a href={videoUrl} download className="btn btn-ghost text-sm">⬇ İndir</a>
                 {videoResult?.localPath && <span className="text-xs text-ok">✓ yerel kopya</span>}
-                {videoResult?.voice && <span className="text-xs text-slate-400">🎙️ ses var</span>}
-                {videoResult?.platform && <span className="text-xs text-slate-400">· {videoResult.platform}</span>}
+                {videoResult?.voice && <span className="text-xs text-slate-500">🎙️ ses var</span>}
+                {videoResult?.platform && <span className="text-xs text-slate-500">· {videoResult.platform}</span>}
               </div>
             </div>
           )}
@@ -1002,8 +1135,8 @@ export default function UrunDetay({ product, initialContent }) {
         <section className="card p-5 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="font-head font-bold text-lg">📣 Reklam Kopyası</h2>
-              <p className="text-xs text-slate-400">4 varyant (A-D), özellik odaklı — düzenlenebilir. Meta'ya göndermek için → Kampanyalar</p>
+              <h2 className="font-head font-bold text-lg">Reklam Metni</h2>
+              <p className="text-xs text-slate-500">4 varyant (A-D), özellik odaklı — düzenlenebilir. Meta'ya göndermek için → Kampanyalar</p>
             </div>
             <button className="btn btn-primary text-sm" onClick={genCopy} disabled={copyBusy}>
               {copyBusy ? 'Üretiliyor…' : draft ? '↻ Yeniden üret' : '✍ Üret'}
@@ -1074,8 +1207,8 @@ export default function UrunDetay({ product, initialContent }) {
         </section>
       )}
 
-      {/* Varlık Kütüphanesi — her sekmede erişilebilir */}
-      <AssetLibrary slug={product.slug} />
+      {/* Varlık Kütüphanesi — her sekmede erişilebilir (libRefresh ile yeniden mount edilir) */}
+      <AssetLibrary key={libRefresh} slug={product.slug} />
     </div>
   );
 }

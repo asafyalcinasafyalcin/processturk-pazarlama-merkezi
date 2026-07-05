@@ -6,14 +6,45 @@
   --font-head: 'Montserrat', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Marka tema renkleri — layout.js <html style> ile marka kaydından (BRAND) override edilir.
+     Aşağıdaki değerler ProcessTürk varsayılanı/fallback'tir (BRAND_ID yoksa geçerli). */
   --navy: #071739;
   --red: #FF3255;
+  /* Tailwind opacity modifier'ı (bg-navy/5, border-red/40) için space-separated RGB
+     kanalları. layout.js bunları BRAND renginden override eder → white-label. */
+  --navy-rgb: 7 23 57;
+  --navy2-rgb: 13 35 80;
+  --navy3-rgb: 19 49 92;
+  --red-rgb: 255 50 85;
+  --ink-rgb: 31 59 87;
+  --ok-rgb: 15 158 116;
+  --amber-rgb: 180 83 9;
+  --line-rgb: 230 234 241;
+  /* ── Tasarım token seti (TASARIM-TOKEN): metin/durum + vurgu ─────────────────
+     --vurgu = tenant vurgu rengi (kırmızı/altın…); focus ring + link + aksiyon.
+     --vurgu-uzeri-metin = vurgu üzerindeki metin (parlaklığa göre kontrast-güvenli;
+     layout.js hesaplar → altın buton koyu metin, kırmızı buton beyaz metin). */
+  --vurgu: var(--red);
+  --vurgu-uzeri-metin: #ffffff;
+  /* CTA arka planı — beyaz metinle WCAG AA (≥4.5) sağlayan marka rengi türevi
+     (layout.js hesaplar; ProcessTürk kırmızısı #FF3255 → beyaz 3.60 yalnız AA-large
+     olduğundan koyulaştırılır). Fallback = marka rengi. */
+  --vurgu-btn: var(--red);
+  --metin: #1e293b;         /* slate-800 — gövde ana metin */
+  --metin-soluk: #64748b;   /* slate-500 — ikincil/soluk metin (WCAG ≥4.5) */
+  --basari: #0f766e;        /* teal-700 — başarı (≥4.5 on white) */
+  --uyari: #b45309;         /* amber-700 — uyarı (≥4.5 on white) */
+  --hata: #dc2626;          /* red-600 — hata (≥4.5 on white) */
 }
+/* Tarayıcı zoom'unda kesin viewport yüksekliği (mobil) */
+:root { --app-h: 100dvh; }
 
 /* AÇIK TEMA — beyaz/açık gri zemin, navy başlık, kırmızı vurgu */
+html { overflow-x: hidden; }         /* mobil 375px: yatay taşma önlenir */
 body {
   font-family: var(--font-body);
   color: #1e293b;
+  overflow-x: hidden;                 /* geniş tablo/kart body'yi zorlamasın */
   background:
     radial-gradient(1100px 500px at 90% -10%, rgba(255, 50, 85, 0.06), transparent 60%),
     radial-gradient(900px 500px at -10% 0%, rgba(7, 23, 57, 0.05), transparent 55%),
@@ -21,7 +52,7 @@ body {
   background-attachment: fixed;
 }
 
-h1, h2, h3, .font-head { font-family: var(--font-head); color: #071739; }
+h1, h2, h3, .font-head { font-family: var(--font-head); color: var(--navy); }
 .font-mono, .num { font-family: var(--font-mono); }
 
 /* Yüzeyler */
@@ -44,11 +75,20 @@ h1, h2, h3, .font-head { font-family: var(--font-head); color: #071739; }
   padding: .58rem 1.05rem; border-radius: .7rem;
   cursor: pointer; transition: all .15s ease; border: 1px solid transparent;
 }
-.btn-primary { background: #FF3255; color: #fff; box-shadow: 0 4px 14px rgba(255,50,85,0.25); }
+/* Vurgu (accent) butonu — metin rengi tenant vurgu parlaklığına göre kontrast-güvenli
+   türetilir (--vurgu-uzeri-metin; layout.js hesaplar: altın→koyu, kırmızı→beyaz). */
+.btn-primary { background: var(--vurgu-btn); color: var(--vurgu-uzeri-metin);
+  box-shadow: 0 4px 14px rgb(var(--red-rgb) / 0.25); }
 .btn-primary:hover { filter: brightness(1.06); }
 .btn-ghost { background: #fff; color: #334155; border-color: #d8dee9; }
 .btn-ghost:hover { background: #f1f5f9; }
 .btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+
+/* Klavye erişilebilirliği (TASARIM-TOKEN) — odak halkası SABİT kırmızı DEĞİL, tenant vurgu. */
+.btn:focus-visible, .nav-link:focus-visible, a:focus-visible,
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible {
+  outline: 2px solid var(--vurgu); outline-offset: 2px;
+}
 
 .input, .select, .textarea {
   width: 100%; background: #fff;
@@ -56,7 +96,7 @@ h1, h2, h3, .font-head { font-family: var(--font-head); color: #071739; }
   padding: .55rem .75rem; color: #1e293b;
   font-family: var(--font-body); transition: border-color .15s ease;
 }
-.input:focus, .select:focus, .textarea:focus { outline: none; border-color: #FF3255; box-shadow: 0 0 0 3px rgba(255,50,85,0.12); }
+.input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--vurgu); box-shadow: 0 0 0 3px rgb(var(--red-rgb) / 0.12); }
 .label { font-size: .8rem; font-weight: 600; color: #64748b; margin-bottom: .3rem; display: block; }
 
 .pill {
@@ -68,4 +108,4 @@ h1, h2, h3, .font-head { font-family: var(--font-head); color: #071739; }
 .pill-ok { color: #0f9e74; border-color: rgba(31,214,160,0.5); background: rgba(31,214,160,0.10); }
 .pill-amber { color: #b45309; border-color: rgba(245,158,11,0.45); background: rgba(245,158,11,0.10); }
 .pill-muted { color: #64748b; }
-.pill-active { color: #fff; background: #FF3255; border-color: #FF3255; }
+.pill-active { color: var(--vurgu-uzeri-metin); background: var(--vurgu-btn); border-color: var(--vurgu-btn); }

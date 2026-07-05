@@ -64,7 +64,7 @@ docker run -d \
   --label "traefik.http.routers.pazarlama-http.rule=($HOST_RULE) && PathPrefix(\`/\`)" \
   --label "traefik.http.routers.pazarlama-http.service=pazarlama-https" \
   --label "traefik.http.routers.pazarlama-https.entryPoints=https" \
-  --label "traefik.http.routers.pazarlama-https.middlewares=pazarlama-auth,pazarlama-gzip" \
+  --label "traefik.http.routers.pazarlama-https.middlewares=shared-auth@file,pazarlama-gzip" \
   --label "traefik.http.routers.pazarlama-https.rule=($HOST_RULE) && PathPrefix(\`/\`)" \
   --label "traefik.http.routers.pazarlama-https.service=pazarlama-https" \
   --label "traefik.http.routers.pazarlama-https.tls=true" \

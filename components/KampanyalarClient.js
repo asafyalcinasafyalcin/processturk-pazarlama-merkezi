@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useOnayModal } from './OnayModal';
 
 const LANGS = [{ id: 'tr', l: 'TR' }, { id: 'en', l: 'EN' }, { id: 'ar', l: 'AR' }, { id: 'fr', l: 'FR' }, { id: 'ru', l: 'RU' }];
 const SIZES = ['feed', 'story', 'square'];
@@ -121,7 +122,7 @@ function CountryPicker({ selected, onChange }) {
               + {g.label} ({g.codes.length})
             </button>
             {g.id.startsWith('custom-') && (
-              <button className="text-[10px] text-slate-400 hover:text-red" onClick={() => deleteGroup(g.id)}>✕</button>
+              <button className="text-[10px] text-slate-500 hover:text-red" onClick={() => deleteGroup(g.id)}>✕</button>
             )}
           </span>
         ))}
@@ -149,7 +150,7 @@ function CountryPicker({ selected, onChange }) {
             </span>
           );
         })}
-        {selected.length === 0 && <span className="text-xs text-slate-400">Ülke seçin…</span>}
+        {selected.length === 0 && <span className="text-xs text-slate-500">Ülke seçin…</span>}
       </div>
 
       {/* Arama + dropdown */}
@@ -161,13 +162,13 @@ function CountryPicker({ selected, onChange }) {
           onFocus={() => setOpen(true)}
           onChange={(e) => { setSearch(e.target.value); setOpen(true); }}
         />
-        <button className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 text-xs"
+        <button className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 text-xs"
           onClick={() => setOpen((o) => !o)}>{open ? '▲' : '▼'}</button>
       </div>
 
       {open && (
         <div className="absolute z-20 mt-1 w-full bg-white border border-line rounded-xl shadow-lg max-h-48 overflow-y-auto">
-          {filtered.length === 0 && <p className="text-xs text-slate-400 p-3">Sonuç yok.</p>}
+          {filtered.length === 0 && <p className="text-xs text-slate-500 p-3">Sonuç yok.</p>}
           {filtered.map((c) => (
             <button key={c.code}
               className={`w-full text-left px-3 py-1.5 text-sm hover:bg-navy/5 flex items-center gap-2 ${selected.includes(c.code) ? 'bg-navy/5 font-medium' : ''}`}
@@ -192,10 +193,10 @@ export default function KampanyalarClient({ products }) {
   const selected = products.find((p) => p.slug === slug);
 
   return (
-    <div className="space-y-6">
-      <div className="card p-5">
+    <div className="space-y-6 min-w-0">
+      <div className="card p-4 sm:p-5 min-w-0">
         <label className="label">Ürün</label>
-        <select className="select" value={slug} onChange={(e) => setSlug(e.target.value)}>
+        <select className="select max-w-full" value={slug} onChange={(e) => setSlug(e.target.value)}>
           {products.map((p) => (
             <option key={p.slug} value={p.slug}>
               {p.name} — {p.price}
@@ -264,10 +265,10 @@ function TargetingSection({ slug }) {
   }
 
   return (
-    <section className="card p-5 space-y-3">
-      <h2 className="font-head font-bold">🎯 Hedefleme</h2>
-      {!hasConfig && <p className="text-sm text-amber">⚠ Bu ürünün creative config'i yok; hedefleme kaydedilemez.</p>}
-      <p className="text-xs text-slate-400">Her satır bir reklam grubu (ad set). Dil, mesaj dilini; ülkeler gösterim ülkesini; hedef kitle ise içerik açısını belirler.</p>
+    <section className="card p-4 sm:p-5 space-y-3 min-w-0">
+      <h2 className="font-head font-bold">Hedefleme</h2>
+      {!hasConfig && <p className="text-sm text-amber break-words">⚠ Bu ürünün creative config'i yok; hedefleme kaydedilemez.</p>}
+      <p className="text-xs text-slate-500 break-words">Her satır bir reklam grubu (ad set). Dil, mesaj dilini; ülkeler gösterim ülkesini; hedef kitle ise içerik açısını belirler.</p>
       <div className="space-y-4">
         {adsets.map((a, i) => (
           <div key={i} className="border border-line rounded-xl p-4 space-y-3">
@@ -284,20 +285,20 @@ function TargetingSection({ slug }) {
                 </select>
               </div>
               <div>
-                <label className="label mb-1">Hedef Müşteri <span className="text-slate-400 font-normal text-[10px]">(birden fazla seçilebilir)</span></label>
+                <label className="label mb-1">Hedef Müşteri <span className="text-slate-500 font-normal text-[10px]">(birden fazla seçilebilir)</span></label>
                 <div className="grid grid-cols-2 gap-1 mt-1">
                   {CONCEPT_OPTIONS.map((c) => {
                     const current = Array.isArray(a.concepts) ? a.concepts : [a.concept || 'a'];
                     const checked = current.includes(c.id);
                     return (
-                      <label key={c.id} className={`flex items-start gap-1.5 p-1.5 rounded-lg cursor-pointer text-xs border transition ${checked ? 'border-red/30 bg-red/5' : 'border-transparent hover:bg-slate-50'}`}>
-                        <input type="checkbox" className="mt-0.5 accent-red" checked={checked}
+                      <label key={c.id} className={`flex items-start gap-1.5 p-1.5 rounded-lg cursor-pointer text-xs border transition min-w-0 ${checked ? 'border-red/30 bg-red/5' : 'border-transparent hover:bg-slate-50'}`}>
+                        <input type="checkbox" className="mt-0.5 accent-red shrink-0" checked={checked}
                           onChange={() => {
                             const next = checked ? current.filter((x) => x !== c.id) : [...current, c.id];
                             update(i, 'concepts', next.length > 0 ? next : ['a']);
                             update(i, 'concept', next[0] || 'a');
                           }} />
-                        <span><b>{c.label}</b><br/><span className="text-slate-400">{c.desc}</span></span>
+                        <span className="min-w-0 break-words"><b>{c.label}</b><br/><span className="text-slate-500">{c.desc}</span></span>
                       </label>
                     );
                   })}
@@ -330,11 +331,11 @@ function TargetingSection({ slug }) {
                 <div className="text-slate-500">{b.price_pre} <b className="text-red">{b.price_num}</b></div>
                 <div className="text-slate-500 mt-1">{b.sub}</div>
                 <div className="flex flex-wrap gap-1 mt-1">{(b.badges || []).map((x, k) => <span key={k} className="pill pill-muted">{x}</span>)}</div>
-                <div className="text-slate-400 mt-1">CTA: {b.cta}</div>
+                <div className="text-slate-500 mt-1">CTA: {b.cta}</div>
               </div>
             ))}
           </div>
-          <p className="text-[11px] text-slate-400 mt-2">Metin düzenleme şu an config dosyasında; sonraki sürümde buradan editlenecek.</p>
+          <p className="text-[11px] text-slate-500 mt-2">Metin düzenleme şu an config dosyasında; sonraki sürümde buradan editlenecek.</p>
         </details>
       )}
     </section>
@@ -355,6 +356,7 @@ function CreativeSection({ slug }) {
   const [addBrand, setAddBrand] = useState(true);
   const [addBusy, setAddBusy] = useState(false);
   const [addMsg, setAddMsg] = useState(null);
+  const [onayModal, onayIste] = useOnayModal(); // marka-uyumlu para-onay
 
   const load = useCallback(async () => {
     const res = await fetch(`/api/creative?slug=${slug}`);
@@ -375,7 +377,14 @@ function CreativeSection({ slug }) {
       if (res.status === 402) {
         let g = {}; try { g = await res.json(); } catch { /* */ }
         if (g.requiresConfirm) {
-          const ok = window.confirm(`⚠ Creative yeniden üretimi Higgsfield/fal kredisi yakabilir.\nKalan HF kredisi: ${g.credits ?? '?'}\n\nHazır görselin varsa "Hazır creative ekle" daha ucuz. Yine de yeniden üretilsin mi?`);
+          const ok = await onayIste({
+            baslik: 'Creative yeniden üretimi',
+            mesaj: 'Creative yeniden üretimi Higgsfield/fal kredisi yakabilir. Hazır görselin varsa '
+              + '"Hazır creative ekle" daha ucuz. Yine de yeniden üretilsin mi?',
+            kredi: g.credits ?? '?',
+            onayLabel: 'Yeniden üret (kredi)',
+            ipucu: 'Kredi yakmayan yol: "Hazır creative ekle" ile mevcut görseli getir.',
+          });
           if (!ok) { setBusy(false); return; }
           res = await send({ confirmSpend: true });
         }
@@ -409,15 +418,16 @@ function CreativeSection({ slug }) {
       if (!d.ok) throw new Error(d.error);
       setCreatives(d.creatives || []);
       setAddValue(''); setAddFile(null);
-      setAddMsg(addBrand ? 'Eklendi ✓ — ProcessTürk marka katmanı uygulandı.' : 'Eklendi ✓ — ham görsel creative olarak eklendi.');
+      setAddMsg(addBrand ? 'Eklendi ✓ — marka katmanı uygulandı.' : 'Eklendi ✓ — ham görsel creative olarak eklendi.');
     } catch (e) { setErr('Ekleme hatası: ' + e.message); }
     finally { setAddBusy(false); }
   }
 
   return (
-    <section className="card p-5 space-y-3">
-      <div className="flex items-center justify-between">
-        <h2 className="font-head font-bold">🎨 Creative ({creatives.length})</h2>
+    <section className="card p-4 sm:p-5 space-y-3 min-w-0">
+      {onayModal}
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <h2 className="font-head font-bold">Creative <span className="text-xs font-normal text-slate-500">(reklam görseli)</span> ({creatives.length})</h2>
         <button className="btn btn-ghost text-sm" onClick={regenerate} disabled={busy || !hasConfig}>{busy ? 'Üretiliyor…' : '↻ Yeniden üret (kredi)'}</button>
       </div>
       {!hasConfig && <p className="text-sm text-amber">⚠ Creative config yok; üretilemez. (HD foto + config gerekir.)</p>}
@@ -427,7 +437,7 @@ function CreativeSection({ slug }) {
         <div className="border border-ok/30 bg-ok/5 rounded-xl p-3">
           <div className="text-sm font-semibold mb-1">✅ Hazır creative ekle <span className="text-xs font-normal text-slate-500">(kredi yakmaz)</span></div>
           <p className="text-[11px] text-slate-500 mb-2">
-            Higgsfield'de ürettiğin (veya hazır) görseli getir. <strong>Markala</strong> açık → ProcessTürk navy şablonu + logo render edilir; kapalı → ham görsel doğrudan eklenir.
+            Higgsfield'de ürettiğin (veya hazır) görseli getir. <strong>Markala</strong> açık → marka navy şablonu + logo render edilir; kapalı → ham görsel doğrudan eklenir.
           </p>
           <div className="flex flex-wrap items-center gap-2 mb-2">
             {[['hf-id', '🎯 HF ID'], ['dosya', '📁 Dosya'], ['url', '🔗 URL']].map(([id, label]) => (
@@ -444,26 +454,27 @@ function CreativeSection({ slug }) {
       )}
 
       {err && <div className="text-red text-sm">⚠ {err}</div>}
-      {creatives.length === 0 && hasConfig && <p className="text-sm text-slate-400">Henüz creative yok — “Hazır creative ekle” veya “Yeniden üret”.</p>}
+      {creatives.length === 0 && hasConfig && <p className="text-sm text-slate-500">Henüz creative yok — “Hazır creative ekle” veya “Yeniden üret”.</p>}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {creatives.map((c) => (
           <a key={c.rel} href={`/api/creative-image/${c.rel}`} target="_blank" rel="noreferrer" className="block group">
             <img src={`/api/creative-image/${c.rel}`} alt={c.file} loading="lazy"
               className="w-full rounded-lg border border-line object-cover aspect-[4/5] group-hover:opacity-90" />
-            <div className="text-[10px] text-slate-400 mt-1 truncate">
+            <div className="text-[10px] text-slate-500 mt-1 truncate">
               {c.lang !== '—' && <span className="uppercase">{c.lang}</span>} {c.variant === 'b' ? '· B' : ''} · {c.size}
             </div>
           </a>
         ))}
       </div>
-      {log && <pre className="text-[10px] text-slate-400 bg-slate-50 rounded p-2 overflow-auto max-h-40 whitespace-pre-wrap">{log}</pre>}
+      {log && <pre className="text-[10px] text-slate-500 bg-slate-50 rounded p-2 overflow-auto max-h-40 whitespace-pre-wrap">{log}</pre>}
     </section>
   );
 }
 
-/* ---------------- 🚀 Kurulum (plan + PAUSED kur) ---------------- */
+/* ---------------- Kurulum (plan + PAUSED kur) ---------------- */
 function SetupSection({ product }) {
   const slug = product.slug;
+  const [onayModal, onayIste] = useOnayModal();
   const [langs, setLangs] = useState(['en']);
   const [daily, setDaily] = useState(6);
   const [busy, setBusy] = useState(false);
@@ -488,7 +499,15 @@ function SetupSection({ product }) {
   }
 
   async function createReal() {
-    if (!window.confirm(`CANLI reklam hesabında PAUSED kampanya kurulacak (harcama YOK).\n\nÜrün: ${product.name}\nDiller: ${langs.join(', ')}\nBütçe: ${daily}/gün/ad set\n\nOnaylıyor musun?`)) return;
+    const ok = await onayIste({
+      baslik: 'Kampanyayı Meta\'ya kur (DURAKLATILMIŞ)',
+      mesaj: `CANLI reklam hesabında DURAKLATILMIŞ (PAUSED) kampanya kurulacak — HARCAMA YOK. `
+        + `Yayını sen Ads Manager'dan başlatana kadar hiçbir bütçe harcanmaz.\n\n`
+        + `Ürün: ${product.name}\nDiller: ${langs.join(', ')}\nBütçe: $${daily}/gün/reklam grubu`,
+      onayLabel: 'Duraklatılmış kur (harcama yok)',
+      ipucu: 'Kampanya PAUSED durumda oluşturulur; onayın olmadan yayına geçmez.',
+    });
+    if (!ok) return;
     setBusy(true); setError(null); setCreated(null);
     try {
       const res = await fetch('/api/campaign', {
@@ -503,8 +522,9 @@ function SetupSection({ product }) {
   }
 
   return (
-    <section className="card p-5 space-y-4">
-      <h2 className="font-head font-bold">🚀 Kurulum</h2>
+    <section className="card p-4 sm:p-5 space-y-4 min-w-0">
+      {onayModal}
+      <h2 className="font-head font-bold">Kurulum</h2>
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="label">Diller (= hedef coğrafya)</label>
@@ -537,7 +557,7 @@ function SetupSection({ product }) {
           <div className="text-xs text-slate-500">Hedef: {plan.campaign.objective} · {plan.product.name} ({plan.product.price}) · <span className="num text-red">{plan.reklam_tag}</span></div>
           {plan.ad_sets.map((a, i) => (
             <div key={i} className="border border-line rounded-lg p-3">
-              <div className="flex items-center justify-between mb-1"><b className="text-xs">{a.name}</b><span className="text-[11px] text-slate-400">{a.geo.join(', ')} · {a.daily_budget_usd}/gün</span></div>
+              <div className="flex items-center justify-between mb-1"><b className="text-xs">{a.name}</b><span className="text-[11px] text-slate-500">{a.geo.join(', ')} · {a.daily_budget_usd}/gün</span></div>
               {a.creative.primary_text && <p className="text-xs text-slate-600 whitespace-pre-line">{a.creative.primary_text}</p>}
               <div className="flex flex-wrap gap-3 mt-1 text-[11px]">
                 {a.creative.video_url && <a href={a.creative.video_url} target="_blank" rel="noreferrer" className="text-red hover:underline">🎬 video</a>}
@@ -548,7 +568,7 @@ function SetupSection({ product }) {
           <button className="btn btn-primary text-sm" onClick={createReal} disabled={busy}>
             {busy ? 'Kuruluyor…' : '🚀 Kampanyayı Meta\'ya Kur (Duraklatılmış — harcama yok)'}
           </button>
-          <p className="text-[11px] text-slate-500">Meta hesabına DURAKLATILMIŞ olarak yazar. Yayını sen Ads Manager'dan başlatırsın.</p>
+          <p className="text-[11px] text-slate-500 break-words">Meta hesabına DURAKLATILMIŞ olarak yazar. Yayını sen Ads Manager'dan başlatırsın.</p>
         </div>
       )}
 
@@ -558,7 +578,7 @@ function SetupSection({ product }) {
             <span className="pill pill-ok">KURULDU · PAUSED</span>
             <span className="text-xs text-slate-600">ID: <span className="num">{created.campaign_id}</span></span>
           </div>
-          <ul className="text-[11px] text-slate-400 mt-1 space-y-1">
+          <ul className="text-[11px] text-slate-500 mt-1 space-y-1">
             {created.ad_sets.map((a, i) => <li key={i}>{a.lang.toUpperCase()} · {a.geo.join(',')} · adset {a.adset_id} · ad {a.ad_id}</li>)}
           </ul>
         </div>
@@ -602,9 +622,9 @@ function ReportSection({ slug, productName }) {
   const rows = onlyThis ? allRows.filter((r) => matchesProduct(r.ad)) : allRows;
 
   return (
-    <section className="card p-5 space-y-3">
+    <section className="card p-4 sm:p-5 space-y-3">
       <div className="flex items-center justify-between flex-wrap gap-2">
-        <h2 className="font-head font-bold">📊 Performans Raporu</h2>
+        <h2 className="font-head font-bold">Performans Raporu</h2>
         <div className="flex items-center gap-2">
           <select className="select w-32" value={preset} onChange={(e) => setPreset(e.target.value)}>
             <option value="last_7d">Son 7 gün</option>
@@ -615,7 +635,7 @@ function ReportSection({ slug, productName }) {
         </div>
       </div>
       <div className="flex items-center justify-between flex-wrap gap-2">
-        <p className="text-xs text-slate-400">READ-ONLY Meta Insights. PAUSED kampanyada veri boş gelir (normal); yayında dolar.</p>
+        <p className="text-xs text-slate-500">READ-ONLY Meta Insights. PAUSED kampanyada veri boş gelir (normal); yayında dolar.</p>
         <label className="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer">
           <input type="checkbox" className="accent-red" checked={onlyThis} onChange={(e) => setOnlyThis(e.target.checked)} />
           Sadece bu ürün ({productName})
@@ -628,7 +648,7 @@ function ReportSection({ slug, productName }) {
       )}
       {rows.length > 0 && (
         <table className="w-full text-xs">
-          <thead><tr className="text-slate-400 text-left border-b border-line">
+          <thead><tr className="text-slate-500 text-left border-b border-line">
             <th className="py-1">Reklam</th><th className="text-right">Harcama</th><th className="text-right">Gösterim</th><th className="text-right">Sohbet</th><th className="text-right">CPL</th>
           </tr></thead>
           <tbody>

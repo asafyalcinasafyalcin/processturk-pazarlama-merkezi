@@ -1,0 +1,77 @@
+{
+  "slug": "sos-hatti-anahtar-teslim",
+  "variant": "b",
+  "template": "product-b.html",
+  "source_image": "Processturk_Pazarlama_Merkezi/reklam/assets/hf-src/sos-hatti.jpg",
+  "prep_prompt": "complete turnkey sauce production line, several 304 stainless steel machines in a row (cooking kettle, mixing tank, liquid filling, capping, labelling), clean industrial food factory floor, realistic wide shot, no text, no logo",
+  "refine_prompt": null,
+  "props_prompt": "rows of filled ketchup and sauce bottles moving on a stainless conveyor, clean food factory, soft realistic lighting, no text",
+  "sizes": [
+    "feed",
+    "story",
+    "square"
+  ],
+  "languages": {
+    "en": {
+      "origin": "Made in Türkiye",
+      "badges": [
+        "Food-grade 304",
+        "Turnkey project",
+        "Technical support"
+      ],
+      "hero": "Your Complete Sauce Factory. Built Turnkey.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Capacity",
+      "price_num": "500–1500 L/h",
+      "sub": "Cooking → filling → capping → labelling → packaging · installation & training",
+      "cta": "Get full line price on WhatsApp",
+      "name": "Turnkey Sauce & Mayonnaise Line"
+    },
+    "fr": {
+      "origin": "Fabriqué en Türkiye",
+      "badges": [
+        "Inox 304 alimentaire",
+        "Projet clé en main",
+        "Support technique"
+      ],
+      "hero": "Votre Usine de Sauce Complète. Clé en Main.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Capacité",
+      "price_num": "500–1500 L/h",
+      "sub": "Cuisson → remplissage → bouchage → étiquetage → emballage · installation & formation",
+      "cta": "Prix de la ligne complète sur WhatsApp",
+      "name": "Ligne Sauce & Mayonnaise Clé en Main"
+    },
+    "ar": {
+      "rtl": true,
+      "origin": "صنع في تركيا",
+      "badges": [
+        "ستانلس 304 غذائي",
+        "مشروع تسليم مفتاح",
+        "دعم فني"
+      ],
+      "hero": "مصنع الصلصة المتكامل. تسليم مفتاح.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "الطاقة الإنتاجية",
+      "price_num": "500–1500 لتر/ساعة",
+      "sub": "طبخ ← تعبئة ← غلق ← ملصقات ← تغليف · تركيب وتدريب",
+      "cta": "اطلب سعر الخط الكامل عبر واتساب",
+      "name": "خط صلصة ومايونيز تسليم مفتاح"
+    },
+    "ru": {
+      "origin": "Сделано в Турции",
+      "badges": [
+        "Пищевая сталь 304",
+        "Проект под ключ",
+        "Техподдержка"
+      ],
+      "hero": "Ваш завод соусов. Полностью под ключ.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "Производительность",
+      "price_num": "500–1500 л/ч",
+      "sub": "Варка → розлив → укупорка → этикетировка → упаковка · монтаж и обучение",
+      "cta": "Цена полной линии в WhatsApp",
+      "name": "Линия соусов под ключ"
+    }
+  }
+}

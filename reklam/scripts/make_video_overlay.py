@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Video marka overlay burn-in — fiyat / başlık / CTA / logo (ProcessTürk).
+Video marka overlay burn-in — fiyat / başlık / CTA / logo (marka kaydından).
 
 Üretilen ham ürün videosunun (panel fal.ai çıktısı, ör. public/renders/<slug>-*.mp4)
-üzerine, statik creative'lerle AYNI tasarım sistemiyle (Navy #071739 + Red #FF3255,
-Montserrat/Inter) şeffaf bir marka katmanı bindirir. Katman templates/video-overlay.html
+üzerine, statik creative'lerle AYNI tasarım sistemiyle (marka navy + red renkleri,
+başlık/gövde fontları) şeffaf bir marka katmanı bindirir. Katman templates/video-overlay.html
 ile Chrome'da şeffaf PNG olarak render edilir, sonra ffmpeg ile videoya gömülür.
 
 Metin kaynağı = creative config.json'un languages bloğu (statik creative ile tek kaynak):
@@ -25,6 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import make_product as mp  # SIZES, find_browser
+from brand import BRAND as _BR  # marka motoru (env BRAND_ID)
 
 ROOT = Path(__file__).resolve().parent.parent           # reklam/
 TEMPLATE = ROOT / "templates" / "video-overlay.html"
@@ -77,6 +78,10 @@ def render_overlay_png(tx: dict, w: int, h: int, out_png: Path, lang: str, rtl: 
         tpl = tpl.replace(k, str(v))
     badge0 = (tx.get("badges") or [""])[0]
     tpl = (tpl
+           # Video overlay markası: video_navy/video_red (Asaf v2.1) + marka adı — white-label.
+           .replace("__NAVY__", _BR["video_navy"])
+           .replace("__RED__", _BR["video_red"])
+           .replace("__BRAND_NAME__", html.escape(_BR["name"]))
            .replace("__LANG__", html.escape(lang))
            .replace("__DIR__", "rtl" if rtl else "ltr")
            .replace("__BADGE_TEXT__", html.escape(badge0))
@@ -125,7 +130,7 @@ def main() -> None:
     p.add_argument("--out", type=Path, default=None, help="Çıkış mp4 (vars. <giris>-<lang>-brand.mp4)")
     p.add_argument("--keep-png", action="store_true", help="Ara overlay PNG'sini silme")
     p.add_argument("--no-top", action="store_true",
-                   help="Üst satırı (badge + ProcessTürk logo) atla — video zaten markalıysa kullan")
+                   help="Üst satırı (badge + marka logosu) atla — video zaten markalıysa kullan")
     args = p.parse_args()
 
     cfg = json.loads(args.config.resolve().read_text(encoding="utf-8"))

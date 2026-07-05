@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  ProcessTürk video marka katmanı — ŞEFFAF.
+  Video marka katmanı — ŞEFFAF (marka-farkındalıklı: renk/ad token'lardan).
   make_video_overlay.py bunu render eder (Chrome --default-background-color=00000000),
   çıkan şeffaf PNG ffmpeg ile videonun üstüne bindirilir. Foto YOK; sadece marka öğeleri
   + alttan okunabilirlik degradesi. overlay.html'in video için şeffaf kardeşi.
@@ -10,16 +10,16 @@
 <meta charset="utf-8">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap');
-  :root{ --navy:#071739; --red:#FF3255; --white:#ffffff; }
+  :root{ --navy:__NAVY__; --red:__RED__; --white:#ffffff; }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:__W__px;height:__H__px;overflow:hidden;background:transparent}
   .stage{position:relative;width:__W__px;height:__H__px;overflow:hidden;
     font-family:'Inter',system-ui,sans-serif;color:var(--white)}
-  /* Üstte hafif, altta güçlü navy degrade — orta kısım (ürün videosu) açık kalır */
+  /* Üstte hafif, altta güçlü navy degrade — orta kısım (ürün videosu) açık kalır. Navy tenant'tan. */
   .scrim-top{position:absolute;top:0;left:0;right:0;height:22%;
-    background:linear-gradient(180deg, rgba(7,23,57,.62) 0%, rgba(7,23,57,0) 100%)}
+    background:linear-gradient(180deg, color-mix(in srgb, var(--navy) 62%, transparent) 0%, color-mix(in srgb, var(--navy) 0%, transparent) 100%)}
   .scrim-bot{position:absolute;bottom:0;left:0;right:0;height:46%;
-    background:linear-gradient(0deg, rgba(7,23,57,.97) 0%, rgba(7,23,57,.86) 42%, rgba(7,23,57,0) 100%)}
+    background:linear-gradient(0deg, color-mix(in srgb, var(--navy) 97%, transparent) 0%, color-mix(in srgb, var(--navy) 86%, transparent) 42%, color-mix(in srgb, var(--navy) 0%, transparent) 100%)}
   .pad{position:absolute;inset:0;padding:__PAD__px;display:flex;flex-direction:column;justify-content:flex-end}
   .top{display:__TOPDISP__;align-items:center;justify-content:space-between;gap:16px;margin-bottom:auto}
   .badge{font-family:'Inter';font-weight:600;font-size:__BADGE__px;letter-spacing:.02em;
@@ -49,7 +49,7 @@
     <div class="pad">
       <div class="top">
         <div class="badge">__BADGE_TEXT__</div>
-        <div class="brand">Process<b>Türk</b></div>
+        <div class="brand">__BRAND_NAME__</div>
       </div>
       <div class="bottom">
         <div class="pricepre">__PRICEPRE_TEXT__</div>

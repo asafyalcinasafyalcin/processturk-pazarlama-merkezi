@@ -4,6 +4,8 @@ import { promisify } from 'node:util';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { BRAND } from '@/lib/brand';
+import { productsJsonPath, stateFile } from '@/lib/paths';
 
 const execAsync = promisify(exec);
 
@@ -25,7 +27,7 @@ async function pdfToText(pdfBuffer) {
 }
 
 async function extractBriefWithGPT(textContent, productName, openaiKey) {
-  const system = `Sen ProcessTürk için ürün pazarlama brief'i çıkarıyorsun.
+  const system = `Sen ${BRAND.promptName} için ürün pazarlama brief'i çıkarıyorsun.
 Verilen metin ürün kataloğu, teknik doküman veya müşteri notu olabilir.
 KURAL: Fiyat bilgisi asla yazma. "Avrupa menşeli", "ithal", "en ucuz" kullanma.
 SADECE minified JSON döndür — açıklama yok.`;
@@ -77,7 +79,7 @@ export async function POST(request) {
     // Ürün adını al
     let productName = slug;
     try {
-      const products = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'products.json'), 'utf8'));
+      const products = JSON.parse(fs.readFileSync(productsJsonPath(), 'utf8'));
       const p = products.find((x) => x.slug === slug);
       if (p) productName = p.marketing?.name_tr || p.name_en || slug;
     } catch { /* devam et */ }
@@ -144,7 +146,7 @@ export async function POST(request) {
       _generated_by: 'brief/import / gpt-4o',
     };
 
-    const briefPath = path.join(process.cwd(), 'data', 'briefs', `${slug}.json`);
+    const briefPath = path.join(stateFile('briefs'), `${slug}.json`);
     fs.mkdirSync(path.dirname(briefPath), { recursive: true });
     fs.writeFileSync(briefPath, JSON.stringify(brief, null, 2));
 

@@ -12,6 +12,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// Marka motoru (env BRAND_ID) — brief prompt'undaki marka adı/bağlamı buradan gelir;
+// BRAND_ID yoksa ProcessTürk varsayılanı (canlı davranış korunur).
+import { BRAND } from '../lib/brand.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -56,9 +59,12 @@ async function generateBrief(product, kbExcerpt) {
     .map(([k, v]) => `${k}: ${v}`)
     .join('\n');
 
+  const marka = BRAND.promptName || BRAND.name;
+  const markaBaglam = BRAND.briefContext
+    || `${marka} Türkiye'de üretim yapıyor, küresel sevkiyat sunuyor, 7/24 uzaktan destek veriyor.`;
   const system = [
-    'Sen ProcessTürk için ürün pazarlama brief\'i oluşturuyorsun.',
-    'ProcessTürk Türkiye\'de üretim yapıyor, küresel sevkiyat sunuyor, 7/24 uzaktan destek veriyor.',
+    `Sen ${marka} için ürün pazarlama brief'i oluşturuyorsun.`,
+    markaBaglam,
     'Çıktılar sosyal medya metin ve video içeriklerinde kullanılacak.',
     'KURAL: Fiyat bilgisi asla yazma. "Avrupa menşeli", "ithal parça", "en ucuz" deme.',
     '"Türk mühendisliği", "7/24 uzaktan destek", "küresel sevkiyat" serbest.',

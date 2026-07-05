@@ -2,7 +2,7 @@
 """
 Reklam creative orkestratörü: bir config JSON'undan
   1) fal.ai ile YAZISIZ base görsel üretir (yoksa),
-  2) her boyut için ProcessTürk marka overlay'ını basar.
+  2) her boyut için marka overlay'ını basar.
 
 Kullanım:
   python3 make_creative.py creatives/granul-dolum/config.json

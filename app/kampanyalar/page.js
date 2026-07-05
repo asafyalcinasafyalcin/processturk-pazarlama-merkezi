@@ -19,13 +19,13 @@ export default async function KampanyalarPage() {
   }));
 
   return (
-    <div className="px-6 md:px-10 py-8 max-w-4xl mx-auto">
-      <h1 className="font-head font-extrabold text-2xl md:text-3xl mb-1">Reklam Komuta Merkezi</h1>
-      <p className="text-slate-400 text-sm mb-4">
+    <div className="px-4 md:px-10 py-8 max-w-4xl mx-auto">
+      <h1 className="font-head font-extrabold text-2xl md:text-3xl mb-1 break-words">Reklam Komuta Merkezi</h1>
+      <p className="text-slate-500 text-sm mb-4 break-words">
         Meta Click-to-WhatsApp kampanyalarını kur. Gerçek yayın için META token + Asaf onayı gerekir — hiçbir şey kendiliğinden harcamaz.
       </p>
-      <div className="card p-3 border-navy/20 bg-navy/5 text-sm text-navy mb-6">
-        💡 <b>İş akışı:</b> Ürün seç → reklam modülünün <b>hazırladığı creative paketini</b> (🎨 Creative) gör → hedeflemeyi ayarla → Meta'ya <b>duraklatılmış</b> kur → yayına aldığında <b>📊 Performans</b> bölümünden o ürünün sonuçlarını çek. Reklam metinleri ürün sayfasındaki <b>Kopya</b> sekmesinde üretilir.
+      <div className="card p-3 border-navy/20 bg-navy/5 text-sm text-navy mb-6 break-words">
+        <b>İş akışı:</b> Ürün seç → reklam modülünün <b>hazırladığı creative paketini</b> gör → hedeflemeyi ayarla → Meta'ya <b>duraklatılmış</b> kur → yayına aldığında <b>Performans</b> bölümünden o ürünün sonuçlarını çek. Reklam metinleri ürün sayfasındaki <b>Reklam Metni</b> sekmesinde üretilir.
       </div>
       <KampanyalarClient products={list} />
     </div>

@@ -8,7 +8,10 @@ Akış (graph.facebook.com):
   1) campaign (OUTCOME_ENGAGEMENT, PAUSED)
   2) her dil için ad set (optimization CONVERSATIONS, destination WHATSAPP, geo=dil bölgesi, PAUSED)
   3) creative görselini /adimages'a yükle → image_hash
-  4) ad creative (object_story_spec + WHATSAPP_MESSAGE CTA, link = wa.me?text=<prefill+[REKLAM:] etiket>)
+  4) ad creative — GERÇEK CTWA: object_story_spec.link_data + call_to_action
+     {type: WHATSAPP_MESSAGE, value:{app_destination: WHATSAPP, link: api.whatsapp.com/send?phone&text}}
+     (DİKKAT: asset_feed_spec çok-format CTWA'yı BOZAR → Meta is_click_to_message=false yapar,
+      tıklama tarayıcı/App Store'a düşer. Bu yüzden tek görsel link_data kullanılır.)
   5) ad (PAUSED)
 
 Kimlik bilgileri .env.local'dan (koda yazılmaz):
@@ -16,7 +19,7 @@ Kimlik bilgileri .env.local'dan (koda yazılmaz):
   META_AD_ACCOUNT_ID  (act_ önekli ya da sadece sayı)
   META_PAGE_ID        (reklamı yayınlayacak Facebook Sayfası ID'si; WhatsApp numarası buna bağlı olmalı)
   META_API_VERSION    (opsiyonel, vars. v21.0)
-  WHATSAPP_NUMBER     (opsiyonel, vars. 905527062723)
+  WHATSAPP_NUMBER     (opsiyonel; yoksa marka kaydındaki numaraya düşer — brand.py)
 
 Kullanım:
   python3 create_meta_campaign.py campaigns/.../creatives/granul-dolum/config.json --daily 3 --dry-run
@@ -32,6 +35,12 @@ import urllib.parse
 import urllib.request
 import uuid
 from pathlib import Path
+
+# Marka motoru — WhatsApp fallback marka kaydından (env BRAND_ID). BRAND_ID yoksa
+# ProcessTürk varsayılanı → canlı davranış + PAUSED güvenliği aynen korunur.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from brand import BRAND as _BR   # noqa: E402
+_WA_FALLBACK = _BR["whatsapp"]
 
 
 def _urlopen_retry(req, timeout: int, tries: int = 4):
@@ -114,7 +123,7 @@ def _env() -> dict:
         page=os.environ["META_PAGE_ID"],
         ig=os.environ.get("META_INSTAGRAM_ID", ""),   # IG yerleşimleri için sayfaya bağlı IG hesabı
         ver=os.environ.get("META_API_VERSION", "v21.0"),
-        wa=os.environ.get("WHATSAPP_NUMBER", "905527062723"),
+        wa=os.environ.get("WHATSAPP_NUMBER", _WA_FALLBACK),
     )
 
 
@@ -166,38 +175,20 @@ class Graph:
         return next(iter(res["images"].values()))["hash"]
 
 
-def _asset_feed_spec(hashes: dict, copy: dict, wa_link: str) -> dict:
-    """Placement'a göre çok-format (4:5 feed · 9:16 story/reels · 1:1 square) tek-görsel creative.
-    Eksik format olursa o kuralı atlar; feed her zaman default. Standart geliştirmeler API'den
-    toplu kapatılamıyor (Meta kaldırdı) → marka korumasını açık placement görselleri sağlar."""
-    images, rules = [], []
-    if "feed" in hashes:
-        images.append({"hash": hashes["feed"], "adlabels": [{"name": "img_feed"}]})
-    if "story" in hashes:
-        images.append({"hash": hashes["story"], "adlabels": [{"name": "img_story"}]})
-        rules.append({"customization_spec": {
-            "publisher_platforms": ["facebook", "instagram"],
-            "facebook_positions": ["story", "facebook_reels"],
-            "instagram_positions": ["story", "reels"]},
-            "image_label": {"name": "img_story"}})
-    if "square" in hashes:
-        images.append({"hash": hashes["square"], "adlabels": [{"name": "img_square"}]})
-        rules.append({"customization_spec": {
-            "publisher_platforms": ["instagram"], "instagram_positions": ["stream", "explore"]},
-            "image_label": {"name": "img_square"}})
-    # feed = default (kalan tüm yerleşimler)
-    rules.append({"customization_spec": {
-        "publisher_platforms": ["facebook", "instagram", "audience_network", "messenger"]},
-        "image_label": {"name": "img_feed"}, "is_default": True})
+def _link_data(feed_hash: str, copy: dict, wa_link: str) -> dict:
+    """GERÇEK Click-to-WhatsApp creative gövdesi (object_story_spec.link_data).
+    KRİTİK: call_to_action.value.app_destination = WHATSAPP olmadan Meta reklamı website-link
+    sayar (is_click_to_message=false) → tıklama tarayıcı/App Store'a düşer, WhatsApp açılmaz.
+    Tek görsel (feed/4:5) kullanılır; asset_feed_spec çok-format CTWA'yı bozduğu için kullanılamaz.
+    Prefill metni (link'teki text=) [REKLAM:]/[ref:] etiketini taşır → chatbot atıfı korunur."""
     return {
-        "ad_formats": ["SINGLE_IMAGE"], "optimization_type": "PLACEMENT",
-        "images": images,
-        "bodies": [{"text": copy["primary"]}],
-        "titles": [{"text": copy["headline"]}],
-        "descriptions": [{"text": copy["description"]}],
-        "link_urls": [{"website_url": wa_link}],
-        "call_to_action_types": ["WHATSAPP_MESSAGE"],
-        "asset_customization_rules": rules,
+        "image_hash": feed_hash,
+        "message": copy["primary"],
+        "name": copy["headline"],
+        "description": copy["description"],
+        "link": wa_link,
+        "call_to_action": {"type": "WHATSAPP_MESSAGE",
+                           "value": {"app_destination": "WHATSAPP", "link": wa_link}},
     }
 
 
@@ -226,19 +217,20 @@ def build_unit(g: "Graph", env: dict, camp_id: str, slug: str, lang: str, geo: l
                    "targeting_automation": {"advantage_audience": 0}}))   # sabit kitle (A/B kontrollü)
     print(f"  ✓ adset {adset['id']} ({label} → {','.join(geo)})")
 
-    hashes = {fmt: g.upload_image(p) for fmt, p in imgs.items() if p.exists()}
+    feed_hash = g.upload_image(imgs["feed"])    # CTWA tek görsel (feed/4:5) — link_data tek hash alır
     # Zengin atıf: rota etiketi [REKLAM: ...] AYNI kalır (chatbot okur) + ref kodu (CRM atıf)
     ref = f"{slug}-{label.lower()}"            # ör. granul-dolum-a-en
-    wa_link = "https://wa.me/" + env["wa"] + "?text=" + urllib.parse.quote(
+    # api.whatsapp.com/send + app_destination=WHATSAPP → gerçek CTWA (wa.me website-link olarak yorumlanabiliyor)
+    wa_link = "https://api.whatsapp.com/send?phone=" + env["wa"] + "&text=" + urllib.parse.quote(
         copy["prefill"] + f" [ref: {ref}]")
     oss = {"page_id": env["page"]}
     if env.get("ig"):
         oss["instagram_user_id"] = env["ig"]      # IG yerleşimleri için kimlik
+    oss["link_data"] = _link_data(feed_hash, copy, wa_link)
     creative = g.post(f"{env['acct']}/adcreatives", dict(
         name=f"CR-{slug}{file_suffix}-{lang}",
-        object_story_spec=oss,
-        asset_feed_spec=_asset_feed_spec(hashes, copy, wa_link)))
-    print(f"  ✓ creative {creative['id']} ({len(hashes)} format: {','.join(hashes)})")
+        object_story_spec=oss))
+    print(f"  ✓ creative {creative['id']} (CTWA link_data, app_destination=WHATSAPP)")
     ad = g.post(f"{env['acct']}/ads", dict(
         name=f"AD-{slug}{file_suffix}-{lang}", adset_id=adset["id"],
         creative={"creative_id": creative["id"]}, status="PAUSED"))
@@ -249,10 +241,12 @@ def build_unit(g: "Graph", env: dict, camp_id: str, slug: str, lang: str, geo: l
 def _concept_tx(out_dir: Path, base_cfg: dict, concept: str, lang: str) -> tuple:
     """Concept'e göre dil-metnini ve creative dosya son ekini döndürür. tx'e _lang gömülür (prefill için).
     Metin kaynağı: 'b'/'b-hf' → kardeş config-b.json (kalite/menşei); 'a'/'a-hf' → ana config (fiyat).
-    Dosya seti:  a→''  ·  b→'-b' (cutout)  ·  a-hf→'-hf'  ·  b-hf→'-b-hf'  (Higgsfield lifestyle sahne)."""
-    SUFFIX = {"a": "", "b": "-b", "a-hf": "-hf", "b-hf": "-b-hf"}
+    Dosya seti:  a→''  ·  b→'-b' (cutout)  ·  a-hf→'-hf'  ·  b-hf→'-b-hf'  (Higgsfield lifestyle sahne)
+    ·  a-framed→'-framed'  ·  b-framed→'-b-framed'  (STANDART çerçeveli kart — make_framed.py)."""
+    SUFFIX = {"a": "", "b": "-b", "a-hf": "-hf", "b-hf": "-b-hf",
+              "a-framed": "-framed", "b-framed": "-b-framed", "framed": "-framed"}
     suffix = SUFFIX.get(concept, "")
-    if concept in ("b", "b-hf"):
+    if concept in ("b", "b-hf", "b-framed"):
         bpath = out_dir / "config-b.json"
         if not bpath.exists():
             return None, suffix

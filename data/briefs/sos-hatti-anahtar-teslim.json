@@ -1,0 +1,35 @@
+{
+  "slug": "sos-hatti-anahtar-teslim",
+  "approved": false,
+  "highlights": [
+    "Tek tek makine değil, anahtar teslim KOMPLE sos fabrikası: pişirme + karıştırma + dolum + kapaklama + etiketleme + paketleme.",
+    "Kurulum + devreye alma + operatör eğitimi dahil — fabrikayı çalışır halde teslim ediyoruz.",
+    "Gıda sınıfı 304 paslanmaz çelik; ketçap, mayonez, salça ve yüksek viskoziteli soslar için.",
+    "Türk mühendisliği, projeye özel tasarlanan hat; kapasite ihtiyaca göre ölçeklenir.",
+    "Tek muhatap, tek sözleşme: ProcessTürk hattın tamamından sorumlu."
+  ],
+  "target_industries": [
+    "Sos / ketçap / mayonez üreticileri",
+    "Salça ve domates ürünleri",
+    "Gıda fabrikası kuran yeni yatırımcılar",
+    "Mevcut üretimini hatta taşıyan KOBİ'ler"
+  ],
+  "ideal_customer": "Sos/ketçap/mayonez üretimine girmek isteyen veya elle/yarı-otomatik üretimden komple otomatik fabrikaya geçmek isteyen yatırımcı ve üreticiler.",
+  "pain_points": [
+    "Makineleri farklı tedarikçilerden tek tek alıp uyumlu bir hatta birleştirme zorluğu.",
+    "Kurulum, devreye alma ve eğitim için ayrı ayrı muhatap aramak.",
+    "Fabrikayı sıfırdan kurarken hangi makinenin hangi kapasiteyle gerektiğini bilememe.",
+    "Hat kurulduktan sonra teknik destek ve yedek parça belirsizliği."
+  ],
+  "dont_say": [
+    "Avrupa teknolojisi",
+    "ithal",
+    "en ucuz",
+    "garanti ederiz / kesin kâr"
+  ],
+  "image_notes": "Endüstriyel bir tesiste, paslanmaz çelikten oluşan KOMPLE bir sos üretim hattı: arka planda pişirme/karıştırma tankları, ortada dolum, yanında kapaklama-etiketleme; makineler bir sıra (hat) halinde dizili. 'Tek makine değil, fabrikanın tamamı' hissi vurgulanmalı. Çizimden üretilen makine render'ları gerçek forma SADIK kalmalı; hat sahnesi komple fabrika konseptini anlatan kurgudur.",
+  "capacity_placeholder": "[KAPASİTE — ör. X ton/gün veya X şişe/saat — ASAF GİRECEK]",
+  "price_placeholder": "Projeye özel (anahtar teslim). Reklamda sabit fiyat verilmez; CTA teklif almaya yönlendirir.",
+  "last_updated": "2026-06-27",
+  "_generated_by": "manuel (sos-hatti planı) — onaydan önce kapasite/fiyat Asaf tarafından girilecek"
+}

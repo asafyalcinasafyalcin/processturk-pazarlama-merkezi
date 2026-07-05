@@ -24,12 +24,34 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fal_prep_product  # noqa: E402
+# Marka motoru — logo dosya adları marka kaydından (env BRAND_ID). BRAND_ID yoksa
+# ProcessTürk varsayılanı → canlı creative birebir korunur.
+from brand import BRAND as _BR  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent   # reklam/
 WORKSPACE = ROOT.parent.parent                   # PROCESSTURK AI (sibling projeler burada)
 TEMPLATE = ROOT / "templates" / "product.html"
-LOGO_SRC = WORKSPACE / "Processturk_Satin_Alma_Sistemi" / "templates" / "assets" / "processturk-logo.png"
-LOGO_WHITE = ROOT / "assets" / "processturk-wordmark-white.png"
+
+
+def site_line(web):
+    """Creative anteti için site satırı — marka web'inden (www. ön eki tutarlı)."""
+    w = (web or "").strip()
+    return w if w.startswith("www.") or "//" in w else f"www.{w}"
+
+
+# Şablonlardaki marka token'ları (renk/site/ad) — tüm creative'lerde ortak; brand.py'den.
+BRAND_REPL = {
+    "__NAVY__": _BR["navy"],
+    "__RED__": _BR["red"],
+    "__SITE__": site_line(_BR["web"]),
+    "__BRAND__": _BR["name"],
+    "__BRAND_NAME__": _BR["name"],
+}
+# Renkli logo kaynağı: marka reklam/assets içindeki logo/wordmark (marka-farkındalıklı;
+# dosya adı brand kaydından). Marka assetsi yoksa sibling Satın Alma logosuna düşer (referans).
+LOGO_WHITE = ROOT / "assets" / _BR["wordmark_white"]
+_SATINALMA_LOGO = WORKSPACE / "Processturk_Satin_Alma_Sistemi" / "templates" / "assets" / _BR["satinalma_logo"]
+LOGO_SRC = (ROOT / "assets" / _BR["logo_white"]) if (ROOT / "assets" / _BR["logo_white"]).exists() else _SATINALMA_LOGO
 
 CHROME = [
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -105,6 +127,9 @@ def render(tx: dict, size: str, cutout: Path, logo: Path, out: Path, props: Path
     }
     for k, v in repl.items():
         tpl = tpl.replace(k, str(v))
+    # Marka token'ları (renk/site/ad) — white-label: BRAND_ID'ye göre değişir.
+    for k, v in BRAND_REPL.items():
+        tpl = tpl.replace(k, html.escape(str(v)) if k in ("__SITE__", "__BRAND__", "__BRAND_NAME__") else str(v))
     tpl = (tpl
            .replace("__LANG__", html.escape(lang))
            .replace("__DIR__", "rtl" if rtl else "ltr")

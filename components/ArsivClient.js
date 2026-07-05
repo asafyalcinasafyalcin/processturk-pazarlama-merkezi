@@ -93,12 +93,12 @@ export default function ArsivClient() {
               </div>
               <div className="p-2">
                 <div className="text-[11px] font-semibold truncate">{a.productName}</div>
-                <div className="flex items-center gap-1 text-[10px] text-slate-400 mt-0.5">
+                <div className="flex items-center gap-1 text-[10px] text-slate-500 mt-0.5">
                   <span>{(TYPE_LABEL[a.type] || a.type).split(' ')[0]}</span>
                   <span className="pill pill-muted text-[9px]">{(a.lang || 'tr').toUpperCase()}</span>
                   {a.manual && <span className="pill pill-ok text-[9px]">yüklendi</span>}
                 </div>
-                <div className="text-[10px] text-slate-400">{new Date(a.at).toLocaleDateString('tr-TR')}</div>
+                <div className="text-[10px] text-slate-500">{new Date(a.at).toLocaleDateString('tr-TR')}</div>
               </div>
             </button>
           );
@@ -115,7 +115,7 @@ export default function ArsivClient() {
                 <span className="pill pill-muted text-xs">{(selected.lang || 'tr').toUpperCase()}</span>
                 <Link href={`/urun/${selected.slug}`} className="text-xs text-navy underline">{selected.productName}</Link>
               </div>
-              <button className="text-slate-400 hover:text-slate-700 text-xl leading-none" onClick={() => setSelected(null)}>×</button>
+              <button className="text-slate-500 hover:text-slate-700 text-xl leading-none" onClick={() => setSelected(null)}>×</button>
             </div>
             <div className="p-4 space-y-3">
               {selected.type === 'gorsel' && (selected.localPath || selected.url) && (
@@ -131,11 +131,11 @@ export default function ArsivClient() {
                 <div className="whitespace-pre-wrap text-sm text-slate-700 bg-slate-50 rounded-xl p-3 border border-line">{selected.caption}</div>
               )}
               <dl className="text-xs text-slate-500 space-y-1">
-                {selected.concept && <div><span className="text-slate-400">Konsept:</span> {selected.concept}</div>}
-                {selected.template && <div><span className="text-slate-400">Şablon:</span> {selected.template}</div>}
-                {selected.platform && <div><span className="text-slate-400">Platform:</span> {selected.platform}</div>}
-                {selected.model && <div><span className="text-slate-400">Model:</span> {selected.model}</div>}
-                <div><span className="text-slate-400">Tarih:</span> {new Date(selected.at).toLocaleString('tr-TR')}</div>
+                {selected.concept && <div><span className="text-slate-500">Konsept:</span> {selected.concept}</div>}
+                {selected.template && <div><span className="text-slate-500">Şablon:</span> {selected.template}</div>}
+                {selected.platform && <div><span className="text-slate-500">Platform:</span> {selected.platform}</div>}
+                {selected.model && <div><span className="text-slate-500">Model:</span> {selected.model}</div>}
+                <div><span className="text-slate-500">Tarih:</span> {new Date(selected.at).toLocaleString('tr-TR')}</div>
               </dl>
             </div>
             <div className="flex items-center gap-2 p-4 border-t border-line">

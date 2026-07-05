@@ -7,17 +7,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // ProcessTürk resmi tasarım sistemi
+        // MARKA RENKLERİ RUNTIME'DAN (white-label): layout.js <html style> ile BRAND
+        // kaydından --navy-rgb / --red-rgb (space-separated RGB kanalları) set edilir;
+        // globals.css :root ProcessTürk fallback'i taşır. rgb(var(--x) / <alpha-value>)
+        // sözdizimi Tailwind'in opacity modifier'ını KORUR (bg-navy/5, border-red/40 çalışır)
+        // ve BRAND_ID değişince 56+ sınıf otomatik tenant rengine bürünür (hex gömülmez).
         navy: {
-          DEFAULT: '#071739',
-          2: '#0d2350',
-          3: '#13315c',
+          DEFAULT: 'rgb(var(--navy-rgb) / <alpha-value>)',
+          2: 'rgb(var(--navy2-rgb) / <alpha-value>)',
+          3: 'rgb(var(--navy3-rgb) / <alpha-value>)',
         },
-        ink: '#1F3B57', // Industrial Blue
-        red: '#FF3255',
-        ok: '#0f9e74',
-        amber: '#b45309',
-        line: '#e6eaf1',
+        ink: 'rgb(var(--ink-rgb) / <alpha-value>)', // Industrial Blue
+        red: 'rgb(var(--red-rgb) / <alpha-value>)',
+        ok: 'rgb(var(--ok-rgb) / <alpha-value>)',
+        amber: 'rgb(var(--amber-rgb) / <alpha-value>)',
+        line: 'rgb(var(--line-rgb) / <alpha-value>)',
       },
       fontFamily: {
         head: ['Montserrat', 'system-ui', 'sans-serif'],

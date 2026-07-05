@@ -14,11 +14,11 @@ export default function WorkflowBar({ steps, activeId, onStep }) {
           const circle =
             state === 'done' ? 'bg-ok/15 border-ok text-ok'
             : state === 'active' ? 'bg-red border-red text-white'
-            : 'bg-white border-slate-300 text-slate-400';
+            : 'bg-white border-slate-300 text-slate-500';
           const labelCls =
             state === 'done' ? 'text-ok'
             : state === 'active' ? 'text-navy font-semibold'
-            : 'text-slate-400';
+            : 'text-slate-500';
           return (
             <div key={s.id} className="flex items-center shrink-0">
               <button onClick={() => onStep(s)} className="flex items-center gap-2 px-1.5 py-1 rounded-lg hover:bg-slate-50 transition" title={s.hint || s.label}>

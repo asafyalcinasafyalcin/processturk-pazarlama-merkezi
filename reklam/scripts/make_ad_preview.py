@@ -16,10 +16,15 @@ import sys
 import tempfile
 from pathlib import Path
 
+# Marka motoru — sayfa adı + wordmark marka kaydından (env BRAND_ID). BRAND_ID yoksa
+# ProcessTürk varsayılanı → canlı önizleme birebir korunur.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from brand import BRAND as _BR   # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = ROOT / "templates" / "ad-preview.html"
-AVATAR = ROOT / "assets" / "processturk-wordmark-white.png"
-PAGE_NAME = "ProcessTürk"
+AVATAR = ROOT / "assets" / _BR["wordmark_white"]
+PAGE_NAME = _BR["page_name"]
 CARDW = 500
 IMGH = round(CARDW * 1350 / 1080)   # feed creative oranı 1080x1350
 
@@ -95,6 +100,7 @@ def render(out_dir: Path, slug: str, lang: str, tx: dict, vsuf: str = "") -> Pat
     repl = {
         "__W__": CARDW + 40, "__H__": H, "__CARDW__": CARDW, "__IMGH__": IMGH,
         "__LANG__": lang, "__DIR__": ui["dir"],
+        "__NAVY__": _BR["navy"],   # avatar + creative placeholder zemini (white-label)
         "__AVATAR__": AVATAR.resolve().as_uri(),
         "__PAGE__": html.escape(PAGE_NAME),
         "__SPONSORED__": html.escape(ui["sponsored"]),

@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import { getItem, updateItem, META_PUBLISH, ICERIK_PUBLISH } from '@/lib/calendar';
 import { publishMetaAuto } from '@/lib/meta-publish';
 import { publishTikTok, publishYouTube, tiktokConfigured, youtubeConfigured } from '@/lib/tiktok-youtube-publish';
+import { BRAND } from '@/lib/brand';
+
+// Marka hashtag'i brand.js'ten (BRAND.name) — BRAND_ID yoksa ProcessTürk varsayılanı.
+const TAG = `#${String(BRAND.name).replace(/\s+/g, '')}`;
 
 // Relative URL'leri absolute'a çevir (Meta Graph API public URL gerektirir)
 function resolveMediaUrl(url) {
@@ -80,7 +84,7 @@ export async function POST(request) {
     // Gerçek yayın: YouTube (credentials varsa)
     if (item.platform === 'youtube' && youtubeConfigured()) {
       const videoUrl = resolveMediaUrl(item.videoUrl);
-      const title = item.caption?.split('\n')[0]?.slice(0, 100) || 'ProcessTürk';
+      const title = item.caption?.split('\n')[0]?.slice(0, 100) || BRAND.name;
       try {
         const result = await publishYouTube({ videoUrl, caption: item.caption, title });
         const updated = await updateItem(id, { status: 'published', publishedAt: new Date().toISOString(), result: { method: 'youtube-api', ...result } });
@@ -92,10 +96,10 @@ export async function POST(request) {
 
     // Assisted yayın: TikTok/YouTube credentials yoksa veya başka platform
     const PLATFORM_TAGS = {
-      tiktok: '#ProcessTurk #FoodMachinery #Manufacturing #MadeInTurkey #DolamMakinesi',
-      youtube: '#ProcessTürk #Üretim #FoodProcessing #MadeInTurkey',
+      tiktok: `${TAG} #FoodMachinery #Manufacturing #MadeInTurkey #DolamMakinesi`,
+      youtube: `${TAG} #Üretim #FoodProcessing #MadeInTurkey`,
     };
-    const hashtags = PLATFORM_TAGS[item.platform] || '#ProcessTürk #üretim #makine #foodprocessing';
+    const hashtags = PLATFORM_TAGS[item.platform] || `${TAG} #üretim #makine #foodprocessing`;
 
     const PLATFORM_INST = {
       tiktok: 'TikTok uygulamasında: videoyu indir → "+" → videoyu seç → açıklamayı yapıştır → Yayınla.',
@@ -104,7 +108,7 @@ export async function POST(request) {
     const instructions = PLATFORM_INST[item.platform] || `${item.platform} uygulamasında: videoyu indir, açıklamayı yapıştır.`;
 
     const videoUrl = resolveMediaUrl(item.videoUrl);
-    const title = item.platform === 'youtube' ? (item.caption?.split('\n')[0]?.slice(0, 100) || 'ProcessTürk') : undefined;
+    const title = item.platform === 'youtube' ? (item.caption?.split('\n')[0]?.slice(0, 100) || BRAND.name) : undefined;
 
     const pkg = {
       platform: item.platform,

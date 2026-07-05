@@ -1,13 +1,19 @@
 # C1 — Yayın Onay Kapısı Paketi (İlk Reklam: Granül Dolum)
 
-> ✅ **KURULDU (2026-06-20, PAUSED).** Asaf "evet başlat" onayı verdi → kampanya Meta'da
-> **duraklatılmış** olarak kuruldu. **Hâlâ harcama yapılmadı**; yayın = Asaf'ın Ads Manager'da
-> "yayınla"sına bağlı.
+> 🟢 **CANLI (2026-06-24).** Asaf onayıyla (chatbot hazır teyidi) iki kampanya **yayına alındı** —
+> kampanya + ad set + reklam üç seviye de ACTIVE. Harcama başladı (~₺386/gün toplam). Eski mükerrer/test
+> kampanyaları temizlendi; aşağıdaki güncel ID'ler tek doğru kaynaktır.
 >
-> - **Campaign ID:** `120247128107760674` · 2 ad set (EN→NG/GH/KE, FR→DZ/MA/TN/SN/CI), 2 creative, 2 ad
-> - **Para birimi gerçeği:** Reklam hesabı **TRY (₺)** — aşağıdaki "$" senaryoları eski varsayımdır.
->   Meta minimumu **₺46,44/ad set/gün**. Kurulan bütçe: **₺50/ad set/gün** (toplam ₺100/gün, ~₺700/7 gün).
+> | Ürün | Canlı Campaign ID | Yapı | Bütçe |
+> |------|-------------------|------|-------|
+> | **Granül Dolum** | `120247149423040674` | 4 ad set: EN A/B + FR A/B (HF lifestyle creative) | ₺50/ad set → ₺200/gün |
+> | **Sıvı Dolum Hattı** | `120247329299910674` | 4 ad set: EN A/B + FR A/B (HF lifestyle creative) | ₺46,44/ad set → ₺185,76/gün |
+>
+> - EN → NG/GH/KE · FR → DZ/MA/TN/SN/CI · A/B = fiyat-hero vs kalite/menşei. AR (Körfez) 2. dalgaya saklı.
+> - **Para birimi:** Reklam hesabı **TRY (₺)**, Meta min **₺46,44/ad set/gün**. (Aşağıdaki "$" senaryoları eski varsayım.)
 > - **Ads Manager:** https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=676668703597119
+> - **NOT (eski ID'ler):** Bu doküman içinde aşağıda geçen `120247128107760674` ve `120247041318270674`
+>   granül kampanyaları 2026-06-24'te SİLİNDİ (mükerrer/eksik test). Tarihsel; güncel = yukarıdaki tablo.
 > - Bütçe değiştirmek için: `create_meta_campaign.py ... --daily <TRY>` (yeni kampanya kurar) veya Ads Manager.
 
 ## İlk launch ürünü: Granül Dolum (lead)
@@ -129,6 +135,16 @@ Kampanya `120247041318270674` · **C1 · granul-dolum · A/B (EN)** hesapta haz�
 Her yeni kampanya `create_meta_campaign.py` ile **otomatik**: 3 format creative + IG kimliği + ref'li atıf +
 ad-set bazlı bütçe + sabit kitle (advantage_audience kapalı). Creative üretimi `make_product.py` `sizes:
 ["feed","story","square"]`.
+
+## DURUM: Sıvı Dolum Hattı CANLI 🟢 — 2026-06-24
+İkinci ürün yayına alındı (Asaf onayı: "5 Sıvı Dolum Hattı bunu da alalım devreye" + "ikisini de aç"; kapsam **EN+FR**, AR 2. dalgaya).
+- **Campaign ID:** `120247329299910674` · **C1 · sivi-dolum-hat · CTWA** · kampanya+adset ACTIVE; FR reklamları ACTIVE, EN reklamları ilk açılışta IN_PROCESS (Meta incelemesi, otomatik ACTIVE olur)
+- **4 ad set × ₺46,44/gün** (Meta min; toplam ₺185,76/gün ≈ ₺1.300/7 gün):
+  - `120247329302670674` **AS-A-HF-EN** → NG/GH/KE · `120247329313120674` **AS-B-HF-EN** → NG/GH/KE
+  - `120247329332400674` **AS-A-HF-FR** → DZ/MA/TN/SN/CI · `120247329354840674` **AS-B-HF-FR** → DZ/MA/TN/SN/CI
+- A/B konsept testi: A-HF (fiyat hero) vs B-HF (kalite/menşei), Higgsfield lifestyle sahne creative'ler · 2–3 format/ad.
+- WhatsApp `905527062723` · etiket `[REKLAM: C1-sivi-hat]` + ref `[ref: sivi-dolum-hat-{a|b}-{en|fr}]` (chatbot okur, CRM atıf).
+- **Yayın = Asaf** (Ads Manager'dan PAUSED kaldır → harcama başlar). 7 gün sonra düşük CPL'li konsept kazanır → AR 2. dalga.
 
 ## Sonraki (yayın sonrası / paralel)
 - Lo-res ürünler (sıvı dolum kafası, manuel/yarı etiketleme, kapatma ×4) için HD foto → C1 tamamlama.

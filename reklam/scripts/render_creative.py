@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Marka overlay'ı render eder: YAZISIZ base görselin üstüne ProcessTürk markası
+Marka overlay'ı render eder: YAZISIZ base görselin üstüne marka katmanı
 (rakam + başlık + alt satır + kırmızı WhatsApp CTA) basar, headless Chrome ile PNG alır.
 
 Yazı katmanı burada üretildiği için Türkçe karakter ve font (Montserrat) kusursuz olur.
@@ -14,7 +14,15 @@ import sys
 import tempfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from brand import BRAND as _BR  # marka motoru (env BRAND_ID) — renk/ad token'ları
+
 TEMPLATE = Path(__file__).resolve().parent.parent / "templates" / "overlay.html"
+
+
+def _site_line(web):
+    w = (web or "").strip()
+    return w if w.startswith("www.") or "//" in w else f"www.{w}"
 
 CHROME_CANDIDATES = [
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -51,6 +59,8 @@ def render(base_image: Path, cfg: dict, size: str, out: Path) -> Path:
     suffix = html.escape(cfg.get("price_suffix", ""))
     price_html = price + (f"<small>{suffix}</small>" if suffix else "")
 
+    lang = cfg.get("lang", "tr")
+    rtl = bool(cfg.get("rtl"))
     repl = {
         "__W__": str(s["W"]), "__H__": str(s["H"]), "__PAD__": str(s["pad"]),
         "__BADGE__": str(s["badge"]), "__BRAND__": str(s["brand"]), "__GAP__": str(s["gap"]),
@@ -62,6 +72,11 @@ def render(base_image: Path, cfg: dict, size: str, out: Path) -> Path:
         "__HEAD_TEXT__": html.escape(cfg.get("headline", "")),
         "__SUB_TEXT__": html.escape(cfg.get("sub", "")),
         "__CTA_TEXT__": html.escape(cfg.get("cta", "WhatsApp'tan teklif al")),
+        # Marka token'ları (white-label): renk + ad + dil. __BRAND__ font-size olduğundan
+        # marka adı ayrı token (__BRAND_NAME__).
+        "__NAVY__": _BR["navy"], "__RED__": _BR["red"],
+        "__BRAND_NAME__": html.escape(_BR["name"]),
+        "__LANG__": html.escape(lang), "__DIR__": "rtl" if rtl else "ltr",
     }
     for k, v in repl.items():
         tpl = tpl.replace(k, v)

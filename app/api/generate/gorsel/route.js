@@ -11,6 +11,8 @@ import { downloadAndSave } from '@/lib/download-asset';
 import { addToLibrary } from '@/lib/library';
 import { requireSpendConfirm } from '@/lib/credit-guard';
 import { servedToAbs } from '@/lib/media-store';
+import { readSettings } from '@/lib/settings';
+import { resolveTier, imageModelForTier, DEFAULT_TIER } from '@/lib/quality-tiers';
 
 function loadMaskotConfig() {
   try {
@@ -29,7 +31,7 @@ export const maxDuration = 120;
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { slug, template: templateId = 'makine-vitrin', lang = 'tr', platforms = ['instagram'], concept = null } = body;
+    const { slug, template: templateId = 'makine-vitrin', lang = 'tr', platforms = ['instagram'], concept = null, provider = null } = body;
 
     if (!slug) return NextResponse.json({ ok: false, error: 'slug zorunlu' }, { status: 400 });
 
@@ -77,6 +79,19 @@ export async function POST(request) {
     const prompt = template.buildPrompt(product, lang);
     const negativePrompt = template.buildNegativePrompt ? template.buildNegativePrompt() : undefined;
 
+    // ── KALİTE TIER → MODEL ──────────────────────────────────────────────────
+    // Öncelik: body.model (açık model) > body.tier > ayarların varsayılanı (premium).
+    // Sağlayıcıya (fal/higgsfield) göre doğru premium model seçilir. Sabit flux-schnell
+    // KALDIRILDI (Asaf'ın kalite şikayetinin kökü). Sessiz ucuza düşüş YOK: bilinmeyen
+    // tier resolveTier ile GÖRÜNÜR şekilde varsayılana (premium) çekilir.
+    const settings = await readSettings();
+    const effProvider = (provider || process.env.GEN_IMAGE_PROVIDER || process.env.GEN_PROVIDER || 'fal').toLowerCase();
+    const tierReq = body.tier || settings.imageTier || DEFAULT_TIER;
+    const { tier: resolvedTier, corrected: tierCorrected } = resolveTier(tierReq);
+    if (tierCorrected) console.warn(`[generate/gorsel] Geçersiz tier "${tierReq}" → "${resolvedTier}" (varsayılan premium; ucuza DÜŞÜLMEDİ)`);
+    // Maskot/Soul ID akışı özel modele zorlar (higgsfield tarafında); onun dışında tier'dan çöz.
+    const chosenModel = body.model || imageModelForTier(resolvedTier, effProvider === 'higgsfield' ? 'higgsfield' : 'fal');
+
     // Img2img kaynağı: önce ürünün ana görseli (content.gorsel — Hazır İçerik Ekle / manuel /
     // önceki üretim), sonra eski public/products/base.png. Makine yapısı korunur, arka plan/ışık değişir.
     // NOT: yerel dosya yolu verilir; gen.js bunu fal.storage'a yükleyip public URL'e çevirir.
@@ -90,8 +105,9 @@ export async function POST(request) {
       negative_prompt: negativePrompt,
       image_size: falSize,
       aspect_ratio: hfRatio,
-      model: 'flux-schnell',
+      model: chosenModel,
       force: body.force,
+      ...(provider && { provider }),
       ...(maskotSoulId && { soul_id: maskotSoulId }),
       ...(maskotReferenceImage && !hasUploadedImage && { reference_image: maskotReferenceImage }),
       ...(hasUploadedImage && !maskotSoulId && { reference_image: refImage }),
@@ -115,6 +131,7 @@ export async function POST(request) {
       format: fmt,
       provider: result.provider,
       model: result.model,
+      tier: resolvedTier,
       imageSource: hasUploadedImage ? 'img2img' : (hasRealImage ? 'real' : 'ai-prompt'),
       at: new Date().toISOString(),
     };

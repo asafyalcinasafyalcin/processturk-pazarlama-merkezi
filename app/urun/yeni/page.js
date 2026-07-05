@@ -100,10 +100,10 @@ export default function YeniUrunPage() {
   }
 
   return (
-    <div className="px-6 md:px-10 py-8 max-w-3xl mx-auto">
+    <div className="px-4 md:px-10 py-8 max-w-3xl mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h1 className="font-head font-extrabold text-2xl">Yeni Ürün Ekle</h1>
-        <Link href="/" className="text-sm text-slate-400 hover:text-slate-700">← Vazgeç</Link>
+        <Link href="/" className="text-sm text-slate-500 hover:text-slate-700">← Vazgeç</Link>
       </div>
 
       {/* ── Başlangıç Ekranı ── */}
@@ -119,7 +119,7 @@ export default function YeniUrunPage() {
                 >
                   <span className="text-3xl">📄</span>
                   <span className="font-semibold text-sm">PDF / Doküman Yükle</span>
-                  <span className="text-xs text-slate-400 text-center">Katalog ya da teknik dokümanı yapıştır, AI doldurun</span>
+                  <span className="text-xs text-slate-500 text-center">Katalog ya da teknik dokümanı yapıştır, AI doldurun</span>
                 </button>
                 <button
                   className="card p-4 flex flex-col items-center gap-2 hover:border-navy/50 hover:bg-navy/5 cursor-pointer border border-line transition text-left"
@@ -127,7 +127,7 @@ export default function YeniUrunPage() {
                 >
                   <span className="text-3xl">📝</span>
                   <span className="font-semibold text-sm">Manuel Doldur</span>
-                  <span className="text-xs text-slate-400 text-center">Adım adım wizard ile kendin doldur</span>
+                  <span className="text-xs text-slate-500 text-center">Adım adım wizard ile kendin doldur</span>
                 </button>
                 <a
                   href="/templates/urun-sablonu.csv"
@@ -136,7 +136,7 @@ export default function YeniUrunPage() {
                 >
                   <span className="text-3xl">📊</span>
                   <span className="font-semibold text-sm">Excel Şablonu İndir</span>
-                  <span className="text-xs text-slate-400 text-center">CSV şablonunu doldur, daha sonra manuel gir</span>
+                  <span className="text-xs text-slate-500 text-center">CSV şablonunu doldur, daha sonra manuel gir</span>
                 </a>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function YeniUrunPage() {
             <div className="card p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="font-head font-bold text-lg">📄 PDF / Metin ile Otomatik Doldur</h2>
-                <button className="text-sm text-slate-400 hover:text-slate-700" onClick={() => setImportMode(false)}>← Geri</button>
+                <button className="text-sm text-slate-500 hover:text-slate-700" onClick={() => setImportMode(false)}>← Geri</button>
               </div>
               <textarea
                 className="input w-full text-sm"
@@ -161,7 +161,7 @@ export default function YeniUrunPage() {
                   className="text-sm"
                   onChange={(e) => setImportFile(e.target.files?.[0] || null)}
                 />
-                {importFile && <span className="text-xs text-slate-400">{importFile.name}</span>}
+                {importFile && <span className="text-xs text-slate-500">{importFile.name}</span>}
               </div>
               {importError && <p className="text-red text-sm">⚠ {importError}</p>}
               <button
@@ -171,7 +171,7 @@ export default function YeniUrunPage() {
               >
                 {importBusy ? '⏳ AI analiz ediyor…' : '⚡ AI ile Formu Doldur'}
               </button>
-              <p className="text-xs text-slate-400">AI çıktısını wizard adımlarında düzenleyebilirsin.</p>
+              <p className="text-xs text-slate-500">AI çıktısını wizard adımlarında düzenleyebilirsin.</p>
             </div>
           )}
         </div>
@@ -182,8 +182,8 @@ export default function YeniUrunPage() {
       <div className="flex items-center gap-2 mb-8">
         {STEPS.map((s, i) => (
           <div key={s} className="flex items-center gap-2 flex-1">
-            <div className={`flex items-center gap-2 text-xs font-semibold ${i <= step ? 'text-navy' : 'text-slate-400'}`}>
-              <span className={`h-7 w-7 rounded-full flex items-center justify-center border ${i < step ? 'bg-ok/15 border-ok text-ok' : i === step ? 'bg-red border-red text-white' : 'border-slate-300 text-slate-400'}`}>
+            <div className={`flex items-center gap-2 text-xs font-semibold ${i <= step ? 'text-navy' : 'text-slate-500'}`}>
+              <span className={`h-7 w-7 rounded-full flex items-center justify-center border ${i < step ? 'bg-ok/15 border-ok text-ok' : i === step ? 'bg-red border-red text-white' : 'border-slate-300 text-slate-500'}`}>
                 {i < step ? '✓' : i + 1}
               </span>
               <span className="hidden sm:inline">{s}</span>
@@ -252,7 +252,7 @@ export default function YeniUrunPage() {
         {step === 2 && (
           <div className="space-y-4">
             <div className="rounded-xl bg-red/10 border border-red/30 p-3 text-xs text-slate-600">
-              💡 <b>5 saniye kuralı:</b> Reklam ilk 3 saniyede üç şeyi vermeli — <b>NE</b> satıyoruz, <b>KİME</b>, ve <b>TEK</b> rakam/fayda. Aşağıdaki bilgiler içerik üretimini besler.
+              <b>5 saniye kuralı:</b> Reklam ilk 3 saniyede üç şeyi vermeli — <b>NE</b> satıyoruz, <b>KİME</b>, ve <b>TEK</b> rakam/fayda. Aşağıdaki bilgiler içerik üretimini besler.
             </div>
             <div>
               <label className="label">Hedef Kitle (KİME)</label>

@@ -25,6 +25,12 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+# Marka motoru — _core/brands/<BRAND_ID>.json (env BRAND_ID). WhatsApp fallback marka
+# kaydından; BRAND_ID yoksa ProcessTürk varsayılanı → canlı davranış korunur.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from brand import BRAND as _BR   # noqa: E402
+_WA_FALLBACK = _BR["whatsapp"]
+
 ROOT = Path(__file__).resolve().parent.parent          # reklam/
 APP_ROOT = ROOT.parent                                  # Processturk_Pazarlama_Merkezi/ (tek data/ + .env.local)
 # Ürün verisi: PRODUCTS_JSON_PATH env > APP_ROOT/data/products.json (VPS/container uyumu)
@@ -146,7 +152,7 @@ def _meta_env() -> dict:
     return dict(token=os.environ["META_ACCESS_TOKEN"], acct=acct, page=os.environ["META_PAGE_ID"],
                 ig=os.environ.get("META_IG_BUSINESS_ID", ""),
                 ver=os.environ.get("META_API_VERSION", "v21.0"),
-                wa=os.environ.get("WHATSAPP_NUMBER", "905527062723"))
+                wa=os.environ.get("WHATSAPP_NUMBER", _WA_FALLBACK))
 
 
 def _graph_post(env, path, params):
@@ -239,7 +245,7 @@ def main() -> None:
     ap.add_argument("--slug", required=True)
     ap.add_argument("--langs", nargs="+", default=["en"])
     ap.add_argument("--daily", type=float, default=6.0)
-    ap.add_argument("--number", default="905527062723")
+    ap.add_argument("--number", default=_WA_FALLBACK)
     ap.add_argument("--content", default="")
     ap.add_argument("--emit-json", action="store_true", help="tek JSON objesi yazdır (API tüketimi)")
     ap.add_argument("--dry-run", action="store_true", default=True)

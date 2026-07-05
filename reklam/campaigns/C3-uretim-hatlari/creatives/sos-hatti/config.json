@@ -1,0 +1,112 @@
+{
+  "slug": "sos-hatti-anahtar-teslim",
+  "source_image": "Processturk_Pazarlama_Merkezi/reklam/assets/hf-src/sos-hatti.jpg",
+  "prep_prompt": "complete turnkey sauce production line, several 304 stainless steel machines in a row (cooking kettle, mixing tank, liquid filling, capping, labelling), clean industrial food factory floor, realistic wide shot, no text, no logo",
+  "refine_prompt": null,
+  "props_prompt": "rows of filled ketchup and sauce bottles moving on a stainless conveyor, clean food factory, soft realistic lighting, no text",
+  "sizes": [
+    "feed",
+    "story",
+    "square"
+  ],
+  "tag": "C3-sos-hatti",
+  "campaign": {
+    "adsets": [
+      {
+        "lang": "en",
+        "countries": [
+          "NG",
+          "GH",
+          "KE"
+        ],
+        "concept": "b-hf"
+      },
+      {
+        "lang": "fr",
+        "countries": [
+          "DZ",
+          "MA",
+          "TN",
+          "SN",
+          "CI"
+        ],
+        "concept": "b-hf"
+      },
+      {
+        "lang": "ar",
+        "countries": [
+          "SA",
+          "AE",
+          "QA",
+          "KW",
+          "EG"
+        ],
+        "concept": "b-hf"
+      },
+      {
+        "lang": "ru",
+        "countries": [
+          "AZ",
+          "KZ",
+          "UZ"
+        ],
+        "concept": "b-hf"
+      }
+    ]
+  },
+  "languages": {
+    "en": {
+      "badges": [
+        "Turnkey factory",
+        "Installation + Training",
+        "Food-grade 304"
+      ],
+      "name": "Turnkey Sauce Production Line",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "Cooking · mixing · filling · capping · labelling · packaging",
+      "trust": "One supplier — we build, install & train",
+      "cta": "Get your factory quote on WhatsApp"
+    },
+    "fr": {
+      "badges": [
+        "Usine clé en main",
+        "Installation + Formation",
+        "Inox 304 alimentaire"
+      ],
+      "name": "Ligne de Production de Sauce Clé en Main",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "Cuisson · mélange · remplissage · bouchage · étiquetage · emballage",
+      "trust": "Un seul fournisseur — conception, installation & formation",
+      "cta": "Devis de votre usine sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "badges": [
+        "مصنع جاهز بالكامل",
+        "تركيب + تدريب",
+        "ستانلس ستيل 304 غذائي"
+      ],
+      "name": "خط إنتاج صلصة متكامل تسليم مفتاح",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "طبخ · خلط · تعبئة · غلق · ملصقات · تغليف",
+      "trust": "مورد واحد — نصمم ونركّب وندرّب",
+      "cta": "احصل على عرض سعر مصنعك عبر واتساب"
+    },
+    "ru": {
+      "badges": [
+        "Завод под ключ",
+        "Монтаж + обучение",
+        "Пищевая сталь 304"
+      ],
+      "name": "Линия производства соусов под ключ",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "Варка · смешивание · розлив · укупорка · этикетировка · упаковка",
+      "trust": "Один поставщик — проектируем, монтируем, обучаем",
+      "cta": "Запросите расчёт завода в WhatsApp"
+    }
+  }
+}

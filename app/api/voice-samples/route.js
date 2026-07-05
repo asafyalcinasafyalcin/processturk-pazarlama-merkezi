@@ -2,12 +2,14 @@ import { NextResponse } from 'next/server';
 import { genVoice, voiceCandidates } from '@/lib/providers/gen';
 import { normalizeForTTS } from '@/lib/tts-normalize';
 import { readSettings } from '@/lib/settings';
+import { BRAND } from '@/lib/brand';
 
 export const runtime = 'nodejs';
 export const maxDuration = 180;
 
 // Aynı kısa TR cümleyi aday seslerle üretir → Asaf dinleyip marka sesini seçer.
-const SAMPLE_TR = 'ProcessTürk ile baharatı, kuruyemişi ve granülü saatte 1.000 adede kadar doldurun. Kurulumdan sonra 7/24 uzaktan destek yanınızda.';
+// Marka adı brand.js'ten (BRAND.name) — BRAND_ID yoksa ProcessTürk varsayılanı.
+const SAMPLE_TR = `${BRAND.name} ile baharatı, kuruyemişi ve granülü saatte 1.000 adede kadar doldurun. Kurulumdan sonra 7/24 uzaktan destek yanınızda.`;
 
 export async function POST() {
   try {

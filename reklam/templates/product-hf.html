@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600&family=Cairo:wght@600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
-  :root{ --navy:#071739; --red:#FF3255; }
+  :root{ --navy:__NAVY__; --red:__RED__; }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:__W__px;height:__H__px;overflow:hidden}
   .stage{position:relative;width:__W__px;height:__H__px;overflow:hidden;color:#fff;
-    font-family:'Inter','Noto Sans Arabic',system-ui,sans-serif;background:#071739}
+    font-family:'Inter','Noto Sans Arabic',system-ui,sans-serif;background:var(--navy)}
   /* Higgsfield sahne — tam-kare arka plan (gerçek makine sahnede) */
   .scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
   /* Okunabilirlik perdeleri: üstte logo/badge, altta metin bloğu için */
@@ -48,7 +48,7 @@
     <div class="scrim-bottom"></div>
     <div class="pad">
       <div class="top">
-        <img class="logo" src="__LOGO__" alt="ProcessTürk">
+        <img class="logo" src="__LOGO__" alt="__BRAND__">
         <div class="badgerow"><div class="badge">__BADGE_LINE__</div></div>
       </div>
       <div class="text">
@@ -57,7 +57,7 @@
         <div class="sub">__SUB__</div>
         <div class="trust">__TRUST__</div>
         <div class="cta">__CTA__</div>
-        <div class="site">www.processturk.com</div>
+        <div class="site">__SITE__</div>
       </div>
     </div>
   </div>

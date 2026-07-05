@@ -3,7 +3,7 @@
 Higgsfield SAHNE + marka katmanı = final reklam creative.
 
 hf_scene.py'nin ürettiği tam-kare lifestyle sahnelerinin (<slug>-hf-scene-<size>.png)
-üzerine ProcessTürk marka katmanını (logo, badge, başlık, fiyat, alt metin, CTA, site)
+üzerine marka katmanını (logo, badge, başlık, fiyat, alt metin, CTA, site)
 templates/product-hf.html ile basar. Eski cutout creative'lerini EZMEZ; çıktı:
   <slug>-hf-<lang>-<size>.png
 
@@ -42,6 +42,9 @@ def render(tx: dict, size: str, scene: Path, logo: Path, out: Path,
     }
     for k, v in repl.items():
         tpl = tpl.replace(k, str(v))
+    # Marka token'ları (renk/site/ad) — white-label: BRAND_ID'ye göre değişir.
+    for k, v in mp.BRAND_REPL.items():
+        tpl = tpl.replace(k, html.escape(str(v)) if k in ("__SITE__", "__BRAND__", "__BRAND_NAME__") else str(v))
     tpl = (tpl
            .replace("__LANG__", html.escape(lang))
            .replace("__DIR__", "rtl" if rtl else "ltr")
