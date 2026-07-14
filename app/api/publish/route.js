@@ -123,12 +123,21 @@ export async function POST(request) {
         ? 'Otomatik için: GOOGLE_CLIENT_ID + GOOGLE_REFRESH_TOKEN + YOUTUBE_CHANNEL_ID ekle.'
         : undefined,
     };
+    // Assisted = hiçbir şey gerçekten yayınlanmadı; kullanıcı elle yükleyecek.
+    // Bu yüzden 'published' DEĞİL, 'manual_action_required' olur (publishedAt=null).
     const updated = await updateItem(id, {
-      status: 'published',
-      publishedAt: new Date().toISOString(),
+      status: 'manual_action_required',
+      publishedAt: null,
       result: { method: 'assisted', platform: item.platform, package: pkg },
     });
-    return NextResponse.json({ ok: true, method: 'assisted', package: pkg, item: updated });
+    return NextResponse.json({
+      ok: true,
+      method: 'assisted',
+      published: false,                   // istemciye net sinyal
+      status: 'manual_action_required',
+      package: pkg,
+      item: updated,
+    });
   } catch (err) {
     return NextResponse.json({ ok: false, error: err.message }, { status: 500 });
   }

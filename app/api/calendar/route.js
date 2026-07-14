@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { readCalendar, addItem, updateItem, deleteItem } from '@/lib/calendar';
+import { readCalendar, addItem, updateItem, deleteItem, getItem } from '@/lib/calendar';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,7 +31,13 @@ export async function PATCH(request) {
     const { id, ...patch } = await request.json();
     if (!id) return NextResponse.json({ ok: false, error: 'id zorunlu' }, { status: 400 });
     // Güvenlik: bu uçtan 'published' yapılamaz — yayın yalnızca /api/publish üzerinden.
-    if (patch.status === 'published') delete patch.status;
+    // TEK istisna: assisted paketi elle yüklenmiş öğe (manual_action_required) manuel
+    // olarak 'published' işaretlenebilir (gerçek yayın API'si olmayan TikTok/YouTube akışı).
+    if (patch.status === 'published') {
+      const current = await getItem(id);
+      if (!current) return NextResponse.json({ ok: false, error: 'Öğe bulunamadı' }, { status: 404 });
+      if (current.status !== 'manual_action_required') delete patch.status;
+    }
     const item = await updateItem(id, patch);
     if (!item) return NextResponse.json({ ok: false, error: 'Öğe bulunamadı' }, { status: 404 });
     return NextResponse.json({ ok: true, item });

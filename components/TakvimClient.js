@@ -3,16 +3,19 @@
 import { useState } from 'react';
 
 const STATUS = {
-  draft:     { label: 'Taslak',      cls: 'pill-muted' },
-  approved:  { label: 'Onaylı',      cls: 'pill-amber' },
-  published: { label: 'Yayınlandı',  cls: 'pill-ok' },
+  draft:                  { label: 'Taslak',       cls: 'pill-muted' },
+  approved:               { label: 'Onaylı',       cls: 'pill-amber' },
+  published:              { label: 'Yayınlandı',   cls: 'pill-ok' },
+  manual_action_required: { label: 'Manuel işlem', cls: 'pill-amber' },
 };
+const FALLBACK_STATUS = { label: 'Bilinmiyor', cls: 'pill-muted' };
 const PLATFORM_LABEL = { instagram: 'Instagram', tiktok: 'TikTok', youtube: 'YouTube', facebook: 'Facebook', linkedin: 'LinkedIn', x: 'X' };
 const REAL = ['instagram', 'facebook', 'linkedin', 'x'];
 
-function ContentModal({ item, names, busy, onApprove, onPublish, onRemove, onClose }) {
+function ContentModal({ item, names, busy, onApprove, onPublish, onMarkPublished, onRemove, onClose }) {
   if (!item) return null;
   const pl = PLATFORM_LABEL[item.platform] || item.platform;
+  const st = STATUS[item.status] || FALLBACK_STATUS;
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50" onClick={onClose}>
       <div className="card p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
@@ -20,7 +23,7 @@ function ContentModal({ item, names, busy, onApprove, onPublish, onRemove, onClo
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="pill pill-muted">{pl}</span>
-            <span className={`pill ${STATUS[item.status].cls}`}>{STATUS[item.status].label}</span>
+            <span className={`pill ${st.cls}`}>{st.label}</span>
             <span className="text-xs text-slate-500">{names[item.slug] || item.slug} · {item.lang?.toUpperCase()}</span>
             {item.variantId && <span className="text-xs text-slate-500">varyant {item.variantId}</span>}
           </div>
@@ -65,7 +68,12 @@ function ContentModal({ item, names, busy, onApprove, onPublish, onRemove, onClo
           )}
           {item.status === 'approved' && (
             <button className="btn btn-primary text-sm" disabled={busy === item.id} onClick={() => onPublish(item)}>
-              {busy === item.id ? '…' : (REAL.includes(item.platform) ? '🚀 Yayınla' : '📦 Paketle & işaretle')}
+              {busy === item.id ? '…' : (REAL.includes(item.platform) ? '🚀 Yayınla' : '📦 Paket / elle yükle')}
+            </button>
+          )}
+          {item.status === 'manual_action_required' && (
+            <button className="btn btn-primary text-sm" disabled={busy === item.id} onClick={() => onMarkPublished(item)}>
+              {busy === item.id ? '…' : '✓ Yayınlandı olarak işaretle'}
             </button>
           )}
           {item.status !== 'published' && (
@@ -107,6 +115,16 @@ export default function TakvimClient({ initialItems, names }) {
     setBusy(null);
   }
 
+  // Assisted paket elle yüklendikten sonra kullanıcı bu öğeyi manuel kapatır.
+  async function markPublished(item) {
+    setBusy(item.id);
+    const res = await fetch('/api/calendar', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: item.id, status: 'published', publishedAt: new Date().toISOString() }) });
+    const data = await res.json();
+    if (data.ok) replace(data.item);
+    else alert('İşaretleme: ' + data.error);
+    setBusy(null);
+  }
+
   async function remove(item) {
     setBusy(item.id);
     await fetch(`/api/calendar?id=${item.id}`, { method: 'DELETE' });
@@ -114,7 +132,7 @@ export default function TakvimClient({ initialItems, names }) {
     setBusy(null); setSelected(null);
   }
 
-  const groups = ['draft', 'approved', 'published'];
+  const groups = ['draft', 'approved', 'manual_action_required', 'published'];
 
   return (
     <div className="space-y-8">
@@ -177,6 +195,7 @@ export default function TakvimClient({ initialItems, names }) {
         busy={busy}
         onApprove={approve}
         onPublish={publish}
+        onMarkPublished={markPublished}
         onRemove={remove}
         onClose={() => setSelected(null)}
       />
