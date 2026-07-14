@@ -35,3 +35,5 @@ data/gen-cache.json
 data/library.json
 data/uploads/
 public/generated/
+# Denetim günlüğü (append-only runtime log) — git'e/imaja girmez
+data/audit-log.jsonl
