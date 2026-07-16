@@ -13,6 +13,7 @@ import { requireSpendConfirm } from '@/lib/credit-guard';
 import { servedToAbs, saveBuffer } from '@/lib/media-store';
 import { readSettings } from '@/lib/settings';
 import { resolveTier, imageModelForTier, DEFAULT_TIER } from '@/lib/quality-tiers';
+import { kurumsalKuyruk } from '@/lib/kurumsal-gorsel';
 
 function loadMaskotConfig() {
   try {
@@ -76,7 +77,10 @@ export async function POST(request) {
     const falSize = fmt.falSize;
     const hfRatio = FAL_TO_HF_RATIO[falSize] || '4:5';
 
-    const prompt = template.buildPrompt(product, lang);
+    // Kurumsal görsel DNA'sını (navy/çelik B2B ton + fotoğrafik kalite + marka-negatifi) HER
+    // template'in prompt'una ekle → reklam görseli, site galerisi ve blog kapağı tek görsel dilde
+    // okunur. gpt-image-1 prompt'u doğrudan okuduğu için ton bu yolla garantilenir.
+    const prompt = [template.buildPrompt(product, lang), kurumsalKuyruk()].join(' ');
     const negativePrompt = template.buildNegativePrompt ? template.buildNegativePrompt() : undefined;
 
     // ── KALİTE TIER → MODEL ──────────────────────────────────────────────────
