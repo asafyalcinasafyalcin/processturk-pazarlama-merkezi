@@ -10,7 +10,7 @@ import { resolveFormat, FAL_TO_HF_RATIO } from '@/lib/platform-format';
 import { downloadAndSave } from '@/lib/download-asset';
 import { addToLibrary } from '@/lib/library';
 import { requireSpendConfirm } from '@/lib/credit-guard';
-import { servedToAbs } from '@/lib/media-store';
+import { servedToAbs, saveBuffer } from '@/lib/media-store';
 import { readSettings } from '@/lib/settings';
 import { resolveTier, imageModelForTier, DEFAULT_TIER } from '@/lib/quality-tiers';
 
@@ -113,11 +113,18 @@ export async function POST(request) {
       ...(hasUploadedImage && !maskotSoulId && { reference_image: refImage }),
     });
 
-    const cdnUrl = result.url;
-    if (!cdnUrl) throw new Error('Görsel URL dönmedi');
-
-    // Yerel kopyala — CDN URL'ler expire olur; panel localPath'ten okur
-    const { localPath } = await downloadAndSave(cdnUrl, slug, 'gorsel');
+    // gpt-image-1 (openai) base64 döndürür → doğrudan depoya yaz (CDN URL yok).
+    // fal/HF ise CDN URL döndürür → indirip yerele kopyala (URL'ler expire olur).
+    let cdnUrl = result.url;
+    let localPath;
+    if (result.b64) {
+      const { servedUrl } = saveBuffer(Buffer.from(result.b64, 'base64'), { slug, type: 'gorsel', ext: 'png' });
+      localPath = servedUrl;
+      cdnUrl = cdnUrl || servedUrl; // openai'de kanonik yol yerel served URL'dir
+    } else {
+      if (!cdnUrl) throw new Error('Görsel URL dönmedi');
+      ({ localPath } = await downloadAndSave(cdnUrl, slug, 'gorsel'));
+    }
 
     const hasRealImage = Boolean(resolveProductImagePath(product));
 
