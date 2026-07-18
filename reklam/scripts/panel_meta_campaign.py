@@ -4,7 +4,7 @@ Panel-odaklı Meta (Facebook/Instagram) Click-to-WhatsApp kampanya planı.
 
 Pazarlama Komuta Merkezi (4181) "Reklama çık" akışı bunu çağırır. Sabit COPY yerine
 KAYNAKTAN besler:
-  - ürün/fiyat/spec     → Meta_Reklam_Sistemi/data/products.json (tek kaynak)
+  - ürün/fiyat/spec     → <uygulama kökü>/data/products.json (tek kaynak)
   - reklam metni        → panelin content.json'ı (fal any-llm ile üretilen varyantlar)
   - video creative      → content.json video URL'i (fal-hosted)
 

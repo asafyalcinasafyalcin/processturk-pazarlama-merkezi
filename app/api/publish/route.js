@@ -7,6 +7,15 @@ import { BRAND } from '@/lib/brand';
 // Marka hashtag'i brand.js'ten (BRAND.name) — BRAND_ID yoksa ProcessTürk varsayılanı.
 const TAG = `#${String(BRAND.name).replace(/\s+/g, '')}`;
 
+// Sosyal Yayın Servisi (4173) basic-auth arkasındadır — /api/health dışındaki her uç
+// kimlik ister. Kimlik verilmezse yayın çağrıları 401 alır ve SESSİZCE yayınlanmaz.
+function sosyalYayinBasligi() {
+  const k = process.env.ICERIK_AJANI_KULLANICI;
+  const p = process.env.ICERIK_AJANI_PAROLA;
+  if (!k || !p) return {};
+  return { Authorization: 'Basic ' + Buffer.from(`${k}:${p}`).toString('base64') };
+}
+
 // Relative URL'leri absolute'a çevir (Meta Graph API public URL gerektirir)
 function resolveMediaUrl(url) {
   if (!url) return url;
@@ -47,7 +56,7 @@ export async function POST(request) {
       }
     }
 
-    // Gerçek yayın: LinkedIn / X (icerik-ajani köprüsü)
+    // Gerçek yayın: LinkedIn / X (Sosyal Yayın Servisi köprüsü — Processturk_Linkedin_Sistemi)
     if (ICERIK_PUBLISH.includes(item.platform)) {
       const base = process.env.ICERIK_AJANI_URL || 'http://127.0.0.1:4173';
       const endpoint = `${base}/api/publish/${item.platform}`;
@@ -55,8 +64,15 @@ export async function POST(request) {
       try {
         res = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: item.caption, imageUrl: resolveMediaUrl(item.imageUrl) || undefined }),
+          headers: { 'Content-Type': 'application/json', ...sosyalYayinBasligi() },
+          body: JSON.stringify({
+            text: item.caption,
+            imageUrl: resolveMediaUrl(item.imageUrl) || undefined,
+            // LinkedIn kimliği: kurumsal sayfa mı, kişisel profil mi. Geçilmezse
+            // servis LINKEDIN_PUBLISH_AS varsayılanına düşer — bu yüzden takvim
+            // öğesinde seçim varsa MUTLAKA iletilmeli (yanlış hesaptan yayın riski).
+            ...(item.platform === 'linkedin' && item.publishAs ? { publishAs: item.publishAs } : {}),
+          }),
         });
         data = await res.json();
       } catch (e) {

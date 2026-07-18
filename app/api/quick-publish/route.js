@@ -2,6 +2,15 @@ import { NextResponse } from 'next/server';
 import { publishMetaAuto } from '@/lib/meta-publish';
 import { audit } from '@/lib/audit';
 
+// Sosyal Yayın Servisi (4173) basic-auth arkasındadır — /api/health dışındaki her uç
+// kimlik ister. Kimlik verilmezse yayın çağrıları 401 alır ve SESSİZCE yayınlanmaz.
+function sosyalYayinBasligi() {
+  const k = process.env.ICERIK_AJANI_KULLANICI;
+  const p = process.env.ICERIK_AJANI_PAROLA;
+  if (!k || !p) return {};
+  return { Authorization: 'Basic ' + Buffer.from(`${k}:${p}`).toString('base64') };
+}
+
 export const runtime = 'nodejs';
 export const maxDuration = 120;
 
@@ -28,7 +37,7 @@ export async function POST(request) {
   } catch {
     body = {};
   }
-  const { platform, imageUrl, videoUrl, caption, hashtags = [], actor, confirm } = body;
+  const { platform, imageUrl, videoUrl, caption, hashtags = [], actor, confirm, publishAs } = body;
 
   // Ortak audit tabanı (her çıkış öncesi audit(...) çağrılır).
   const base = {
@@ -88,15 +97,23 @@ export async function POST(request) {
       }
     }
 
-    // ── icerik-ajani köprüsü (LinkedIn / X) ──
+    // ── Sosyal Yayın Servisi köprüsü (LinkedIn / X) ──
     if (ICERIK_PLATFORMS.includes(platform)) {
       const apiBase = process.env.ICERIK_AJANI_URL || 'http://127.0.0.1:4173';
       const endpoint = `${apiBase}/api/publish/${platform}`;
+      const liAs = publishAs === 'organization' || publishAs === 'person' ? publishAs : null;
       try {
         const res = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: fullCaption, imageUrl: imageUrl || undefined, videoUrl: videoUrl || undefined }),
+          headers: { 'Content-Type': 'application/json', ...sosyalYayinBasligi() },
+          body: JSON.stringify({
+            text: fullCaption,
+            imageUrl: imageUrl || undefined,
+            videoUrl: videoUrl || undefined,
+            // LinkedIn kurumsal sayfa / kişisel profil seçimi. Geçilmezse servis
+            // LINKEDIN_PUBLISH_AS varsayılanına düşer (yanlış hesap riski).
+            ...(platform === 'linkedin' && liAs ? { publishAs: liAs } : {}),
+          }),
         });
         const data = await res.json();
         if (!res.ok || data?.ok === false) {

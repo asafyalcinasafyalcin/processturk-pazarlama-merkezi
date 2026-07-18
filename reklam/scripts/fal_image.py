@@ -7,7 +7,7 @@ Yazı (rakam, başlık, CTA) sonradan render_creative.py ile marka overlay'ı ol
 Kullanım:
   python3 fal_image.py --prompt "..." --out base.png [--model fal-ai/flux/dev] [--width 1080 --height 1350]
 
-Anahtar: FAL_KEY ortam değişkeninden veya Meta_Reklam_Sistemi/.env.local dosyasından.
+Anahtar: FAL_KEY ortam değişkeninden veya <uygulama kökü>/.env.local dosyasından.
 Maliyet notu: varsayılan model flux/dev (ucuz/test). Kaliteyi yükseltmek için
 --model fal-ai/flux-pro/v1.1 gibi bir modele geç.
 """
@@ -43,7 +43,7 @@ def generate(prompt: str, out: Path, model: str, width: int, height: int) -> Pat
     key = os.environ.get("FAL_KEY") or os.environ.get("FAL_API_KEY")
     if not key:
         sys.exit(
-            "FAL_KEY bulunamadı. Meta_Reklam_Sistemi/.env.local içine 'FAL_KEY=...' ekle "
+            "FAL_KEY bulunamadı. <uygulama kökü>/.env.local içine 'FAL_KEY=...' ekle "
             "veya ortam değişkeni olarak ver."
         )
 

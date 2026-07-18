@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Resmi satış fiyatlarını Excel'den okuyup `data/products.json` (tek kaynak) üretir.
-Kaynak: Meta_Reklam_Sistemi/machine_list_chatbot_products_satis_fiyatli.xlsx (Satis_Tablosu sayfası).
+Kaynak: <uygulama kökü>/machine_list_chatbot_products_satis_fiyatli.xlsx (Satis_Tablosu sayfası).
 Satış Fiyatı = Satınalma × 1.15 (Excel'de hazır). openpyxl gerekmez — stdlib zip+xml ile parse.
 
 Excel güncellenince: python3 scripts/import_prices.py  → products.json yenilenir.

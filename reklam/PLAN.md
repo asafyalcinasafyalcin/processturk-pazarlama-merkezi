@@ -25,8 +25,14 @@ Kullanıcı kararları (2026-06-18):
 
 ## Mimari
 
+> ℹ️ **2026-07-18 notu:** Bu plan yazıldığında kod ayrı bir `Meta_Reklam_Sistemi/`
+> klasöründe kurgulanmıştı. Gerçekte buraya, `Processturk_Pazarlama_Merkezi/reklam/`
+> altına inşa edildi. Eski klasör boş bir iskelet olarak kalmıştı ve arşivlendi
+> (`_ARSIV_2026/Processturk_Meta_Reklam_Sistemi-olu-iskelet-2026-07-18/`).
+> Aşağıdaki ağaç **tarihsel plandır**; güncel yapı için bu klasörün kendisine bak.
+
 ```
-Meta_Reklam_Sistemi/
+reklam/                    ← (planda: Meta_Reklam_Sistemi/)
   PLAN.md                  ← bu dosya
   AGENT.md                 ← reklam ajanı sözleşmesi (üretilecek)
   skills/
