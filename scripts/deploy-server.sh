@@ -72,7 +72,12 @@ docker run -d \
   --label "traefik.http.services.pazarlama-https.loadbalancer.server.port=4181" \
   --label "traefik.http.routers.pazarlama-media.entryPoints=https" \
   --label "traefik.http.routers.pazarlama-media.rule=($HOST_RULE) && PathPrefix(\`/api/media\`)" \
-  --label "traefik.http.routers.pazarlama-media.middlewares=pazarlama-gzip" \
+  `# ⚠️ Bu router'a GZIP EKLEME. Traefik'in compress middleware'i yaniti yeniden` \
+  `# kodladigi icin Range isteklerini bozar: 206 → 200'e duser ve Accept-Ranges` \
+  `# silinir. Sonuc: tarayici videoda SEEK YAPAMAZ → kucuk resimlerde ilk kare` \
+  `# cizilmez (siyah/bos kutu) ve uzun videoda ileri sarma calismaz.` \
+  `# Ayrica mp4/jpg/png ZATEN sikistirilmis formatlardir; gzip fayda saglamaz.` \
+  `# (2026-07-19'da teshis edildi: yerelde 206, canlida 200 → fark bu middleware.)` \
   --label "traefik.http.routers.pazarlama-media.service=pazarlama-https" \
   --label "traefik.http.routers.pazarlama-media.tls=true" \
   --label "traefik.http.routers.pazarlama-media.tls.certresolver=letsencrypt" \
