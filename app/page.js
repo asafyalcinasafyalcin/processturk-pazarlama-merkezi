@@ -52,13 +52,18 @@ function ProductCard({ p, content, status }) {
   const S = status.steps;
   return (
     <Link href={`/urun/${p.slug}`} className="card card-hover p-5 flex flex-col">
+      {/* Görsel alanı: object-COVER ile kutuyu tamamen doldurur.
+          Eskiden object-contain idi → 4:3 fotoğraf 2.2:1 kutuya sığdırılıyor, iki yanda
+          beyaz boşluk kalıyor ve makine ortada ufacık duruyordu (Asaf geri bildirimi).
+          Kutu oranı da 3:2'ye çekildi: kaynak fotoğraflar 4:3 olduğu için kırpma azalır,
+          makine gövdesi kadraj dışında kalmaz. object-center üstü/altı dengeli kırpar. */}
       {img ? (
-        <div className="-mx-5 -mt-5 mb-4 h-40 overflow-hidden rounded-t-[1.05rem] bg-white">
+        <div className="-mx-5 -mt-5 mb-4 aspect-[3/2] overflow-hidden rounded-t-[1.05rem] bg-slate-50">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img} alt={m.name_tr || p.name_en} className="w-full h-full object-contain" loading="lazy" />
+          <img src={img} alt={m.name_tr || p.name_en} className="w-full h-full object-cover object-center" loading="lazy" />
         </div>
       ) : (
-        <div className="-mx-5 -mt-5 mb-4 h-40 rounded-t-[1.05rem] bg-slate-100 flex items-center justify-center text-3xl text-slate-300">📦</div>
+        <div className="-mx-5 -mt-5 mb-4 aspect-[3/2] rounded-t-[1.05rem] bg-slate-100 flex items-center justify-center text-3xl text-slate-300">📦</div>
       )}
       <div className="flex items-start justify-between gap-3">
         <div>
