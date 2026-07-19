@@ -108,7 +108,7 @@ export default function AssetLibrary({ slug }) {
                     {a.type === 'gorsel' && mediaUrl ? (
                       <img src={mediaUrl} alt="görsel" className="w-full h-full object-cover" />
                     ) : a.type === 'video' && mediaUrl ? (
-                      <video src={mediaUrl} className="w-full h-full object-cover" muted />
+                      <video src={`${mediaUrl}#t=0.1`} className="w-full h-full object-cover bg-slate-100" muted playsInline preload="metadata" />
                     ) : (
                       <span className="text-4xl opacity-40">{(TYPE_LABEL[a.type] || '📄').split(' ')[0]}</span>
                     )}

@@ -88,7 +88,7 @@ export default function ArsivClient() {
               className="border border-line rounded-xl overflow-hidden text-left hover:border-navy/50 hover:shadow-sm transition bg-white">
               <div className="aspect-square bg-slate-50 flex items-center justify-center overflow-hidden">
                 {a.type === 'gorsel' && mediaUrl ? <img src={mediaUrl} alt="" className="w-full h-full object-cover" />
-                  : a.type === 'video' && mediaUrl ? <video src={mediaUrl} className="w-full h-full object-cover" muted />
+                  : a.type === 'video' && mediaUrl ? <video src={`${mediaUrl}#t=0.1`} className="w-full h-full object-cover bg-slate-100" muted playsInline preload="metadata" />
                   : <span className="text-3xl opacity-40">{(TYPE_LABEL[a.type] || '📄').split(' ')[0]}</span>}
               </div>
               <div className="p-2">

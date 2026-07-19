@@ -158,8 +158,11 @@ export default function TakvimClient({ initialItems, names }) {
                   onClick={() => setSelected(it)}>
                   <div className="flex items-start gap-3">
                     {it.videoUrl ? (
-                      <video src={it.videoUrl} muted playsInline preload="metadata"
-                        className="w-16 h-16 rounded object-cover border border-line bg-black shrink-0" />
+                      /* #t=0.1 → tarayıcı 0,1. saniyeye konumlanır ve O KAREYİ çizer.
+                         Onsuz `preload="metadata"` yalnız süre/boyut yükler, görüntü
+                         çizmez → küçük resim SİYAH kutu olarak görünür (Asaf bildirimi). */
+                      <video src={`${it.videoUrl}#t=0.1`} muted playsInline preload="metadata"
+                        className="w-16 h-16 rounded object-cover border border-line bg-slate-100 shrink-0" />
                     ) : it.imageUrl ? (
                       <img src={it.imageUrl} alt="" loading="lazy"
                         className="w-16 h-16 rounded object-cover border border-line shrink-0" />

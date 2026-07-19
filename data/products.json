@@ -251,11 +251,20 @@
         }
       },
       "image": {
-        "source": "http://127.0.0.1:4192/img/products/granul-dolum-makinesi.jpg",
-        "servedUrl": "/api/media/granul-dolum-gorsel-1783208582564-wyea.jpg"
+        "source": "http://127.0.0.1:4192/img/urun/granul-dolum-makinesi.jpg",
+        "servedUrl": "/api/media/granul-dolum-gorsel-1784440770826-hyj0.jpg"
       },
-      "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.976Z",
+      "gallery": [
+        {
+          "source": "http://127.0.0.1:4192/img/uygulama/granul-dolum-makinesi-cikti.jpg",
+          "servedUrl": "/api/media/granul-dolum-gorsel-1784440770838-58t8.jpg"
+        },
+        {
+          "source": "http://127.0.0.1:4192/img/uygulama/granul-dolum-makinesi-sahne.jpg",
+          "servedUrl": "/api/media/granul-dolum-gorsel-1784440770845-onx9.jpg"
+        }
+      ],
+      "syncedAt": "2026-07-19T05:59:30.851Z",
       "removedFromSite": null
     }
   },
@@ -461,7 +470,7 @@
         "servedUrl": "/api/media/manuel-etiketleme-gorsel-1783208582707-17pu.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.977Z",
+      "syncedAt": "2026-07-19T05:59:30.861Z",
       "removedFromSite": null
     }
   },
@@ -765,8 +774,8 @@
         }
       },
       "image": {
-        "source": "http://127.0.0.1:4192/img/products/sivi-dolum-hatti.jpg",
-        "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1783208582580-8up8.jpg"
+        "source": "http://127.0.0.1:4192/img/urun/sivi-dolum-hatti.jpg",
+        "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1784440770855-sa1f.jpg"
       },
       "gallery": [
         {
@@ -774,7 +783,7 @@
           "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1783208582647-y2cf.jpg"
         }
       ],
-      "syncedAt": "2026-07-13T19:30:38.976Z",
+      "syncedAt": "2026-07-19T05:59:30.856Z",
       "removedFromSite": null
     }
   },
@@ -957,7 +966,7 @@
         "servedUrl": "/api/media/etiketleme-yari-gorsel-1783208637895-ok8k.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.978Z",
+      "syncedAt": "2026-07-19T05:59:30.862Z",
       "removedFromSite": null
     }
   },
@@ -1231,7 +1240,7 @@
           "servedUrl": "/api/media/etiketleme-oto-gorsel-1783208637913-iftu.jpg"
         }
       ],
-      "syncedAt": "2026-07-13T19:30:38.978Z",
+      "syncedAt": "2026-07-19T05:59:30.863Z",
       "removedFromSite": null
     }
   },
@@ -1515,7 +1524,7 @@
         "servedUrl": "/api/media/tek-hat-kapatma-gorsel-1783208637929-zy0f.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.979Z",
+      "syncedAt": "2026-07-19T05:59:30.864Z",
       "removedFromSite": null
     }
   },
@@ -1697,7 +1706,7 @@
         "servedUrl": "/api/media/iki-hat-kapatma-gorsel-1783208637945-vh5z.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.980Z",
+      "syncedAt": "2026-07-19T05:59:30.865Z",
       "removedFromSite": null
     }
   },
@@ -1872,7 +1881,7 @@
         "servedUrl": "/api/media/can-kapatma-oto-gorsel-1783208637960-7yh1.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.980Z",
+      "syncedAt": "2026-07-19T05:59:30.867Z",
       "removedFromSite": null
     }
   },
@@ -2284,7 +2293,7 @@
         "servedUrl": "/api/media/sos-hatti-anahtar-teslim-gorsel-1783208638235-1pmw.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.992Z",
+      "syncedAt": "2026-07-19T05:59:30.885Z",
       "removedFromSite": null
     }
   },
@@ -2558,7 +2567,7 @@
         "servedUrl": "/api/media/homojenizator-gorsel-1783208637970-7wra.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.981Z",
+      "syncedAt": "2026-07-19T05:59:30.869Z",
       "removedFromSite": null
     }
   },
@@ -2848,7 +2857,7 @@
         "servedUrl": "/api/media/pastorizator-gorsel-1783208637979-ksbd.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.982Z",
+      "syncedAt": "2026-07-19T05:59:30.871Z",
       "removedFromSite": null
     }
   },
@@ -3024,7 +3033,7 @@
         "servedUrl": "/api/media/plakali-esanjor-gorsel-1783208637992-812u.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.982Z",
+      "syncedAt": "2026-07-19T05:59:30.872Z",
       "removedFromSite": null
     }
   },
@@ -3300,7 +3309,7 @@
         "servedUrl": "/api/media/vakum-evaporator-gorsel-1783208638007-dtw9.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.983Z",
+      "syncedAt": "2026-07-19T05:59:30.873Z",
       "removedFromSite": null
     }
   },
@@ -3515,7 +3524,7 @@
         "servedUrl": "/api/media/emulsiyon-mikser-tank-gorsel-1783208638035-zgyj.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.985Z",
+      "syncedAt": "2026-07-19T05:59:30.873Z",
       "removedFromSite": null
     }
   },
@@ -3781,7 +3790,7 @@
         "servedUrl": "/api/media/tereyagi-makinesi-gorsel-1783208638052-1ffs.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.985Z",
+      "syncedAt": "2026-07-19T05:59:30.874Z",
       "removedFromSite": null
     }
   },
@@ -4039,7 +4048,7 @@
         "servedUrl": "/api/media/krema-seperator-gorsel-1783208638066-yhk0.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.986Z",
+      "syncedAt": "2026-07-19T05:59:30.875Z",
       "removedFromSite": null
     }
   },
@@ -4273,7 +4282,7 @@
         "servedUrl": "/api/media/klarifikator-gorsel-1783208638080-bi0p.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.987Z",
+      "syncedAt": "2026-07-19T05:59:30.876Z",
       "removedFromSite": null
     }
   },
@@ -4515,7 +4524,7 @@
         "servedUrl": "/api/media/yogurt-dolum-makinesi-gorsel-1783208638089-0kcz.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.987Z",
+      "syncedAt": "2026-07-19T05:59:30.878Z",
       "removedFromSite": null
     }
   },
@@ -4757,7 +4766,7 @@
         "servedUrl": "/api/media/pisirici-kazan-gorsel-1783208638104-c36j.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.988Z",
+      "syncedAt": "2026-07-19T05:59:30.879Z",
       "removedFromSite": null
     }
   },
@@ -5164,7 +5173,7 @@
         "servedUrl": "/api/media/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.988Z",
+      "syncedAt": "2026-07-19T05:59:30.880Z",
       "removedFromSite": null
     }
   },
@@ -5516,7 +5525,7 @@
         "servedUrl": "/api/media/sos-mayonez-ketcap-hatti-gorsel-1783208638139-5d10.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.989Z",
+      "syncedAt": "2026-07-19T05:59:30.882Z",
       "removedFromSite": null
     }
   },
@@ -5876,7 +5885,7 @@
           "servedUrl": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638162-5nnq.jpg"
         }
       ],
-      "syncedAt": "2026-07-13T19:30:38.989Z",
+      "syncedAt": "2026-07-19T05:59:30.882Z",
       "removedFromSite": null
     }
   },
@@ -6207,7 +6216,7 @@
         "servedUrl": "/api/media/dolum-paketleme-hatti-gorsel-1783208638185-vvvc.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.990Z",
+      "syncedAt": "2026-07-19T05:59:30.883Z",
       "removedFromSite": null
     }
   },
@@ -6551,7 +6560,7 @@
         "servedUrl": "/api/media/meyve-suyu-konsantre-hatti-gorsel-1783208638201-qrxl.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.991Z",
+      "syncedAt": "2026-07-19T05:59:30.883Z",
       "removedFromSite": null
     }
   },
@@ -6861,7 +6870,7 @@
         "servedUrl": "/api/media/soguk-depolama-konteyner-sistemi-gorsel-1783208638224-kqn6.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-13T19:30:38.991Z",
+      "syncedAt": "2026-07-19T05:59:30.884Z",
       "removedFromSite": null
     }
   },
@@ -7215,7 +7224,7 @@
           "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783360909051-8kho.jpg"
         }
       ],
-      "syncedAt": "2026-07-13T19:30:38.992Z",
+      "syncedAt": "2026-07-19T05:59:30.886Z",
       "removedFromSite": null
     }
   }
