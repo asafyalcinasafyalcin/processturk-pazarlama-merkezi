@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { medyaUrl } from '@/lib/medya-url';
 
 const STATUS = {
   draft:                  { label: 'Taslak',       cls: 'pill-muted' },
@@ -39,7 +40,9 @@ function ContentModal({ item, names, busy, onApprove, onPublish, onMarkPublished
               </a>
             )}
             {item.videoUrl && (
-              <video src={item.videoUrl} controls preload="metadata" playsInline
+              /* Sürümlü URL: Cloudflare'in Range desteklemeyen eski önbellek kopyası
+                 atlanır, böylece oynatıcıda İLERİ SARMA da çalışır. */
+              <video src={medyaUrl(item.videoUrl)} controls preload="metadata" playsInline
                 className="h-24 w-auto rounded object-contain border border-line bg-black" />
             )}
           </div>
@@ -161,7 +164,7 @@ export default function TakvimClient({ initialItems, names }) {
                       /* #t=0.1 → tarayıcı 0,1. saniyeye konumlanır ve O KAREYİ çizer.
                          Onsuz `preload="metadata"` yalnız süre/boyut yükler, görüntü
                          çizmez → küçük resim SİYAH kutu olarak görünür (Asaf bildirimi). */
-                      <video src={`${it.videoUrl}#t=0.1`} muted playsInline preload="metadata"
+                      <video src={medyaUrl(it.videoUrl, { kare: true })} muted playsInline preload="metadata"
                         className="w-16 h-16 rounded object-cover border border-line bg-slate-100 shrink-0" />
                     ) : it.imageUrl ? (
                       <img src={it.imageUrl} alt="" loading="lazy"

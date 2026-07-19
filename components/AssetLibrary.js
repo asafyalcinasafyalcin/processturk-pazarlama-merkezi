@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { medyaUrl } from '@/lib/medya-url';
 
 const TYPE_LABEL = { gorsel: '🖼️ Görsel', video: '🎬 Video', ses: '🎙️ Ses', metin: '✍️ Metin' };
 const TYPE_ORDER = ['all', 'gorsel', 'video', 'ses', 'metin'];
@@ -108,7 +109,7 @@ export default function AssetLibrary({ slug }) {
                     {a.type === 'gorsel' && mediaUrl ? (
                       <img src={mediaUrl} alt="görsel" className="w-full h-full object-cover" />
                     ) : a.type === 'video' && mediaUrl ? (
-                      <video src={`${mediaUrl}#t=0.1`} className="w-full h-full object-cover bg-slate-100" muted playsInline preload="metadata" />
+                      <video src={medyaUrl(mediaUrl, { kare: true })} className="w-full h-full object-cover bg-slate-100" muted playsInline preload="metadata" />
                     ) : (
                       <span className="text-4xl opacity-40">{(TYPE_LABEL[a.type] || '📄').split(' ')[0]}</span>
                     )}

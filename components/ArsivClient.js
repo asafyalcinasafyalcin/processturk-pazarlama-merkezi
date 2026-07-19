@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { medyaUrl } from '@/lib/medya-url';
 import Link from 'next/link';
 
 const TYPE_LABEL = { gorsel: '🖼️ Görsel', video: '🎬 Video', ses: '🎙️ Ses', metin: '✍️ Metin' };
@@ -88,7 +89,7 @@ export default function ArsivClient() {
               className="border border-line rounded-xl overflow-hidden text-left hover:border-navy/50 hover:shadow-sm transition bg-white">
               <div className="aspect-square bg-slate-50 flex items-center justify-center overflow-hidden">
                 {a.type === 'gorsel' && mediaUrl ? <img src={mediaUrl} alt="" className="w-full h-full object-cover" />
-                  : a.type === 'video' && mediaUrl ? <video src={`${mediaUrl}#t=0.1`} className="w-full h-full object-cover bg-slate-100" muted playsInline preload="metadata" />
+                  : a.type === 'video' && mediaUrl ? <video src={medyaUrl(mediaUrl, { kare: true })} className="w-full h-full object-cover bg-slate-100" muted playsInline preload="metadata" />
                   : <span className="text-3xl opacity-40">{(TYPE_LABEL[a.type] || '📄').split(' ')[0]}</span>}
               </div>
               <div className="p-2">
