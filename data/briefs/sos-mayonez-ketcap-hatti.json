@@ -1,0 +1,28 @@
+{
+  "slug": "sos-mayonez-ketcap-hatti",
+  "approved": false,
+  "highlights": [
+    "Yüksek kesme mikseri ile mükemmel kıvam",
+    "1-8 ton/gün kapasite aralığı",
+    "Reçete desteği ve emülsiyon stabilitesi"
+  ],
+  "target_industries": [
+    "Gıda üretimi",
+    "HORECA tedarikçileri",
+    "Private-label üreticiler"
+  ],
+  "ideal_customer": "Sos ve mayonez markası kurmak isteyen girişimciler.",
+  "pain_points": [
+    "Ürün kıvam ve stabilite sorunları",
+    "Farklı ambalajlara dolum zorluğu"
+  ],
+  "dont_say": [
+    "en ucuz",
+    "ithal",
+    "Avrupa menşeli"
+  ],
+  "image_notes": "Gıda işleme hattı, mikser ve dolum ekipmanları",
+  "website_source": "http://127.0.0.1:4192/tr/hatlar/sos-mayonez-ketcap-hatti",
+  "last_updated": "2026-07-06T18:03:28.970Z",
+  "_generated_by": "brief/import / gpt-4o (site verisi, topraklamalı)"
+}

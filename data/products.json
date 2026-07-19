@@ -44,10 +44,7 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging",
-          "ar": "التعبئة والتغليف",
-          "fr": "Remplissage & Emballage",
-          "ru": "Наполнение и Упаковка"
+          "en": "Filling & Packaging"
         }
       },
       "capacity": "600 – 1000 adet/saat",
@@ -178,12 +175,87 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Ağırlık bazlı hassas dozajlama ile granül ürünleri güvenilir şekilde paketler. Kompakt gövdesi ve kolay temizliği ile küçük-orta ölçekli tesisler için idealdir.",
+          "en": "Reliably packs granular products with weight-based precise dosing. Compact body and easy cleaning make it ideal for small-to-mid scale plants.",
+          "ar": "تعبئة موثوقة للمنتجات الحبيبية مع جرعة دقيقة تعتمد على الوزن. مثالي للمصانع الصغيرة والمتوسطة بفضل هيكله المدمج وسهولة تنظيفه.",
+          "fr": "Emballage fiable de produits granulés avec dosage précis basé sur le poids. Idéal pour les usines de petite à moyenne taille grâce à son corps compact et à son nettoyage facile.",
+          "ru": "Надежная упаковка гранулированных продуктов с точным дозированием на основе веса. Идеально подходит для малых и средних предприятий благодаря своему компактному корпусу и легкости в очистке."
+        },
+        "capacityOptions": [
+          "300 – 600 adet/saat",
+          "600 – 1.000 adet/saat",
+          "1.000 – 1.500 adet/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Doypack",
+            "en": "Doypack",
+            "ar": "دوياك",
+            "fr": "Doypack",
+            "ru": "Дойпак"
+          },
+          {
+            "tr": "Kutu",
+            "en": "Box",
+            "ar": "صندوق",
+            "fr": "Boîte",
+            "ru": "Коробка"
+          },
+          {
+            "tr": "Kavanoz",
+            "en": "Jar",
+            "ar": "جرة",
+            "fr": "Bocal",
+            "ru": "Банка"
+          },
+          {
+            "tr": "PE torba",
+            "en": "PE bag",
+            "ar": "كيس PE",
+            "fr": "Sac PE",
+            "ru": "ПЭ мешок"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Çift terazi",
+            "en": "Double scale",
+            "ar": "ميزان مزدوج",
+            "fr": "Balance double",
+            "ru": "Двойные весы"
+          },
+          {
+            "tr": "Tarih kodlama",
+            "en": "Date coding",
+            "ar": "ترميز التاريخ",
+            "fr": "Codage de la date",
+            "ru": "Кодирование даты"
+          },
+          {
+            "tr": "Konveyör çıkışı",
+            "en": "Conveyor output",
+            "ar": "مخرج الناقل",
+            "fr": "Sortie du convoyeur",
+            "ru": "Выход конвейера"
+          }
+        ],
+        "fitNote": {
+          "tr": "Granül akışkanlığı, ürün yoğunluğu, paket ağırlığı, ambalaj tipi ve kapasite hedefinize göre dozaj sistemi mühendislik ekibimizce uyarlanır.",
+          "en": "The dosing system is adapted by our engineers to your granule flowability, bulk density, pack weight, packaging type and capacity target.",
+          "ar": "يتم تخصيص نظام الجرعات من قبل فريق الهندسة لدينا وفقًا لسيولة الحبيبات وكثافة المنتج ووزن العبوة ونوع التعبئة وهدف السعة الخاص بك.",
+          "fr": "Le système de dosage est personnalisé par notre équipe d'ingénierie en fonction de la fluidité granulaire, de la densité du produit, du poids de l'emballage, du type d'emballage et de votre objectif de capacité.",
+          "ru": "Система дозирования настраивается нашей инженерной командой в зависимости от гранулярной текучести, плотности продукта, веса упаковки, типа упаковки и вашей целевой мощности."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/granul-dolum-makinesi.jpg",
         "servedUrl": "/api/media/granul-dolum-gorsel-1783208582564-wyea.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.898Z",
+      "syncedAt": "2026-07-13T19:30:38.976Z",
       "removedFromSite": null
     }
   },
@@ -270,10 +342,7 @@
         "slug": "etiketleme",
         "name": {
           "tr": "Etiketleme",
-          "en": "Labeling",
-          "ar": "التوسيم",
-          "fr": "Étiquetage",
-          "ru": "Маркировка"
+          "en": "Labeling"
         }
       },
       "capacity": "300 – 600 adet/saat",
@@ -349,12 +418,50 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Şişe ve kavanoz gibi yuvarlak kaplara düzgün etiket uygulaması için ekonomik giriş çözümü. Elektrik gerektirmez, kolay taşınır.",
+          "en": "An economical entry solution for applying neat labels to round containers like bottles and jars. No electricity required, easy to move.",
+          "ar": "حل دخول اقتصادي لتطبيق العلامات بدقة على الحاويات الدائرية مثل الزجاجات والبرطمانات. لا يتطلب كهرباء، سهل النقل.",
+          "fr": "Une solution d'entrée économique pour appliquer des étiquettes avec précision sur des conteneurs ronds comme des bouteilles et des bocaux. Ne nécessite pas d'électricité, facilement portable.",
+          "ru": "Экономичное решение для точного нанесения этикеток на круглые контейнеры, такие как бутылки и банки. Не требует электричества, легко переносится."
+        },
+        "capacityOptions": [
+          "300 – 600 adet/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Tek yüz etiket",
+            "en": "Single face label",
+            "ar": "ملصق وجه واحد",
+            "fr": "Étiquette à face unique",
+            "ru": "Этикетка с одной стороны"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Tarih kodlama aparatı",
+            "en": "Date coding device",
+            "ar": "جهاز ترميز التاريخ",
+            "fr": "Appareil de codage de date",
+            "ru": "Устройство для кодирования даты"
+          }
+        ],
+        "fitNote": {
+          "tr": "Ambalaj çapı ve formu, etiket ölçüsü ve günlük adet hedefinize göre konfigürasyon uyarlanır.",
+          "en": "Configuration is adapted to your container diameter and shape, label size and daily output target.",
+          "ar": "سيتم تعديل التكوين وفقًا لقطر وشكل العبوة، وحجم الملصق، وهدف الكمية اليومية الخاص بك.",
+          "fr": "La configuration sera adaptée en fonction du diamètre et de la forme de l'emballage, de la taille de l'étiquette et de votre objectif de quantité quotidienne.",
+          "ru": "Конфигурация будет адаптирована в зависимости от диаметра и формы упаковки, размера этикетки и вашей целевой ежедневной нормы."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/manuel-etiketleme-makinesi.jpg",
         "servedUrl": "/api/media/manuel-etiketleme-gorsel-1783208582707-17pu.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.902Z",
+      "syncedAt": "2026-07-13T19:30:38.977Z",
       "removedFromSite": null
     }
   },
@@ -403,10 +510,7 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging",
-          "ar": "التعبئة والتغليف",
-          "fr": "Remplissage & Emballage",
-          "ru": "Наполнение и Упаковка"
+          "en": "Filling & Packaging"
         }
       },
       "capacity": "500 – 2.500 adet/saat",
@@ -585,6 +689,81 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Yağ, sos, deterjan ve içecek gibi sıvı ürünleri yüksek hassasiyetle doldurur. Servo nozullar damlatmasız dolum sağlar, hat hızı ürüne göre ayarlanır.",
+          "en": "Fills liquid products such as oil, sauce, detergent and beverages with high precision. Servo nozzles ensure drip-free filling; line speed is tuned to the product.",
+          "ar": "يملأ المنتجات السائلة مثل الزيوت والصلصات والمنظفات والمشروبات بدقة عالية. توفر الفوهات السيرفو تعبئة خالية من التنقيط، ويتم ضبط سرعة الخط حسب المنتج.",
+          "fr": "Remplit des produits liquides tels que les huiles, sauces, détergents et boissons avec une haute précision. Les buses servo offrent un remplissage sans gouttes, et la vitesse de la ligne est ajustée en fonction du produit.",
+          "ru": "Заполняет жидкие продукты, такие как масла, соусы, моющие средства и напитки, с высокой точностью. Сервоносковки обеспечивают заполнение без капель, а скорость линии настраивается в зависимости от продукта."
+        },
+        "capacityOptions": [
+          "500 – 1.000 şişe/saat",
+          "1.000 – 2.000 şişe/saat",
+          "2.000 – 2.500 şişe/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "PET şişe",
+            "en": "PET bottle",
+            "ar": "زجاجة PET",
+            "fr": "Bouteille en PET",
+            "ru": "ПЭТ бутылка"
+          },
+          {
+            "tr": "Cam şişe",
+            "en": "Glass bottle",
+            "ar": "زجاجة زجاجية",
+            "fr": "Bouteille en verre",
+            "ru": "Стеклянная бутылка"
+          },
+          {
+            "tr": "Bidon",
+            "en": "Drum",
+            "ar": "برميل",
+            "fr": "Fût",
+            "ru": "Бочка"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "6 nozul yükseltme",
+            "en": "6 nozzle upgrade",
+            "ar": "ترقية 6 فوهات",
+            "fr": "Mise à niveau de 6 buses",
+            "ru": "Обновление 6 насадок"
+          },
+          {
+            "tr": "8 nozul yükseltme",
+            "en": "8 nozzle upgrade",
+            "ar": "ترقية 8 فوهات",
+            "fr": "Mise à niveau de 8 buses",
+            "ru": "Обновление 8 насадок"
+          },
+          {
+            "tr": "Kapak kapatma entegrasyonu",
+            "en": "Cap closing integration",
+            "ar": "دمج إغلاق الغطاء",
+            "fr": "Intégration de la fermeture du couvercle",
+            "ru": "Интеграция закрытия крышки"
+          },
+          {
+            "tr": "Etiketleme entegrasyonu",
+            "en": "Labeling integration",
+            "ar": "دمج وضع العلامات",
+            "fr": "Intégration de l'étiquetage",
+            "ru": "Интеграция маркировки"
+          }
+        ],
+        "fitNote": {
+          "tr": "Ürün viskozitesi, köpürme davranışı, şişe formatı, kapak tipi ve kapasite hedefinize göre nozul ve dolum sistemi uyarlanır.",
+          "en": "Nozzles and the filling system are adapted to your product viscosity, foaming behaviour, bottle format, cap type and capacity target.",
+          "ar": "يتم تعديل الفوهة ونظام التعبئة وفقًا لزوجة المنتج وسلوك الرغوة ونموذج الزجاجة ونوع الغطاء وهدف السعة الخاص بك.",
+          "fr": "La buse et le système de remplissage sont adaptés en fonction de la viscosité du produit, du comportement de mousse, du format de la bouteille, du type de bouchon et de votre objectif de capacité.",
+          "ru": "Насадка и система заполнения адаптируются в зависимости от вязкости продукта, поведения пены, формата бутылки, типа крышки и вашей целевой мощности."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/sivi-dolum-hatti.jpg",
         "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1783208582580-8up8.jpg"
@@ -595,7 +774,7 @@
           "servedUrl": "/api/media/sivi-dolum-4nozul-gorsel-1783208582647-y2cf.jpg"
         }
       ],
-      "syncedAt": "2026-07-05T11:45:21.900Z",
+      "syncedAt": "2026-07-13T19:30:38.976Z",
       "removedFromSite": null
     }
   },
@@ -644,10 +823,7 @@
         "slug": "etiketleme",
         "name": {
           "tr": "Etiketleme",
-          "en": "Labeling",
-          "ar": "التوسيم",
-          "fr": "Étiquetage",
-          "ru": "Маркировка"
+          "en": "Labeling"
         }
       },
       "capacity": "10 – 25 adet/dak",
@@ -723,12 +899,65 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Yuvarlak kaplara tek/çift etiket uygulayan yarı otomatik sistem. Hız ayarı ve sensörlü konumlama ile tutarlı sonuç verir.",
+          "en": "Semi-automatic system applying single/double labels to round containers. Speed control and sensor positioning give consistent results.",
+          "ar": "نظام نصف آلي يقوم بتطبيق ملصقات مفردة / مزدوجة على الحاويات المستديرة. يوفر نتائج متسقة مع ضبط السرعة وتحديد المواقع المعتمد على المستشعر.",
+          "fr": "Système semi-automatique appliquant des étiquettes simples/doubles sur des conteneurs ronds. Offre des résultats cohérents grâce à un réglage de la vitesse et un positionnement basé sur des capteurs.",
+          "ru": "Полуавтоматическая система, наносящая одиночные/двойные этикетки на круглые контейнеры. Обеспечивает постоянные результаты с регулировкой скорости и сенсорным позиционированием."
+        },
+        "capacityOptions": [
+          "10 – 25 adet/dak",
+          "25 – 40 adet/dak",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Tek yüz",
+            "en": "Single-sided",
+            "ar": "وجه واحد",
+            "fr": "Unidirectionnel",
+            "ru": "Односторонний"
+          },
+          {
+            "tr": "Çift yüz",
+            "en": "Double-sided",
+            "ar": "وجهين",
+            "fr": "Double face",
+            "ru": "Двусторонний"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Tarih kodlama",
+            "en": "Date coding",
+            "ar": "ترميز التاريخ",
+            "fr": "Codage de date",
+            "ru": "Кодирование даты"
+          },
+          {
+            "tr": "Sayaç",
+            "en": "Counter",
+            "ar": "عداد",
+            "fr": "Compteur",
+            "ru": "Счетчик"
+          }
+        ],
+        "fitNote": {
+          "tr": "Ambalaj formu, etiket ölçüsü, operatör sayısı ve kapasite hedefinize göre konfigürasyon uyarlanır.",
+          "en": "Configuration is adapted to your container shape, label size, operator count and capacity target.",
+          "ar": "يتم تعديل التكوين وفقًا لشكل التعبئة وحجم الملصق وعدد المشغلين وهدف السعة الخاص بك.",
+          "fr": "La configuration est adaptée en fonction de la forme d'emballage, de la taille de l'étiquette, du nombre d'opérateurs et de votre objectif de capacité.",
+          "ru": "Конфигурация адаптируется в зависимости от формы упаковки, размера этикетки, количества операторов и вашей целевой мощности."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/yari-otomatik-etiketleme.jpg",
         "servedUrl": "/api/media/etiketleme-yari-gorsel-1783208637895-ok8k.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.903Z",
+      "syncedAt": "2026-07-13T19:30:38.978Z",
       "removedFromSite": null
     }
   },
@@ -777,10 +1006,7 @@
         "slug": "etiketleme",
         "name": {
           "tr": "Etiketleme",
-          "en": "Labeling",
-          "ar": "التوسيم",
-          "fr": "Étiquetage",
-          "ru": "Маркировка"
+          "en": "Labeling"
         }
       },
       "capacity": "25 – 40 adet/dak",
@@ -927,6 +1153,74 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Hat üzerine entegre, konveyörlü tam otomatik etiketleme. Çoklu etiket, tarih kodlama ve yüksek hat hızıyla seri üretime uygundur.",
+          "en": "Conveyorized, fully automatic labeling integrated into the line. Multi-label, date coding and high line speed make it suitable for serial production.",
+          "ar": "مدمج في الخط ، وضع العلامات التلقائي بالكامل مع ناقل. مناسب للإنتاج الضخم مع ملصقات متعددة ، ترميز التاريخ وسرعات خط عالية.",
+          "fr": "Intégré dans la ligne, étiquetage entièrement automatique avec convoyeur. Convient à la production de masse avec plusieurs étiquettes, codage de date et vitesses de ligne élevées.",
+          "ru": "Интегрирован в линию, конвейерная полностью автоматическая этикетировка. Подходит для серийного производства с несколькими этикетками, кодированием дат и высокой производительностью."
+        },
+        "capacityOptions": [
+          "20 – 40 ürün/dak",
+          "40 – 80 ürün/dak",
+          "80+ ürün/dak",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Tek yüz",
+            "en": "Single-sided",
+            "ar": "جانب واحد",
+            "fr": "Unidirectionnel",
+            "ru": "Односторонний"
+          },
+          {
+            "tr": "Çift yüz",
+            "en": "Double-sided",
+            "ar": "جانبين",
+            "fr": "Double face",
+            "ru": "Двусторонний"
+          },
+          {
+            "tr": "Wrap-around",
+            "en": "Wrap-around",
+            "ar": "التفاف",
+            "fr": "Enveloppement",
+            "ru": "Обертка"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Tarih kodlama",
+            "en": "Date coding",
+            "ar": "ترميز التاريخ",
+            "fr": "Codage de la date",
+            "ru": "Кодирование даты"
+          },
+          {
+            "tr": "Reddetme istasyonu",
+            "en": "Reject station",
+            "ar": "محطة الرفض",
+            "fr": "Station de rejet",
+            "ru": "Станция отклонения"
+          },
+          {
+            "tr": "Konveyör entegrasyonu",
+            "en": "Conveyor integration",
+            "ar": "تكامل الحزام الناقل",
+            "fr": "Intégration du convoyeur",
+            "ru": "Интеграция конвейера"
+          }
+        ],
+        "fitNote": {
+          "tr": "Ambalaj formatı, etiket tipi (tek yüz / çift yüz / sarma), hat hızı ve konveyör entegrasyonunuza göre istasyon uyarlanır.",
+          "en": "The station is adapted to your packaging format, label type (front / front-back / wrap-around), line speed and conveyor integration.",
+          "ar": "يتم تعديل المحطة وفقًا لتنسيق التعبئة ونوع الملصق (جانب واحد / جانب مزدوج / لف) وسرعة الخط وتكامل الحزام الناقل.",
+          "fr": "La station est adaptée en fonction du format d'emballage, du type d'étiquette (simple face / double face / enroulement), de la vitesse de la ligne et de l'intégration du convoyeur.",
+          "ru": "Станция адаптируется в зависимости от формата упаковки, типа ярлыка (односторонний / двусторонний / оберточный), скорости линии и интеграции конвейера."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/tam-otomatik-etiketleme.jpg",
         "servedUrl": "/api/media/etiketleme-oto-gorsel-1783208637907-1jl8.jpg"
@@ -937,7 +1231,7 @@
           "servedUrl": "/api/media/etiketleme-oto-gorsel-1783208637913-iftu.jpg"
         }
       ],
-      "syncedAt": "2026-07-05T11:45:21.903Z",
+      "syncedAt": "2026-07-13T19:30:38.978Z",
       "removedFromSite": null
     }
   },
@@ -1024,10 +1318,7 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging",
-          "ar": "التعبئة والتغليف",
-          "fr": "Remplissage & Emballage",
-          "ru": "Наполнение и Упаковка"
+          "en": "Filling & Packaging"
         }
       },
       "capacity": "500 – 1.500 adet/saat",
@@ -1167,12 +1458,64 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Twist-off ve vidalı kapaklar için tek hatlı otomatik kapatma. Tork ayarı ile sızdırmaz, tutarlı kapatma sağlar.",
+          "en": "Single-lane automatic closing for twist-off and screw caps. Torque control ensures leak-proof, consistent closure.",
+          "ar": "إغلاق تلقائي لغطاء Twist-off وغطاء لولبي بخط واحد. يوفر إغلاقًا مقاومًا للتسرب وإغلاقًا متناسقًا مع ضبط العزم.",
+          "fr": "Fermeture automatique à ligne unique pour bouchons à vis et à dévissage. Fournit une fermeture étanche et cohérente avec réglage du couple.",
+          "ru": "Автоматическое закрытие для закручивающихся и поворотных крышек с одним конвейером. Обеспечивает герметичное и стабильное закрытие с регулировкой крутящего момента."
+        },
+        "capacityOptions": [
+          "500 – 1.200 adet/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Twist-off kapak",
+            "en": "Twist-off cap",
+            "ar": "غطاء لولبي",
+            "fr": "Capuchon à vis",
+            "ru": "Закручивающаяся крышка"
+          },
+          {
+            "tr": "Vidalı kapak",
+            "en": "Screw cap",
+            "ar": "غطاء ملولب",
+            "fr": "Capuchon à vis",
+            "ru": "Винтовая крышка"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Kapak besleme ünitesi",
+            "en": "Cap feeding unit",
+            "ar": "وحدة تغذية الأغطية",
+            "fr": "Unité d'alimentation des capuchons",
+            "ru": "Устройство подачи крышек"
+          },
+          {
+            "tr": "Buhar enjeksiyonu (vakum)",
+            "en": "Steam injection (vacuum)",
+            "ar": "حقن البخار (فراغ)",
+            "fr": "Injection de vapeur (vide)",
+            "ru": "Инъекция пара (вакуум)"
+          }
+        ],
+        "fitNote": {
+          "tr": "Kapak tipi, kavanoz/şişe formatı, tork gereksinimi ve hat hızınıza göre kapama kafası uyarlanır.",
+          "en": "The capping head is adapted to your cap type, jar/bottle format, torque requirement and line speed.",
+          "ar": "سيحدد نوع الغطاء، تنسيق الجرة/الزجاجة، متطلبات عزم الدوران، وسرعة الخط تكيف رأس الإغلاق.",
+          "fr": "Le type de capuchon, le format de bocal/bouteille, les exigences de couple et la vitesse de la ligne détermineront l'adaptation de la tête de fermeture.",
+          "ru": "Тип крышки, формат банки/бутылки, требования к крутящему моменту и скорость линии определят адаптацию головки закрытия."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/tek-hat-kapak-kapatma.jpg",
         "servedUrl": "/api/media/tek-hat-kapatma-gorsel-1783208637929-zy0f.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.905Z",
+      "syncedAt": "2026-07-13T19:30:38.979Z",
       "removedFromSite": null
     }
   },
@@ -1221,10 +1564,7 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging",
-          "ar": "التعبئة والتغليف",
-          "fr": "Remplissage & Emballage",
-          "ru": "Наполнение и Упаковка"
+          "en": "Filling & Packaging"
         }
       },
       "capacity": "1000 – 2400 adet/saat",
@@ -1300,12 +1640,64 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "İki paralel hatta eşzamanlı kapatma ile kapasiteyi ikiye katlar. Yüksek hacimli dolum hatları için tasarlanmıştır.",
+          "en": "Doubles capacity with simultaneous closing on two parallel lanes. Designed for high-volume filling lines.",
+          "ar": "يضاعف السعة مع الإغلاق المتزامن على خطين متوازيين. مصمم لخطوط التعبئة عالية الحجم.",
+          "fr": "Double la capacité avec une fermeture simultanée sur deux lignes parallèles. Conçu pour les lignes de remplissage à haut volume.",
+          "ru": "Удваивает мощность за счет одновременного закрытия на двух параллельных линиях. Спроектировано для линий розлива большого объема."
+        },
+        "capacityOptions": [
+          "1.000 – 2.400 adet/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Twist-off kapak",
+            "en": "Twist-off lid",
+            "ar": "غطاء لولبي",
+            "fr": "Couvercle à vis",
+            "ru": "Закручивающаяся крышка"
+          },
+          {
+            "tr": "Vidalı kapak",
+            "en": "Screw cap",
+            "ar": "غطاء لولبي",
+            "fr": "Couvercle à vis",
+            "ru": "Винтовая крышка"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Buhar enjeksiyonu (vakum)",
+            "en": "Steam injection (vacuum)",
+            "ar": "حقن البخار (فراغ)",
+            "fr": "Injection de vapeur (vide)",
+            "ru": "Инъекция пара (вакуум)"
+          },
+          {
+            "tr": "Hat entegrasyonu",
+            "en": "Line integration",
+            "ar": "تكامل الخط",
+            "fr": "Intégration de ligne",
+            "ru": "Интеграция линии"
+          }
+        ],
+        "fitNote": {
+          "tr": "Kapak tipi, ambalaj formatı, çift hat senkronizasyonu ve kapasite hedefinize göre sistem uyarlanır.",
+          "en": "The system is adapted to your cap type, packaging format, dual-lane synchronization and capacity target.",
+          "ar": "يتم تخصيص النظام وفقًا لنوع الغطاء، تنسيق التعبئة، تزامن الخطين، وهدف السعة لديك.",
+          "fr": "Le système est adapté en fonction de votre type de couvercle, format d'emballage, synchronisation de double ligne et objectif de capacité.",
+          "ru": "Система адаптируется в соответствии с вашим типом крышки, форматом упаковки, синхронизацией двойной линии и целевым уровнем мощности."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/cift-hat-kapak-kapatma.jpg",
         "servedUrl": "/api/media/iki-hat-kapatma-gorsel-1783208637945-vh5z.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.906Z",
+      "syncedAt": "2026-07-13T19:30:38.980Z",
       "removedFromSite": null
     }
   },
@@ -1354,10 +1746,7 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging",
-          "ar": "التعبئة والتغليف",
-          "fr": "Remplissage & Emballage",
-          "ru": "Наполнение и Упаковка"
+          "en": "Filling & Packaging"
         }
       },
       "capacity": "1500 – 3000 kutu/saat",
@@ -1433,12 +1822,57 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Salça, konserve sebze ve hazır gıda için çift kıvrımlı hava sızdırmaz kapatma. Farklı çaplara hızlı format değişimi.",
+          "en": "Air-tight double-seam closing for tomato paste, canned vegetables and ready meals. Quick format change for different diameters.",
+          "ar": "إغلاق محكم مزدوج لصلصة الطماطم والخضروات المعلبة والوجبات الجاهزة. تغيير تنسيق سريع لأقطار مختلفة.",
+          "fr": "Fermeture hermétique à double sertissage pour la sauce tomate, les légumes en conserve et les plats préparés. Changement rapide de format pour différents diamètres.",
+          "ru": "Двойная завальцовка, обеспечивающая герметичное закрытие для томатной пасты, консервированных овощей и готовых блюд. Быстрая смена формата для различных диаметров."
+        },
+        "capacityOptions": [
+          "1.500 – 3.000 kutu/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Teneke kutu 52–153 mm",
+            "en": "Tin can 52–153 mm",
+            "ar": "علبة معدنية 52–153 مم",
+            "fr": "Boîte en métal 52–153 mm",
+            "ru": "Консервная банка 52–153 мм"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Çoklu çap format seti",
+            "en": "Multi-diameter format set",
+            "ar": "مجموعة تنسيقات متعددة القطر",
+            "fr": "Ensemble de formats multi-diamètres",
+            "ru": "Набор форматов с несколькими диаметрами"
+          },
+          {
+            "tr": "Otomatik besleme",
+            "en": "Automatic feeding",
+            "ar": "تغذية أوتوماتيكية",
+            "fr": "Alimentation automatique",
+            "ru": "Автоматическая подача"
+          }
+        ],
+        "fitNote": {
+          "tr": "Teneke çapı ve yüksekliği, çift kıvrım (double seam) spesifikasyonu ve hat hızınıza göre format seti uyarlanır.",
+          "en": "The format set is adapted to your can diameter and height, double-seam specification and line speed.",
+          "ar": "سيتم تعديل قطر وارتفاع العلبة، ومواصفات اللحام المزدوج، وسرعة الخط وفقًا لمجموعة التنسيقات.",
+          "fr": "Le diamètre et la hauteur de la boîte, la spécification de la couture double et la vitesse de la ligne seront adaptés à l'ensemble de formats.",
+          "ru": "Диаметр и высота банки, спецификация двойного шва и скорость линии будут адаптированы к набору форматов."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/konserve-kapatma-makinesi.jpg",
         "servedUrl": "/api/media/can-kapatma-oto-gorsel-1783208637960-7yh1.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.908Z",
+      "syncedAt": "2026-07-13T19:30:38.980Z",
       "removedFromSite": null
     }
   },
@@ -1506,10 +1940,7 @@
         "slug": "gida-hatlari",
         "name": {
           "tr": "Gıda İşleme Hatları",
-          "en": "Food Processing Lines",
-          "ar": "خطوط معالجة الطعام",
-          "fr": "Lignes de transformation des aliments",
-          "ru": "Линии переработки пищи"
+          "en": "Food Processing Lines"
         }
       },
       "capacity": "500 – 1.500 kg/saat (soğuk)",
@@ -1520,188 +1951,108 @@
         {
           "k": {
             "tr": "Soğuk Sos",
-            "en": "Cold sauce",
-            "ar": "صلصة باردة",
-            "fr": "Sauce froide",
-            "ru": "Холодный соус"
+            "en": "Cold sauce"
           },
           "v": {
             "tr": "500 – 1.500 kg/saat (kapasiteye göre)",
-            "en": "500 – 1,500 kg/h (by capacity)",
-            "ar": "500 – 1500 كجم / ساعة (حسب السعة)",
-            "fr": "500 – 1 500 kg/heure (selon la capacité)",
-            "ru": "500 – 1500 кг/час (в зависимости от мощности)"
+            "en": "500 – 1,500 kg/h (by capacity)"
           }
         },
         {
           "k": {
             "tr": "Sıcak Sos",
-            "en": "Hot sauce",
-            "ar": "صلصة حارة",
-            "fr": "Sauce chaude",
-            "ru": "Горячий соус"
+            "en": "Hot sauce"
           },
           "v": {
             "tr": "300 – 1.000 kg/saat (kapasiteye göre)",
-            "en": "300 – 1,000 kg/h (by capacity)",
-            "ar": "300 – 1000 كجم / ساعة (حسب السعة)",
-            "fr": "300 – 1 000 kg/heure (selon la capacité)",
-            "ru": "300 – 1000 кг/час (в зависимости от мощности)"
+            "en": "300 – 1,000 kg/h (by capacity)"
           }
         },
         {
           "k": {
             "tr": "Platform Tankı",
-            "en": "Platform tank",
-            "ar": "خزان المنصة",
-            "fr": "Réservoir de plateforme",
-            "ru": "Резервуар платформы"
+            "en": "Platform tank"
           },
           "v": {
             "tr": "500 / 700 / 1000 L",
-            "en": "500 / 700 / 1000 L",
-            "ar": "500 / 700 / 1000 ل",
-            "fr": "500 / 700 / 1000 L",
-            "ru": "500 / 700 / 1000 Л"
+            "en": "500 / 700 / 1000 L"
           }
         },
         {
           "k": {
             "tr": "Kurulu Güç (platform)",
-            "en": "Installed power (platform)",
-            "ar": "الطاقة المركبة (المنصة)",
-            "fr": "Puissance installée (plateforme)",
-            "ru": "Установленная мощность (платформа)"
+            "en": "Installed power (platform)"
           },
           "v": {
             "tr": "~25 – 30 kW",
-            "en": "~25 – 30 kW",
-            "ar": "~25 – 30 كيلو واط",
-            "fr": "~25 – 30 kW",
-            "ru": "~25 – 30 кВт"
+            "en": "~25 – 30 kW"
           }
         },
         {
           "k": {
             "tr": "Malzeme",
-            "en": "Material",
-            "ar": "المادة",
-            "fr": "Matériau",
-            "ru": "Материал"
+            "en": "Material"
           },
           "v": {
             "tr": "Komple AISI 304",
-            "en": "Complete AISI 304",
-            "ar": "كامل AISI 304",
-            "fr": "Complet AISI 304",
-            "ru": "Полный AISI 304"
+            "en": "Complete AISI 304"
           }
         },
         {
           "k": {
             "tr": "Üretim Süresi",
-            "en": "Manufacturing time",
-            "ar": "مدة الإنتاج",
-            "fr": "Temps de production",
-            "ru": "Время производства"
+            "en": "Manufacturing time"
           },
           "v": {
             "tr": "120 – 150 gün",
-            "en": "120 – 150 days",
-            "ar": "120 – 150 يوم",
-            "fr": "120 – 150 jours",
-            "ru": "120 – 150 дней"
+            "en": "120 – 150 days"
           }
         },
         {
           "k": {
             "tr": "Teslim Şekli",
-            "en": "Delivery term",
-            "ar": "طريقة التسليم",
-            "fr": "Méthode de livraison",
-            "ru": "Способ доставки"
+            "en": "Delivery term"
           },
           "v": {
             "tr": "EXW (fabrika teslim)",
-            "en": "EXW (ex-works)",
-            "ar": "EXW (تسليم المصنع)",
-            "fr": "EXW (Ex Works)",
-            "ru": "EXW (с завода)"
+            "en": "EXW (ex-works)"
           }
         },
         {
           "k": {
             "tr": "Garanti",
-            "en": "Warranty",
-            "ar": "ضمان",
-            "fr": "Garantie",
-            "ru": "Гарантия"
+            "en": "Warranty"
           },
           "v": {
             "tr": "1 yıl",
-            "en": "1 year",
-            "ar": "سنة واحدة",
-            "fr": "1 an",
-            "ru": "1 год"
+            "en": "1 year"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Sos hazırlama platformu (kapasiteye göre 500 / 700 / 1000 L tank)",
-          "en": "Sauce preparation platform (capacity 500 / 700 / 1000 L tank)",
-          "ar": "منصة تحضير الصلصة (سعة 500 / 700 / 1000 لتر خزان)",
-          "fr": "Plateforme de préparation de sauce (capacité 500 / 700 / 1000 L réservoir)",
-          "ru": "Платформа для приготовления соуса (емкость 500 / 700 / 1000 л бак)"
+          "tr": "Sos hazırlama platformu (kapasiteye göre 500 / 700 / 1000 L tank)"
         },
         {
-          "tr": "Lobe pompalı transfer tankı (1 – 2 m³)",
-          "en": "Lobe pump transfer tank (1 – 2 m³)",
-          "ar": "خزان نقل بمضخة لobe (1 – 2 م³)",
-          "fr": "Réservoir de transfert à pompe à lobes (1 – 2 m³)",
-          "ru": "Резервуар для перекачивания с лопастной насосом (1 – 2 м³)"
+          "tr": "Lobe pompalı transfer tankı (1 – 2 m³)"
         },
         {
-          "tr": "CIP temizlik ünitesi (500 L × 3 tank)",
-          "en": "CIP cleaning unit (500 L × 3 tanks)",
-          "ar": "وحدة تنظيف CIP (500 لتر × 3 خزانات)",
-          "fr": "Unité de nettoyage CIP (500 L × 3 réservoirs)",
-          "ru": "Установка CIP для очистки (500 л × 3 резервуара)"
+          "tr": "CIP temizlik ünitesi (500 L × 3 tank)"
         },
         {
-          "tr": "Chiller soğutma ünitesi",
-          "en": "Chiller cooling unit",
-          "ar": "وحدة تبريد الشيلر",
-          "fr": "Unité de refroidissement par chiller",
-          "ru": "Охлаждающий агрегат чиллера"
+          "tr": "Chiller soğutma ünitesi"
         },
         {
-          "tr": "Buhar kazanı (dizel/doğalgaz)",
-          "en": "Steam boiler (diesel/natural gas)",
-          "ar": "غلاية بخارية (ديزل/غاز طبيعي)",
-          "fr": "Chaudière à vapeur (diesel/gaz naturel)",
-          "ru": "Паровой котел (дизель/природный газ)"
+          "tr": "Buhar kazanı (dizel/doğalgaz)"
         },
         {
-          "tr": "Komple paslanmaz proses borulaması (boru, vana, fittings + işçilik)",
-          "en": "Complete stainless steel process piping (pipe, valve, fittings + labor)",
-          "ar": "أنابيب عملية كاملة من الفولاذ المقاوم للصدأ (أنبوب، صمام، ملحقات + عمالة)",
-          "fr": "Piping de process en acier inoxydable complet (tuyau, vanne, raccords + main-d'œuvre)",
-          "ru": "Полная система трубопроводов из нержавеющей стали (труба, клапан, фитинги + работа)"
+          "tr": "Komple paslanmaz proses borulaması (boru, vana, fittings + işçilik)"
         },
         {
-          "tr": "Elektrik panosu ve otomasyon sistemi",
-          "en": "Electrical panel and automation system",
-          "ar": "لوحة كهربائية ونظام أتمتة",
-          "fr": "Panneau électrique et système d'automatisation",
-          "ru": "Электрическая панель и система автоматизации"
+          "tr": "Elektrik panosu ve otomasyon sistemi"
         },
         {
-          "tr": "Su ile test ve devreye alma",
-          "en": "Testing and commissioning with water",
-          "ar": "الاختبار والتشغيل بالماء",
-          "fr": "Test et mise en service avec de l'eau",
-          "ru": "Тестирование и ввод в эксплуатацию с водой"
+          "tr": "Su ile test ve devreye alma"
         }
       ],
       "badge": null,
@@ -1714,10 +2065,7 @@
         {
           "label": {
             "tr": "500 kg/saat",
-            "en": "500 kg/h",
-            "ar": "500 كجم/ساعة",
-            "fr": "500 kg/heure",
-            "ru": "500 кг/час"
+            "en": "500 kg/h"
           },
           "from": 153000,
           "to": 209000,
@@ -1726,22 +2074,217 @@
         {
           "label": {
             "tr": "1.000 kg/saat",
-            "en": "1,000 kg/h",
-            "ar": "1,000 كجم/ساعة",
-            "fr": "1 000 kg/heure",
-            "ru": "1 000 кг/час"
+            "en": "1,000 kg/h"
           },
           "from": 190000,
           "to": 278000,
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "Avrupa standartlarında tasarlanmış sos hazırlama platformu; lobe pompalı transfer tankı, CIP temizlik ünitesi, chiller, buhar kazanı, komple paslanmaz proses borulaması ve elektrik-otomasyon sistemiyle anahtar teslim paket. 500, 1.000 ve 1.500 kg/saat soğuk sos kapasiteli üç boyutta sunulur; tank hacmi ve yardımcı ekipmanlar kapasiteyle birlikte ölçeklenir. Opsiyonel dolum hattı — 4x1 servo dolum, kapak besleme/kapatma, etiketleme, kavanoz tablaları ve 25 m konveyör — ürünü rafa hazır hale getirir.",
+          "en": "A European-standard sauce preparation platform; a turnkey package with lobe-pump transfer tank, CIP cleaning unit, chiller, steam boiler, complete stainless process piping and the electrical-automation system. Offered in three sizes with 500, 1,000 and 1,500 kg/h cold-sauce capacity; tank volume and auxiliary equipment scale with capacity. The optional filling line — 4x1 servo filler, lid feeding/capping, labeling, jar trays and a 25 m conveyor — takes the product shelf-ready.",
+          "ar": "منصة تحضير الصلصة المصممة وفقًا للمعايير الأوروبية؛ حزمة تسليم مفتاح مع خزان نقل مضخة لوبة، وحدة تنظيف CIP، مبرد، غلاية بخارية، أنابيب عملية من الفولاذ المقاوم للصدأ بالكامل، ونظام كهربائي-أوتوماتيكي. متاحة بثلاثة أحجام بسعات صلصة باردة تبلغ 500 و1000 و1500 كجم/ساعة؛ يتم ضبط حجم الخزان والمعدات المساعدة مع السعة. خط التعبئة الاختياري — تعبئة سيرفو 4x1، تغذية/إغلاق الأغطية، وضع العلامات، صواني الجرار، وحزام ناقل بطول 25 م — يُعد المنتج ليكون جاهزًا للرف.",
+          "fr": "Plateforme de préparation de sauce conçue selon les normes européennes ; package clé en main avec réservoir de transfert à pompe à lobes, unité de nettoyage CIP, refroidisseur, chaudière à vapeur, tuyauterie de process en acier inoxydable complète et système électrique-automatisation. Disponible en trois tailles avec des capacités de sauce froide de 500, 1 000 et 1 500 kg/heure ; le volume du réservoir et les équipements auxiliaires sont dimensionnés en fonction de la capacité. Ligne de remplissage optionnelle — remplissage servo 4x1, alimentation/scellement des bouchons, étiquetage, plateaux de bocaux et convoyeur de 25 m — prépare le produit pour être prêt à être mis en rayon.",
+          "ru": "Платформа для приготовления соусов, спроектированная в соответствии с европейскими стандартами; пакет «под ключ» с трансферным баком с лопастным насосом, установкой CIP для очистки, охладителем, паровым котлом, полностью нержавеющей трубопроводной системой и электрической автоматизацией. Доступна в трех размерах с холодной мощностью соуса 500, 1000 и 1500 кг/час; объем бака и вспомогательное оборудование масштабируются в зависимости от мощности. Опциональная линия для заполнения — 4x1 сервозаполнение, подача/закрытие крышек, маркировка, подносы для банок и конвейер длиной 25 м — подготавливает продукт к готовности к продаже."
+        },
+        "capacityOptions": [
+          "500 kg/saat",
+          "1.000 kg/saat",
+          "1.500 kg/saat"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Cam kavanoz"
+          },
+          {
+            "tr": "PET/Plastik şişe"
+          },
+          {
+            "tr": "Sıkma şişe"
+          },
+          {
+            "tr": "Bidon"
+          }
+        ],
+        "audience": [
+          {
+            "tr": "Sos/mayonez üretimine yeni başlayanlar (500 kg/saat)"
+          },
+          {
+            "tr": "Üretimini ölçeklendiren markalar (1.000 kg/saat)"
+          },
+          {
+            "tr": "Endüstriyel ölçekli üreticiler ve ihracatçılar (1.500 kg/saat)"
+          },
+          {
+            "tr": "Private-label & fason üretim girişimleri"
+          }
+        ],
+        "processFlow": [
+          {
+            "k": {
+              "tr": "Hammadde Hazırlama"
+            },
+            "v": {
+              "tr": "Yağ, sirke ve toz bileşenler reçeteye göre tartılır; ön hazırlama ve yağ stok tanklarına alınır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Vakumlu Karıştırma & Emülsiyon"
+            },
+            "v": {
+              "tr": "Ağır mikser ve hızlı karıştırıcıyla vakum altında kararlı emülsiyon oluşturulur; katkılar vakum gücüyle tanka alınır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Soğutma"
+            },
+            "v": {
+              "tr": "Chiller, homojenizasyondan doğan ısıyı alarak formülü güvence altında tutar."
+            }
+          },
+          {
+            "k": {
+              "tr": "Transfer"
+            },
+            "v": {
+              "tr": "Lobe pompalı transfer tankı ürünü dolum ünitesine hijyenik şekilde basar."
+            }
+          },
+          {
+            "k": {
+              "tr": "Dolum, Kapak & Etiket (opsiyonel hat)"
+            },
+            "v": {
+              "tr": "4x1 servo dolum makinesi ambalaja doldurur; kapak besleme/kapatma ve etiketleme aynı konveyör hattında tamamlanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "CIP Temizlik"
+            },
+            "v": {
+              "tr": "Üretim sonunda kostik/nitrik çözeltilerle tüm hat yerinde temizlenir."
+            }
+          }
+        ],
+        "requirements": [
+          {
+            "k": {
+              "tr": "Soğuk Sos"
+            },
+            "v": {
+              "tr": "500 – 1.500 kg/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Sıcak Sos"
+            },
+            "v": {
+              "tr": "300 – 1.000 kg/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Platform Gücü"
+            },
+            "v": {
+              "tr": "~25 – 30 kW"
+            }
+          },
+          {
+            "k": {
+              "tr": "Buhar"
+            },
+            "v": {
+              "tr": "Kazan 400 – 500 kg/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Operatör"
+            },
+            "v": {
+              "tr": "2 – 6 kişi/vardiya"
+            }
+          }
+        ],
+        "optionalEq": [
+          {
+            "tr": "Komple dolum & paketleme hattı (kapasiteye göre +56.000 € / +88.000 €): 4x1 servo dolum, kapak besleme/kapatma, etiketleme, 2 kavanoz tablası, 25 m konveyör"
+          },
+          {
+            "tr": "Buhar kazanı yakıt seçeneği: dizel veya doğalgaz"
+          },
+          {
+            "tr": "Reçete ve üretim eğitimi"
+          }
+        ],
+        "faq": [
+          {
+            "k": {
+              "tr": "Fiyata neler dahil?"
+            },
+            "v": {
+              "tr": "Fiyat EXW (fabrika teslim) olup hazırlama platformunu, yardımcı ekipmanları, hat borulamasını, elektrik-otomasyon işçiliğini ve su ile devreye almayı kapsar; nakliye ve sigorta hariçtir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kapasiteler arasındaki fark nedir?"
+            },
+            "v": {
+              "tr": "Tank hacmi (500/700/1000 L), transfer tankı ve dolum hattı donanımı kapasiteyle birlikte ölçeklenir; 1.000 kg/saat ve üzerinde otomatik kapak besleme dahildir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Üretim süresi ne kadar?"
+            },
+            "v": {
+              "tr": "Ödeme sonrası 120 – 150 gün; ödeme planı %50 peşin + %50 sevkiyat öncesidir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Ekipman garantisi var mı?"
+            },
+            "v": {
+              "tr": "Ekipmanlar 1 yıl üretici garantisi kapsamındadır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Dolum hattı olmadan alabilir miyim?"
+            },
+            "v": {
+              "tr": "Evet; dolum-paketleme hattı opsiyoneldir, hazırlama platformu tek başına devreye alınır."
+            }
+          },
+          {
+            "k": {
+              "tr": "1.500 kg/saat fiyatı neden proje bazlı?"
+            },
+            "v": {
+              "tr": "Bu kapasite sınıfında yerleşim, ambalaj formatı ve otomasyon seviyesi maliyeti belirgin etkiler; teklif proje özelinde hazırlanır."
+            }
+          }
+        ],
+        "rationale": {
+          "tr": "SAUCE serisi, sos üretimini tek platform mimarisiyle üç ölçekte sunar: 500 kg/saat pazara kontrollü giriş, 1.000 kg/saat bölgesel ölçek, 1.500 kg/saat endüstriyel hacim içindir. Kapasiteler arasında proses akışı aynı kaldığı için üretim büyüdükçe ekip ve reçete bilgisi taşınır; yatırım riski kademelenir. Nihai fizibilite hammadde, ambalaj ve hedef pazar koşullarıyla birlikte değerlendirilir."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/line-urun-sos-uretim-hatti.jpg",
         "servedUrl": "/api/media/sos-hatti-anahtar-teslim-gorsel-1783208638235-1pmw.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.928Z",
+      "syncedAt": "2026-07-13T19:30:38.992Z",
       "removedFromSite": null
     }
   },
@@ -1798,10 +2341,7 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing",
-          "ar": "معالجة الحليب",
-          "fr": "Transformation du lait",
-          "ru": "Обработка молока"
+          "en": "Dairy Processing"
         }
       },
       "capacity": "500 – 10.000 L/h",
@@ -1966,12 +2506,59 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "Yüksek basınçla yağ globüllerini küçülterek ürüne homojen, stabil kıvam kazandırır. Süt, krema, içecek ve sos hatlarında kullanılır.",
+          "en": "Reduces fat globules under high pressure for homogeneous, stable texture. Used in milk, cream, beverage and sauce lines.",
+          "ar": "يقلل من كرات الدهون تحت ضغط عالٍ ليمنح المنتج قوامًا متجانسًا ومستقرًا. يستخدم في خطوط الحليب والكريمة والمشروبات والصلصات.",
+          "fr": "Il réduit les globules gras sous haute pression pour donner au produit une consistance homogène et stable. Utilisé dans les lignes de lait, de crème, de boissons et de sauces.",
+          "ru": "Он уменьшает жировые globules под высоким давлением, чтобы обеспечить продукту однородную и стабильную консистенцию. Используется в линиях молока, сливок, напитков и соусов."
+        },
+        "capacityOptions": [
+          "500 – 2.000 L/saat",
+          "2.000 – 5.000 L/saat",
+          "5.000 – 10.000 L/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Proses hattı entegrasyonu",
+            "en": "Process line integration",
+            "ar": "دمج خط العمليات",
+            "fr": "Intégration de la ligne de processus",
+            "ru": "Интеграция производственной линии"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Çift kademe",
+            "en": "Double stage",
+            "ar": "مرحلتين",
+            "fr": "Double étape",
+            "ru": "Двойная стадия"
+          },
+          {
+            "tr": "Aseptik yürütme",
+            "en": "Aseptic execution",
+            "ar": "تنفيذ معقم",
+            "fr": "Exécution aseptique",
+            "ru": "Аseptическое выполнение"
+          }
+        ],
+        "fitNote": {
+          "tr": "Ürün viskozitesi, yağ oranı, hedef partikül boyutu ve basınç ihtiyacınıza göre kademe ve kapasite uyarlanır.",
+          "en": "Stages and capacity are adapted to your product viscosity, fat content, target particle size and pressure requirement.",
+          "ar": "تتكيف المرحلة والسعة وفقًا لزوجة المنتج ومحتوى الدهون وحجم الجسيمات المستهدف ومتطلبات الضغط.",
+          "fr": "La phase et la capacité sont adaptées en fonction de la viscosité du produit, de la teneur en matières grasses, de la taille des particules cible et des exigences de pression.",
+          "ru": "Стадия и мощность адаптируются в зависимости от вязкости продукта, содержания жира, целевого размера частиц и требований к давлению."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/homojenizator.jpg",
         "servedUrl": "/api/media/homojenizator-gorsel-1783208637970-7wra.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.909Z",
+      "syncedAt": "2026-07-13T19:30:38.981Z",
       "removedFromSite": null
     }
   },
@@ -2028,10 +2615,7 @@
         "slug": "termal-islem",
         "name": {
           "tr": "Termal İşlem",
-          "en": "Thermal Processing",
-          "ar": "العملية الحرارية",
-          "fr": "Processus thermique",
-          "ru": "Термический процесс"
+          "en": "Thermal Processing"
         }
       },
       "capacity": "1.000 – 15.000 L/h",
@@ -2212,12 +2796,59 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "Süt, meyve suyu ve sıvı gıdada mikrobiyel güvenliği sağlarken ısı geri kazanımıyla enerji tasarrufu sunar. Otomatik sıcaklık ve akış kontrolü.",
+          "en": "Ensures microbial safety in milk, juice and liquid foods while saving energy via heat recovery. Automatic temperature and flow control.",
+          "ar": "يوفر توفيرًا للطاقة من خلال استعادة الحرارة مع ضمان الأمان الميكروبي في الحليب وعصائر الفاكهة والأغذية السائلة. التحكم التلقائي في درجة الحرارة والتدفق.",
+          "fr": "Offre des économies d'énergie grâce à la récupération de chaleur tout en garantissant la sécurité microbienne dans le lait, les jus de fruits et les aliments liquides. Contrôle automatique de la température et du débit.",
+          "ru": "Обеспечивает экономию энергии за счет рекуперации тепла, гарантируя микробиологическую безопасность молока, фруктовых соков и жидких продуктов. Автоматическое управление температурой и потоком."
+        },
+        "capacityOptions": [
+          "1.000 – 5.000 L/saat",
+          "5.000 – 10.000 L/saat",
+          "10.000 – 15.000 L/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Proses hattı entegrasyonu",
+            "en": "Process line integration",
+            "ar": "تكامل خط العمليات",
+            "fr": "Intégration de la ligne de processus",
+            "ru": "Интеграция производственной линии"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Isı geri kazanım artırma",
+            "en": "Heat recovery enhancement",
+            "ar": "تعزيز استرداد الحرارة",
+            "fr": "Amélioration de la récupération de chaleur",
+            "ru": "Увеличение тепловой рекуперации"
+          },
+          {
+            "tr": "Otomatik CIP entegrasyonu",
+            "en": "Automatic CIP integration",
+            "ar": "تكامل CIP التلقائي",
+            "fr": "Intégration CIP automatique",
+            "ru": "Автоматическая интеграция CIP"
+          }
+        ],
+        "fitNote": {
+          "tr": "Ürün tipi, ısıl işlem profili (sıcaklık/süre), kapasite ve enerji geri kazanım hedefinize göre sistem uyarlanır.",
+          "en": "The system is adapted to your product type, thermal profile (temperature/time), capacity and energy-recovery target.",
+          "ar": "يتم تخصيص النظام وفقًا لنوع المنتج، وملف المعالجة الحرارية (درجة الحرارة/الوقت)، والسعة، وأهداف استرداد الطاقة.",
+          "fr": "Le système est adapté en fonction de votre type de produit, du profil de traitement thermique (température/durée), de la capacité et des objectifs de récupération d'énergie.",
+          "ru": "Система настраивается в соответствии с вашим типом продукта, профилем термической обработки (температура/время), мощностью и целями по восстановлению энергии."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/pastorizator.jpg",
         "servedUrl": "/api/media/pastorizator-gorsel-1783208637979-ksbd.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.910Z",
+      "syncedAt": "2026-07-13T19:30:38.982Z",
       "removedFromSite": null
     }
   },
@@ -2274,10 +2905,7 @@
         "slug": "yardimci-ekipmanlar",
         "name": {
           "tr": "Yardımcı Ekipmanlar",
-          "en": "Auxiliary Equipment",
-          "ar": "المعدات المساعدة",
-          "fr": "Équipements auxiliaires",
-          "ru": "Вспомогательное оборудование"
+          "en": "Auxiliary Equipment"
         }
       },
       "capacity": "Projeye göre",
@@ -2353,12 +2981,50 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Isıtma ve soğutma proseslerinde yüksek ısı transfer verimi sağlar. Modüler plaka yapısı kapasite artışına imkân verir.",
+          "en": "Provides high heat-transfer efficiency in heating and cooling processes. Modular plate structure allows capacity scaling.",
+          "ar": "يوفر كفاءة عالية في نقل الحرارة في عمليات التسخين والتبريد. الهيكل الصفيحي المعياري يسمح بزيادة السعة.",
+          "fr": "Offre une haute efficacité de transfert de chaleur dans les processus de chauffage et de refroidissement. La structure de plaque modulaire permet d'augmenter la capacité.",
+          "ru": "Обеспечивает высокую эффективность теплопередачи в процессах нагрева и охлаждения. Модульная конструкция пластин позволяет увеличить мощность."
+        },
+        "capacityOptions": [
+          "Projeye göre",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Modüler plaka paketi",
+            "en": "Modular plate pack",
+            "ar": "حزمة الألواح المودولية",
+            "fr": "Pack de plaques modulaire",
+            "ru": "Модульный пакет пластин"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Kapasite artırma plakaları",
+            "en": "Capacity increase plates",
+            "ar": "أطباق زيادة السعة",
+            "fr": "Plaques d'augmentation de capacité",
+            "ru": "Пластины увеличения мощности"
+          }
+        ],
+        "fitNote": {
+          "tr": "Ürün viskozitesi, sıcaklık programı, kapasite ve CIP gereksiniminize göre plaka paketi uyarlanır.",
+          "en": "The plate package is adapted to your product viscosity, temperature programme, capacity and CIP requirement.",
+          "ar": "يتم تخصيص حزمة الألواح وفقًا لزوجة المنتج الخاصة بك، وبرنامج درجة الحرارة، والسعة، ومتطلبات CIP.",
+          "fr": "Le pack de plaques est personnalisé en fonction de la viscosité de votre produit, du programme de température, de la capacité et des exigences CIP.",
+          "ru": "Пакет пластин настраивается в соответствии с вязкостью вашего продукта, температурной программой, мощностью и требованиями CIP."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/plakali-esanjor.jpg",
         "servedUrl": "/api/media/plakali-esanjor-gorsel-1783208637992-812u.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.911Z",
+      "syncedAt": "2026-07-13T19:30:38.982Z",
       "removedFromSite": null
     }
   },
@@ -2415,10 +3081,7 @@
         "slug": "termal-islem",
         "name": {
           "tr": "Termal İşlem",
-          "en": "Thermal Processing",
-          "ar": "العملية الحرارية",
-          "fr": "Processus thermique",
-          "ru": "Термический процесс"
+          "en": "Thermal Processing"
         }
       },
       "capacity": "1.000 – 10.000 L/h",
@@ -2587,12 +3250,57 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "Vakum altında düşük sıcaklıkta su buharlaştırarak ürünün rengini ve aromasını korur. Salça ve meyve konsantresi üretiminin kalbidir.",
+          "en": "Evaporates water at low temperature under vacuum, preserving product color and aroma. The heart of paste and fruit concentrate production.",
+          "ar": "تبخر الماء عند درجة حرارة منخفضة تحت الضغط للحفاظ على اللون والرائحة للمنتج. إنها قلب إنتاج الطماطم والمركزات الفاكهية.",
+          "fr": "Évaporation de l'eau à basse température sous vide pour préserver la couleur et l'arôme du produit. C'est le cœur de la production de pâte et de concentré de fruits.",
+          "ru": "Испаряет воду при низкой температуре под вакуумом для сохранения цвета и аромата продукта. Это сердце производства пасты и фруктового концентрата."
+        },
+        "capacityOptions": [
+          "Projeye göre (tek/çok etkili)",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Proses hattı entegrasyonu",
+            "en": "Process line integration",
+            "ar": "تكامل خط العمليات",
+            "fr": "Intégration de la ligne de processus",
+            "ru": "Интеграция производственной линии"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Çok etkili yükseltme",
+            "en": "Highly effective lifting",
+            "ar": "رفع عالي الفعالية",
+            "fr": "Élévation très efficace",
+            "ru": "Высокоэффективное поднятие"
+          },
+          {
+            "tr": "Otomatik brix kontrolü",
+            "en": "Automatic brix control",
+            "ar": "التحكم التلقائي في البريكس",
+            "fr": "Contrôle automatique du brix",
+            "ru": "Автоматический контроль брикса"
+          }
+        ],
+        "fitNote": {
+          "tr": "Hedef briks, ürün ısı hassasiyeti, buhar altyapısı ve parti büyüklüğünüze göre etki sayısı ve kapasite uyarlanır.",
+          "en": "Effects and capacity are adapted to your target Brix, product heat sensitivity, steam infrastructure and batch size.",
+          "ar": "تتكيف قيمة البريكس المستهدفة، وحساسية حرارة المنتج، وبنية البخار، وحجم الدفعة وفقًا لعدد التأثيرات والسعة.",
+          "fr": "Le brix cible, la sensibilité à la chaleur du produit, l'infrastructure de vapeur et la taille du lot sont adaptés en fonction du nombre d'impacts et de la capacité.",
+          "ru": "Целевой брикс, тепловая чувствительность продукта, паровая инфраструктура и размер партии адаптируются в зависимости от количества воздействий и мощности."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/vakum-evaporator.jpg",
         "servedUrl": "/api/media/vakum-evaporator-gorsel-1783208638007-dtw9.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.912Z",
+      "syncedAt": "2026-07-13T19:30:38.983Z",
       "removedFromSite": null
     }
   },
@@ -2649,10 +3357,7 @@
         "slug": "sos-karistirma",
         "name": {
           "tr": "Sos & Karıştırma",
-          "en": "Sauce & Mixing",
-          "ar": "صلصة وخلط",
-          "fr": "Sauce & Mélange",
-          "ru": "Соус и Смешивание"
+          "en": "Sauce & Mixing"
         }
       },
       "capacity": "500 – 5000 L",
@@ -2751,12 +3456,66 @@
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Ceketli, yüksek kesmeli karıştırıcılı tank; emülsiyon stabilitesi ve homojen kıvam sağlar. CIP uyumlu, sıcaklık kontrollü.",
+          "en": "Jacketed tank with high-shear agitator; ensures emulsion stability and homogeneous texture. CIP-compatible, temperature controlled.",
+          "ar": "خزان مزود بجهاز خلط عالي القص؛ يوفر استقرار الامتصاص وقوام متجانس. متوافق مع CIP، ومراقب لدرجة الحرارة.",
+          "fr": "Réservoir à double enveloppe avec mélangeur à haute coupe ; assure la stabilité de l'émulsion et une consistance homogène. Conforme CIP, contrôle de température.",
+          "ru": "Рубашечный бак с высокоскоростным смешивателем; обеспечивает стабильность эмульсии и однородную консистенцию. Совместим с CIP, контролируется температура."
+        },
+        "capacityOptions": [
+          "500 – 1.000 L",
+          "1.000 – 3.000 L",
+          "3.000 – 5.000 L",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "CIP uyumlu proses tankı",
+            "en": "CIP compatible process tank",
+            "ar": "خزان عملية متوافق مع CIP",
+            "fr": "Réservoir de processus compatible CIP",
+            "ru": "Процессный бак, совместимый с CIP"
+          }
+        ],
+        "optionalFeatures": [
+          {
+            "tr": "Vakum emülsiyon",
+            "en": "Vacuum emulsifier",
+            "ar": "مستحلب فراغي",
+            "fr": "Émulsifiant sous vide",
+            "ru": "Вакуумный эмульгатор"
+          },
+          {
+            "tr": "Sıyırıcılı karıştırıcı",
+            "en": "Scraper mixer",
+            "ar": "خلاط مع كشط",
+            "fr": "Mélangeur avec racloir",
+            "ru": "Смеситель с лопаткой"
+          },
+          {
+            "tr": "Reçete otomasyonu",
+            "en": "Recipe automation",
+            "ar": "أتمتة الوصفة",
+            "fr": "Automatisation de la recette",
+            "ru": "Автоматизация рецепта"
+          }
+        ],
+        "fitNote": {
+          "tr": "Reçeteniz, hedef viskozite ve stabilite, parti hacmi ve vakum ihtiyacınıza göre karıştırıcı ve tank uyarlanır.",
+          "en": "The agitator and tank are adapted to your recipe, target viscosity and stability, batch volume and vacuum requirement.",
+          "ar": "سيتم تعديل وصفتك والخلاط والخزان وفقًا لزوجة واستقرار الهدف وحجم الدفعة ومتطلبات الفراغ.",
+          "fr": "Votre recette, le mélangeur et le réservoir seront adaptés en fonction de votre viscosité et stabilité cibles, du volume de lot et des exigences de vide.",
+          "ru": "Ваша рецептура, смеситель и бак будут адаптированы в соответствии с вашей целевой вязкостью и стабильностью, объемом партии и требованиями к вакууму."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/emulsiyon-mikser-tank.jpg",
         "servedUrl": "/api/media/emulsiyon-mikser-tank-gorsel-1783208638035-zgyj.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.912Z",
+      "syncedAt": "2026-07-13T19:30:38.985Z",
       "removedFromSite": null
     }
   },
@@ -2813,10 +3572,7 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing",
-          "ar": "معالجة الحليب",
-          "fr": "Transformation du lait",
-          "ru": "Обработка молока"
+          "en": "Dairy Processing"
         }
       },
       "capacity": "100 – 2.000 kg",
@@ -3007,12 +3763,25 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "Yavaş devirli redüktör ve AISI 304 paslanmaz tank ile kremayı homojen tereyağına yayıklar. Acı su çıkış sistemi ve DN50 kapak ile kolay tahliye ve temizlik sağlar. 100 kg'dan 2.000 kg'a kadar mandıra ve endüstriyel üretim ölçeklerine uygundur.",
+          "en": "Separates cream into homogeneous butter with a slow-speed reducer and AISI 304 stainless tank. Provides easy drainage and cleaning with a bitter water outlet system and DN50 cover. Suitable for dairy and industrial production scales from 100 kg to 2,000 kg.",
+          "ar": "يفصل الكريمة إلى زبدة متجانسة باستخدام مخفض سرعة بطيء وخزان من الفولاذ المقاوم للصدأ AISI 304. يوفر تصريفًا وتنظيفًا سهلًا مع نظام تصريف المياه المريرة وغطاء DN50. مناسب لمقاييس الإنتاج في الألبان والصناعات من 100 كجم إلى 2000 كجم.",
+          "fr": "Sépare la crème en beurre homogène avec un réducteur à vitesse lente et un réservoir en acier inoxydable AISI 304. Offre un drainage et un nettoyage faciles grâce à un système de sortie d'eau amère et un couvercle DN50. Convient aux échelles de production laitière et industrielle de 100 kg à 2 000 kg.",
+          "ru": "Отделяет сливки на однородное масло с помощью редуктора медленного хода и резервуара из нержавеющей стали AISI 304. Обеспечивает легкий слив и очистку с помощью системы выхода горькой воды и крышки DN50. Подходит для молочных и промышленных масштабов производства от 100 кг до 2000 кг."
+        },
+        "capacityOptions": [],
+        "packagingOptions": [],
+        "optionalFeatures": [],
+        "fitNote": null
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/tereyagi-makinesi.jpg",
         "servedUrl": "/api/media/tereyagi-makinesi-gorsel-1783208638052-1ffs.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.914Z",
+      "syncedAt": "2026-07-13T19:30:38.985Z",
       "removedFromSite": null
     }
   },
@@ -3069,10 +3838,7 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing",
-          "ar": "معالجة الحليب",
-          "fr": "Transformation du lait",
-          "ru": "Обработка молока"
+          "en": "Dairy Processing"
         }
       },
       "capacity": "1.000 – 15.000 L/h",
@@ -3255,12 +4021,25 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "7.250 rpm tambur ve Siemens PLC kontrolüyle sütü krema ve yağsız süt olarak ayırır. Otomatik temizleme ve acı su deşarjı ile kesintisiz çalışır. AISI 316 veya DIN 1.4462 dubleks tambur seçenekleriyle 1.000 – 15.000 L/h aralığında üretim ölçeğine uyum sağlar.",
+          "en": "Separates milk into cream and skim milk with a 7,250 rpm drum and Siemens PLC control. Operates continuously with automatic cleaning and bitter water discharge. Adapts to production scales ranging from 1,000 – 15,000 L/h with AISI 316 or DIN 1.4462 duplex drum options.",
+          "ar": "يفصل الحليب إلى كريمة وحليب منزوع الدسم بسرعة 7250 دورة في الدقيقة مع تحكم PLC من سيمنز. يعمل بشكل مستمر مع تنظيف أوتوماتيكي وتصريف مياه مريرة. يتكيف مع مقاييس الإنتاج التي تتراوح من 1000 – 15000 لتر/ساعة مع خيارات أسطوانة مزدوجة AISI 316 أو DIN 1.4462.",
+          "fr": "Sépare le lait en crème et en lait écrémé avec un tambour de 7 250 tr/min et un contrôle PLC Siemens. Fonctionne en continu avec nettoyage automatique et décharge d'eau amère. S'adapte aux échelles de production allant de 1 000 à 15 000 L/h avec des options de tambour duplex AISI 316 ou DIN 1.4462.",
+          "ru": "Отделяет молоко на сливки и обезжиренное молоко с помощью барабана на 7250 об/мин и управления PLC Siemens. Работает непрерывно с автоматической очисткой и сбросом горькой воды. Адаптируется к масштабам производства от 1000 до 15000 л/ч с вариантами барабана из нержавеющей стали AISI 316 или DIN 1.4462."
+        },
+        "capacityOptions": [],
+        "packagingOptions": [],
+        "optionalFeatures": [],
+        "fitNote": null
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/krema-seperator.jpg",
         "servedUrl": "/api/media/krema-seperator-gorsel-1783208638066-yhk0.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.918Z",
+      "syncedAt": "2026-07-13T19:30:38.986Z",
       "removedFromSite": null
     }
   },
@@ -3317,10 +4096,7 @@
         "slug": "sut-isleme",
         "name": {
           "tr": "Süt İşleme",
-          "en": "Dairy Processing",
-          "ar": "معالجة الحليب",
-          "fr": "Transformation du lait",
-          "ru": "Обработка молока"
+          "en": "Dairy Processing"
         }
       },
       "capacity": "5.000 – 15.000 L/h",
@@ -3479,12 +4255,25 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "DIN 1.4462 dubleks tambur ve 7.500 rpm devir ile üretim sonrası sıvılardaki tortu ve katı parçacıkları ayrıştırır. Otomatik temizleme sistemi ve titreşime dayanıklı yapısıyla 25 – 95 °C aralığında güvenle çalışır. 5.000 – 15.000 L/h kapasite seçenekleri sunar.",
+          "en": "Separates sediment and solid particles in post-production liquids with a DIN 1.4462 duplex drum and 7,500 rpm speed. Operates safely in the 25 – 95 °C range with an automatic cleaning system and vibration-resistant design. Offers capacity options of 5,000 – 15,000 L/h.",
+          "ar": "يفصل الرواسب والجزيئات الصلبة في السوائل بعد الإنتاج باستخدام أسطوانة مزدوجة DIN 1.4462 وسرعة 7500 دورة في الدقيقة. يعمل بأمان في نطاق 25 – 95 درجة مئوية مع نظام تنظيف أوتوماتيكي وتصميم مقاوم للاهتزاز. يقدم خيارات سعة من 5000 – 15000 لتر/ساعة.",
+          "fr": "Sépare les sédiments et les particules solides dans les liquides après production avec un tambour duplex DIN 1.4462 et une vitesse de 7 500 tr/min. Fonctionne en toute sécurité dans une plage de 25 à 95 °C avec un système de nettoyage automatique et un design résistant aux vibrations. Offre des options de capacité de 5 000 à 15 000 L/h.",
+          "ru": "Отделяет осадок и твердые частицы в жидкостях после производства с помощью дуплексного барабана DIN 1.4462 и скорости 7500 об/мин. Работает безопасно в диапазоне температур от 25 до 95 °C с автоматической системой очистки и устойчивым к вибрациям дизайном. Предлагает варианты емкости от 5000 до 15000 л/ч."
+        },
+        "capacityOptions": [],
+        "packagingOptions": [],
+        "optionalFeatures": [],
+        "fitNote": null
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/klarifikator.jpg",
         "servedUrl": "/api/media/klarifikator-gorsel-1783208638080-bi0p.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.919Z",
+      "syncedAt": "2026-07-13T19:30:38.987Z",
       "removedFromSite": null
     }
   },
@@ -3541,10 +4330,7 @@
         "slug": "dolum-paketleme",
         "name": {
           "tr": "Dolum & Paketleme",
-          "en": "Filling & Packaging",
-          "ar": "التعبئة والتغليف",
-          "fr": "Remplissage & Emballage",
-          "ru": "Наполнение и Упаковка"
+          "en": "Filling & Packaging"
         }
       },
       "capacity": "500 L/h – 5.000 pcs/h",
@@ -3711,12 +4497,25 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "AISI 304 paslanmaz gövde ve 17 inç renkli dokunmatik PLC panel ile farklı ambalajlara istenen gramajda dolum yapar. Nozullu sıvı dolum ve döner tablalı kap dolum seçenekleriyle 500 L/h'den 5.000 kap/saate kadar çözüm sunar. Alüminyum folyo kapak kapatma ve tarih baskısı entegredir.",
+          "en": "Fills various packages with desired weight using an AISI 304 stainless body and a 17-inch color touch PLC panel. Offers solutions from 500 L/h to 5,000 cups/hour with nozzle liquid filling and rotary table cup filling options. Integrates aluminum foil cap sealing and date printing.",
+          "ar": "تعبئ حزم متنوعة بالوزن المطلوب باستخدام هيكل من الفولاذ المقاوم للصدأ AISI 304 ولوحة PLC تعمل باللمس ملونة بحجم 17 بوصة. تقدم حلولًا من 500 لتر/ساعة إلى 5000 كوب/ساعة مع خيارات تعبئة سائلة بفوهة وتعبئة أكواب على طاولة دوارة. تتضمن إغلاق أغطية من الألمنيوم وطبعة تاريخ.",
+          "fr": "Remplit divers emballages avec le poids souhaité à l'aide d'un corps en acier inoxydable AISI 304 et d'un panneau PLC tactile couleur de 17 pouces. Offre des solutions de 500 L/h à 5 000 tasses/heure avec des options de remplissage liquide à buse et de remplissage de tasses sur table tournante. Intègre le scellement de couvercles en aluminium et l'impression de date.",
+          "ru": "Заполняет различные упаковки с желаемым весом с помощью корпуса из нержавеющей стали AISI 304 и цветной сенсорной панели PLC размером 17 дюймов. Предлагает решения от 500 л/ч до 5000 чашек/час с вариантами заполнения жидкостью с насадкой и заполнения чашек на вращающемся столе. Интегрирует запечатывание алюминиевых крышек и печать даты."
+        },
+        "capacityOptions": [],
+        "packagingOptions": [],
+        "optionalFeatures": [],
+        "fitNote": null
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/yogurt-dolum-makinesi.jpg",
         "servedUrl": "/api/media/yogurt-dolum-makinesi-gorsel-1783208638089-0kcz.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.919Z",
+      "syncedAt": "2026-07-13T19:30:38.987Z",
       "removedFromSite": null
     }
   },
@@ -3773,10 +4572,7 @@
         "slug": "termal-islem",
         "name": {
           "tr": "Termal İşlem",
-          "en": "Thermal Processing",
-          "ar": "العملية الحرارية",
-          "fr": "Processus thermique",
-          "ru": "Термический процесс"
+          "en": "Thermal Processing"
         }
       },
       "capacity": "60 – 200 kg",
@@ -3943,12 +4739,25 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "AISI 304 paslanmaz gövde ve 2,2 kW vakum pompasıyla düşük sıcaklıkta, kokusuz pişirme sağlar. Ayarlanabilir 11 – 18 kW kırma motoru, pnömatik kapak ve tam PLC otomasyonu ile reçeteye bağlı üretim yapar. Her parti tipik olarak en fazla 15 dakikada tamamlanır; 60 – 200 kg parti kapasitesi sunar.",
+          "en": "Provides odorless cooking at low temperatures with an AISI 304 stainless body and a 2.2 kW vacuum pump. Produces according to recipes with an adjustable 11 – 18 kW crushing motor, pneumatic lid, and full PLC automation. Each batch typically completes in a maximum of 15 minutes; offers a batch capacity of 60 – 200 kg.",
+          "ar": "توفر طهيًا عديم الرائحة في درجات حرارة منخفضة مع هيكل من الفولاذ المقاوم للصدأ AISI 304 ومضخة فراغ بقوة 2.2 كيلو واط. تنتج وفقًا للوصفات مع محرك سحق قابل للتعديل بقوة 11 – 18 كيلو واط، غطاء هوائي، وأتمتة PLC كاملة. كل دفعة تكتمل عادة في غضون 15 دقيقة كحد أقصى؛ تقدم سعة دفعة تتراوح من 60 – 200 كجم.",
+          "fr": "Offre une cuisson sans odeur à basse température avec un corps en acier inoxydable AISI 304 et une pompe à vide de 2,2 kW. Produit selon des recettes avec un moteur de broyage réglable de 11 à 18 kW, un couvercle pneumatique et une automatisation PLC complète. Chaque lot se termine généralement en 15 minutes maximum ; offre une capacité de lot de 60 à 200 kg.",
+          "ru": "Обеспечивает безвкусное приготовление при низкой температуре с корпусом из нержавеющей стали AISI 304 и вакуумным насосом мощностью 2,2 кВт. Производит по рецептам с регулируемым дробильным мотором мощностью 11 – 18 кВт, пневматической крышкой и полной автоматизацией PLC. Каждая партия обычно завершается за максимум 15 минут; предлагает емкость партии от 60 до 200 кг."
+        },
+        "capacityOptions": [],
+        "packagingOptions": [],
+        "optionalFeatures": [],
+        "fitNote": null
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/pisirici-kazan.jpg",
         "servedUrl": "/api/media/pisirici-kazan-gorsel-1783208638104-c36j.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.920Z",
+      "syncedAt": "2026-07-13T19:30:38.988Z",
       "removedFromSite": null
     }
   },
@@ -4005,10 +4814,7 @@
         "slug": "gida-hatlari",
         "name": {
           "tr": "Gıda İşleme Hatları",
-          "en": "Food Processing Lines",
-          "ar": "خطوط معالجة الطعام",
-          "fr": "Lignes de transformation des aliments",
-          "ru": "Линии переработки пищи"
+          "en": "Food Processing Lines"
         }
       },
       "capacity": "6 – 50 ton/gün",
@@ -4019,209 +4825,117 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity",
-            "ar": "السعة",
-            "fr": "Capacité",
-            "ru": "Вместимость"
+            "en": "Capacity"
           },
           "v": {
             "tr": "6 – 50 ton/gün (proje bazlı daha yüksek)",
-            "en": "6 – 50 ton/day (higher on request)",
-            "ar": "6 – 50 طن/يوم (أعلى بناءً على المشروع)",
-            "fr": "6 – 50 tonnes/jour (plus élevé selon le projet)",
-            "ru": "6 – 50 тонн/день (больше по проекту)"
+            "en": "6 – 50 ton/day (higher on request)"
           }
         },
         {
           "k": {
             "tr": "Brix Aralığı",
-            "en": "Brix range",
-            "ar": "نطاق بيريكس",
-            "fr": "Plage de Brix",
-            "ru": "Диапазон Брикс"
+            "en": "Brix range"
           },
           "v": {
             "tr": "Hedefe göre 28 – 36 brix",
-            "en": "28 – 36 brix by target",
-            "ar": "الهدف 28 – 36 بيريكس",
-            "fr": "Cible 28 – 36 brix",
-            "ru": "Цель 28 – 36 брикс"
+            "en": "28 – 36 brix by target"
           }
         },
         {
           "k": {
             "tr": "Proses",
-            "en": "Process",
-            "ar": "العملية",
-            "fr": "Processus",
-            "ru": "Процесс"
+            "en": "Process"
           },
           "v": {
             "tr": "Hot-break / cold-break opsiyonlu",
-            "en": "Hot-break / cold-break optional",
-            "ar": "خيار الكسر الساخن / الكسر البارد",
-            "fr": "Option hot-break / cold-break",
-            "ru": "Опция горячего/холодного разрыва"
+            "en": "Hot-break / cold-break optional"
           }
         },
         {
           "k": {
             "tr": "Dolum Tipi",
-            "en": "Filling type",
-            "ar": "نوع التعبئة",
-            "fr": "Type de remplissage",
-            "ru": "Тип заполнения"
+            "en": "Filling type"
           },
           "v": {
             "tr": "Aseptik torba, teneke, kavanoz veya bulk",
-            "en": "Aseptic bag, can, jar or bulk",
-            "ar": "كيس معقم، علبة، جرة أو بالجملة",
-            "fr": "Sac aseptique, boîte, pot ou en vrac",
-            "ru": "Аseptический пакет, банка, банка или в большом объеме"
+            "en": "Aseptic bag, can, jar or bulk"
           }
         },
         {
           "k": {
             "tr": "Malzeme",
-            "en": "Material",
-            "ar": "المادة",
-            "fr": "Matériau",
-            "ru": "Материал"
+            "en": "Material"
           },
           "v": {
             "tr": "Ürün temas: AISI 304 / 316 opsiyonlu",
-            "en": "Product contact: AISI 304 / 316",
-            "ar": "تواصل المنتج: AISI 304 / 316 اختياري",
-            "fr": "Contact produit : AISI 304 / 316 en option",
-            "ru": "Контакт с продуктом: AISI 304 / 316 по выбору"
+            "en": "Product contact: AISI 304 / 316"
           }
         },
         {
           "k": {
             "tr": "Kontrol",
-            "en": "Control",
-            "ar": "التحكم",
-            "fr": "Contrôle",
-            "ru": "Управление"
+            "en": "Control"
           },
           "v": {
             "tr": "PLC + HMI",
-            "en": "PLC + HMI",
-            "ar": "PLC + HMI",
-            "fr": "PLC + HMI",
-            "ru": "PLC + HMI"
+            "en": "PLC + HMI"
           }
         },
         {
           "k": {
             "tr": "Temizlik",
-            "en": "Cleaning",
-            "ar": "التنظيف",
-            "fr": "Nettoyage",
-            "ru": "Очистка"
+            "en": "Cleaning"
           },
           "v": {
             "tr": "Manuel / yarı / otomatik CIP",
-            "en": "Manual / semi / automatic CIP",
-            "ar": "يدوي / نصف / CIP تلقائي",
-            "fr": "CIP manuel / semi-automatique / automatique",
-            "ru": "Ручной / полуавтоматический / автоматический CIP"
+            "en": "Manual / semi / automatic CIP"
           }
         },
         {
           "k": {
             "tr": "Devreye Alma",
-            "en": "Commissioning",
-            "ar": "تشغيل",
-            "fr": "Mise en service",
-            "ru": "Пусконаладка"
+            "en": "Commissioning"
           },
           "v": {
             "tr": "Anahtar teslim",
-            "en": "Turnkey",
-            "ar": "تسليم المفتاح",
-            "fr": "Clé en main",
-            "ru": "Под ключ"
+            "en": "Turnkey"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Domates kabul ve yıkama sistemi",
-          "en": "Tomato receiving and washing system",
-          "ar": "نظام استلام وغسل الطماطم",
-          "fr": "Système de réception et de lavage des tomates",
-          "ru": "Система приема и мойки томатов"
+          "tr": "Domates kabul ve yıkama sistemi"
         },
         {
-          "tr": "Ayıklama ve taşıma bantları",
-          "en": "Sorting and conveyor belts",
-          "ar": "أحزمة الفرز والنقل",
-          "fr": "Bandes de tri et de transport",
-          "ru": "Сортировочные и конвейерные ленты"
+          "tr": "Ayıklama ve taşıma bantları"
         },
         {
-          "tr": "Kırma ve ön ısıtma grubu (hot/cold-break)",
-          "en": "Crushing and pre-heating group (hot/cold-break)",
-          "ar": "مجموعة التكسير والتسخين المسبق (كسر ساخن/بارد)",
-          "fr": "Groupe de concassage et de préchauffage (casse chaude/froide)",
-          "ru": "Группа дробления и предварительного нагрева (горячий/холодный разрыв)"
+          "tr": "Kırma ve ön ısıtma grubu (hot/cold-break)"
         },
         {
-          "tr": "Pulper & refiner sistemi",
-          "en": "Pulper & refiner system",
-          "ar": "نظام الطاحن والمصفى",
-          "fr": "Système de pulpe et de raffineur",
-          "ru": "Система пульпера и рафинирования"
+          "tr": "Pulper & refiner sistemi"
         },
         {
-          "tr": "Vakum evaporasyon ünitesi",
-          "en": "Vacuum evaporation unit",
-          "ar": "وحدة التبخر تحت الفراغ",
-          "fr": "Unité d'évaporation sous vide",
-          "ru": "Вакуумный испарительный блок"
+          "tr": "Vakum evaporasyon ünitesi"
         },
         {
-          "tr": "Pastörizasyon / sterilizasyon sistemi",
-          "en": "Pasteurization / sterilization system",
-          "ar": "نظام البسترة / التعقيم",
-          "fr": "Système de pasteurisation / stérilisation",
-          "ru": "Система пастеризации / стерилизации"
+          "tr": "Pastörizasyon / sterilizasyon sistemi"
         },
         {
-          "tr": "Aseptik veya tenekeli dolum hattı",
-          "en": "Aseptic or canned filling line",
-          "ar": "خط التعبئة المعقمة أو المعلبة",
-          "fr": "Ligne de remplissage aseptique ou en conserve",
-          "ru": "Аseptическая или консервная линия розлива"
+          "tr": "Aseptik veya tenekeli dolum hattı"
         },
         {
-          "tr": "CIP temizlik sistemi",
-          "en": "CIP cleaning system",
-          "ar": "نظام التنظيف CIP",
-          "fr": "Système de nettoyage CIP",
-          "ru": "Система CIP очистки"
+          "tr": "CIP temizlik sistemi"
         },
         {
-          "tr": "Transfer pompaları ve proses tankları",
-          "en": "Transfer pumps and process tanks",
-          "ar": "مضخات النقل وخزانات العمليات",
-          "fr": "Pompes de transfert et cuves de processus",
-          "ru": "Насосы для перекачки и процессные резервуары"
+          "tr": "Transfer pompaları ve proses tankları"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon sistemi",
-          "en": "Electrical panel, PLC and automation system",
-          "ar": "لوحة كهربائية، PLC ونظام الأتمتة",
-          "fr": "Panneau électrique, PLC et système d'automatisation",
-          "ru": "Электрическая панель, PLC и система автоматизации"
+          "tr": "Elektrik pano, PLC ve otomasyon sistemi"
         },
         {
-          "tr": "Kurulum, test üretimi ve operatör eğitimi",
-          "en": "Installation, test production and operator training",
-          "ar": "التركيب، إنتاج الاختبار وتدريب المشغلين",
-          "fr": "Installation, production de test et formation des opérateurs",
-          "ru": "Установка, тестовое производство и обучение операторов"
+          "tr": "Kurulum, test üretimi ve operatör eğitimi"
         }
       ],
       "badge": {
@@ -4233,12 +4947,224 @@
       },
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Yıkama, taşıma, parçalama, kabuk ayırma, ısıtma, vakum evaporasyon, brix kontrolü, pastörizasyon, dolum ve paketleme adımlarının tamamını kapsayan anahtar teslim hat. Kapasiteye göre ölçeklenebilir.",
+          "en": "A turnkey line covering washing, conveying, crushing, shell separation, heating, vacuum evaporation, brix control, pasteurization, filling and packaging. Scalable by capacity.",
+          "ar": "خط تسليم مفتاح يشمل جميع مراحل الغسيل والنقل والتقطيع وتقشير وتسخين والتبخر تحت الفراغ والتحكم في البريكس والبسترة والتعبئة والتغليف. قابل للتكيف حسب السعة.",
+          "fr": "Une ligne clé en main couvrant toutes les étapes de lavage, transport, découpe, épluchage, chauffage, évaporation sous vide, contrôle Brix, pasteurisation, remplissage et emballage. Évolutive selon la capacité.",
+          "ru": "Готовая линия, охватывающая все этапы мытья, транспортировки, нарезки, очистки, нагрева, вакуумной выпарки, контроля по Бриксу, пастеризации, розлива и упаковки. Масштабируемая в зависимости от мощности."
+        },
+        "capacityOptions": [
+          "6 – 10 ton/gün",
+          "10 – 25 ton/gün",
+          "25 – 50 ton/gün",
+          "50+ ton/gün (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Teneke kutu"
+          },
+          {
+            "tr": "Cam kavanoz"
+          },
+          {
+            "tr": "Aseptik torba"
+          },
+          {
+            "tr": "Bidon"
+          }
+        ],
+        "audience": [
+          {
+            "tr": "Yeni domates/salça yatırımcısı"
+          },
+          {
+            "tr": "Mevcut konserve fabrikasını modernize edenler"
+          },
+          {
+            "tr": "Salça ihracatçısı & fason üretici"
+          },
+          {
+            "tr": "Kooperatif ve tarımsal işletmeler"
+          }
+        ],
+        "processFlow": [
+          {
+            "k": {
+              "tr": "Kabul & Tartım"
+            },
+            "v": {
+              "tr": "Hasat domatesi kantarda tartılır, kalite ve brix ön kontrolü yapılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Yıkama & Ayıklama"
+            },
+            "v": {
+              "tr": "Flotasyon yıkama, yaprak/taş ayırma ve optik ayıklama ile yabancı madde uzaklaştırılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kırma & Ön Isıtma"
+            },
+            "v": {
+              "tr": "Kırıcıda parçalanan domates, hot/cold-break ile enzim inaktivasyonu için ısıtılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Pulper & Refiner"
+            },
+            "v": {
+              "tr": "Kabuk ve çekirdek elenerek pürüzsüz pulp elde edilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Vakum Evaporasyon"
+            },
+            "v": {
+              "tr": "Çok etkili evaporatörde su alınarak istenen brikse (28–36) konsantre edilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Pastörizasyon"
+            },
+            "v": {
+              "tr": "Isıl işlemle mikrobiyal güvenlik ve raf ömrü sağlanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Aseptik / Tenekeli Dolum"
+            },
+            "v": {
+              "tr": "Ürün aseptik torbaya veya teneke/kavanoza hijyenik olarak doldurulur."
+            }
+          }
+        ],
+        "requirements": [
+          {
+            "k": {
+              "tr": "Kapalı Alan"
+            },
+            "v": {
+              "tr": "400 – 800 m²"
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulu Güç"
+            },
+            "v": {
+              "tr": "150 – 350 kW"
+            }
+          },
+          {
+            "k": {
+              "tr": "Buhar"
+            },
+            "v": {
+              "tr": "1 – 3 ton/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Su"
+            },
+            "v": {
+              "tr": "5 – 15 m³/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Operatör"
+            },
+            "v": {
+              "tr": "4 – 8 kişi/vardiya"
+            }
+          }
+        ],
+        "optionalEq": [
+          {
+            "tr": "Otomatik kasa boşaltma sistemi"
+          },
+          {
+            "tr": "Optik ayıklama"
+          },
+          {
+            "tr": "Otomatik CIP"
+          },
+          {
+            "tr": "Aseptik dolum ünitesi"
+          },
+          {
+            "tr": "Teneke / kavanoz dolum alternatifleri"
+          },
+          {
+            "tr": "Buhar kazanı"
+          },
+          {
+            "tr": "Hava kompresörü"
+          },
+          {
+            "tr": "Su arıtma sistemi"
+          },
+          {
+            "tr": "Laboratuvar ekipmanları"
+          },
+          {
+            "tr": "Soğuk depo veya hammadde kabul alanı"
+          }
+        ],
+        "faq": [
+          {
+            "k": {
+              "tr": "Kurulum ve devreye alma ne kadar sürer?"
+            },
+            "v": {
+              "tr": "Kapasiteye bağlı olarak sahada tipik 3–6 hafta; üretim ve sevkiyat termine dahildir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Proses parametreleri ve reçete desteği veriliyor mu?"
+            },
+            "v": {
+              "tr": "Evet; brix, sıcaklık ve akış ayarları ile operatör eğitimi teslimin parçasıdır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Aseptik mi tenekeli dolum mu?"
+            },
+            "v": {
+              "tr": "İkisi de mümkün; hedef pazar ve raf ömrüne göre birlikte seçeriz."
+            }
+          },
+          {
+            "k": {
+              "tr": "Mevcut binama uyarlanır mı?"
+            },
+            "v": {
+              "tr": "Yerleşim binanıza göre tasarlanır; alan/enerji ihtiyaçları ön değerlendirmede netleşir."
+            }
+          }
+        ],
+        "rationale": {
+          "tr": "Salça hattının temel yatırım mantığı; sezonluk ve hızlı bozulan domatesi, uzun raf ömürlü, stoklanabilir ve ihraç edilebilir konsantre ürüne dönüştürmektir. Bu yatırım modeli özellikle domates üretiminin yoğun olduğu bölgelerde, hasat dönemindeki fiyat avantajını endüstriyel ürüne çevirerek katma değer oluşturur. Nihai yatırım fizibilitesi; hammadde fiyatı, hedef brix, ambalaj tipi, enerji maliyeti, pazar fiyatı ve kapasite kullanım oranına göre ayrıca değerlendirilmelidir."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/line-urun-salca-domates-isleme-hatti.jpg",
         "servedUrl": "/api/media/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.921Z",
+      "syncedAt": "2026-07-13T19:30:38.988Z",
       "removedFromSite": null
     }
   },
@@ -4295,10 +5221,7 @@
         "slug": "gida-hatlari",
         "name": {
           "tr": "Gıda İşleme Hatları",
-          "en": "Food Processing Lines",
-          "ar": "خطوط معالجة الطعام",
-          "fr": "Lignes de transformation des aliments",
-          "ru": "Линии переработки пищи"
+          "en": "Food Processing Lines"
         }
       },
       "capacity": "1 – 8 ton/gün",
@@ -4309,129 +5232,67 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity",
-            "ar": "السعة",
-            "fr": "Capacité",
-            "ru": "Вместимость"
+            "en": "Capacity"
           },
           "v": {
             "tr": "1 – 8 ton/gün",
-            "en": "1 – 8 ton/day",
-            "ar": "1 – 8 طن/يوم",
-            "fr": "1 – 8 tonnes/jour",
-            "ru": "1 – 8 тонн/день"
+            "en": "1 – 8 ton/day"
           }
         },
         {
           "k": {
             "tr": "Ürünler",
-            "en": "Products",
-            "ar": "المنتجات",
-            "fr": "Produits",
-            "ru": "Продукты"
+            "en": "Products"
           },
           "v": {
             "tr": "Mayonez, ketçap, sos",
-            "en": "Mayo, ketchup, sauce",
-            "ar": "مايونيز، كاتشب، صلصة",
-            "fr": "Mayonnaise, ketchup, sauce",
-            "ru": "Майонез, кетчуп, соус"
+            "en": "Mayo, ketchup, sauce"
           }
         },
         {
           "k": {
             "tr": "Reçete desteği",
-            "en": "Recipe support",
-            "ar": "دعم الوصفة",
-            "fr": "Support de recette",
-            "ru": "Поддержка рецепта"
+            "en": "Recipe support"
           },
           "v": {
             "tr": "Var",
-            "en": "Included",
-            "ar": "متاح",
-            "fr": "Disponible",
-            "ru": "Доступно"
+            "en": "Included"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Hammadde hazırlama ve tartım",
-          "en": "Raw material preparation and weighing",
-          "ar": "تحضير المواد الخام والوزن",
-          "fr": "Préparation et pesée des matières premières",
-          "ru": "Подготовка и взвешивание сырья"
+          "tr": "Hammadde hazırlama ve tartım"
         },
         {
-          "tr": "Ürün hazırlama tankları",
-          "en": "Product preparation tanks",
-          "ar": "خزانات تحضير المنتج",
-          "fr": "Réservoirs de préparation des produits",
-          "ru": "Резервуары для подготовки продукта"
+          "tr": "Ürün hazırlama tankları"
         },
         {
-          "tr": "Yüksek kesme / emülsiyon mikser tankı",
-          "en": "High shear/emulsion mixer tank",
-          "ar": "خزان خلاط عالي القص/استحلاب",
-          "fr": "Réservoir de mélangeur à haute cisaillement/émulsion",
-          "ru": "Резервуар для высокоскоростного/эмульсионного смесителя"
+          "tr": "Yüksek kesme / emülsiyon mikser tankı"
         },
         {
-          "tr": "Vakum mikser ve deaerasyon",
-          "en": "Vacuum mixer and deaeration",
-          "ar": "خلاط فراغ وإزالة الهواء",
-          "fr": "Mélangeur sous vide et désaération",
-          "ru": "Вакуумный смеситель и дегазация"
+          "tr": "Vakum mikser ve deaerasyon"
         },
         {
-          "tr": "Homojenizatör",
-          "en": "Homogenizer",
-          "ar": "مجانس",
-          "fr": "Homogénéisateur",
-          "ru": "Гомогенизатор"
+          "tr": "Homojenizatör"
         },
         {
-          "tr": "Pastörizasyon / ısıl işlem ünitesi",
-          "en": "Pasteurization/thermal processing unit",
-          "ar": "وحدة البسترة/المعالجة الحرارية",
-          "fr": "Unité de pasteurisation/traitement thermique",
-          "ru": "Установка пастеризации/термической обработки"
+          "tr": "Pastörizasyon / ısıl işlem ünitesi"
         },
         {
-          "tr": "Tampon tanklar ve transfer pompaları",
-          "en": "Buffer tanks and transfer pumps",
-          "ar": "خزانات العازلة ومضخات النقل",
-          "fr": "Réservoirs tampons et pompes de transfert",
-          "ru": "Буферные резервуары и насосы для перекачки"
+          "tr": "Tampon tanklar ve transfer pompaları"
         },
         {
-          "tr": "Dolum ve kapaklama hattı",
-          "en": "Filling and capping line",
-          "ar": "خط التعبئة والتغطية",
-          "fr": "Ligne de remplissage et de capsulage",
-          "ru": "Линия розлива и укупорки"
+          "tr": "Dolum ve kapaklama hattı"
         },
         {
-          "tr": "Etiketleme / paketleme",
-          "en": "Labeling / packaging",
-          "ar": "التوسيم / التعبئة",
-          "fr": "Étiquetage / emballage",
-          "ru": "Маркировка / упаковка"
+          "tr": "Etiketleme / paketleme"
         },
         {
-          "tr": "CIP temizlik sistemi",
-          "en": "CIP cleaning system",
-          "ar": "نظام تنظيف CIP",
-          "fr": "Système de nettoyage CIP",
-          "ru": "Система CIP очистки"
+          "tr": "CIP temizlik sistemi"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon",
-          "en": "Electrical panel, PLC and automation",
-          "ar": "لوحة كهربائية، PLC وأتمتة",
-          "fr": "Panneau électrique, PLC et automatisation",
-          "ru": "Электрический щит, PLC и автоматизация"
+          "tr": "Elektrik pano, PLC ve otomasyon"
         }
       ],
       "badge": null,
@@ -4441,12 +5302,221 @@
         "currency": "EUR"
       },
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Su hazırlama, emülsiyon/mikser tankı, homojenizasyon, dolum, kapaklama ve etiketlemeyi kapsar. Mayonez, ketçap, hardal ve soslar için reçete desteğiyle teslim edilir.",
+          "en": "Covers water preparation, emulsion/mixer tank, homogenization, filling, capping and labeling. Delivered with recipe support for mayo, ketchup, mustard and sauces.",
+          "ar": "يشمل تحضير المياه وخزان الاستحلاب/الخلط والتجانس والتعبئة والتغطية ووضع العلامات. يتم تسليمها مع دعم الوصفات للمايونيز والكاتشب والخردل والصلصات.",
+          "fr": "Comprend la préparation de l'eau, le réservoir d'émulsification/mélange, l'homogénéisation, le remplissage, le bouchage et l'étiquetage. Livré avec un support de recette pour mayonnaise, ketchup, moutarde et sauces.",
+          "ru": "Включает подготовку воды, емкость для эмульгирования/смешивания, гомогенизацию, заполнение, закупорку и этикетирование. Поставляется с поддержкой рецептов для майонеза, кетчупа, горчицы и соусов."
+        },
+        "capacityOptions": [
+          "1 – 3 ton/gün",
+          "3 – 5 ton/gün",
+          "5 – 8 ton/gün",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "PET şişe"
+          },
+          {
+            "tr": "Cam şişe"
+          },
+          {
+            "tr": "Doypack"
+          },
+          {
+            "tr": "Sachet"
+          }
+        ],
+        "audience": [
+          {
+            "tr": "Sos/mayonez markası kurmak isteyenler"
+          },
+          {
+            "tr": "Ürün gamını genişleten gıda üreticisi"
+          },
+          {
+            "tr": "Private-label & fason üretici"
+          },
+          {
+            "tr": "HORECA tedarikçisi"
+          }
+        ],
+        "processFlow": [
+          {
+            "k": {
+              "tr": "Hammadde Hazırlama & Tartım"
+            },
+            "v": {
+              "tr": "Yağ, yumurta/toz, sirke ve baharat reçeteye göre tartılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Ön Karışım"
+            },
+            "v": {
+              "tr": "Sıvı ve toz bileşenler ön karışım tankında birleştirilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Yüksek Kesme Mikseri"
+            },
+            "v": {
+              "tr": "Yüksek devirli mikserde kararlı emülsiyon ve hedef viskozite oluşturulur."
+            }
+          },
+          {
+            "k": {
+              "tr": "Vakumlu Deaerasyon"
+            },
+            "v": {
+              "tr": "Vakum altında hava alınır; renk, kıvam ve raf ömrü iyileşir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Pastörizasyon / Isıl İşlem"
+            },
+            "v": {
+              "tr": "Ketçap/sos için ısıl işlemle mikrobiyal güvenlik sağlanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Homojenizasyon"
+            },
+            "v": {
+              "tr": "Partikül boyutu küçültülerek pürüzsüz, ayrışmayan doku elde edilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Dolum & Kapaklama"
+            },
+            "v": {
+              "tr": "Kavanoz, şişe, doypack veya poşete hijyenik dolum ve kapaklama."
+            }
+          }
+        ],
+        "requirements": [
+          {
+            "k": {
+              "tr": "Kapalı Alan"
+            },
+            "v": {
+              "tr": "200 – 500 m²"
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulu Güç"
+            },
+            "v": {
+              "tr": "60 – 180 kW"
+            }
+          },
+          {
+            "k": {
+              "tr": "Buhar / Sıcak Su"
+            },
+            "v": {
+              "tr": "0.3 – 1.5 ton/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Su"
+            },
+            "v": {
+              "tr": "2 – 8 m³/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Operatör"
+            },
+            "v": {
+              "tr": "3 – 6 kişi/vardiya"
+            }
+          }
+        ],
+        "optionalEq": [
+          {
+            "tr": "Otomatik reçete dozajlama"
+          },
+          {
+            "tr": "Toz besleme / eritme ünitesi"
+          },
+          {
+            "tr": "Vakum mikser yükseltmesi"
+          },
+          {
+            "tr": "Otomatik CIP"
+          },
+          {
+            "tr": "Doypack / poşet dolum alternatifi"
+          },
+          {
+            "tr": "Metal dedektör / kontrol kantarı"
+          },
+          {
+            "tr": "Buhar kazanı"
+          },
+          {
+            "tr": "Hava kompresörü"
+          },
+          {
+            "tr": "Laboratuvar ekipmanları"
+          }
+        ],
+        "faq": [
+          {
+            "k": {
+              "tr": "Reçete ve emülsiyon stabilitesi desteği var mı?"
+            },
+            "v": {
+              "tr": "Evet; mayonez/ketçap/sos reçeteleri, viskozite ve stabilite ayarıyla teslim edilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "CIP (yerinde temizlik) dahil mi?"
+            },
+            "v": {
+              "tr": "Opsiyonel CIP ünitesiyle hijyen ve ürün geçiş temizliği otomatikleştirilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Farklı ambalajlara dolum yapabilir miyim?"
+            },
+            "v": {
+              "tr": "Kavanoz, şişe, doypack ve poşet tek hatta entegre edilebilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulum süresi?"
+            },
+            "v": {
+              "tr": "Sahada tipik 2–4 hafta."
+            }
+          }
+        ],
+        "rationale": {
+          "tr": "Yüksek marjlı, markalaşmaya uygun bir ürün grubudur. Görece düşük başlangıç yatırımıyla private-label ve ihracat fırsatı sunar."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/line-urun-sos-mayonez-ketcap-hatti.jpg",
         "servedUrl": "/api/media/sos-mayonez-ketcap-hatti-gorsel-1783208638139-5d10.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.923Z",
+      "syncedAt": "2026-07-13T19:30:38.989Z",
       "removedFromSite": null
     }
   },
@@ -4503,10 +5573,7 @@
         "slug": "gida-hatlari",
         "name": {
           "tr": "Gıda İşleme Hatları",
-          "en": "Food Processing Lines",
-          "ar": "خطوط معالجة الطعام",
-          "fr": "Lignes de transformation des aliments",
-          "ru": "Линии переработки пищи"
+          "en": "Food Processing Lines"
         }
       },
       "capacity": "1.000 L/gün – 20 ton/gün",
@@ -4517,122 +5584,64 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity",
-            "ar": "السعة",
-            "fr": "Capacité",
-            "ru": "Вместимость"
+            "en": "Capacity"
           },
           "v": {
             "tr": "1.000 – 15.000 L/gün",
-            "en": "1,000 – 15,000 L/day",
-            "ar": "1.000 – 15.000 لتر/يوم",
-            "fr": "1.000 – 15.000 L/jour",
-            "ru": "1.000 – 15.000 л/день"
+            "en": "1,000 – 15,000 L/day"
           }
         },
         {
           "k": {
             "tr": "Isı geri kazanımı",
-            "en": "Heat recovery",
-            "ar": "استعادة الحرارة",
-            "fr": "Récupération de chaleur",
-            "ru": "Восстановление тепла"
+            "en": "Heat recovery"
           },
           "v": {
             "tr": "%90'a kadar",
-            "en": "Up to 90%",
-            "ar": "حتى 90%",
-            "fr": "Jusqu'à 90%",
-            "ru": "До 90%"
+            "en": "Up to 90%"
           }
         },
         {
           "k": {
             "tr": "Genişleme",
-            "en": "Expansion",
-            "ar": "توسع",
-            "fr": "Expansion",
-            "ru": "Расширение"
+            "en": "Expansion"
           },
           "v": {
             "tr": "Peynir/yoğurt",
-            "en": "Cheese/yoghurt",
-            "ar": "جبن/زبادي",
-            "fr": "Fromage/yaourt",
-            "ru": "Сыр/йогурт"
+            "en": "Cheese/yoghurt"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Çiğ süt kabul ve soğutma tankı",
-          "en": "Raw milk reception and cooling tank",
-          "ar": "خزان استقبال الحليب الخام والتبريد",
-          "fr": "Réception et cuve de refroidissement du lait cru",
-          "ru": "Прием и охлаждение сырого молока"
+          "tr": "Çiğ süt kabul ve soğutma tankı"
         },
         {
-          "tr": "Filtrasyon ve klarifikasyon",
-          "en": "Filtration and clarification",
-          "ar": "الترشيح والتوضيح",
-          "fr": "Filtration et clarification",
-          "ru": "Фильтрация и clarification"
+          "tr": "Filtrasyon ve klarifikasyon"
         },
         {
-          "tr": "Krema separatörü ve standardizasyon",
-          "en": "Cream separator and standardization",
-          "ar": "فاصل الكريمة والتوحيد",
-          "fr": "Séparateur de crème et standardisation",
-          "ru": "Сепаратор сливок и стандартизация"
+          "tr": "Krema separatörü ve standardizasyon"
         },
         {
-          "tr": "Pastörizatör (plakalı eşanjör)",
-          "en": "Pasteurizer (plate heat exchanger)",
-          "ar": "بسترة (مبادل حراري صفيحي)",
-          "fr": "Pasteurisateur (échangeur de chaleur à plaques)",
-          "ru": "Пастеризатор (пластинчатый теплообменник)"
+          "tr": "Pastörizatör (plakalı eşanjör)"
         },
         {
-          "tr": "Homojenizatör",
-          "en": "Homogenizer",
-          "ar": "مجانس",
-          "fr": "Homogénéisateur",
-          "ru": "Гомогенизатор"
+          "tr": "Homojenizatör"
         },
         {
-          "tr": "İzoleli depolama tankları",
-          "en": "Insulated storage tanks",
-          "ar": "خزانات تخزين معزولة",
-          "fr": "Cuves de stockage isolées",
-          "ru": "Изолированные резервуары для хранения"
+          "tr": "İzoleli depolama tankları"
         },
         {
-          "tr": "Dolum hattı (şişe/pouch/karton)",
-          "en": "Filling line (bottle/pouch/carton)",
-          "ar": "خط التعبئة (زجاجة/كيس/كرتون)",
-          "fr": "Ligne de remplissage (bouteille/sachet/carton)",
-          "ru": "Линия розлива (бутылка/пакет/коробка)"
+          "tr": "Dolum hattı (şişe/pouch/karton)"
         },
         {
-          "tr": "CIP temizlik sistemi",
-          "en": "CIP cleaning system",
-          "ar": "نظام تنظيف CIP",
-          "fr": "Système de nettoyage CIP",
-          "ru": "Система CIP очистки"
+          "tr": "CIP temizlik sistemi"
         },
         {
-          "tr": "Transfer pompaları ve boru hattı",
-          "en": "Transfer pumps and piping",
-          "ar": "مضخات النقل وأنابيب",
-          "fr": "Pompes de transfert et tuyauterie",
-          "ru": "Насосы для перекачки и трубопровод"
+          "tr": "Transfer pompaları ve boru hattı"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon",
-          "en": "Electrical panel, PLC and automation",
-          "ar": "لوحة كهربائية، PLC وأتمتة",
-          "fr": "Panneau électrique, PLC et automatisation",
-          "ru": "Электрический щит, PLC и автоматизация"
+          "tr": "Elektrik pano, PLC ve otomasyon"
         }
       ],
       "badge": null,
@@ -4651,6 +5660,212 @@
           "currency": "EUR"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "Çiğ süt kabul, klarifikasyon, homojenizasyon, pastörizasyon, depolama ve dolumu kapsar. Peynir, yoğurt ve tereyağı hatlarına genişletilebilir.",
+          "en": "Covers raw milk reception, clarification, homogenization, pasteurization, storage and filling. Expandable to cheese, yoghurt and butter lines.",
+          "ar": "يتضمن استقبال الحليب الخام، والتصفية، والتجانس، والبسترة، والتخزين، والتعبئة. يمكن توسيعه ليشمل خطوط الجبن والزبادي والزبدة.",
+          "fr": "Comprend la réception du lait cru, la clarification, l'homogénéisation, la pasteurisation, le stockage et le remplissage. Peut être étendu aux lignes de fromage, de yaourt et de beurre.",
+          "ru": "Включает прием сырого молока, очистку, гомогенизацию, пастеризацию, хранение и упаковку. Может быть расширен для линий сыров, йогуртов и масла."
+        },
+        "capacityOptions": [
+          "1.000 – 5.000 L/gün",
+          "5.000 – 10.000 L/gün",
+          "10.000 – 15.000 L/gün",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "PET şişe"
+          },
+          {
+            "tr": "Cam şişe"
+          },
+          {
+            "tr": "Poşet"
+          },
+          {
+            "tr": "Bag-in-box"
+          }
+        ],
+        "audience": [
+          {
+            "tr": "Yeni mandıra/süt yatırımcısı"
+          },
+          {
+            "tr": "Çiftlikten-rafa entegre üretici"
+          },
+          {
+            "tr": "Peynir/yoğurt hattına geçiş planlayan"
+          },
+          {
+            "tr": "Bölgesel süt toplama merkezi"
+          }
+        ],
+        "processFlow": [
+          {
+            "k": {
+              "tr": "Çiğ Süt Kabul & Soğutma"
+            },
+            "v": {
+              "tr": "Süt tartılır, filtrelenir ve +4 °C'ye soğutularak depolanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Klarifikasyon / Separasyon"
+            },
+            "v": {
+              "tr": "Santrifüjle temizlenir; krema ayrımı ve yağ standardizasyonu yapılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Standardizasyon"
+            },
+            "v": {
+              "tr": "İstenen yağ oranına göre süt ayarlanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Pastörizasyon (HTST)"
+            },
+            "v": {
+              "tr": "Plakalı eşanjörde 72–75 °C ısıl işlem; ısı geri kazanımıyla enerji tasarrufu."
+            }
+          },
+          {
+            "k": {
+              "tr": "Homojenizasyon"
+            },
+            "v": {
+              "tr": "Yağ globülleri küçültülerek stabil, ayrışmayan süt elde edilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Ara Depolama"
+            },
+            "v": {
+              "tr": "İzoleli tanklarda hijyenik depolama."
+            }
+          },
+          {
+            "k": {
+              "tr": "Dolum"
+            },
+            "v": {
+              "tr": "Şişe, pouch veya karton ambalaja dolum ve kodlama."
+            }
+          }
+        ],
+        "requirements": [
+          {
+            "k": {
+              "tr": "Kapalı Alan"
+            },
+            "v": {
+              "tr": "250 – 600 m²"
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulu Güç"
+            },
+            "v": {
+              "tr": "80 – 220 kW"
+            }
+          },
+          {
+            "k": {
+              "tr": "Buhar"
+            },
+            "v": {
+              "tr": "0.5 – 2 ton/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Su"
+            },
+            "v": {
+              "tr": "3 – 10 m³/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Operatör"
+            },
+            "v": {
+              "tr": "3 – 6 kişi/vardiya"
+            }
+          }
+        ],
+        "optionalEq": [
+          {
+            "tr": "Yoğurt / peynir / ayran proses tankları"
+          },
+          {
+            "tr": "Krema / tereyağı ünitesi"
+          },
+          {
+            "tr": "UHT / uzun raf ömrü ünitesi"
+          },
+          {
+            "tr": "Otomatik CIP"
+          },
+          {
+            "tr": "Buhar kazanı"
+          },
+          {
+            "tr": "Soğutma grubu / chiller"
+          },
+          {
+            "tr": "Su arıtma"
+          },
+          {
+            "tr": "Laboratuvar ekipmanları"
+          }
+        ],
+        "faq": [
+          {
+            "k": {
+              "tr": "Peynir/yoğurt/tereyağına genişletebilir miyim?"
+            },
+            "v": {
+              "tr": "Evet; hat modülerdir, ek proses üniteleriyle genişletilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Isı geri kazanımı ne sağlar?"
+            },
+            "v": {
+              "tr": "%90'a varan geri kazanım, buhar/enerji maliyetini ciddi düşürür."
+            }
+          },
+          {
+            "k": {
+              "tr": "Operatör eğitimi ve reçete?"
+            },
+            "v": {
+              "tr": "Pastörizasyon parametreleri, CIP ve operatör eğitimi teslime dahildir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulum süresi?"
+            },
+            "v": {
+              "tr": "Sahada tipik 3–5 hafta."
+            }
+          }
+        ],
+        "rationale": {
+          "tr": "Taze sütü güvenli, raf ömürlü ve markalı ürüne çevirir; peynir/yoğurt gibi katma değerli ürünlere açılan temel altyapıdır."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/line-urun-sut-isleme-pastorizasyon-hatti.jpg",
         "servedUrl": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638155-w0rn.jpg"
@@ -4661,7 +5876,7 @@
           "servedUrl": "/api/media/sut-isleme-pastorizasyon-hatti-gorsel-1783208638162-5nnq.jpg"
         }
       ],
-      "syncedAt": "2026-07-05T11:45:21.924Z",
+      "syncedAt": "2026-07-13T19:30:38.989Z",
       "removedFromSite": null
     }
   },
@@ -4718,10 +5933,7 @@
         "slug": "gida-hatlari",
         "name": {
           "tr": "Gıda İşleme Hatları",
-          "en": "Food Processing Lines",
-          "ar": "خطوط معالجة الطعام",
-          "fr": "Lignes de transformation des aliments",
-          "ru": "Линии переработки пищи"
+          "en": "Food Processing Lines"
         }
       },
       "capacity": "500 – 2.500 adet/saat",
@@ -4732,133 +5944,270 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity",
-            "ar": "السعة",
-            "fr": "Capacité",
-            "ru": "Ёмкость"
+            "en": "Capacity"
           },
           "v": {
             "tr": "500 – 2.500 adet/saat",
-            "en": "500 – 2,500 pcs/h",
-            "ar": "500 – 2,500 وحدة/ساعة",
-            "fr": "500 – 2 500 unités/heure",
-            "ru": "500 – 2 500 единиц/час"
+            "en": "500 – 2,500 pcs/h"
           }
         },
         {
           "k": {
             "tr": "Ürün",
-            "en": "Product",
-            "ar": "المنتج",
-            "fr": "Produit",
-            "ru": "Продукт"
+            "en": "Product"
           },
           "v": {
             "tr": "Sıvı / viskoz",
-            "en": "Liquid / viscous",
-            "ar": "سائل / لزج",
-            "fr": "Liquide / visqueux",
-            "ru": "Жидкий / вязкий"
+            "en": "Liquid / viscous"
           }
         },
         {
           "k": {
             "tr": "Entegrasyon",
-            "en": "Integration",
-            "ar": "التكامل",
-            "fr": "Intégration",
-            "ru": "Интеграция"
+            "en": "Integration"
           },
           "v": {
             "tr": "Dolum+kapak+etiket",
-            "en": "Fill+cap+label",
-            "ar": "التعبئة + الغطاء + الملصق",
-            "fr": "Remplissage + bouchon + étiquette",
-            "ru": "Заполнение + крышка + этикетка"
+            "en": "Fill+cap+label"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Ürün besleme ve tampon tank",
-          "en": "Product feeding and buffer tank",
-          "ar": "نظام تغذية المنتج وخزان العازل",
-          "fr": "Alimentation du produit et réservoir tampon",
-          "ru": "Подача продукта и буферный бак"
+          "tr": "Ürün besleme ve tampon tank"
         },
         {
-          "tr": "Servo dolum ünitesi",
-          "en": "Servo filling unit",
-          "ar": "وحدة التعبئة السيرفو",
-          "fr": "Unité de remplissage servo",
-          "ru": "Серво-наполнительная установка"
+          "tr": "Servo dolum ünitesi"
         },
         {
-          "tr": "Kapak besleme ve kapaklama",
-          "en": "Cap feeding and capping",
-          "ar": "تغذية الأغطية والتغطية",
-          "fr": "Alimentation des couvercles et capsulage",
-          "ru": "Подача крышек и укупорка"
+          "tr": "Kapak besleme ve kapaklama"
         },
         {
-          "tr": "Etiketleme ünitesi",
-          "en": "Labeling unit",
-          "ar": "وحدة وضع العلامات",
-          "fr": "Unité d'étiquetage",
-          "ru": "Этикетировочная установка"
+          "tr": "Etiketleme ünitesi"
         },
         {
-          "tr": "Kodlama (tarih/lot) sistemi",
-          "en": "Coding (date/lot) system",
-          "ar": "نظام الترميز (تاريخ / دفعة)",
-          "fr": "Système de codage (date/lot)",
-          "ru": "Система кодирования (дата/партия)"
+          "tr": "Kodlama (tarih/lot) sistemi"
         },
         {
-          "tr": "Konveyör ve akümülasyon sistemi",
-          "en": "Conveyor and accumulation system",
-          "ar": "نظام النقل والتجميع",
-          "fr": "Système de convoyage et d'accumulation",
-          "ru": "Конвейерная и аккумуляционная система"
+          "tr": "Konveyör ve akümülasyon sistemi"
         },
         {
-          "tr": "Koli / paketleme ünitesi",
-          "en": "Box / packaging unit",
-          "ar": "وحدة التعبئة / التغليف",
-          "fr": "Unité de boîte / d'emballage",
-          "ru": "Упаковочная единица / упаковка"
+          "tr": "Koli / paketleme ünitesi"
         },
         {
-          "tr": "Paletleme",
-          "en": "Palletizing",
-          "ar": "تجميع على منصات",
-          "fr": "Palettisation",
-          "ru": "Палетизация"
+          "tr": "Paletleme"
         },
         {
-          "tr": "CIP / temizlik (sıvı ürünlerde)",
-          "en": "CIP / cleaning (in liquid products)",
-          "ar": "CIP / التنظيف (في المنتجات السائلة)",
-          "fr": "CIP / nettoyage (dans les produits liquides)",
-          "ru": "CIP / очистка (в жидких продуктах)"
+          "tr": "CIP / temizlik (sıvı ürünlerde)"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon",
-          "en": "Electrical panel, PLC and automation",
-          "ar": "لوحة كهربائية، PLC وأتمتة",
-          "fr": "Panneau électrique, PLC et automatisation",
-          "ru": "Электрическая панель, PLC и автоматизация"
+          "tr": "Elektrik pano, PLC ve otomasyon"
         }
       ],
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Servo dolum, kapak kapatma, etiketleme ve kodlamayı tek konveyör hattında birleştirir. Yağ, sos, içecek ve deterjan dahil geniş ürün yelpazesi.",
+          "en": "Combines servo filling, capping, labeling and coding on a single conveyor line. Wide product range incl. oil, sauce, beverage and detergent.",
+          "ar": "يجمع بين ملء السيرفو، وإغلاق الأغطية، ووضع العلامات، والترميز على خط ناقل واحد. مجموعة واسعة من المنتجات بما في ذلك الزيوت والصلصات والمشروبات والمنظفات.",
+          "fr": "Combine le remplissage servo, le capsulage, l'étiquetage et le codage sur une seule ligne de convoyeur. Une large gamme de produits incluant des huiles, des sauces, des boissons et des détergents.",
+          "ru": "Объединяет серводозировку, укупорку, этикетирование и кодирование на одной конвейерной линии. Широкий ассортимент продукции, включая масло, соусы, напитки и моющие средства."
+        },
+        "capacityOptions": [
+          "500 – 1.000 adet/saat",
+          "1.000 – 2.000 adet/saat",
+          "2.000 – 2.500 adet/saat",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "PET şişe"
+          },
+          {
+            "tr": "Cam kavanoz"
+          },
+          {
+            "tr": "Teneke"
+          },
+          {
+            "tr": "Doypack"
+          }
+        ],
+        "audience": [
+          {
+            "tr": "Ambalajlı ürüne geçen üretici"
+          },
+          {
+            "tr": "Yağ/sos/içecek/deterjan dolum ihtiyacı"
+          },
+          {
+            "tr": "Fason dolum & kontrat paketleme"
+          },
+          {
+            "tr": "Kapasite artışı planlayan fabrika"
+          }
+        ],
+        "processFlow": [
+          {
+            "k": {
+              "tr": "Ürün Besleme"
+            },
+            "v": {
+              "tr": "Ürün tampon tanktan dolum ünitesine kontrollü beslenir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Dolum"
+            },
+            "v": {
+              "tr": "Hacimsel/ağırlıksal servo dolumla hassas ve hızlı doldurma."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kapaklama"
+            },
+            "v": {
+              "tr": "Vidalı/baskılı kapak otomatik yerleştirilir ve sıkılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Etiketleme"
+            },
+            "v": {
+              "tr": "Gövde/sarma etiket hassas konumlandırılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kodlama"
+            },
+            "v": {
+              "tr": "Üretim/son kullanma tarihi ve lot inkjet/lazerle basılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Koli & Paketleme"
+            },
+            "v": {
+              "tr": "Ürünler koliye yerleştirilir ve bantlanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Paletleme"
+            },
+            "v": {
+              "tr": "Koliler palete istiflenerek sevkiyata hazırlanır."
+            }
+          }
+        ],
+        "requirements": [
+          {
+            "k": {
+              "tr": "Kapalı Alan"
+            },
+            "v": {
+              "tr": "120 – 350 m²"
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulu Güç"
+            },
+            "v": {
+              "tr": "30 – 90 kW"
+            }
+          },
+          {
+            "k": {
+              "tr": "Basınçlı Hava"
+            },
+            "v": {
+              "tr": "6 – 8 bar"
+            }
+          },
+          {
+            "k": {
+              "tr": "Operatör"
+            },
+            "v": {
+              "tr": "2 – 5 kişi/vardiya"
+            }
+          }
+        ],
+        "optionalEq": [
+          {
+            "tr": "Format değişim setleri"
+          },
+          {
+            "tr": "Metal dedektör / kontrol kantarı"
+          },
+          {
+            "tr": "Shrink / grup ambalaj"
+          },
+          {
+            "tr": "Otomatik paletleme (robot)"
+          },
+          {
+            "tr": "Lazer kodlama"
+          },
+          {
+            "tr": "Nitrojen dozajlama"
+          },
+          {
+            "tr": "Hava kompresörü"
+          }
+        ],
+        "faq": [
+          {
+            "k": {
+              "tr": "Farklı şişe/kavanoz boylarına uyar mı?"
+            },
+            "v": {
+              "tr": "Format değişim setleriyle çok sayıda ambalaja hızlı geçiş yapılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kaç adet/saat kapasite?"
+            },
+            "v": {
+              "tr": "Ürün ve ambalaja göre 500–2.500 adet/saat aralığında yapılandırılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Mevcut makinelerimle entegre olur mu?"
+            },
+            "v": {
+              "tr": "Konveyör ve kontrol seviyesinde mevcut ekipmana entegrasyon mümkündür."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulum süresi?"
+            },
+            "v": {
+              "tr": "Sahada tipik 1–3 hafta."
+            }
+          }
+        ],
+        "rationale": {
+          "tr": "Dolum-paketleme, üründe verim ve tutarlılığın en görünür olduğu adımdır; otomasyon işçilik maliyetini düşürüp fireyi azaltır ve marka algısını iyileştirir."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/line-urun-dolum-paketleme-hatti.jpg",
         "servedUrl": "/api/media/dolum-paketleme-hatti-gorsel-1783208638185-vvvc.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.925Z",
+      "syncedAt": "2026-07-13T19:30:38.990Z",
       "removedFromSite": null
     }
   },
@@ -4915,10 +6264,7 @@
         "slug": "icecek-hatlari",
         "name": {
           "tr": "İçecek & Meyve Suyu",
-          "en": "Beverage & Juice",
-          "ar": "المشروبات وعصير الفواكه",
-          "fr": "Boisson & Jus de Fruits",
-          "ru": "Напитки и Фруктовые Соки"
+          "en": "Beverage & Juice"
         }
       },
       "capacity": "2 – 12 ton/gün",
@@ -4929,133 +6275,283 @@
         {
           "k": {
             "tr": "Kapasite",
-            "en": "Capacity",
-            "ar": "السعة",
-            "fr": "Capacité",
-            "ru": "Ёмкость"
+            "en": "Capacity"
           },
           "v": {
             "tr": "2 – 12 ton/gün",
-            "en": "2 – 12 ton/day",
-            "ar": "2 – 12 طن/يوم",
-            "fr": "2 – 12 tonnes/jour",
-            "ru": "2 – 12 тонн/день"
+            "en": "2 – 12 ton/day"
           }
         },
         {
           "k": {
             "tr": "Çıktı",
-            "en": "Output",
-            "ar": "الإنتاج",
-            "fr": "Sortie",
-            "ru": "Выход"
+            "en": "Output"
           },
           "v": {
             "tr": "Su / konsantre",
-            "en": "Juice / concentrate",
-            "ar": "ماء / مركز",
-            "fr": "Eau / concentré",
-            "ru": "Вода / концентрат"
+            "en": "Juice / concentrate"
           }
         },
         {
           "k": {
             "tr": "Dolum",
-            "en": "Filling",
-            "ar": "التعبئة",
-            "fr": "Remplissage",
-            "ru": "Заполнение"
+            "en": "Filling"
           },
           "v": {
             "tr": "Sıcak / aseptik",
-            "en": "Hot / aseptic",
-            "ar": "ساخن / معقم",
-            "fr": "Chaud / aseptique",
-            "ru": "Горячий / асептический"
+            "en": "Hot / aseptic"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Meyve kabul ve yıkama sistemi",
-          "en": "Fruit reception and washing system",
-          "ar": "نظام استقبال وغسيل الفواكه",
-          "fr": "Système de réception et de lavage des fruits",
-          "ru": "Система приема и мойки фруктов"
+          "tr": "Meyve kabul ve yıkama sistemi"
         },
         {
-          "tr": "Ayıklama bandı",
-          "en": "Sorting conveyor",
-          "ar": "حزام الفرز",
-          "fr": "Convoyeur de tri",
-          "ru": "Конвейер сортировки"
+          "tr": "Ayıklama bandı"
         },
         {
-          "tr": "Parçalama ve presleme",
-          "en": "Cutting and pressing",
-          "ar": "القطع والضغط",
-          "fr": "Découpage et pressage",
-          "ru": "Резка и прессование"
+          "tr": "Parçalama ve presleme"
         },
         {
-          "tr": "Enzim / berraklaştırma ve filtrasyon",
-          "en": "Enzyme / clarification and filtration",
-          "ar": "إنزيم / توضيح وترشيح",
-          "fr": "Enzyme / clarification et filtration",
-          "ru": "Энзим / осветление и фильтрация"
+          "tr": "Enzim / berraklaştırma ve filtrasyon"
         },
         {
-          "tr": "Pastörizasyon ünitesi",
-          "en": "Pasteurization unit",
-          "ar": "وحدة البسترة",
-          "fr": "Unité de pasteurisation",
-          "ru": "Установка пастеризации"
+          "tr": "Pastörizasyon ünitesi"
         },
         {
-          "tr": "Vakum evaporasyon (konsantre)",
-          "en": "Vacuum evaporation (concentration)",
-          "ar": "تبخير تحت الفراغ (تركيز)",
-          "fr": "Évaporation sous vide (concentration)",
-          "ru": "Вакуумная выпарка (концентрация)"
+          "tr": "Vakum evaporasyon (konsantre)"
         },
         {
-          "tr": "Aseptik veya sıcak dolum hattı",
-          "en": "Aseptic or hot filling line",
-          "ar": "خط التعبئة المعقمة أو الساخنة",
-          "fr": "Ligne de remplissage aseptique ou chaud",
-          "ru": "Аseptическая или горячая линия розлива"
+          "tr": "Aseptik veya sıcak dolum hattı"
         },
         {
-          "tr": "Tampon tanklar ve transfer pompaları",
-          "en": "Buffer tanks and transfer pumps",
-          "ar": "خزانات العازلة ومضخات النقل",
-          "fr": "Réservoirs tampons et pompes de transfert",
-          "ru": "Буферные резервуары и насосы для перекачки"
+          "tr": "Tampon tanklar ve transfer pompaları"
         },
         {
-          "tr": "CIP temizlik sistemi",
-          "en": "CIP cleaning system",
-          "ar": "نظام تنظيف CIP",
-          "fr": "Système de nettoyage CIP",
-          "ru": "Система CIP очистки"
+          "tr": "CIP temizlik sistemi"
         },
         {
-          "tr": "Elektrik pano, PLC ve otomasyon",
-          "en": "Electrical panel, PLC and automation",
-          "ar": "لوحة كهربائية، PLC وأتمتة",
-          "fr": "Panneau électrique, PLC et automatisation",
-          "ru": "Электрическая панель, PLC и автоматизация"
+          "tr": "Elektrik pano, PLC ve otomasyon"
         }
       ],
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Yıkama, parçalama, presleme, berraklaştırma, pastörizasyon, evaporasyon ve aseptik dolumu kapsayan içecek hattı.",
+          "en": "Beverage line covering washing, crushing, pressing, clarification, pasteurization, evaporation and aseptic filling.",
+          "ar": "خط إنتاج المشروبات بما في ذلك الغسيل، والسحق، والعصر، والتوضيح، والبسترة، والتبخر، والتعبئة المعقمة.",
+          "fr": "Ligne de boisson comprenant le lavage, le concassage, le pressage, la clarification, la pasteurisation, l'évaporation et le remplissage aseptique.",
+          "ru": "Линия производства напитков, включая мытье, дробление, прессование, очистку, пастеризацию, испарение и асептическую упаковку."
+        },
+        "capacityOptions": [
+          "2 – 5 ton/gün",
+          "5 – 12 ton/gün",
+          "Özel kapasite (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "PET şişe"
+          },
+          {
+            "tr": "Cam şişe"
+          },
+          {
+            "tr": "Aseptik torba"
+          },
+          {
+            "tr": "Bag-in-box"
+          }
+        ],
+        "audience": [
+          {
+            "tr": "Meyve suyu markası yatırımcısı"
+          },
+          {
+            "tr": "Meyve bölgesinde katma değer arayan üretici"
+          },
+          {
+            "tr": "Konsantre ihracatçısı"
+          },
+          {
+            "tr": "Ürün gamını genişleten içecek fabrikası"
+          }
+        ],
+        "processFlow": [
+          {
+            "k": {
+              "tr": "Kabul & Yıkama"
+            },
+            "v": {
+              "tr": "Meyve tartılır ve flotasyonla yıkanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Ayıklama"
+            },
+            "v": {
+              "tr": "Bozuk/yabancı madde elle veya optik ayıklanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Parçalama & Presleme"
+            },
+            "v": {
+              "tr": "Meyve parçalanır ve preste suyu çıkarılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Berraklaştırma"
+            },
+            "v": {
+              "tr": "Enzim ve filtrasyonla berrak/bulanık ürün hazırlanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Pastörizasyon"
+            },
+            "v": {
+              "tr": "Isıl işlemle mikrobiyal güvenlik sağlanır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Evaporasyon (Konsantre)"
+            },
+            "v": {
+              "tr": "Vakum evaporasyonla su alınır, konsantre elde edilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Aseptik / Sıcak Dolum"
+            },
+            "v": {
+              "tr": "Ürün aseptik torba veya şişeye hijyenik doldurulur."
+            }
+          }
+        ],
+        "requirements": [
+          {
+            "k": {
+              "tr": "Kapalı Alan"
+            },
+            "v": {
+              "tr": "300 – 700 m²"
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulu Güç"
+            },
+            "v": {
+              "tr": "120 – 300 kW"
+            }
+          },
+          {
+            "k": {
+              "tr": "Buhar"
+            },
+            "v": {
+              "tr": "1 – 2.5 ton/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Su"
+            },
+            "v": {
+              "tr": "4 – 12 m³/saat"
+            }
+          },
+          {
+            "k": {
+              "tr": "Operatör"
+            },
+            "v": {
+              "tr": "4 – 7 kişi/vardiya"
+            }
+          }
+        ],
+        "optionalEq": [
+          {
+            "tr": "Optik ayıklama"
+          },
+          {
+            "tr": "Aroma geri kazanım ünitesi"
+          },
+          {
+            "tr": "Membran filtrasyon"
+          },
+          {
+            "tr": "Otomatik CIP"
+          },
+          {
+            "tr": "Aseptik dolum ünitesi"
+          },
+          {
+            "tr": "Buhar kazanı"
+          },
+          {
+            "tr": "Soğutma grubu"
+          },
+          {
+            "tr": "Su arıtma"
+          },
+          {
+            "tr": "Laboratuvar ekipmanları"
+          }
+        ],
+        "faq": [
+          {
+            "k": {
+              "tr": "Hangi meyveler işlenebilir?"
+            },
+            "v": {
+              "tr": "Elma, portakal, nar, vişne, şeftali gibi meyveler; hat meyveye göre yapılandırılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Berrak mı bulanık mı üretebilirim?"
+            },
+            "v": {
+              "tr": "İkisi de; enzim/filtrasyon konfigürasyonu hedefe göre seçilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Konsantre + içmeye hazır aynı hatta olur mu?"
+            },
+            "v": {
+              "tr": "Evet; dolum konfigürasyonuyla ikisi de üretilebilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulum süresi?"
+            },
+            "v": {
+              "tr": "Sahada tipik 3–5 hafta."
+            }
+          }
+        ],
+        "rationale": {
+          "tr": "Mevsimlik meyveyi konsantre ve raf ömürlü içeceğe çevirir; ihracat ve stok esnekliği sağlar."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/line-urun-meyve-suyu-konsantre-hatti.jpg",
         "servedUrl": "/api/media/meyve-suyu-konsantre-hatti-gorsel-1783208638201-qrxl.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.926Z",
+      "syncedAt": "2026-07-13T19:30:38.991Z",
       "removedFromSite": null
     }
   },
@@ -5112,10 +6608,7 @@
         "slug": "soguk-zincir",
         "name": {
           "tr": "Soğuk Zincir & Depolama",
-          "en": "Cold Chain & Storage",
-          "ar": "سلسلة التبريد والتخزين",
-          "fr": "Chaîne du Froid & Stockage",
-          "ru": "Холодная цепь и хранение"
+          "en": "Cold Chain & Storage"
         }
       },
       "capacity": "20 – 1000 m³",
@@ -5126,119 +6619,249 @@
         {
           "k": {
             "tr": "Hacim",
-            "en": "Volume",
-            "ar": "حجم",
-            "fr": "Volume",
-            "ru": "Объем"
+            "en": "Volume"
           },
           "v": {
             "tr": "20 – 1000 m³",
-            "en": "20 – 1000 m³",
-            "ar": "20 – 1000 م³",
-            "fr": "20 – 1000 m³",
-            "ru": "20 – 1000 м³"
+            "en": "20 – 1000 m³"
           }
         },
         {
           "k": {
             "tr": "Sıcaklık",
-            "en": "Temperature",
-            "ar": "درجة الحرارة",
-            "fr": "Température",
-            "ru": "Температура"
+            "en": "Temperature"
           },
           "v": {
             "tr": "+4 / -18 / -25 °C",
-            "en": "+4 / -18 / -25 °C",
-            "ar": "+4 / -18 / -25 °C",
-            "fr": "+4 / -18 / -25 °C",
-            "ru": "+4 / -18 / -25 °C"
+            "en": "+4 / -18 / -25 °C"
           }
         },
         {
           "k": {
             "tr": "Kurulum",
-            "en": "Install",
-            "ar": "تركيب",
-            "fr": "Installation",
-            "ru": "Установка"
+            "en": "Install"
           },
           "v": {
             "tr": "Modüler / hızlı",
-            "en": "Modular / fast",
-            "ar": "وحدات / سريعة",
-            "fr": "Modulaire / rapide",
-            "ru": "Модульный / быстрый"
+            "en": "Modular / fast"
           }
         }
       ],
       "highlights": [
         {
-          "tr": "Yalıtımlı panel gövde (poliüretan sandviç)",
-          "en": "Insulated panel body (polyurethane sandwich)",
-          "ar": "هيكل لوحة معزولة (ساندويتش بولي يوريثان)",
-          "fr": "Corps de panneau isolé (sandwich en polyuréthane)",
-          "ru": "Изолированный панельный корпус (полиуретановый сэндвич)"
+          "tr": "Yalıtımlı panel gövde (poliüretan sandviç)"
         },
         {
-          "tr": "Soğuk oda kapıları",
-          "en": "Cold room doors",
-          "ar": "أبواب الغرفة الباردة",
-          "fr": "Portes de chambre froide",
-          "ru": "Двери холодной комнаты"
+          "tr": "Soğuk oda kapıları"
         },
         {
-          "tr": "Kondenser ve evaporatör grubu",
-          "en": "Condenser and evaporator group",
-          "ar": "مجموعة المكثف والمبخر",
-          "fr": "Groupe de condenseur et d'évaporateur",
-          "ru": "Группа конденсатора и испарителя"
+          "tr": "Kondenser ve evaporatör grubu"
         },
         {
-          "tr": "Kompresör / soğutma sistemi",
-          "en": "Compressor / cooling system",
-          "ar": "ضاغط / نظام التبريد",
-          "fr": "Compresseur / système de refroidissement",
-          "ru": "Компрессор / система охлаждения"
+          "tr": "Kompresör / soğutma sistemi"
         },
         {
-          "tr": "Sıcaklık kontrol ve otomasyon",
-          "en": "Temperature control and automation",
-          "ar": "التحكم في درجة الحرارة والأتمتة",
-          "fr": "Contrôle de la température et automatisation",
-          "ru": "Контроль температуры и автоматизация"
+          "tr": "Sıcaklık kontrol ve otomasyon"
         },
         {
-          "tr": "Alarm ve uzaktan izleme",
-          "en": "Alarm and remote monitoring",
-          "ar": "الإنذار والمراقبة عن بُعد",
-          "fr": "Alarme et surveillance à distance",
-          "ru": "Сигнализация и удаленный мониторинг"
+          "tr": "Alarm ve uzaktan izleme"
         },
         {
-          "tr": "Zemin yalıtımı / rampa",
-          "en": "Floor insulation / ramp",
-          "ar": "عزل الأرضية / المنحدر",
-          "fr": "Isolation du sol / rampe",
-          "ru": "Изоляция пола / рампа"
+          "tr": "Zemin yalıtımı / rampa"
         },
         {
-          "tr": "Elektrik pano ve dağıtım",
-          "en": "Electrical panel and distribution",
-          "ar": "لوحة كهربائية وتوزيع",
-          "fr": "Panneau électrique et distribution",
-          "ru": "Электрическая панель и распределение"
+          "tr": "Elektrik pano ve dağıtım"
         }
       ],
       "badge": null,
       "price": null,
       "variants": [],
+      "content": {
+        "description": {
+          "tr": "Konteyner bazlı, hızlı kurulan, taşınabilir soğuk depolama sistemleri. Sıcaklık izleme ve uzaktan alarm desteğiyle gıda güvenliğini korur.",
+          "en": "Container-based, quick-install, portable cold storage systems. Protects food safety with temperature monitoring and remote alarms.",
+          "ar": "أنظمة التخزين البارد المحمولة المعتمدة على الحاويات، التي يتم تركيبها بسرعة. تضمن سلامة الغذاء من خلال مراقبة درجات الحرارة ودعم إنذار عن بُعد.",
+          "fr": "Systèmes de stockage à froid portables basés sur des conteneurs, rapidement déployables. Assure la sécurité alimentaire grâce à la surveillance de la température et au support d'alarme à distance.",
+          "ru": "Контейнерные, быстро устанавливаемые, переносные системы холодного хранения. Обеспечивает безопасность продуктов питания с помощью контроля температуры и удаленной поддержки сигнализации."
+        },
+        "capacityOptions": [
+          "50 – 200 m³",
+          "200 – 500 m³",
+          "500+ m³ (proje bazlı)"
+        ],
+        "packagingOptions": [
+          {
+            "tr": "Palet depolama"
+          },
+          {
+            "tr": "Kasa depolama"
+          }
+        ],
+        "audience": [
+          {
+            "tr": "Gıda/lojistik soğuk zincir ihtiyacı"
+          },
+          {
+            "tr": "İhracatçı & distribütör"
+          },
+          {
+            "tr": "İlaç/laboratuvar soğuk depolama"
+          },
+          {
+            "tr": "Hasat sonrası muhafaza yapan tarımsal işletme"
+          }
+        ],
+        "processFlow": [
+          {
+            "k": {
+              "tr": "Keşif & Boyutlandırma"
+            },
+            "v": {
+              "tr": "Ürün, hacim ve sıcaklık hedefine göre depo boyutlandırılır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Yalıtım Paneli"
+            },
+            "v": {
+              "tr": "Poliüretan sandviç panellerle yüksek yalıtımlı gövde kurulur."
+            }
+          },
+          {
+            "k": {
+              "tr": "Soğutma Grubu Seçimi"
+            },
+            "v": {
+              "tr": "Sıcaklık sınıfına göre kondenser/evaporatör grubu belirlenir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Montaj"
+            },
+            "v": {
+              "tr": "Panel, kapı ve soğutma ekipmanı sahada monte edilir."
+            }
+          },
+          {
+            "k": {
+              "tr": "Kontrol & Otomasyon"
+            },
+            "v": {
+              "tr": "Sıcaklık kontrol, alarm ve uzaktan izleme kurulur."
+            }
+          },
+          {
+            "k": {
+              "tr": "Devreye Alma & Haritalama"
+            },
+            "v": {
+              "tr": "Sıcaklık haritalamasıyla performans doğrulanır."
+            }
+          }
+        ],
+        "requirements": [
+          {
+            "k": {
+              "tr": "Zemin"
+            },
+            "v": {
+              "tr": "Düz, taşıyıcı beton zemin"
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulu Güç"
+            },
+            "v": {
+              "tr": "10 – 120 kW (hacme göre)"
+            }
+          },
+          {
+            "k": {
+              "tr": "Sıcaklık"
+            },
+            "v": {
+              "tr": "+4 / -18 / -25 °C"
+            }
+          },
+          {
+            "k": {
+              "tr": "Kurulum"
+            },
+            "v": {
+              "tr": "Modüler / hızlı"
+            }
+          }
+        ],
+        "optionalEq": [
+          {
+            "tr": "Yedek soğutma grubu"
+          },
+          {
+            "tr": "Jeneratör / kesintisiz güç"
+          },
+          {
+            "tr": "Nem kontrol"
+          },
+          {
+            "tr": "Raflı depolama sistemi"
+          },
+          {
+            "tr": "Hızlı soğutma (blast freezer)"
+          },
+          {
+            "tr": "Veri kayıt ve izlenebilirlik"
+          },
+          {
+            "tr": "Yükleme rampası körüğü"
+          }
+        ],
+        "faq": [
+          {
+            "k": {
+              "tr": "Konteyner tipi taşınabilir mi?"
+            },
+            "v": {
+              "tr": "Evet; konteyner bazlı sistemler taşınabilir ve hızlı kurulur."
+            }
+          },
+          {
+            "k": {
+              "tr": "Uzaktan sıcaklık takibi var mı?"
+            },
+            "v": {
+              "tr": "Sıcaklık izleme ve alarmla gıda güvenliği kayıt altına alınır."
+            }
+          },
+          {
+            "k": {
+              "tr": "Ne kadar sürede kurulur?"
+            },
+            "v": {
+              "tr": "Hacme göre sahada tipik 1–3 hafta."
+            }
+          },
+          {
+            "k": {
+              "tr": "Mevcut binaya oda olarak kurulur mu?"
+            },
+            "v": {
+              "tr": "Bina içi oda veya bağımsız modül olarak kurulabilir."
+            }
+          }
+        ],
+        "rationale": {
+          "tr": "Soğuk zincir, fire ve gıda güvenliği kaybını doğrudan azaltır; ihracat ve raf ömrü için kritik altyapıdır."
+        }
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/generated/line-urun-soguk-depolama-konteyner-sistemi.jpg",
         "servedUrl": "/api/media/soguk-depolama-konteyner-sistemi-gorsel-1783208638224-kqn6.jpg"
       },
       "gallery": [],
-      "syncedAt": "2026-07-05T11:45:21.927Z",
+      "syncedAt": "2026-07-13T19:30:38.991Z",
       "removedFromSite": null
     }
   },
@@ -5295,14 +6918,11 @@
         "slug": "gida-hatlari",
         "name": {
           "tr": "Gıda İşleme Hatları",
-          "en": "Food Processing Lines",
-          "ar": "خطوط معالجة الطعام",
-          "fr": "Lignes de transformation des aliments",
-          "ru": "Линии переработки пищи"
+          "en": "Food Processing Lines"
         }
       },
       "capacity": "6.000 – 12.000 kg/gün",
-      "deliveryWeeks": "",
+      "deliveryWeeks": "90 gün",
       "automation": "",
       "material": "",
       "specs": [
@@ -5516,6 +7136,59 @@
           "currency": "USD"
         }
       ],
+      "content": {
+        "description": {
+          "tr": "MACLINE Serisi, küçük ve orta ölçekli üreticiler için tek bir kompakt platform üzerine kurulmuş modüler salça, sos ve meyve işleme sistemidir. Vakumlu pişirme ve entegre soğutma teknolojisiyle 24 saat esasına göre verimli üretim sağlar.\n\nSistem beş paket halinde sunulur: ECO (standart domates işleme), PLUS (yerleşik homojenizatör), PRO (çift konsantre ünitesi ve çift hat), PREMIUM (biber işleme hattı dahil) ve JUICE (meyve işleme ve filtrasyon). Her paket bir öncekinin tüm ekipmanını korur ve üzerine yetenek ekler; böylece yatırımcı ihtiyacına göre büyüyebilir.\n\nStandart akış: besleme havuzu → elevatör → öğütücü/kırıcı → vakumlu pişirme kazanı → karıştırmalı bekletme tankı → pompa & dolum → kavanoz kapatma. 100–900 g aralığında yarı otomatik dolum başlığı standarttır. Opsiyonel olarak etiketleme, konserve kapatma, barkod yazıcı ve poşet dolum makineleri eklenebilir.\n\nElde edilebilecek ürünler: domates salçası, biber salçası, ketçap ve soslar, mayonez, hardal, reçel, meyve suları, konsantre, püre, marmelat ve nektarlar (pakete göre).",
+          "en": "The MACLINE Series is a modular tomato paste, sauce and fruit processing system built on a single compact platform for small and medium producers. Vacuum cooking and integrated cooling deliver efficient 24-hour operation.\n\nThe system is offered in five packages: ECO (standard tomato processing), PLUS (built-in homogenizer), PRO (dual concentrate unit and dual line), PREMIUM (pepper processing line included) and JUICE (fruit processing and filtration). Each package keeps all equipment of the previous one and adds capability, so the investor can grow as needed.\n\nStandard flow: feeding pool → elevator → grinder/crusher → vacuum cooking kettle → agitated holding tank → pump & filling → jar capping. A 100–900 g semi-automatic filling head is standard. Labeling, can seaming, barcode printing and pouch filling machines can be added optionally.\n\nAchievable products: tomato paste, pepper paste, ketchup and sauces, mayonnaise, mustard, jam, fruit juices, concentrate, purée, marmalade and nectars (depending on the package).",
+          "ar": "سلسلة MACLINE هي نظام معالجة صلصة و صلصة و فواكه مودولاري مثبت على منصة مدمجة واحدة للمصنعين الصغار والمتوسطين. يوفر إنتاجًا فعالًا على أساس 24 ساعة بتكنولوجيا الطهي بالفراغ والتبريد المتكامل.\n\nيتم تقديم النظام في خمسة حزم: ECO (معالجة الطماطم القياسية)، PLUS (خلاط مدمج)، PRO (وحدة تركيز مزدوجة وخط مزدوج)، PREMIUM (بما في ذلك خط معالجة الفلفل) و JUICE (معالجة الفواكه والترشيح). كل حزمة تحافظ على جميع المعدات من الحزمة السابقة وتضيف قدرات جديدة؛ مما يتيح للمستثمرين التوسع وفقًا لاحتياجاتهم.\n\nالتدفق القياسي: حوض التغذية → مصعد → مطحنة/كسارة → وعاء الطهي بالفراغ → خزان الانتظار مع الخلط → مضخة & تعبئة → إغلاق الجرار. رأس تعبئة نصف أوتوماتيكي يتراوح بين 100-900 جرام هو المعيار. يمكن إضافة آلات وضع العلامات، إغلاق العلب، طابعات الباركود وآلات تعبئة الأكياس كخيارات.\n\nالمنتجات الممكن الحصول عليها: معجون الطماطم، معجون الفلفل، الكاتشب والصلصات، المايونيز، الخردل، المربى، عصائر الفواكه، التركيز، الهريس، المربى والنيكتار (حسب الحزمة).",
+          "fr": "La Série MACLINE est un système modulaire de traitement de concentré de tomate, de sauce et de fruits construit sur une seule plateforme compacte, destiné aux petits et moyens producteurs. La cuisson sous vide et le refroidissement intégré assurent un fonctionnement efficace sur 24 heures.\n\nLe système est proposé en cinq packs : ECO (traitement standard de la tomate), PLUS (homogénéisateur intégré), PRO (double unité de concentration et double ligne), PREMIUM (ligne de traitement du poivron incluse) et JUICE (traitement et filtration des fruits). Chaque pack conserve tout l'équipement du précédent et ajoute des capacités.\n\nFlux standard : bassin d'alimentation → élévateur → broyeur → cuve de cuisson sous vide → cuve de maintien agitée → pompe & remplissage → capsulage de bocaux. Une tête de remplissage semi-automatique de 100 à 900 g est standard. Étiquetage, sertissage, impression de codes-barres et remplissage de sachets en option.\n\nProduits réalisables : concentré de tomate, concentré de poivron, ketchup et sauces, mayonnaise, moutarde, confiture, jus de fruits, concentré, purée, marmelade et nectars (selon le pack).",
+          "ru": "Серия MACLINE — это модульная система обработки томатов, соусов и фруктов, установленная на одной компактной платформе для малых и средних производителей. Обеспечивает эффективное производство на основе 24 часов с вакуумной варкой и интегрированной технологией охлаждения.\n\nСистема предлагается в пяти пакетах: ECO (стандартная обработка томатов), PLUS (встроенный гомогенизатор), PRO (двойная концентрирующая установка и двойная линия), PREMIUM (включая линию обработки перца) и JUICE (обработка фруктов и фильтрация). Каждый пакет сохраняет все оборудование предыдущего пакета и добавляет новые возможности; таким образом, инвестор может расти в зависимости от своих потребностей.\n\nСтандартный поток: резервуар для подачи → элеватор → измельчитель/дробилка → вакуумная варочная чаша → смешивающий резервуар → насос и упаковка → закрытие банок. Полуавтоматическая головка для заполнения стандартна в диапазоне 100–900 г. По желанию можно добавить машины для маркировки, закрытия консервов, принтеры штрих-кодов и машины для упаковки в пакеты.\n\nДоступные продукты: томатная паста, перцовая паста, кетчуп и соусы, майонез, горчица, варенье, фруктовые соки, концентраты, пюре, джем и нектара (в зависимости от пакета)."
+        },
+        "capacityOptions": [],
+        "packagingOptions": [],
+        "audience": [],
+        "processFlow": [],
+        "requirements": [],
+        "optionalEq": [
+          {
+            "tr": "Manuel Etiketleme Makinesi",
+            "en": "Manual Labeling Machine",
+            "ar": "آلة وضع الملصقات اليدوية",
+            "fr": "Étiqueteuse manuelle",
+            "ru": "Ручная машина для этикетирования"
+          },
+          {
+            "tr": "Yarı Otomatik Etiketleme Makinesi",
+            "en": "Semi-Automatic Labeling Machine",
+            "ar": "آلة وضع الملصقات نصف أوتوماتيكية",
+            "fr": "Étiqueteuse semi-automatique",
+            "ru": "Полуавтоматическая машина для этикетирования"
+          },
+          {
+            "tr": "Konserve Kapatma Makinesi",
+            "en": "Can Seaming Machine",
+            "ar": "آلة إغلاق العلب",
+            "fr": "Sertisseuse de conserves",
+            "ru": "Машина для закрытия консервов"
+          },
+          {
+            "tr": "Barkod Yazıcı",
+            "en": "Barcode Printer",
+            "ar": "طابعة باركود",
+            "fr": "Imprimante code-barres",
+            "ru": "Штамп для штрих-кодов"
+          },
+          {
+            "tr": "Poşet Dolum Makinesi",
+            "en": "Pouch Filling Machine",
+            "ar": "آلة تعبئة الأكياس",
+            "fr": "Remplisseuse de sachets",
+            "ru": "Машина для упаковки в пакеты"
+          }
+        ],
+        "faq": [],
+        "rationale": null
+      },
       "image": {
         "source": "http://127.0.0.1:4192/img/products/macline-eco.jpg",
         "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638243-bliy.jpg"
@@ -5536,9 +7209,13 @@
         {
           "source": "http://127.0.0.1:4192/img/products/macline-premium.jpg",
           "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783208638259-hwpd.jpg"
+        },
+        {
+          "source": "http://127.0.0.1:4192/img/products/macline-juice.jpg",
+          "servedUrl": "/api/media/moduler-salca-sistemi-macline-gorsel-1783360909051-8kho.jpg"
         }
       ],
-      "syncedAt": "2026-07-05T11:45:21.928Z",
+      "syncedAt": "2026-07-13T19:30:38.992Z",
       "removedFromSite": null
     }
   }

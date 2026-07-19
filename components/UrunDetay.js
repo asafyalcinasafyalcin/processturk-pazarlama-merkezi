@@ -262,19 +262,20 @@ export default function UrunDetay({ product, initialContent }) {
   }
 
   // ── Brief'i web sitesi verisinden üret (website-sync'in getirdiği blok) ──
+  // mode=website: kaynak metni SUNUCU taze senkron verisinden kurar, GPT topraklamalı
+  // çalışır (sitede olmayan bilgi yazamaz); OPENAI anahtarı yoksa LLM'siz derlenir.
   async function handleBriefFromWebsite() {
-    const source = websiteBriefSource(product);
-    if (!source) { setBriefMsg('⚠ Bu ürün web sitesine bağlı değil — önce Siteyle Eşitle.'); return; }
+    if (!product.website) { setBriefMsg('⚠ Bu ürün web sitesine bağlı değil — önce Siteyle Eşitle.'); return; }
     setImportBusy(true); setBriefMsg(null);
     try {
       const fd = new FormData();
       fd.append('slug', product.slug);
-      fd.append('text', source);
+      fd.append('mode', 'website');
       const res = await fetch('/api/brief/import', { method: 'POST', body: fd });
       const d = await res.json();
       if (!d.ok) throw new Error(d.error);
       setBrief(d.brief);
-      setBriefMsg('Site verisinden brief üretildi — gözden geçir ve kaydet ✓');
+      setBriefMsg(d.note ? `${d.note} — gözden geçir ve kaydet ✓` : 'Sitedeki gerçek veriden brief üretildi — gözden geçir ve kaydet ✓');
     } catch (e) { setBriefMsg('⚠ ' + e.message); }
     finally { setImportBusy(false); }
   }
@@ -739,20 +740,35 @@ export default function UrunDetay({ product, initialContent }) {
               placeholder="Ör: Sarı granüller, beyaz poşetler, sanayi ortamı" />
           </div>
 
-          {/* Web sitesi verisinden otomatik brief */}
+          {/* Web sitesi verisinden otomatik brief — kaynak sitedeki GERÇEK içeriktir */}
           {product.website && (
-            <div className="flex flex-wrap items-center gap-3 border border-line rounded-xl px-4 py-3">
-              <button
-                className="btn btn-ghost text-sm"
-                onClick={handleBriefFromWebsite}
-                disabled={importBusy}
-                title="Sitedeki ad, özet, teknik özellik ve öne çıkanlardan AI brief üretir"
-              >
-                {importBusy ? '⏳ AI analiz ediyor…' : '🌐 Site Verisinden Doldur'}
-              </button>
-              <a href={product.website.url} target="_blank" rel="noreferrer" className="text-xs text-slate-500 underline">
-                sitedeki ürün sayfası ↗
-              </a>
+            <div className="border border-line rounded-xl px-4 py-3 space-y-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  className="btn btn-ghost text-sm"
+                  onClick={handleBriefFromWebsite}
+                  disabled={importBusy}
+                  title="Sitedeki gerçek ürün içeriğinden (açıklama, özellikler, SSS…) brief üretir — sitede olmayan bilgi yazılmaz"
+                >
+                  {importBusy ? '⏳ Site verisi işleniyor…' : '🌐 Siteden Brief Çek'}
+                </button>
+                <a href={product.website.url} target="_blank" rel="noreferrer" className="text-xs text-slate-500 underline">
+                  sitedeki ürün sayfası ↗
+                </a>
+                {product.website.syncedAt && (
+                  <span className="text-xs text-slate-400">
+                    son eşitleme: {new Date(product.website.syncedAt).toLocaleString('tr-TR')}
+                  </span>
+                )}
+              </div>
+              <details>
+                <summary className="cursor-pointer select-none text-xs text-slate-500 hover:text-slate-700">
+                  📄 Siteden çekilen içeriği gör (brief'in kaynağı)
+                </summary>
+                <pre className="mt-2 max-h-72 overflow-auto whitespace-pre-wrap text-xs text-slate-600 bg-slate-50 rounded-lg p-3 border border-line">
+                  {websiteBriefSource(product) || 'Site içeriği henüz eşitlenmedi.'}
+                </pre>
+              </details>
             </div>
           )}
 

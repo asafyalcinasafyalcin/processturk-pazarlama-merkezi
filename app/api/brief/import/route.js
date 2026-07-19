@@ -6,6 +6,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { BRAND } from '@/lib/brand';
 import { productsJsonPath, stateFile } from '@/lib/paths';
+import { websiteBriefSource, buildWebsiteBrief } from '@/lib/website-brief';
 
 const execAsync = promisify(exec);
 
@@ -26,10 +27,13 @@ async function pdfToText(pdfBuffer) {
   }
 }
 
-async function extractBriefWithGPT(textContent, productName, openaiKey) {
+async function extractBriefWithGPT(textContent, productName, openaiKey, { grounded = false } = {}) {
   const system = `Sen ${BRAND.promptName} için ürün pazarlama brief'i çıkarıyorsun.
 Verilen metin ürün kataloğu, teknik doküman veya müşteri notu olabilir.
-KURAL: Fiyat bilgisi asla yazma. "Avrupa menşeli", "ithal", "en ucuz" kullanma.
+KURAL: Fiyat bilgisi asla yazma. "Avrupa menşeli", "ithal", "en ucuz" kullanma.${grounded ? `
+TOPRAKLAMA KURALI (KRİTİK): Kaynak metin şirketin web sitesinden gelen RESMİ ürün verisidir.
+SADECE bu metinde geçen bilgi, rakam ve özellikleri kullan. Metinde OLMAYAN hiçbir kapasite,
+özellik, sertifika, malzeme veya iddia YAZMA. Emin olmadığın alanı boş bırak — uydurma.` : ''}
 SADECE minified JSON döndür — açıklama yok.`;
 
   const schema = JSON.stringify({
@@ -47,13 +51,13 @@ SADECE minified JSON döndür — açıklama yok.`;
     body: JSON.stringify({
       model: 'gpt-4o',
       max_tokens: 1000,
-      temperature: 0.3,
+      temperature: grounded ? 0.1 : 0.3,
       response_format: { type: 'json_object' },
       messages: [
         { role: 'system', content: system },
         {
           role: 'user',
-          content: `Ürün adı: ${productName}\n\nDoküman içeriği:\n${textContent.slice(0, 4000)}\n\nJSON şema:\n${schema}`,
+          content: `Ürün adı: ${productName}\n\nDoküman içeriği:\n${textContent.slice(0, grounded ? 12000 : 4000)}\n\nJSON şema:\n${schema}`,
         },
       ],
     }),
@@ -67,26 +71,34 @@ SADECE minified JSON döndür — açıklama yok.`;
 export async function POST(request) {
   try {
     const openaiKey = process.env.OPENAI_API_KEY;
-    if (!openaiKey) return NextResponse.json({ ok: false, error: 'OPENAI_API_KEY eksik' }, { status: 500 });
 
     const formData = await request.formData();
     const slug = formData.get('slug');
     const textInput = formData.get('text');
     const file = formData.get('file');
+    const mode = formData.get('mode') || ''; // 'website' → kaynak sitenin senkron verisi, topraklama açık
 
     if (!slug) return NextResponse.json({ ok: false, error: 'slug zorunlu' }, { status: 400 });
 
-    // Ürün adını al
+    // Ürün adını al (+ website modunda ürün kaydının kendisi lazım)
     let productName = slug;
+    let productRec = null;
     try {
       const products = JSON.parse(fs.readFileSync(productsJsonPath(), 'utf8'));
-      const p = products.find((x) => x.slug === slug);
-      if (p) productName = p.marketing?.name_tr || p.name_en || slug;
+      productRec = products.find((x) => x.slug === slug) || null;
+      if (productRec) productName = productRec.marketing?.name_tr || productRec.name_en || slug;
     } catch { /* devam et */ }
 
     let textContent = '';
 
-    if (textInput && textInput.trim()) {
+    if (mode === 'website') {
+      // Kaynak metni SUNUCU üretir (istemcinin eski/stale verisi değil) — sitenin
+      // senkronla gelen tam içeriği (açıklama, SSS, akış…) brief'in tek kaynağıdır.
+      if (!productRec?.website) {
+        return NextResponse.json({ ok: false, error: 'Ürün web sitesine bağlı değil — önce Siteyle Eşitle.' }, { status: 400 });
+      }
+      textContent = websiteBriefSource(productRec);
+    } else if (textInput && textInput.trim()) {
       // Toplu metin yapıştırma
       textContent = textInput.trim();
     } else if (file) {
@@ -131,19 +143,35 @@ export async function POST(request) {
       return NextResponse.json({ ok: false, error: 'İçerik boş — metin girin veya dosya seçin' }, { status: 400 });
     }
 
-    const parsed = await extractBriefWithGPT(textContent, productName, openaiKey);
+    // Website modu: deterministik taban her zaman hazırdır (%100 site verisi, sıfır hayal).
+    const detBase = mode === 'website' ? buildWebsiteBrief(productRec) : null;
+
+    if (!openaiKey) {
+      if (detBase) {
+        // Anahtar yok → LLM'siz, doğrudan site verisinden brief (uydurma imkânsız).
+        const briefPath = path.join(stateFile('briefs'), `${slug}.json`);
+        fs.mkdirSync(path.dirname(briefPath), { recursive: true });
+        fs.writeFileSync(briefPath, JSON.stringify(detBase, null, 2));
+        return NextResponse.json({ ok: true, brief: detBase, note: 'OPENAI_API_KEY yok — brief doğrudan site verisinden derlendi.' });
+      }
+      return NextResponse.json({ ok: false, error: 'OPENAI_API_KEY eksik' }, { status: 500 });
+    }
+
+    const parsed = await extractBriefWithGPT(textContent, productName, openaiKey, { grounded: mode === 'website' });
 
     const brief = {
       slug,
       approved: false,
-      highlights: parsed.highlights || [],
-      target_industries: parsed.target_industries || [],
-      ideal_customer: parsed.ideal_customer || '',
+      // Website modunda boş dönen alanlar deterministik site tabanıyla doldurulur.
+      highlights: (parsed.highlights?.length ? parsed.highlights : detBase?.highlights) || [],
+      target_industries: (parsed.target_industries?.length ? parsed.target_industries : detBase?.target_industries) || [],
+      ideal_customer: parsed.ideal_customer || detBase?.ideal_customer || '',
       pain_points: parsed.pain_points || [],
-      dont_say: parsed.dont_say || [],
-      image_notes: parsed.image_notes || '',
+      dont_say: parsed.dont_say?.length ? parsed.dont_say : (detBase?.dont_say || []),
+      image_notes: parsed.image_notes || detBase?.image_notes || '',
+      ...(detBase?.website_source ? { website_source: detBase.website_source } : {}),
       last_updated: new Date().toISOString(),
-      _generated_by: 'brief/import / gpt-4o',
+      _generated_by: mode === 'website' ? 'brief/import / gpt-4o (site verisi, topraklamalı)' : 'brief/import / gpt-4o',
     };
 
     const briefPath = path.join(stateFile('briefs'), `${slug}.json`);

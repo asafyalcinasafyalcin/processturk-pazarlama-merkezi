@@ -68,6 +68,7 @@ async function generateBrief(product, kbExcerpt) {
     markaBaglam,
     'Çıktılar sosyal medya metin ve video içeriklerinde kullanılacak.',
     'KURAL: Fiyat bilgisi asla yazma. "Avrupa menşeli", "ithal parça", "en ucuz" deme.',
+    'TOPRAKLAMA: Web sitesi verisi bölümü varsa o RESMİ kaynaktır — sadece verilen bilgileri kullan, kaynakta olmayan kapasite/özellik/iddia uydurma.',
     '"Türk mühendisliği", "7/24 uzaktan destek", "küresel sevkiyat" serbest.',
     'SADECE minified JSON döndür — açıklama, markdown yok.',
   ].join(' ');
@@ -91,7 +92,7 @@ async function generateBrief(product, kbExcerpt) {
     m.highlights?.length ? `Mevcut highlights: ${m.highlights.join(', ')}` : '',
     m.audience ? `Hedef kitle: ${m.audience}` : '',
     m.promise ? `Ürün vaadi: ${m.promise}` : '',
-    siteSource ? `\n--- Web Sitesi Ürün Verisi (processturk.com) ---\n${siteSource.slice(0, 2000)}` : '',
+    siteSource ? `\n--- Web Sitesi Ürün Verisi (processturk.com) ---\n${siteSource.slice(0, 8000)}` : '',
     kbExcerpt ? `\n--- İlgili Şirket Bilgisi ---\n${kbExcerpt.slice(0, 800)}` : '',
     `\nŞu JSON şeklini döndür:\n${schema}`,
   ].filter(Boolean).join('\n');

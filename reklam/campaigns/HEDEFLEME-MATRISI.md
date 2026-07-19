@@ -28,6 +28,7 @@
 | Ürün | Fiyat | Konsept | Lider açı / üslup | Diller → coğrafya | Kitle |
 |------|-------|---------|-------------------|-------------------|-------|
 | **sos-hatti-anahtar-teslim** | proje bazlı | **A/B** (a+b) | A: komple anahtar-teslim fabrika (kurulum+eğitim dahil) · B: Türk müh. + gıda 304 + Avrupa bileşen | EN→Afrika-EN · FR→Afrika-FR · AR→Körfez · RU→Orta Asya | sos/ketçap/mayonez üreticisi, fabrika kuran yeni yatırımcı, hatta geçen KOBİ |
+| **salca-domates-isleme-hatti** | proje bazlı | **b-hf** (kalite/mühendislik, Higgsfield lifestyle sahne — tek konsept, gerçek A/B yok; sos-hatti ile aynı görsel stil) | Türk müh. + gıda sınıfı 304/316 + anahtar teslim akış (yıkama → kırma → vakum evaporasyon → pastörizasyon → dolum/paketleme); kapasiteye göre 6–50 ton/gün ölçeklenebilir hat | EN→Afrika-EN · FR→Afrika-FR · AR→Körfez · RU→Orta Asya | domates/salça yatırımcısı (yeni fabrika), mevcut konserve fabrikasını modernize eden, salça ihracatçısı & fason üretici, kooperatif/tarımsal işletme |
 
 **Üslup notları:**
 - **Afrika (EN/FR):** pratik, net, fiyat+güven; "Türkiye'den, kurulum+destek". francophone-africa-guide: doğrudan, ilişki odaklı.

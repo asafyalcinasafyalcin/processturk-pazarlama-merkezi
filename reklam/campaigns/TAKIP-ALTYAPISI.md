@@ -1,8 +1,14 @@
 # Takip & Ölçüm Altyapısı — Uzun Vadeli Veri Akışı (blueprint)
 
 > Amaç: her reklamın gösterimden **satışa** kadar izlenebildiği, konsept/dil/ürün kırılımıyla sağlıklı
-> analiz yapılabilen bir ölçüm sistemi. Bu doküman **tasarımdır**; satış geri-beslemesi chatbot/CRM
-> hazır olunca bağlanır (Asaf tarafı). Reklam üretimi/raporlama tarafı HAZIR.
+> analiz yapılabilen bir ölçüm sistemi.
+>
+> **Durum (2026-07-18):** gönderici artık HAZIR → `scripts/capi_satis_gonder.py` (Make.com'a gerek
+> kalmadı, aşağıda §4). Kalan tek adım: CRM'den satış kaydını çıkarıp bu script'e vermek + ilk
+> `--test-event-code` doğrulaması. Ölçüm yöntemi/kuralları: `reklam-olcum` yeteneği.
+>
+> ⚠️ **CRM = Pipely** (`pipely.processturk.com`). Bu dokümanda geçen **Bitrix24 ARTIK KULLANILMIYOR**;
+> eski adlandırma tarihsel not olarak bırakıldı, yeni iş Pipely üzerinden yapılır.
 
 ## 1) Huni & KPI'lar
 | Aşama | Kaynak | Metrik |
@@ -35,18 +41,36 @@ Ref şeması `create_meta_campaign.py` `build_unit`'te otomatik üretilir (her r
 | PROCESSTURK Event Data (pixel) | `1013107747559832` | Web olayları (site ziyaret/form) — gerekirse |
 | Processtürk | `683041987846396` | yedek/diğer |
 
-## 4) Satış geri-beslemesi — Make.com blueprint (SONRA, chatbot hazır olunca)
-Tetik: **Bitrix24 "deal won"** → Make senaryosu →
-- Lead kaydından **ref** + telefon/e-posta (hash) + **ctwa_clid** çek
-- Meta **Conversions API / Offline Conversions** event'i gönder → dataset `574101085357676`
-  - event_name: `Purchase` (ya da `Lead`/`Qualified` ara aşamalar)
-  - custom_data: value (ciro), currency `TRY`, ref (atıf)
-  - matching: phone/email hash + ctwa_clid
-→ Meta hangi **reklam/konseptin gerçek satış** getirdiğini öğrenir → maliyet/satış & ROAS + optimizasyon.
+## 4) Satış geri-beslemesi — ✅ GÖNDERİCİ HAZIR (`scripts/capi_satis_gonder.py`)
 
-**Not:** Make'in `facebook-ads-cm` reklam *oluşturamaz* ama **Conversions/Offline API** çağrısı (HTTP modülü)
-ile bu geri-besleme yapılabilir. Org Processturk / Core plan ücretsiz katmanı yeterli. Kurulum chatbot
-ref'i CRM'e yazmaya başlayınca devreye alınır.
+Make.com'a **gerek kalmadı** — geri-besleme kendi script'imizle yapılıyor (bir bağımlılık ve bir
+aylık ücret eksildi; ayrıca dedup/izin/hash disiplini kodda denetlenebiliyor).
+
+```bash
+# 1) KURU çalışma — hiçbir istek atılmaz, ne gideceğini gösterir
+python3 scripts/capi_satis_gonder.py --girdi satislar.csv --izin-alani izin
+
+# 2) TEST — Events Manager > Test Events'te görünür, kalıcı veriyi KİRLETMEZ
+python3 scripts/capi_satis_gonder.py --girdi satislar.csv --izin-alani izin \
+        --test-event-code TESTXXXXX --apply
+
+# 3) GERÇEK gönderim (yalnız 2. adım doğrulandıktan sonra)
+python3 scripts/capi_satis_gonder.py --girdi satislar.csv --izin-alani izin --apply
+```
+
+Girdi sütunları: `lead_id, olay_zamani, deger, para_birimi, telefon|eposta|ctwa_clid, izin, ref`.
+Script şunları garanti eder:
+- **Dedup çift katman:** `event_id = lead_id` (Meta tarafı) + yerel gönderim defteri
+  `data/capi_gonderim.csv` (aynı olay ikinci kez gönderilmez) → *geç gelen CRM güncellemesi
+  ikinci satış yaratmaz*.
+- **KVKK:** telefon/e-posta yalnız normalize + SHA-256; ham kimlik ne istekte ne defterde tutulur.
+  `--izin-alani` ile izinsiz kayıt gönderilmez. Hash izin yerine geçmez.
+- **Telefon normalize:** `0532…`/`532…` → `90532…` (yanlış ülke kodu eşleşmeyi sessizce sıfırlar).
+- **ctwa_clid hash'lenmez** (Meta ham bekler) ve varsa `action_source: business_messaging` kullanılır.
+- 7 günden eski olay ve çok para birimli girdi **uyarılır** (Meta bunları toplamaz).
+
+Dataset: `574101085357676` → `.env.local` içinde `META_DATASET_ID`.
+→ Meta hangi **reklam/konseptin gerçek satış** getirdiğini öğrenir → maliyet/satış & ROAS + optimizasyon.
 
 ## 5) Raporlama (HAZIR — `scripts/meta_report.py`)
 - Meta Insights (READ-ONLY) → `data/meta_insights.csv` (gün+ad bazında idempotent zaman serisi).
@@ -54,8 +78,18 @@ ref'i CRM'e yazmaya başlayınca devreye alınır.
 - Komut: `python3 scripts/meta_report.py --preset last_7d` (ya da `--since/--until`).
 - Günlük çalıştır (ileride launchd/cron) → uzun vadeli trend.
 
-## 6) Açık işler (Asaf tarafı, yayın öncesi/sonrası)
-- [ ] Chatbot, prefill'deki **`[ref: ...]`** kodunu okuyup CRM lead'ine yazsın (ürün rota etiketi `[REKLAM: ...]` aynı kalır).
-- [ ] (Opsiyonel) chatbot `ctwa_clid`'i (WhatsApp referral) yakalayıp kaydetsin → kesin atıf.
-- [ ] CRM "deal won" → Make → Offline/CAPI event (yukarıdaki blueprint).
-- [ ] `meta_report.py` günlük otomasyon (cron/launchd).
+## 6) Açık işler
+
+**✅ Kapatılanlar (2026-07-18)**
+- [x] CRM "satıldı" → Offline/CAPI göndericisi → `scripts/capi_satis_gonder.py` (Make.com iptal).
+- [x] `ctwa_clid` yakalama → WhatsApp webhook `referral.ctwa_clid` alanından okunuyor (§7).
+- [x] Raporlama otomasyonu → `scripts/haftalik_rapor.sh` (cron satırı README'de; kurulum Asaf'ta).
+- [x] Ölçüm doğruluk kuralları → `reklam-olcum` yeteneği (karşılaştırılabilirlik kapısı, dedup, MER).
+
+**Kalan (Asaf tarafı — canlı erişim gerektirir)**
+- [ ] Pipely'den satış kaydını CSV'ye çıkaran sorgu/uç (script'in girdi şemasına göre).
+- [ ] İlk `--test-event-code` doğrulaması → Events Manager > Test Events'te olay görünüyor mu.
+- [ ] `.env.local`'a `META_DATASET_ID=574101085357676` ekle.
+- [ ] `messaging_channel` alan adını Events Manager'da teyit et (kodda `# DOĞRULANMALI` işaretli).
+- [ ] İlk gerçek gönderimden ~72 saat sonra: ROAS/maliyet-başına-satış okunabiliyor mu; okunuyorsa
+      bütçe kaydırma kararı artık CPL'e değil **buna** dayanır.

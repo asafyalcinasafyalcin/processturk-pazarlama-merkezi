@@ -192,7 +192,21 @@ def main() -> None:
             sys.exit("overlay-only: cutout.png bulunamadı. Hazır görseli cutout.png olarak koyun.")
         print(f"  · overlay-only: hazır cutout kullanılıyor {cutout}")
     elif args.force_cutout or not cutout.exists():
-        src = (WORKSPACE / cfg["source_image"]).resolve() if not Path(cfg["source_image"]).is_absolute() else Path(cfg["source_image"])
+        rel_src = cfg["source_image"]
+        if Path(rel_src).is_absolute():
+            src = Path(rel_src)
+        else:
+            # source_image tabanı config'e göre değişir: eski WORKSPACE(AI_ROOT)-göreli tam yol
+            # ya da site-eşitlemeli ROOT.parent(Processturk_Pazarlama_Merkezi)-göreli "data/uploads/..."
+            # — ikisini de dene (WORKSPACE önce, geriye dönük davranış korunur).
+            src = None
+            for base in (WORKSPACE, ROOT.parent):
+                cand = (base / rel_src).resolve()
+                if cand.exists():
+                    src = cand
+                    break
+            if src is None:
+                sys.exit(f"Kaynak foto yok: {rel_src} (aranan: {WORKSPACE / rel_src} , {ROOT.parent / rel_src})")
         fal_prep_product.prep(src, cutout, cfg.get("prep_prompt",
             "304 stainless steel granule filling machine, industrial equipment, sharp studio product photo"),
             refine_prompt=cfg.get("refine_prompt"))

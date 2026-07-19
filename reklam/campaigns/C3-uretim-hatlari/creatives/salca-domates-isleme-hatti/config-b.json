@@ -1,0 +1,81 @@
+{
+  "slug": "salca-domates-isleme-hatti",
+  "variant": "b",
+  "template": "product-b.html",
+  "source_image": "data/uploads/salca-domates-isleme-hatti-gorsel-1783208638124-0sp6.jpg",
+  "prep_prompt": "complete turnkey tomato paste production line, several 304 stainless steel machines in a row (washing/sorting conveyor, crusher, vacuum evaporator, pasteurizer, filling & packaging unit), clean industrial food factory floor, realistic wide shot, no text, no logo",
+  "refine_prompt": null,
+  "props_prompt": "ripe tomatoes on a stainless steel conveyor moving toward a crushing and evaporation unit, clean food factory, soft realistic lighting, no text",
+  "sizes": [
+    "feed",
+    "story",
+    "square"
+  ],
+  "languages": {
+    "en": {
+      "origin": "Made in Türkiye",
+      "badges": [
+        "Food-grade AISI 304/316",
+        "CE certified",
+        "6–50 t/day capacity"
+      ],
+      "hero": "Your Tomato Paste Line. Turkish Engineering, European Components.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "Washing · crushing · vacuum evaporation · pasteurization · hygienic filling & packaging",
+      "cta": "Get your line quote on WhatsApp",
+      "name": "Tomato Paste & Processing Line",
+      "description": "See more at processturk.com or message us on WhatsApp"
+    },
+    "fr": {
+      "origin": "Fabriqué en Türkiye",
+      "badges": [
+        "Inox alimentaire AISI 304/316",
+        "Certifié CE",
+        "Capacité 6–50 t/jour"
+      ],
+      "hero": "Votre Ligne de Pâte de Tomate. Ingénierie Turque, Composants Européens.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "Lavage · broyage · évaporation sous vide · pasteurisation · remplissage hygiénique & emballage",
+      "cta": "Devis de votre ligne sur WhatsApp",
+      "name": "Ligne de Pâte de Tomate",
+      "description": "Plus d'infos sur processturk.com ou contactez-nous sur WhatsApp"
+    },
+    "ar": {
+      "rtl": true,
+      "origin": "صنع في تركيا",
+      "badges": [
+        "ستانلس ستيل غذائي 304/316",
+        "معتمد CE",
+        "طاقة إنتاجية 6–50 طن/يوم"
+      ],
+      "hero": "خط معجون الطماطم لديك. هندسة تركية بمكوّنات أوروبية.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "غسيل · تقطيع · تبخير تحت الفراغ · بسترة · تعبئة وتغليف صحي",
+      "cta": "احصل على عرض سعر خطك عبر واتساب",
+      "name": "خط معجون الطماطم",
+      "description": "لمزيد من التفاصيل زوروا processturk.com أو راسلونا عبر واتساب"
+    },
+    "ru": {
+      "origin": "Сделано в Турции",
+      "badges": [
+        "Пищевая сталь AISI 304/316",
+        "Сертификат CE",
+        "Мощность 6–50 т/сутки"
+      ],
+      "hero": "Ваша линия томатной пасты. Турецкая инженерия, европейские компоненты.",
+      "brands": "Siemens · Schneider · Festo",
+      "price_pre": "",
+      "price_num": "",
+      "sub": "Мойка · измельчение · вакуумная выпарка · пастеризация · гигиеничный розлив и упаковка",
+      "cta": "Запросите расчёт линии в WhatsApp",
+      "name": "Линия производства томатной пасты",
+      "description": "Подробнее на processturk.com или напишите нам в WhatsApp"
+    }
+  }
+}

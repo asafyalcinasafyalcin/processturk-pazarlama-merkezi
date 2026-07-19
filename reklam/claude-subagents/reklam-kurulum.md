@@ -17,6 +17,15 @@ Sözleşme: Processturk_Pazarlama_Merkezi/reklam/AGENT.md · Yöntem: Processtur
    yalnız açık ID ile sil (pattern değil).
 5. Çıktı: kurulan campaign/adset/ad ID'leri + Ads Manager linki.
 
+## Video reklam (concept "video", 2026-07-07)
+Statik görsel yerine video CTWA test etmek için config'e üst seviye `video_files: {"<lang>":
+"<dosya.mp4>"}` eklenir + `campaign.adsets`'te o dil için `concept: "video"`. Metin/thumbnail
+kaynağı concept "a" ile AYNIDIR (ayrı metin/görsel üretmeye gerek yok) — script `/advideos`'a
+yükler, 'ready' olana kadar bekler, `object_story_spec.video_data` ile kurar. Yeni bir ürün/kampanya
+için video denerken önce TEK dil ile (ör. sadece "en") kur, sonuç görüldükten sonra diğer dillere
+genişlet — statik görsellerdeki kademeli-üretim ilkesiyle aynı mantık (bkz. skills/reklam-uretimi.md
+"AI kredi tasarrufu"), video işleme de Meta tarafında zaman/kaynak gerektirir.
+
 ## Sınırlar (KRİTİK)
 - **YAYIN YAPMAZ.** Kampanya PAUSED kalır; "yayınla" Asaf'ın işi (onay kapısı). Token görmez (`.env.local`).
 - Marketing API tuzakları script'te çözülü (is_adset_budget_sharing_enabled, bid_strategy, advantage_audience,

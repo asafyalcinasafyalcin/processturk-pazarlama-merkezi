@@ -69,6 +69,13 @@ kurulu, sadece **dönüşüm aksiyonlarının doğru tanımlı** olduğunu teyit
 - Canlıya alıp para harcatmak **yalnız Asaf'ın açık onayıyla** ("yayına al / onayla").
 - Bütçe artırımı da onaylıdır; öneriler kanıta (CPL) dayanır.
 
+## ⛔ URL doğrulama kapısı (kodda zorunlu)
+
+Her Final URL, yayından önce **AdsBot-Google gözünden 200** doğrulanır (`scripts/url_kontrol.py`).
+Liste/çıkarımdan gelen slug'a güvenilmez; her URL tek tek denenir. `kampanya_durum.py ... ENABLED`
+ve URL yazan script'ler bu kontrolü otomatik yapar, geçmezse yayın/ekleme durur. (Ders: 404 sayfaya
+bağlı reklam Google tarafından reddedildi → kontrol artık zorunlu.)
+
 ## İş akışı (hafif yol)
 
 1. **Denetim** — `scripts/01-hesap-denetimi.js` çalıştır → envanter + dönüşüm durumu.

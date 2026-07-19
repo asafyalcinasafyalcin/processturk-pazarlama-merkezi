@@ -1,0 +1,92 @@
+{
+  "_aciklama": "Anahtar-teslim üretim hattı · Afrika-EN (Nijerya/Gana/Kenya/Uganda). Kaynak spec: editor-uploads/PT-Search-EN-Turnkey.md. Eski kurucu: scripts/create_PT-Search-EN-Turnkey.py (EMEKLİ).",
+  "_canli_not": "Bu config kampanyanın KURULUM anındaki halidir (id 23998449813). Canlıda sonradan değişenler: CPC ₺8→₺18→₺50, bütçe ₺100→₺200→₺100, +16 katalog-dışı negatif (toplam 56), AG2/AG3 derin-bağlandı (deeplink_PT-Search-EN-Turnkey.py). Canlı değeri değiştirmek için teklif_guncelle.py / butce_guncelle.py kullan — bu dosya yalnız yeniden kurulumda okunur.",
+
+  "name": "PT-Search-EN-Turnkey",
+  "daily_budget_try": 100,
+  "default_cpc_try": 8,
+  "search_partners": false,
+  "language_id": 1000,
+  "geo_target_ids": [2566, 2288, 2404, 2800],
+
+  "final_url": "https://www.processturk.com/en/hatlar",
+  "path1": "production",
+  "path2": "turnkey",
+  "descriptions": [
+    "Turnkey production lines from Türkiye — engineered, built, installed and commissioned.",
+    "Food-grade AISI 304, European components, PLC control. Scaled to your target capacity.",
+    "Installation and operator training included. Trusted Turkish engineering for Africa.",
+    "Get your tailored turnkey proposal today. Request a free project quote."
+  ],
+
+  "negatives": [
+    "free", "pdf", "ppt", "download", "drawing", "cad", "layout", "diagram", "template",
+    "project report", "thesis", "wikipedia", "what is", "meaning", "definition", "job",
+    "jobs", "career", "salary", "vacancy", "hiring", "internship", "course", "training",
+    "tutorial", "used", "second hand", "refurbished", "rental", "rent", "lease",
+    "spare parts", "repair", "diy", "homemade", "toy", "game", "software", "simulation",
+    "price list"
+  ],
+
+  "ad_groups": [
+    {
+      "name": "Turnkey Production Line",
+      "keywords": [
+        ["turnkey production line", "PHRASE"],
+        ["turnkey manufacturing plant", "PHRASE"],
+        ["complete production line", "PHRASE"],
+        ["turnkey factory setup", "PHRASE"],
+        ["turnkey plant supplier", "PHRASE"],
+        ["production line manufacturer turkey", "PHRASE"],
+        ["turnkey production line", "EXACT"],
+        ["turnkey plant", "EXACT"]
+      ],
+      "headlines": [
+        "Turnkey Production Lines", "Complete Line, One Partner", "Design to Commissioning",
+        "Made in Türkiye", "Install & Training Included", "European-Grade Components",
+        "AISI 304 Food-Grade Steel", "Get Your Project Quote", "Built to Your Capacity",
+        "Turnkey Industrial Plants", "Delivered & Installed", "Sauce, Paste & Dairy Lines",
+        "Your Factory, Turnkey", "Free Tailored Proposal", "ProcessTürk Engineering"
+      ]
+    },
+    {
+      "name": "Sauce & Paste Line",
+      "keywords": [
+        ["sauce production line", "PHRASE"],
+        ["tomato paste production line", "PHRASE"],
+        ["tomato paste plant", "PHRASE"],
+        ["ketchup production line", "PHRASE"],
+        ["jam production line", "PHRASE"],
+        ["food processing line turnkey", "PHRASE"],
+        ["sauce production line", "EXACT"],
+        ["tomato paste production line", "EXACT"]
+      ],
+      "headlines": [
+        "Sauce Production Line", "Tomato Paste Plant Turnkey", "Ketchup & Sauce Lines",
+        "Made in Türkiye", "AISI 304 Food-Grade Steel", "Install & Training Included",
+        "European-Grade Components", "Get Your Project Quote", "Built to Your Capacity",
+        "Design to Commissioning", "Delivered & Installed", "PLC & Automation Control",
+        "Turnkey Food Plants", "Free Tailored Proposal", "ProcessTürk Engineering"
+      ]
+    },
+    {
+      "name": "Dairy Milk Plant",
+      "keywords": [
+        ["milk processing plant", "PHRASE"],
+        ["yoghurt production line", "PHRASE"],
+        ["dairy processing plant", "PHRASE"],
+        ["milk pasteurization line", "PHRASE"],
+        ["milk plant turnkey", "PHRASE"],
+        ["milk processing plant", "EXACT"],
+        ["dairy plant", "EXACT"]
+      ],
+      "headlines": [
+        "Milk Processing Plant", "Yoghurt Production Line", "Dairy Plant Turnkey",
+        "Made in Türkiye", "20 Ton/Day & Scalable", "Pasteurization & Filling",
+        "AISI 304 Food-Grade Steel", "Get Your Project Quote", "Install & Training Included",
+        "European-Grade Components", "Delivered in 65-75 Days", "Complete Dairy Line",
+        "Your Factory, Turnkey", "Free Tailored Proposal", "ProcessTürk Engineering"
+      ]
+    }
+  ]
+}

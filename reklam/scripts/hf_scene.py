@@ -10,14 +10,23 @@ katmanı (logo, fiyat, CTA) sonradan make_product overlay'i ile basılır.
 Çıktılar eski cutout creative'lerini EZMEZ; `<slug>-hf-scene-<ratio>.png` adıyla
 creatives/<slug>/ altına iner.
 
+İki çalışma modu:
+  1) Sabit liste (C1-hazir-makineler 6 HD ürün) — SCENES sözlüğünde tanımlı slug'lar,
+     kaynak foto CENTER/data/products.json'dan (PRODUCTS listesi).
+  2) Genel/config-tabanlı (ör. C3-uretim-hatlari hat ürünleri) — slug SCENES'te yoksa,
+     campaigns/*/creatives/<slug>/config.json (klasör adı == slug ya da cfg['slug'] == slug)
+     aranır; product_context = cfg['prep_prompt'], sahne = cfg['props_prompt'], kaynak foto
+     yine PRODUCTS'tan (cfg['slug'] ile) çekilir. Çıktı doğrudan o creative klasörüne iner.
+
 Konum: Processturk_Pazarlama_Merkezi/reklam/scripts/
 Gerektirir: higgsfield CLI ($HOME/.local/bin), FAL gerekmez.
 
 Kullanım:
   export PATH="$HOME/.local/bin:$PATH"
   python3 hf_scene.py                       # 6 HD ürün × 3 format
-  python3 hf_scene.py granul-dolum          # tek ürün
+  python3 hf_scene.py granul-dolum          # tek ürün (sabit liste)
   python3 hf_scene.py granul-dolum --ratios feed
+  python3 hf_scene.py salca-domates-isleme-hatti   # config-tabanlı (C3 vb.)
 """
 import argparse
 import json
@@ -112,6 +121,27 @@ SCENES = {
 }
 
 
+def _find_creative_cfg(slug: str):
+    """SCENES'te olmayan slug'lar için campaigns/*/creatives/<slug>/config.json arar
+    (klasör adı == slug öncelikli, sonra cfg['slug'] == slug). (slug not in SCENES) →
+    C3-uretim-hatlari gibi hat ürünleri için genel/config-tabanlı yol."""
+    candidates = sorted(REKLAM.glob("campaigns/*/creatives/*/config.json"))
+    for cfgp in candidates:
+        if cfgp.parent.name == slug:
+            try:
+                return cfgp.parent, json.loads(cfgp.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+    for cfgp in candidates:
+        try:
+            c = json.loads(cfgp.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if c.get("slug") == slug:
+            return cfgp.parent, c
+    return None, None
+
+
 def src_for(slug: str, max_edge: int = DEFAULT_MAX_EDGE) -> Path:
     """products.json'daki source_image'i uzun-kenar <= max_edge olacak şekilde JPG'e hazırlar.
     max_edge=0 → küçültme YOK (orijinal çözünürlük). Kalite: premium'da yüksek çözünürlük korunur.
@@ -119,9 +149,18 @@ def src_for(slug: str, max_edge: int = DEFAULT_MAX_EDGE) -> Path:
     prod = next((p for p in PRODUCTS if p["slug"] == slug), None)
     if not prod:
         sys.exit(f"Ürün bulunamadı: {slug}")
-    raw = (AI_ROOT / prod["source_image"]).resolve()
-    if not raw.exists():
-        sys.exit(f"Kaynak foto yok: {raw}")
+    rel = prod["source_image"]
+    # source_image tabanı products.json girdisine göre değişir: eski AI_ROOT-göreli tam yol
+    # (ör. "Processturk_Satis_Dolum_Makinaları/...") ya da site-eşitlemeli CENTER-göreli
+    # "data/uploads/..." — ikisini de dene (AI_ROOT önce, sonra CENTER).
+    raw = None
+    for base in (AI_ROOT, CENTER):
+        cand = (base / rel).resolve()
+        if cand.exists():
+            raw = cand
+            break
+    if raw is None:
+        sys.exit(f"Kaynak foto yok: {rel} (aranan: {(AI_ROOT / rel)} , {(CENTER / rel)})")
     SRC_DIR.mkdir(parents=True, exist_ok=True)
     # Farklı max_edge değerlerinin önbelleği çakışmasın (1600 çıktısı 2560'ı gölgelemesin).
     tag = "orig" if max_edge <= 0 else str(max_edge)
@@ -144,11 +183,24 @@ def src_for(slug: str, max_edge: int = DEFAULT_MAX_EDGE) -> Path:
 
 
 def generate(slug: str, ratios: list, max_edge: int = DEFAULT_MAX_EDGE) -> None:
-    if slug not in SCENES:
-        sys.exit(f"Sahne tanımı yok: {slug}")
-    product_ctx, scene = SCENES[slug]
-    img = src_for(slug, max_edge)
-    out_dir = CREATIVES / slug
+    if slug in SCENES:
+        product_ctx, scene = SCENES[slug]
+        img = src_for(slug, max_edge)
+        out_dir = CREATIVES / slug
+    else:
+        cdir, cfg = _find_creative_cfg(slug)
+        if not cdir:
+            sys.exit(f"Sahne tanımı yok: {slug} (SCENES'te yok, campaigns/*/creatives/ altında "
+                      f"config.json da bulunamadı)")
+        prep = (cfg.get("prep_prompt") or "").strip()
+        props = (cfg.get("props_prompt") or "").strip()
+        if not prep or not props:
+            sys.exit(f"{slug}: config.json'da prep_prompt/props_prompt eksik.")
+        product_ctx, scene = prep, props
+        img_slug = cfg.get("slug", slug)
+        img = src_for(img_slug, max_edge)   # gerçek/site ürün fotoğrafı (data/products.json)
+        out_dir = cdir
+        slug = img_slug   # dosya adı öneki cfg['slug'] ile tutarlı olsun (overlay/kampanya beklentisi)
     out_dir.mkdir(parents=True, exist_ok=True)
     prompt = f"{scene}; {NOTEXT}"
     for name, ratio in RATIOS.items():

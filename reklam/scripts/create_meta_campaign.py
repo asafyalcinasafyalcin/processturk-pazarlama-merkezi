@@ -14,6 +14,12 @@ Akış (graph.facebook.com):
       tıklama tarayıcı/App Store'a düşer. Bu yüzden tek görsel link_data kullanılır.)
   5) ad (PAUSED)
 
+Video reklam (concept "video", 2026-07-07): adset'in concept'i "video" ise creative
+object_story_spec.video_data ile kurulur (link_data değil) — /advideos'a yükle, 'ready' olana kadar
+bekle, thumbnail = concept "a"nın feed görseli (ayrıca üretmeye gerek yok). Video dosyası config'in
+üst seviye `video_files: {"<lang>": "<dosya-adı.mp4>"}` alanından okunur (creative klasörüne göreli).
+Metin concept "a" ile birebir aynı kaynaktan (ana config'in languages bloğu) gelir.
+
 Kimlik bilgileri .env.local'dan (koda yazılmaz):
   META_ACCESS_TOKEN   (ads_management + pages_* + whatsapp_business_management scope'lu uzun-ömürlü token)
   META_AD_ACCOUNT_ID  (act_ önekli ya da sadece sayı)
@@ -174,6 +180,43 @@ class Graph:
         # {"images": {"<name>": {"hash": "..."}}}
         return next(iter(res["images"].values()))["hash"]
 
+    def upload_video(self, video: Path, wait: int = 300) -> str:
+        """/advideos'a yükle, işlenmesini bekle (status.video_status == 'ready'). Video ID döner."""
+        if self.dry:
+            print(f"  [dry-run] /advideos upload {video.name} (+ ready bekleme atlandı)")
+            return f"DRYVIDEO_{uuid.uuid4().hex[:8]}"
+        boundary = "----ptk" + uuid.uuid4().hex
+        mime = mimetypes.guess_type(str(video))[0] or "video/mp4"
+        body = bytearray()
+        body += f"--{boundary}\r\n".encode()
+        body += f'Content-Disposition: form-data; name="access_token"\r\n\r\n{self.e["token"]}\r\n'.encode()
+        body += f"--{boundary}\r\n".encode()
+        body += f'Content-Disposition: form-data; name="source"; filename="{video.name}"\r\n'.encode()
+        body += f"Content-Type: {mime}\r\n\r\n".encode()
+        body += video.read_bytes() + b"\r\n"
+        body += f"--{boundary}--\r\n".encode()
+        req = urllib.request.Request(
+            self._url(f"{self.e['acct']}/advideos"), data=bytes(body), method="POST",
+            headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
+        try:
+            res = json.loads(_urlopen_retry(req, 300).decode())
+        except urllib.error.HTTPError as ex:
+            sys.exit(f"Video yükleme hata {ex.code}:\n{ex.read().decode('utf-8','ignore')[:800]}")
+        vid = res["id"]
+        # Meta video-yi arka planda işler (kısa klipte genelde saniyeler-birkaç dk); ready olana kadar bekle.
+        deadline = time.time() + wait
+        while time.time() < deadline:
+            status_req = urllib.request.Request(
+                self._url(f"{vid}") + f"?fields=status&access_token={self.e['token']}")
+            st = json.loads(_urlopen_retry(status_req, 30).decode())
+            phase = st.get("status", {}).get("video_status")
+            if phase == "ready":
+                return vid
+            if phase == "error":
+                sys.exit(f"Video işleme hatası ({vid}): {json.dumps(st)[:500]}")
+            time.sleep(5)
+        sys.exit(f"Video {wait}sn içinde 'ready' olmadı ({vid}) — Ads Manager'dan elle kontrol et.")
+
 
 def _link_data(feed_hash: str, copy: dict, wa_link: str) -> dict:
     """GERÇEK Click-to-WhatsApp creative gövdesi (object_story_spec.link_data).
@@ -190,6 +233,65 @@ def _link_data(feed_hash: str, copy: dict, wa_link: str) -> dict:
         "call_to_action": {"type": "WHATSAPP_MESSAGE",
                            "value": {"app_destination": "WHATSAPP", "link": wa_link}},
     }
+
+
+def _video_data(video_id: str, thumb_hash: str, copy: dict, wa_link: str) -> dict:
+    """Video CTWA creative gövdesi (object_story_spec.video_data). link_data'nın video muadili —
+    aynı WHATSAPP_MESSAGE call_to_action'ı kullanır, image_hash yerine video_id + thumbnail (image_hash) alır."""
+    return {
+        "video_id": video_id,
+        "image_hash": thumb_hash,
+        "title": copy["headline"],
+        "message": copy["primary"],
+        "link_description": copy["description"],
+        "call_to_action": {"type": "WHATSAPP_MESSAGE",
+                           "value": {"app_destination": "WHATSAPP", "link": wa_link}},
+    }
+
+
+def build_unit_video(g: "Graph", env: dict, camp_id: str, slug: str, lang: str, geo: list,
+                      copy: dict, video_path: Path, thumb_path: Path, daily_minor: int, label: str) -> bool:
+    """build_unit'in video muadili: tek ad set + video creative + ad (PAUSED). Thumbnail = eşleşen
+    statik creative'in feed görseli (ayrıca üretmeye gerek yok)."""
+    if not copy:
+        print(f"  · {label}: COPY tanımsız, atlandı"); return False
+    if not video_path.exists():
+        print(f"  · {label}: video yok ({video_path.name}), atlandı"); return False
+    if not thumb_path.exists():
+        print(f"  · {label}: thumbnail yok ({thumb_path.name}), atlandı"); return False
+
+    adset = g.post(f"{env['acct']}/adsets", dict(
+        name=f"AS-{label} · {'/'.join(geo)}",
+        campaign_id=camp_id, status="PAUSED",
+        billing_event="IMPRESSIONS", optimization_goal="CONVERSATIONS",
+        bid_strategy="LOWEST_COST_WITHOUT_CAP",
+        destination_type="WHATSAPP", daily_budget=daily_minor,
+        promoted_object={"page_id": env["page"]},
+        targeting={"geo_locations": {"countries": geo}, "age_min": 25, "age_max": 55,
+                   "publisher_platforms": ["facebook", "instagram"],
+                   "facebook_positions": ["feed", "story", "facebook_reels"],
+                   "instagram_positions": ["stream", "story", "reels", "explore"],
+                   "targeting_automation": {"advantage_audience": 0}}))
+    print(f"  ✓ adset {adset['id']} ({label} → {','.join(geo)})")
+
+    video_id = g.upload_video(video_path)
+    thumb_hash = g.upload_image(thumb_path)
+    ref = f"{slug}-{label.lower()}"
+    wa_link = "https://api.whatsapp.com/send?phone=" + env["wa"] + "&text=" + urllib.parse.quote(
+        copy["prefill"] + f" [ref: {ref}]")
+    oss = {"page_id": env["page"]}
+    if env.get("ig"):
+        oss["instagram_user_id"] = env["ig"]
+    oss["video_data"] = _video_data(video_id, thumb_hash, copy, wa_link)
+    creative = g.post(f"{env['acct']}/adcreatives", dict(
+        name=f"CR-{slug}-video-{lang}",
+        object_story_spec=oss))
+    print(f"  ✓ creative {creative['id']} (CTWA video_data, app_destination=WHATSAPP)")
+    ad = g.post(f"{env['acct']}/ads", dict(
+        name=f"AD-{slug}-video-{lang}", adset_id=adset["id"],
+        creative={"creative_id": creative["id"]}, status="PAUSED"))
+    print(f"  ✓ ad {ad['id']}")
+    return True
 
 
 def build_unit(g: "Graph", env: dict, camp_id: str, slug: str, lang: str, geo: list,
@@ -244,7 +346,8 @@ def _concept_tx(out_dir: Path, base_cfg: dict, concept: str, lang: str) -> tuple
     Dosya seti:  a→''  ·  b→'-b' (cutout)  ·  a-hf→'-hf'  ·  b-hf→'-b-hf'  (Higgsfield lifestyle sahne)
     ·  a-framed→'-framed'  ·  b-framed→'-b-framed'  (STANDART çerçeveli kart — make_framed.py)."""
     SUFFIX = {"a": "", "b": "-b", "a-hf": "-hf", "b-hf": "-b-hf",
-              "a-framed": "-framed", "b-framed": "-b-framed", "framed": "-framed"}
+              "a-framed": "-framed", "b-framed": "-b-framed", "framed": "-framed",
+              "video": ""}   # video ads: metin concept "a" ile aynı, thumbnail da "a"nın feed görseli
     suffix = SUFFIX.get(concept, "")
     if concept in ("b", "b-hf", "b-framed"):
         bpath = out_dir / "config-b.json"
@@ -287,6 +390,7 @@ def main() -> None:
         is_adset_budget_sharing_enabled="false"))
     print(f"  ✓ campaign {camp['id']}")
 
+    video_files = cfg.get("video_files", {})   # {"en": "video-konveyor-en.mp4", ...} — concept "video" için
     for a in adsets:
         lang = a["lang"]; countries = a["countries"]; concept = a.get("concept", "a")
         tx, suffix = _concept_tx(out_dir, cfg, concept, lang)
@@ -294,7 +398,16 @@ def main() -> None:
             print(f"  · {concept}-{lang}: dil/config bulunamadı, atlandı"); continue
         copy = _creative_text(tx, tag)
         label = f"{concept.upper()}-{lang.upper()}"
-        build_unit(g, env, camp["id"], slug, lang, countries, copy, suffix, daily_minor, out_dir, label)
+        if concept == "video":
+            vf = video_files.get(lang)
+            if not vf:
+                print(f"  · {label}: video_files['{lang}'] tanımsız, atlandı"); continue
+            video_path = out_dir / vf
+            thumb_path = out_dir / f"{slug}{suffix}-{lang}-feed.png"
+            build_unit_video(g, env, camp["id"], slug, lang, countries, copy,
+                              video_path, thumb_path, daily_minor, label)
+        else:
+            build_unit(g, env, camp["id"], slug, lang, countries, copy, suffix, daily_minor, out_dir, label)
 
     acct_num = env["acct"].replace("act_", "")
     print("\nHAZIR (hepsi PAUSED). Ads Manager'da incele ve sen yayınla:")

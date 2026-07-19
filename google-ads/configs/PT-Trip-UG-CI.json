@@ -1,0 +1,153 @@
+{
+  "_aciklama": "Uganda + Fildişi Sahili gezi-zamanlı kampanyası, 10 gün (duration_days). end_date_time ile Google kampanyayı 10. günün sonunda otomatik durdurur. EN içerik PT-Search-EN-Turnkey'den (kanıtlanmış), FR içerik Meta'dan miras: reklam/campaigns/C3-uretim-hatlari/creatives/sos-hatti/ad-copy.md. Eski kurucu: scripts/create_PT-Trip-UG-CI.py (EMEKLİ).",
+  "_canli_not": "Kurulum anındaki hali (id 24020388845). Canlıda sonradan: CPC ₺35→₺60; 2026-07-15'te kampanya tamamen PAUSED edildi (Asaf 'Trip'i kapat'; 10 Tem'den beri 4 gösterim, ₺0 harcama). Planlanan gün-5 bütçe indirimi (₺150→₺60) böylece geçersiz kaldı.",
+  "_bütçe_notu": "Kurucu TEK bütçe kurar (yoğun faz ₺150/gün). İkinci fazın ₺60/gün'e indirilmesi OTOMATİK DEĞİLDİR — 'hatirlatma' alanı kurulum çıktısında komutu basar.",
+
+  "name": "PT-Trip-UG-CI",
+  "daily_budget_try": 150,
+  "default_cpc_try": 35,
+  "search_partners": false,
+  "language_ids": [1000, 1002],
+  "geo_target_ids": [2800, 2384],
+  "duration_days": 10,
+  "hatirlatma": "5. günde bütçeyi hafif faza düşür: python3 scripts/butce_guncelle.py <id> 60 --apply",
+
+  "descriptions": [
+    "Turnkey production lines from Türkiye — engineered, built, installed and commissioned.",
+    "Food-grade AISI 304, European components, PLC control. Scaled to your target capacity.",
+    "Installation and operator training included. Trusted Turkish engineering for Africa.",
+    "Get your tailored turnkey proposal today. Request a free project quote."
+  ],
+
+  "negatives": [
+    "free", "pdf", "ppt", "download", "drawing", "cad", "layout", "diagram", "template",
+    "project report", "thesis", "wikipedia", "what is", "meaning", "definition", "job",
+    "jobs", "career", "salary", "vacancy", "hiring", "internship", "course", "training",
+    "tutorial", "used", "second hand", "refurbished", "rental", "rent", "lease",
+    "spare parts", "repair", "diy", "homemade", "toy", "game", "software", "simulation",
+    "price list"
+  ],
+
+  "ad_groups": [
+    {
+      "name": "Turnkey Line (EN)",
+      "final_url": "https://processturk.com/en/hatlar",
+      "keywords": [
+        ["turnkey production line", "PHRASE"],
+        ["turnkey manufacturing plant", "PHRASE"],
+        ["complete production line", "PHRASE"],
+        ["turnkey factory setup", "PHRASE"],
+        ["turnkey plant supplier", "PHRASE"],
+        ["production line manufacturer turkey", "PHRASE"],
+        ["turnkey production line", "EXACT"],
+        ["turnkey plant", "EXACT"]
+      ],
+      "headlines": [
+        "Turnkey Production Lines", "Complete Line, One Partner", "Design to Commissioning",
+        "Made in Türkiye", "Install & Training Included", "European-Grade Components",
+        "AISI 304 Food-Grade Steel", "Get Your Project Quote", "Built to Your Capacity",
+        "Turnkey Industrial Plants", "Delivered & Installed", "Your Factory, Turnkey",
+        "Free Tailored Proposal", "ProcessTürk Engineering"
+      ]
+    },
+    {
+      "name": "Sauce Line (EN)",
+      "final_url": "https://processturk.com/en/hatlar",
+      "keywords": [
+        ["sauce production line", "PHRASE"],
+        ["tomato paste production line", "PHRASE"],
+        ["tomato paste plant", "PHRASE"],
+        ["ketchup production line", "PHRASE"],
+        ["sauce production line", "EXACT"]
+      ],
+      "headlines": [
+        "Sauce Production Line", "Tomato Paste Plant Turnkey", "Ketchup & Sauce Lines",
+        "Made in Türkiye", "AISI 304 Food-Grade Steel", "Install & Training Included",
+        "European-Grade Components", "Get Your Project Quote", "Delivered & Installed",
+        "Turnkey Food Plants", "Free Tailored Proposal", "ProcessTürk Engineering"
+      ]
+    },
+    {
+      "name": "Dairy Plant (EN)",
+      "final_url": "https://processturk.com/en/hatlar",
+      "keywords": [
+        ["milk processing plant", "PHRASE"],
+        ["yoghurt production line", "PHRASE"],
+        ["dairy processing plant", "PHRASE"],
+        ["milk plant turnkey", "PHRASE"],
+        ["milk processing plant", "EXACT"]
+      ],
+      "headlines": [
+        "Milk Processing Plant", "Yoghurt Production Line", "Dairy Plant Turnkey",
+        "Made in Türkiye", "Pasteurization & Filling", "AISI 304 Food-Grade Steel",
+        "Get Your Project Quote", "Install & Training Included", "European-Grade Components",
+        "Complete Dairy Line", "Free Tailored Proposal", "ProcessTürk Engineering"
+      ]
+    },
+    {
+      "name": "Turnkey Line (FR)",
+      "final_url": "https://processturk.com/fr/hatlar",
+      "keywords": [
+        ["ligne de production clé en main", "PHRASE"],
+        ["usine clé en main", "PHRASE"],
+        ["installation usine turquie", "PHRASE"],
+        ["ligne de production complète", "PHRASE"],
+        ["ligne de production clé en main", "EXACT"]
+      ],
+      "headlines": [
+        "Ligne Production Clé en Main", "Usine Complète, Un Partenaire", "Fabriqué en Türkiye",
+        "Installation + Formation", "Inox 304 Alimentaire", "Composants Européens",
+        "Devis de Projet Gratuit", "Conçue Selon Votre Capacité", "Usines Clé en Main",
+        "Livrée et Installée", "Ingénierie ProcessTürk"
+      ],
+      "descriptions": [
+        "Lignes de production clé en main depuis la Türkiye — conception à l'installation.",
+        "Acier inox 304 alimentaire, composants européens, contrôle PLC. Selon votre capacité.",
+        "Installation et formation des opérateurs incluses. Ingénierie turque de confiance.",
+        "Recevez votre devis clé en main personnalisé. Demandez un devis gratuit."
+      ]
+    },
+    {
+      "name": "Sauce Line (FR)",
+      "final_url": "https://processturk.com/fr/hatlar",
+      "keywords": [
+        ["ligne de production de sauce", "PHRASE"],
+        ["ligne de production de ketchup", "PHRASE"],
+        ["usine de concentré de tomate", "PHRASE"],
+        ["ligne de production de sauce", "EXACT"]
+      ],
+      "headlines": [
+        "Ligne de Production de Sauce", "Usine de Concentré de Tomate", "Fabriqué en Türkiye",
+        "Inox 304 Alimentaire", "Installation + Formation", "Composants Européens",
+        "Devis de Projet Gratuit", "Livrée et Installée", "Ingénierie ProcessTürk"
+      ],
+      "descriptions": [
+        "Lignes de production clé en main depuis la Türkiye — conception à l'installation.",
+        "Acier inox 304 alimentaire, composants européens, contrôle PLC. Selon votre capacité.",
+        "Installation et formation des opérateurs incluses. Ingénierie turque de confiance.",
+        "Recevez votre devis clé en main personnalisé. Demandez un devis gratuit."
+      ]
+    },
+    {
+      "name": "Dairy Plant (FR)",
+      "final_url": "https://processturk.com/fr/hatlar",
+      "keywords": [
+        ["usine laitière", "PHRASE"],
+        ["ligne de production de lait", "PHRASE"],
+        ["ligne de production de yaourt", "PHRASE"],
+        ["usine laitière", "EXACT"]
+      ],
+      "headlines": [
+        "Usine Laitière Clé en Main", "Ligne de Production de Lait", "Fabriqué en Türkiye",
+        "Pasteurisation et Remplissage", "Inox 304 Alimentaire", "Composants Européens",
+        "Devis de Projet Gratuit", "Installation + Formation", "Ingénierie ProcessTürk"
+      ],
+      "descriptions": [
+        "Lignes de production clé en main depuis la Türkiye — conception à l'installation.",
+        "Acier inox 304 alimentaire, composants européens, contrôle PLC. Selon votre capacité.",
+        "Installation et formation des opérateurs incluses. Ingénierie turque de confiance.",
+        "Recevez votre devis clé en main personnalisé. Demandez un devis gratuit."
+      ]
+    }
+  ]
+}

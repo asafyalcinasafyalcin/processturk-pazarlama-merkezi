@@ -1,55 +1,19 @@
 {
   "slug": "sos-hatti-anahtar-teslim",
-  "_cutout_source": "REAL fotoğraf (AI değil) — cutout.png bu creatives/sos-hatti/sosyal-paylasim/03-konveyor-feed-4x5.png fotoğrafından kopyalandı (mayonez kavanozları paslanmaz konveyörde). --force-cutout ÇALIŞTIRMA: cutout.png'i AI-üretilmiş placeholder ile ezer ve fal kredisi harcar. Yeniden üretmek gerekirse önce gerçek fotoğrafı tekrar cutout.png'e kopyala.",
-  "source_image": "Processturk_Pazarlama_Merkezi/reklam/campaigns/C3-uretim-hatlari/creatives/sos-hatti/sosyal-paylasim/03-konveyor-feed-4x5.png",
-  "sizes": [
-    "feed",
-    "story",
-    "square"
-  ],
-  "tag": "C3-sos-hatti",
+  "_not": "Video CTWA — sos hattı, 4 dil. b-hf (canlı makine-sahnesi config.json) ayrı kampanya, dokunulmadı.",
+  "tag": "C3-sos-hatti-video",
+  "video_files": {
+    "en": "video-konveyor-en.mp4",
+    "fr": "video-konveyor-fr.mp4",
+    "ar": "video-konveyor-ar.mp4",
+    "ru": "video-konveyor-ru.mp4"
+  },
   "campaign": {
     "adsets": [
-      {
-        "lang": "en",
-        "countries": [
-          "NG",
-          "GH",
-          "KE"
-        ],
-        "concept": "b-hf"
-      },
-      {
-        "lang": "fr",
-        "countries": [
-          "DZ",
-          "MA",
-          "TN",
-          "SN",
-          "CI"
-        ],
-        "concept": "b-hf"
-      },
-      {
-        "lang": "ar",
-        "countries": [
-          "SA",
-          "AE",
-          "QA",
-          "KW",
-          "EG"
-        ],
-        "concept": "b-hf"
-      },
-      {
-        "lang": "ru",
-        "countries": [
-          "AZ",
-          "KZ",
-          "UZ"
-        ],
-        "concept": "b-hf"
-      }
+      { "lang": "en", "countries": ["NG", "GH", "KE"], "concept": "video" },
+      { "lang": "fr", "countries": ["DZ", "MA", "TN", "SN", "CI"], "concept": "video" },
+      { "lang": "ar", "countries": ["SA", "AE", "QA", "KW", "EG"], "concept": "video" },
+      { "lang": "ru", "countries": ["AZ", "KZ", "UZ"], "concept": "video" }
     ]
   },
   "languages": {

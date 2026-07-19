@@ -25,7 +25,8 @@
       "price_num": "500–1500 L/h",
       "sub": "Cooking → filling → capping → labelling → packaging · installation & training",
       "cta": "Get full line price on WhatsApp",
-      "name": "Turnkey Sauce & Mayonnaise Line"
+      "name": "Turnkey Sauce & Mayonnaise Line",
+      "description": "See more at processturk.com or message us on WhatsApp"
     },
     "fr": {
       "origin": "Fabriqué en Türkiye",
@@ -40,7 +41,8 @@
       "price_num": "500–1500 L/h",
       "sub": "Cuisson → remplissage → bouchage → étiquetage → emballage · installation & formation",
       "cta": "Prix de la ligne complète sur WhatsApp",
-      "name": "Ligne Sauce & Mayonnaise Clé en Main"
+      "name": "Ligne Sauce & Mayonnaise Clé en Main",
+      "description": "Plus d'infos sur processturk.com ou contactez-nous sur WhatsApp"
     },
     "ar": {
       "rtl": true,
@@ -56,7 +58,8 @@
       "price_num": "500–1500 لتر/ساعة",
       "sub": "طبخ ← تعبئة ← غلق ← ملصقات ← تغليف · تركيب وتدريب",
       "cta": "اطلب سعر الخط الكامل عبر واتساب",
-      "name": "خط صلصة ومايونيز تسليم مفتاح"
+      "name": "خط صلصة ومايونيز تسليم مفتاح",
+      "description": "لمزيد من التفاصيل زوروا processturk.com أو راسلونا عبر واتساب"
     },
     "ru": {
       "origin": "Сделано в Турции",
@@ -71,7 +74,8 @@
       "price_num": "500–1500 л/ч",
       "sub": "Варка → розлив → укупорка → этикетировка → упаковка · монтаж и обучение",
       "cta": "Цена полной линии в WhatsApp",
-      "name": "Линия соусов под ключ"
+      "name": "Линия соусов под ключ",
+      "description": "Подробнее на processturk.com или напишите нам в WhatsApp"
     }
   }
 }
