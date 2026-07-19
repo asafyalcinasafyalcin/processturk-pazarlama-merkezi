@@ -41,8 +41,48 @@ export async function GET(request, { params }) {
   if (!file) return new Response('Not found', { status: 404 });
 
   const size = statSync(file).size;
-  const stream = createReadStream(file);
-  return new Response(stream, {
-    headers: { 'Content-Type': mime, 'Content-Length': String(size), 'Cache-Control': 'public, max-age=86400' },
+
+  // ── RANGE DESTEĞİ (206) ──
+  // Bu uç eskiden her zaman 200 + tüm dosya dönüyordu ve `Accept-Ranges` yoktu.
+  // Sonuç: tarayıcı videoda SEEK YAPAMIYORDU. Bu yüzden küçük resimlerdeki
+  // `#t=0.1` çalışmıyor, ilk kare çizilmiyor ve önizleme boş/siyah kutu kalıyordu.
+  // (Ayrıca uzun videoda ileri sarma da çalışmaz.) Range gelirse 206 döndürülür.
+  const aralik = request.headers.get('range');
+  if (aralik) {
+    const m = /^bytes=(\d*)-(\d*)$/.exec(aralik.trim());
+    if (m) {
+      let bas = m[1] === '' ? null : Number(m[1]);
+      let son = m[2] === '' ? null : Number(m[2]);
+      // "bytes=-N" → son N bayt
+      if (bas === null && son !== null) { bas = Math.max(0, size - son); son = size - 1; }
+      else if (bas !== null && son === null) { son = size - 1; }
+      if (bas === null || Number.isNaN(bas) || Number.isNaN(son) || bas > son || bas >= size) {
+        return new Response('Range Not Satisfiable', {
+          status: 416,
+          headers: { 'Content-Range': `bytes */${size}` },
+        });
+      }
+      son = Math.min(son, size - 1);
+      return new Response(createReadStream(file, { start: bas, end: son }), {
+        status: 206,
+        headers: {
+          'Content-Type': mime,
+          'Content-Length': String(son - bas + 1),
+          'Content-Range': `bytes ${bas}-${son}/${size}`,
+          'Accept-Ranges': 'bytes',
+          'Cache-Control': 'public, max-age=86400',
+        },
+      });
+    }
+  }
+
+  return new Response(createReadStream(file), {
+    headers: {
+      'Content-Type': mime,
+      'Content-Length': String(size),
+      // Tarayıcıya "bu dosyada seek yapabilirsin" der; olmadan video kontrolleri kısıtlı kalır.
+      'Accept-Ranges': 'bytes',
+      'Cache-Control': 'public, max-age=86400',
+    },
   });
 }

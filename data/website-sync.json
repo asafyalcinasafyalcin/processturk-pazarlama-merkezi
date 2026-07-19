@@ -1,13 +1,25 @@
 {
-  "lastSyncAt": "2026-07-19T05:59:30.888Z",
-  "base": "http://127.0.0.1:4192",
+  "lastSyncAt": "2026-07-19T06:15:42.822Z",
+  "base": "https://web.72.60.134.242.nip.io",
   "aliases": {},
   "lastResult": {
-    "added": [],
+    "added": [
+      "sos-hazirlama-platformu",
+      "lobe-pompali-transfer-tanki",
+      "cip-temizlik-unitesi",
+      "kapak-dizme-makinesi",
+      "kavanoz-besleme-toplama-tablasi",
+      "kompakt-dolum-hatti"
+    ],
     "linked": [],
-    "updated": 26,
+    "updated": 28,
     "imagesDownloaded": 4,
-    "pendingImages": 42,
-    "removedFromSite": []
+    "pendingImages": 62,
+    "removedFromSite": [
+      "salca-domates-isleme-hatti",
+      "sos-mayonez-ketcap-hatti",
+      "meyve-suyu-konsantre-hatti",
+      "soguk-depolama-konteyner-sistemi"
+    ]
   }
 }
