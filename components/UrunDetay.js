@@ -757,7 +757,11 @@ export default function UrunDetay({ product, initialContent }) {
                 </a>
                 {product.website.syncedAt && (
                   <span className="text-xs text-slate-400">
-                    son eşitleme: {new Date(product.website.syncedAt).toLocaleString('tr-TR')}
+                    {/* timeZone SABİT olmalı. Onsuz toLocaleString sunucuda (konteyner
+                        saat dilimi, UTC) ve tarayıcıda (Europe/Istanbul, UTC+3) FARKLI
+                        metin üretir → React hidrasyon uyuşmazlığı (minified error #418).
+                        Sabitlenince iki taraf da aynı dizeyi basar ve uyarı kalkar. */}
+                    son eşitleme: {new Date(product.website.syncedAt).toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' })}
                   </span>
                 )}
               </div>

@@ -121,7 +121,7 @@ export default function AssetLibrary({ slug }) {
                       {a.manual && <span className="pill pill-ok text-[9px]">yüklendi</span>}
                     </div>
                     <div className="text-[10px] text-slate-500 mt-0.5 truncate">{a.concept || a.template || a.platform || ''}</div>
-                    <div className="text-[10px] text-slate-500">{new Date(a.at).toLocaleDateString('tr-TR')}</div>
+                    <div className="text-[10px] text-slate-500">{new Date(a.at).toLocaleDateString('tr-TR', { timeZone: 'Europe/Istanbul' })}</div>
                   </div>
                 </button>
               );
@@ -163,7 +163,7 @@ export default function AssetLibrary({ slug }) {
                 {selected.platform && <div><span className="text-slate-500">Platform:</span> {selected.platform}</div>}
                 {selected.imageSource && <div><span className="text-slate-500">Kaynak:</span> {selected.imageSource}</div>}
                 {selected.model && <div><span className="text-slate-500">Model:</span> {selected.model}</div>}
-                <div><span className="text-slate-500">Tarih:</span> {new Date(selected.at).toLocaleString('tr-TR')}</div>
+                <div><span className="text-slate-500">Tarih:</span> {new Date(selected.at).toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' })}</div>
               </dl>
             </div>
             {/* Takvime ekle (onay kapısı) */}
