@@ -5,6 +5,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { BRAND } from '@/lib/brand';
+// LLM KÖPRÜSÜ GÖÇÜ (2026-07-19): doğrudan api.openai.com fetch'leri kaldırıldı; tüm
+// metin çağrıları tek kapıdan (lib/llm-koprusu.mjs) geçiyor — sağlayıcı/model/hata
+// yönetimi tek yerde. Model (gpt-4o), sıcaklık, max_tokens, json modu ve tüm hata/
+// fallback yolları BİREBİR korundu; köprü yeniden denemesi kapalı (denemeler: 0).
+import { sohbet, LLMHatasi } from '../../../../lib/llm-koprusu.mjs';
 
 const execAsync = promisify(exec);
 
@@ -48,27 +53,27 @@ Verilen metin makine kataloğu veya teknik doküman olabilir.
 KURAL: Fiyat bilgisi hero_number'a SADECE "X$'dan başlar" biçiminde ekle, ham rakam değil.
 SADECE minified JSON döndür — açıklama yok.`;
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${openaiKey}` },
-    body: JSON.stringify({
-      model: 'gpt-4o',
-      max_tokens: 1200,
-      temperature: 0.2,
-      response_format: { type: 'json_object' },
-      messages: [
-        { role: 'system', content: system },
+  try {
+    const y = await sohbet({
+      mesajlar: [
+        { rol: 'sistem', icerik: system },
         {
-          role: 'user',
-          content: `Doküman içeriği:\n${textContent.slice(0, 5000)}\n\nJSON şema:\n${schema}`,
+          rol: 'kullanici',
+          icerik: `Doküman içeriği:\n${textContent.slice(0, 5000)}\n\nJSON şema:\n${schema}`,
         },
       ],
-    }),
-  });
-
-  if (!res.ok) throw new Error(`GPT-4o hata: ${res.status}`);
-  const d = await res.json();
-  return JSON.parse(d.choices[0].message.content);
+      model: 'gpt-4o',
+      json: true,
+      sicaklik: 0.2,
+      maxToken: 1200,
+      denemeler: 0,
+    });
+    return y.json;
+  } catch (e) {
+    // Eski davranış: HTTP hatasında `GPT-4o hata: <durum>` — mesaj biçimi korunuyor.
+    if (e instanceof LLMHatasi && e.durum) throw new Error(`GPT-4o hata: ${e.durum}`);
+    throw e;
+  }
 }
 
 export async function POST(request) {
@@ -95,25 +100,23 @@ export async function POST(request) {
         } else {
           // GPT-4o vision fallback
           const b64 = buf.toString('base64');
-          const res = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${openaiKey}` },
-            body: JSON.stringify({
-              model: 'gpt-4o',
-              max_tokens: 2000,
-              messages: [{
-                role: 'user',
-                content: [
+          // Eski kod hatayı SESSİZCE yutuyordu (`if (res.ok)`), textContent boş kalıyordu
+          // ve akış aşağıdaki "İçerik boş" kontrolüne düşüyordu — bu davranış korunuyor.
+          try {
+            const y = await sohbet({
+              mesajlar: [{
+                rol: 'kullanici',
+                icerik: [
                   { type: 'text', text: 'Bu PDF\'teki makine teknik bilgilerini düz metin olarak çıkar.' },
                   { type: 'image_url', image_url: { url: `data:application/pdf;base64,${b64}`, detail: 'high' } },
                 ],
               }],
-            }),
-          });
-          if (res.ok) {
-            const d = await res.json();
-            textContent = d.choices[0].message.content || '';
-          }
+              model: 'gpt-4o',
+              maxToken: 2000,
+              denemeler: 0,
+            });
+            textContent = y.metin || '';
+          } catch { /* eski davranış: hata yutulur, içerik boş kalır */ }
         }
       } else {
         textContent = buf.toString('utf8');

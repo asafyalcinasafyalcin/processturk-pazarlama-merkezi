@@ -16,6 +16,11 @@ import { fileURLToPath } from 'node:url';
 // BRAND_ID yoksa ProcessTürk varsayılanı (canlı davranış korunur).
 import { BRAND } from '../lib/brand.js';
 import { websiteBriefSource } from '../lib/website-brief.js';
+// LLM KÖPRÜSÜ GÖÇÜ (2026-07-19): doğrudan api.openai.com fetch'i kaldırıldı; metin
+// çağrısı tek kapıdan (lib/llm-koprusu.mjs) geçiyor — sağlayıcı/model/hata yönetimi
+// tek yerde. Model (gpt-4o), sıcaklık 0.4, max_tokens 1000, json modu ve OPENAI_API_KEY
+// ön kontrolü BİREBİR korundu; köprü yeniden denemesi kapalı (denemeler: 0).
+import { sohbet, LLMHatasi } from '../lib/llm-koprusu.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -33,20 +38,26 @@ if (!OPENAI_API_KEY) {
 const FORCE = process.argv.includes('--force');
 
 async function callGPT(system, prompt) {
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${OPENAI_API_KEY}` },
-    body: JSON.stringify({
+  try {
+    const y = await sohbet({
+      mesajlar: [{ rol: 'sistem', icerik: system }, { rol: 'kullanici', icerik: prompt }],
       model: 'gpt-4o',
-      max_tokens: 1000,
-      temperature: 0.4,
-      response_format: { type: 'json_object' },
-      messages: [{ role: 'system', content: system }, { role: 'user', content: prompt }],
-    }),
-  });
-  const d = await res.json();
-  if (!res.ok) throw new Error(d.error?.message || res.statusText);
-  return JSON.parse(d.choices[0].message.content);
+      json: true,
+      sicaklik: 0.4,
+      maxToken: 1000,
+      denemeler: 0,
+    });
+    return y.json;
+  } catch (e) {
+    // Eski davranış: API gövdesindeki error.message atılırdı (yoksa statusText).
+    // Köprü ham gövdeyi `govde`de taşıdığı için aynı mesaj geri çıkarılıyor.
+    if (e instanceof LLMHatasi && e.durum) {
+      let mesaj = null;
+      try { mesaj = JSON.parse(e.govde || '')?.error?.message || null; } catch { /* JSON değil */ }
+      throw new Error(mesaj || e.message);
+    }
+    throw e;
+  }
 }
 
 function ensureDir(dir) {
