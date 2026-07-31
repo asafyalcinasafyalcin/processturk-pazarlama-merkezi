@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { siteIcerigiGetir, koprüHazir, siteTabani } from '@/lib/site-koprusu';
+import { siteIcerigiGetir, koprüHazir, siteTabani, sitePublicTabani } from '@/lib/site-koprusu';
 
 // Sitedeki içeriğin AYNASI — salt-okunur. Panel burada hiçbir şey saklamaz, her istekte
 // siteden taze çeker (tek kaynak site kalır, kopya sapması olmaz).
@@ -11,19 +11,19 @@ export async function GET(request) {
       ok: false,
       kapali: true,
       error: 'Site köprüsü kapalı — PAZARLAMA_API_KEY her iki tarafta da tanımlı olmalı.',
-      taban: siteTabani(),
+      taban: sitePublicTabani(),
     });
   }
   try {
     const limit = Number(new URL(request.url).searchParams.get('limit')) || 60;
     const veri = await siteIcerigiGetir(limit);
-    return NextResponse.json({ ok: true, taban: siteTabani(), ...veri });
+    return NextResponse.json({ ok: true, taban: sitePublicTabani(), ...veri });
   } catch (err) {
     // Eksik deploy "hata" değil bekleyen bir kurulum adımı → 200 + kapali:true ile döner,
     // panel kırmızı hata yerine "ne yapılmalı" kartını gösterir.
     if (err.eksikDeploy) {
-      return NextResponse.json({ ok: false, kapali: true, error: err.message, taban: siteTabani() });
+      return NextResponse.json({ ok: false, kapali: true, error: err.message, taban: sitePublicTabani() });
     }
-    return NextResponse.json({ ok: false, error: err.message, taban: siteTabani() }, { status: 502 });
+    return NextResponse.json({ ok: false, error: err.message, taban: sitePublicTabani() }, { status: 502 });
   }
 }
