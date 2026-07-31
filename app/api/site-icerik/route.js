@@ -19,6 +19,11 @@ export async function GET(request) {
     const veri = await siteIcerigiGetir(limit);
     return NextResponse.json({ ok: true, taban: siteTabani(), ...veri });
   } catch (err) {
+    // Eksik deploy "hata" değil bekleyen bir kurulum adımı → 200 + kapali:true ile döner,
+    // panel kırmızı hata yerine "ne yapılmalı" kartını gösterir.
+    if (err.eksikDeploy) {
+      return NextResponse.json({ ok: false, kapali: true, error: err.message, taban: siteTabani() });
+    }
     return NextResponse.json({ ok: false, error: err.message, taban: siteTabani() }, { status: 502 });
   }
 }

@@ -41,12 +41,16 @@ export default function SiteIcerikAynasi() {
   if (kapali) {
     return (
       <div className="card p-6 text-sm">
-        <div className="font-head font-bold mb-2">Site köprüsü henüz kurulmadı</div>
-        <p className="text-slate-600 mb-2">{hata}</p>
-        <p className="text-slate-500 text-xs">
-          Kurmak için: hem bu panelin hem <code>{taban}</code> sitesinin ortamına <b>aynı</b>{' '}
-          <code>PAZARLAMA_API_KEY</code> değerini ekle.
-        </p>
+        <div className="font-head font-bold mb-2">Site köprüsü henüz aktif değil</div>
+        <p className="text-slate-600 mb-3">{hata}</p>
+        <div className="text-slate-500 text-xs space-y-1">
+          <div>Aktifleşmesi için iki koşul gerekir:</div>
+          <div>1. Her iki tarafta da <b>aynı</b> <code>PAZARLAMA_API_KEY</code> tanımlı olmalı.</div>
+          <div>
+            2. <code>{taban}</code> sitesinde <code>/api/export/icerik</code> ucu yayında olmalı
+            (kod hazır, sitenin bir sonraki deploy'unda devreye girer).
+          </div>
+        </div>
       </div>
     );
   }
