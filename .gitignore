@@ -2,6 +2,12 @@ node_modules
 .next
 out
 .env.local
+# Sır içeren env türevleri (yedek/rotasyon kopyaları). `.env.local` tek başına YETMİYORDU:
+# `.env.local.yedek-2026-07-29` gibi dosyalar ignore DIŞINDA kalıyordu ve bir `git add -A`
+# canlı token'ları repoya sokabilirdi (2026-07-31'de yakalandı).
+.env*.yedek*
+.env*.bak*
+.env.production
 *.log
 .DS_Store
 data/*.local.json

@@ -19,7 +19,18 @@
   --ink-rgb: 31 59 87;
   --ok-rgb: 15 158 116;
   --amber-rgb: 180 83 9;
-  --line-rgb: 230 234 241;
+  /* Kart/ayraç kenarlığı — Web Sitesi'nin --brand-border'ı (#E4E7EC) ile hizalı.
+     (Eski değer 230 234 241 = #E6EAF1, panele özel bir sapmaydı.) */
+  --line-rgb: 228 231 236;
+  /* ── Web Sitesi tasarım sistemiyle ORTAK nötrler (TASARIM_SISTEMI.md §2) ──
+     Kaynak: Processturk_Web_Sitesi/src/app/globals.css `--brand-*`. Marka lacivert/kırmızısı
+     white-label motorundan (layout.js) gelmeye devam eder; burada YALNIZ nötr/yüzey
+     tonları paylaşılır — iki panel aynı zeminde durur. */
+  --site-page: #f7f8fa;   /* genel sayfa zemini */
+  --site-soft: #f3f5f7;   /* yumuşak bölüm zemini */
+  --site-border: #e4e7ec; /* kart kenarlığı */
+  --site-steel: #667085;  /* muted metin */
+  --site-ink: #17212b;    /* koyu metin */
   /* ── Tasarım token seti (TASARIM-TOKEN): metin/durum + vurgu ─────────────────
      --vurgu = tenant vurgu rengi (kırmızı/altın…); focus ring + link + aksiyon.
      --vurgu-uzeri-metin = vurgu üzerindeki metin (parlaklığa göre kontrast-güvenli;
@@ -43,13 +54,12 @@
 html { overflow-x: hidden; }         /* mobil 375px: yatay taşma önlenir */
 body {
   font-family: var(--font-body);
-  color: #1e293b;
+  color: var(--site-ink);
   overflow-x: hidden;                 /* geniş tablo/kart body'yi zorlamasın */
-  background:
-    radial-gradient(1100px 500px at 90% -10%, rgba(255, 50, 85, 0.06), transparent 60%),
-    radial-gradient(900px 500px at -10% 0%, rgba(7, 23, 57, 0.05), transparent 55%),
-    #f4f6fb;
-  background-attachment: fixed;
+  /* Web Sitesi ile aynı DÜZ zemin. Eski iki katmanlı radial gradient kaldırıldı:
+     sitede karşılığı yoktu ve iki panel yan yana açıldığında panel "başka bir ürün"
+     gibi duruyordu (Asaf 2026-07-31). */
+  background: var(--site-page);
 }
 
 h1, h2, h3, .font-head { font-family: var(--font-head); color: var(--navy); }
@@ -58,9 +68,9 @@ h1, h2, h3, .font-head { font-family: var(--font-head); color: var(--navy); }
 /* Yüzeyler */
 .card {
   background: #ffffff;
-  border: 1px solid #e6eaf1;
-  border-radius: 1.1rem;
-  box-shadow: 0 1px 2px rgba(7, 23, 57, 0.04), 0 8px 24px rgba(7, 23, 57, 0.04);
+  border: 1px solid var(--site-border);
+  border-radius: 0.75rem;              /* Web Sitesi admin kartlarıyla aynı yarıçap (rounded-xl) */
+  box-shadow: 0 1px 2px rgba(16, 53, 89, 0.04), 0 8px 24px rgba(16, 53, 89, 0.04);
 }
 .card-hover { transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease; }
 .card-hover:hover {
@@ -80,7 +90,7 @@ h1, h2, h3, .font-head { font-family: var(--font-head); color: var(--navy); }
 .btn-primary { background: var(--vurgu-btn); color: var(--vurgu-uzeri-metin);
   box-shadow: 0 4px 14px rgb(var(--red-rgb) / 0.25); }
 .btn-primary:hover { filter: brightness(1.06); }
-.btn-ghost { background: #fff; color: #334155; border-color: #d8dee9; }
+.btn-ghost { background: #fff; color: #334155; border-color: var(--site-border); }
 .btn-ghost:hover { background: #f1f5f9; }
 .btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
 
@@ -92,7 +102,7 @@ h1, h2, h3, .font-head { font-family: var(--font-head); color: var(--navy); }
 
 .input, .select, .textarea {
   width: 100%; background: #fff;
-  border: 1px solid #d8dee9; border-radius: .6rem;
+  border: 1px solid var(--site-border); border-radius: .6rem;
   padding: .55rem .75rem; color: #1e293b;
   font-family: var(--font-body); transition: border-color .15s ease;
 }

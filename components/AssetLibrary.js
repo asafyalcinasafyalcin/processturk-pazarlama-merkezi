@@ -17,6 +17,8 @@ export default function AssetLibrary({ slug }) {
   const [calBusy, setCalBusy] = useState(false);
   const [calMsg, setCalMsg] = useState(null);
   const [showArchived, setShowArchived] = useState(false);
+  const [siteBusy, setSiteBusy] = useState(false);
+  const [siteMsg, setSiteMsg] = useState(null);
 
   async function load() {
     const res = await fetch(`/api/assets?slug=${slug}&includeArchived=1`);
@@ -63,6 +65,23 @@ export default function AssetLibrary({ slug }) {
       setCalMsg('Takvime eklendi → İçerik Takviminde onay gerekir.');
     } catch (e) { setCalMsg('⚠ ' + e.message); }
     finally { setCalBusy(false); }
+  }
+
+  // Bu görseli/videoyu SİTENİN medya kütüphanesine gönder (site dosyayı kendisi indirir).
+  async function siteyeGonder(a) {
+    const mediaUrl = a.localPath || a.url;
+    if (!mediaUrl) { setSiteMsg('Gönderilecek medya yok.'); return; }
+    setSiteBusy(true); setSiteMsg(null);
+    try {
+      const res = await fetch('/api/library/push-to-website', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: mediaUrl, ad: a.slug || 'pazarlama', etiket: 'pazarlama-merkezi' }),
+      });
+      const d = await res.json();
+      if (!d.ok) throw new Error(d.error);
+      setSiteMsg('✓ Siteye gönderildi → site medya kütüphanesinde.');
+    } catch (e) { setSiteMsg('⚠ ' + e.message); }
+    finally { setSiteBusy(false); }
   }
 
   const langs = [...new Set(assets.map((a) => a.lang))];
@@ -180,6 +199,13 @@ export default function AssetLibrary({ slug }) {
                   </button>
                 </div>
                 {calMsg && <p className="text-xs text-slate-500 mt-1">{calMsg}</p>}
+                <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-line">
+                  <span className="text-xs text-slate-500">Web sitesi:</span>
+                  <button className="btn btn-ghost text-xs" disabled={siteBusy} onClick={() => siteyeGonder(selected)}>
+                    {siteBusy ? 'Gönderiliyor…' : '🌐 Siteye gönder'}
+                  </button>
+                </div>
+                {siteMsg && <p className="text-xs text-slate-500 mt-1">{siteMsg}</p>}
               </div>
             )}
             <div className="flex items-center gap-2 p-4 border-t border-line">
