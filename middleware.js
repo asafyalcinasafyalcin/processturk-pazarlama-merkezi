@@ -3,7 +3,13 @@ import { SESSION_COOKIE, isValidSession } from '@/lib/auth';
 
 // Panel bugüne kadar oturumsuzdu (Faz 0 — bkz. lib/auth.js). Bu middleware GİRİŞ dışındaki
 // her sayfa/API ucunu korur — istisna listesi kasıtlı DAR tutulur (fail-closed).
-const ACIK_ONEK = ['/giris', '/api/auth/login'];
+//
+// ⚠️ `/api/health` LİSTEDE KALMALI: `scripts/deploy-server.sh` deploy sonrası bu uca bakıp
+// sağlıklı mı diye karar veriyor. Kapatılınca sağlık kontrolü 401 alır, deploy kendini
+// BAŞARISIZ sayıp eski konteynere geri döner — yeni sürüm hiç yayına giremez
+// (2026-07-31'de bizzat yaşandı: deploy sessizce rollback etti, canlı eski kodda kaldı).
+// Uç yalnız servis durumu döndürür, iş verisi taşımaz.
+const ACIK_ONEK = ['/giris', '/api/auth/login', '/api/health'];
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
