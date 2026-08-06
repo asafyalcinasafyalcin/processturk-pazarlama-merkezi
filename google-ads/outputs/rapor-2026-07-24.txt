@@ -1,0 +1,17 @@
+===== PT-Search-EN-Turnkey · SON 3 GÜN (2026-07-21 → 2026-07-24) =====
+Gösterim 218 · Tıklama 14 · CTR %6.4 · Ort. TBM ₺30.61
+Maliyet ₺428.58 · Dönüşüm 0.0 · CPL — (henüz dönüşüm yok)
+
+-- Reklam grupları (maliyet sırası) --
+  Dairy Milk Plant: tık 7 · ₺339.78 · dön 0.0
+  Turnkey Production Line: tık 7 · ₺88.80 · dön 0.0
+  Tomato Paste (MACLINE): tık 0 · ₺0.00 · dön 0.0
+  Ketchup & Mayo: tık 0 · ₺0.00 · dön 0.0
+  Sauce Line: tık 0 · ₺0.00 · dön 0.0
+
+-- En çok harcayan aramalar (ilk 20) --
+  "soy milk processing plant": tık 1 · ₺48.76 · dön 0.0
+  "canning production line": tık 2 · ₺30.21 · dön 0.0
+  "food processing production line": tık 2 · ₺19.37 · dön 0.0
+  "production line machinery": tık 1 · ₺10.40 · dön 0.0
+  "tissue production line": tık 1 · ₺9.45 · dön 0.0
