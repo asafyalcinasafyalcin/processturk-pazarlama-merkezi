@@ -13,11 +13,11 @@
  * geçmiş gönderileri KENDİLİĞİNDEN düzeltmez.
  *
  * ⛔ `yayinla-hat-reel.mjs` KULLANILMADI: o 28 kaydın hepsini yayınlar. Burada
- *    yalnız onarılan üç kayıt hedeflenir.
- * ⚠️ Instagram Graph API media SİLMEYİ DESTEKLEMİYOR (ölçüldü: DELETE → subcode
- *    2207085, gönderi duruyor). Bu yüzden IG'ye yeniden yükleme BU SCRIPT'TE YOK —
- *    eski gönderi silinmeden yenisi yüklenirse akışta mükerrer içerik olur.
- *    IG tarafı Asaf'ın elle silmesine bağlıdır.
+ *    yalnız onarılan kayıtlar hedeflenir.
+ * ⚠️ Instagram Graph API media SİLMEYİ DESTEKLEMİYOR (ölçüldü 2026-08-09:
+ *    DELETE → `error_subcode 2207085`, gönderi permalink'iyle duruyor). Eski bozuk
+ *    IG gönderilerini **Asaf elle siler**; Asaf'ın kararıyla (2026-08-09) onarılmış
+ *    sürümler silme BEKLENMEDEN yükleniyor — kısa süre iki kopya görünür.
  */
 
 import { readFile } from 'node:fs/promises';
@@ -27,34 +27,47 @@ import { fileURLToPath } from 'node:url';
 const BURA = path.dirname(fileURLToPath(import.meta.url));
 const GONDER = process.argv.includes('--gonder');
 
-// Onarılan üç kayıt. Caption'lar silinen gönderilerin YEDEĞİNDEN gelir (aynı metin).
+// Onarılan kayıtlar. FB'dekiler 2026-08-09'da silinip yeniden yüklendi (tamamlandı);
+// IG'dekiler eski gönderi silinemediği için Asaf kararıyla ayrıca yükleniyor.
 const HEDEF = [
-  { slug: 'dolum-paketleme-hatti', dil: 'ar', kanal: 'facebook' },
-  { slug: 'meyve-suyu-konsantre-hatti', dil: 'ar', kanal: 'facebook' },
+  { slug: 'dolum-paketleme-hatti', dil: 'en', kanal: 'instagram' },
+  { slug: 'dolum-paketleme-hatti', dil: 'ar', kanal: 'instagram' },
+  { slug: 'meyve-suyu-konsantre-hatti', dil: 'ar', kanal: 'instagram' },
 ];
+
+// `--yalniz <slug>/<dil>` → tek kaydı yeniden dener. Bir yükleme düştüğünde
+// tamamını tekrar koşmak BAŞARILI olanları mükerrer yayınlar; filtre onu önler.
+const yalnizArg = process.argv.find((a) => a.startsWith('--yalniz='))?.split('=')[1];
 
 const kayitlar = JSON.parse(await readFile(path.join(BURA, 'data/sosyal-metinler-hatlar.json'), 'utf8'));
 
-const secili = HEDEF.map((h) => {
+const secili = HEDEF.filter((h) => !yalnizArg || `${h.slug}/${h.dil}` === yalnizArg).map((h) => {
   const k = kayitlar.find((x) => x.slug === h.slug && x.dil === h.dil);
   if (!k) throw new Error(`kayıt bulunamadı: ${h.slug}/${h.dil}`);
-  return { ...h, reelUrl: k.reelUrl, caption: k.linkedin };
+  // Kanal başına doğru metin alanı: IG → instagram, FB → linkedin (yayinla-hat-reel.mjs deseni)
+  return { ...h, reelUrl: k.reelUrl, coverUrl: k.coverUrl, caption: h.kanal === 'instagram' ? k.instagram : k.linkedin };
 });
 
 console.log(`\n═══ ONARILAN REEL YENİDEN YAYIN ${GONDER ? '(GERÇEK)' : '(KURU)'} ═══`);
-for (const s of secili) console.log(`• ${s.kanal.toUpperCase()} ${s.slug} [${s.dil}] → ${s.reelUrl}`);
+for (const s of secili) {
+  console.log(`• ${s.kanal.toUpperCase()} ${s.slug} [${s.dil}] → ${s.reelUrl}`);
+  console.log(`    kapak: ${s.coverUrl || '(yok — IG otomatik kare seçer)'}`);
+  console.log(`    metin: ${(s.caption || '').split('\n')[0].slice(0, 66)}…`);
+}
 
 if (!GONDER) {
   console.log(`\n→ Gerçek yayın için: node yeniden-yayinla-onarilan.mjs --gonder`);
   process.exit(0);
 }
 
-const { publishFacebookVideo } = await import('./lib/meta-publish.js');
+const { publishFacebookVideo, publishInstagramReel } = await import('./lib/meta-publish.js');
 for (const s of secili) {
   try {
-    const r = await publishFacebookVideo({ videoUrl: s.reelUrl, caption: s.caption });
-    console.log(`✓ FB ${s.slug}/${s.dil}: ${r?.mediaId || 'ok'}`);
+    const r = s.kanal === 'instagram'
+      ? await publishInstagramReel({ videoUrl: s.reelUrl, caption: s.caption, coverUrl: s.coverUrl })
+      : await publishFacebookVideo({ videoUrl: s.reelUrl, caption: s.caption });
+    console.log(`✓ ${s.kanal.toUpperCase()} ${s.slug}/${s.dil}: ${r?.mediaId || r?.id || 'ok'}`);
   } catch (e) {
-    console.error(`✗ FB ${s.slug}/${s.dil}: ${e.message}`);
+    console.error(`✗ ${s.kanal.toUpperCase()} ${s.slug}/${s.dil}: ${e.message}`);
   }
 }
