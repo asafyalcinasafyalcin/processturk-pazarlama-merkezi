@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { randomBytes } from 'node:crypto';
+import { anahtarKapisi } from '../anahtar';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,6 +23,8 @@ export const dynamic = 'force-dynamic';
  *    Kayıtlı değilse TikTok `redirect_uri` hatası verir — bu da bir ÖLÇÜMDÜR.
  */
 export async function GET(req) {
+  const kapi = anahtarKapisi(req);
+  if (kapi) return kapi;
   const key = process.env.TIKTOK_CLIENT_KEY;
   if (!key) {
     return NextResponse.json(
@@ -44,8 +47,13 @@ export async function GET(req) {
   u.searchParams.set('state', state);
 
   const res = NextResponse.redirect(u.toString());
-  res.cookies.set('tt_state', state, {
-    httpOnly: true, secure: true, sameSite: 'lax', maxAge: 900, path: '/api/tiktok',
-  });
+  const cerez = { httpOnly: true, secure: true, sameSite: 'lax', maxAge: 900, path: '/api/tiktok' };
+  res.cookies.set('tt_state', state, cerez);
+  // ⚠️ ANAHTAR ÇEREZE DE YAZILIR: TikTok geri dönerken YALNIZ `code` ve `state`
+  //    taşır — bizim `?anahtar` parametremiz kaybolur. Çerez olmadan callback
+  //    kendi kapısından geçemez ve akış son adımda kırılırdı.
+  //    `sameSite: lax` üst-düzey GET yönlendirmesinde gönderilir → TikTok'tan
+  //    dönüşte çerez gelir. `path` dar tutuldu: yalnız bu uç ailesi görür.
+  res.cookies.set('tt_anahtar', process.env.TIKTOK_BAGLAMA_ANAHTARI, cerez);
   return res;
 }

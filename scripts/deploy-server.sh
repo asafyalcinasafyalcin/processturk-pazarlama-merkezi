@@ -88,6 +88,20 @@ docker run -d \
   --label "traefik.http.routers.pazarlama-hook.tls=true" \
   --label "traefik.http.routers.pazarlama-hook.tls.certresolver=letsencrypt" \
   --label "traefik.http.routers.pazarlama-hook.priority=1000" \
+  `# ── TIKTOK OAUTH — SSO'SUZ, KENDI ANAHTARIYLA KORUMALI ────────────────────` \
+  `# 🔴 NEDEN AYRI ROUTER: bu yol TEK SEFERLIK bir hesap baglama akisidir ve` \
+  `# onunde UC parola duvari vardi (shared-auth SSO + basicauth + panel oturumu).` \
+  `# Asaf uc duvardan gecemedi — tasarim hatasi bizde. Ayrica TikTok'un GERI` \
+  `# DONUSU (callback) bir MAKINE istegidir; SSO oturum cerezi bekleyen bir kapi,` \
+  `# tarayici disi/farkli baglamdan gelen donuslerde akisi sessizce kirar.` \
+  `# ⛔ KORUMASIZ DEGIL: rota kendi icinde TIKTOK_BAGLAMA_ANAHTARI ister (route.js).` \
+  `# Anahtar yoksa uc 503 doner — yani env unutulursa kapi ACIK KALMAZ, KAPANIR.` \
+  --label "traefik.http.routers.pazarlama-tiktok.entryPoints=https" \
+  --label "traefik.http.routers.pazarlama-tiktok.rule=($HOST_RULE) && PathPrefix(\`/api/tiktok\`)" \
+  --label "traefik.http.routers.pazarlama-tiktok.service=pazarlama-https" \
+  --label "traefik.http.routers.pazarlama-tiktok.tls=true" \
+  --label "traefik.http.routers.pazarlama-tiktok.tls.certresolver=letsencrypt" \
+  --label "traefik.http.routers.pazarlama-tiktok.priority=1000" \
   "$IMAGE_NAME" >/dev/null
 
 attempt=1

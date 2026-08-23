@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { anahtarKapisi } from '../anahtar';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,6 +15,9 @@ export const dynamic = 'force-dynamic';
  * ⛔ CSRF: `state` çerezle KARŞILAŞTIRILIR. Eşleşmezse token DEĞİŞİMİ YAPILMAZ.
  */
 export async function GET(req) {
+  // ⚠️ Anahtar burada ÇEREZDEN gelir — TikTok `?anahtar`ı geri taşımaz (bkz. baglan).
+  const kapi = anahtarKapisi(req);
+  if (kapi) return kapi;
   const url = new URL(req.url);
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state');

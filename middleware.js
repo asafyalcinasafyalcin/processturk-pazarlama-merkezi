@@ -9,7 +9,14 @@ import { SESSION_COOKIE, isValidSession } from '@/lib/auth';
 // BAŞARISIZ sayıp eski konteynere geri döner — yeni sürüm hiç yayına giremez
 // (2026-07-31'de bizzat yaşandı: deploy sessizce rollback etti, canlı eski kodda kaldı).
 // Uç yalnız servis durumu döndürür, iş verisi taşımaz.
-const ACIK_ONEK = ['/giris', '/api/auth/login', '/api/health'];
+// ⚠️ `/api/tiktok` LİSTEDE — ama KORUMASIZ DEĞİL. Tek seferlik hesap bağlama akışı
+// panel oturumuna bağlıydı ve önünde ÜÇ parola duvarı vardı (SSO + basicauth +
+// panel); Asaf geçemedi. Kapı KALKMADI, YER DEĞİŞTİRDİ: rota kendi içinde
+// `TIKTOK_BAGLAMA_ANAHTARI` ister ve anahtar tanımlı değilse **503** döner —
+// yani env unutulursa uç açık kalmaz, KAPANIR (fail-closed korunur).
+// Ayrıca TikTok'un geri dönüşü oturum çerezi taşımayabilir; oturuma bağlı bir
+// callback akışı sessizce kırardı.
+const ACIK_ONEK = ['/giris', '/api/auth/login', '/api/health', '/api/tiktok'];
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
