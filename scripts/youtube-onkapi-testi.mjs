@@ -64,6 +64,33 @@ kur(() => cevap(200, { items: [{ id: 'UCgQ-DOGRU' }] }));
 try { await publishYouTube({ videoUrl: 'https://ornek/x.mp4', caption: 'c', title: 't' }); } catch { /* indirme stub'ı sonrası kopabilir */ }
 bekle('⑥ DOĞRU kanal → yüklemeye geçildi', yuklemeDenendi === true);
 
+// ── KAYITLI KANIT (2026-08-29) ──────────────────────────────────────────────
+// Dar kapsamlı jetonda kanal, jetonun KENDİ yükleme cevabından bir kez ölçülüp
+// kaydedilebilir. Kanıt JETONA BAĞLIDIR — jeton değişirse kendiliğinden düşer.
+import { createHash } from 'node:crypto';
+const izOf = (t) => createHash('sha256').update(t).digest('hex').slice(0, 12);
+const darKapsam = () => cevap(403, { error: { errors: [{ reason: 'insufficientPermissions' }] } });
+const dogruIz = izOf(process.env.GOOGLE_REFRESH_TOKEN);
+
+// ⑦ Geçerli kanıt → dar kapsamda bile yüklemeye izin verilir.
+process.env.YOUTUBE_KANAL_KANITI = `${dogruIz}:UCgQ-DOGRU:2026-08-29`;
+yuklemeDenendi = false; kur(darKapsam);
+try { await publishYouTube({ videoUrl: 'https://ornek/x.mp4', caption: 'c', title: 't' }); } catch { /* stub */ }
+bekle('⑦ geçerli KAYITLI kanıt → yüklemeye geçildi', yuklemeDenendi === true);
+
+// ⑧ Kanıt BAŞKA jetona aitse yok sayılır (fail-closed korunur).
+process.env.YOUTUBE_KANAL_KANITI = `baskajeton00:UCgQ-DOGRU:2026-08-29`;
+await dusmeli('⑧ kanıt BAŞKA jetona ait', darKapsam, /KAYITLI kanıt da yok/);
+
+// ⑨ Kanıt YANLIŞ kanal diyorsa yok sayılır.
+process.env.YOUTUBE_KANAL_KANITI = `${dogruIz}:UCGJQtm-YANLIS:2026-08-29`;
+await dusmeli('⑨ kanıt YANLIŞ kanal diyor', darKapsam, /KAYITLI kanıt da yok/);
+
+// ⑩ Bozuk biçim yok sayılır.
+process.env.YOUTUBE_KANAL_KANITI = 'sacma';
+await dusmeli('⑩ kanıt biçimi bozuk', darKapsam, /KAYITLI kanıt da yok/);
+delete process.env.YOUTUBE_KANAL_KANITI;
+
 globalThis.fetch = gercekFetch;
 console.log(`\nYOUTUBE ÖN-KAPI: ${gecti} GEÇTİ · ${hata.length} KALDI`);
 if (hata.length) { for (const h of hata) console.log('  ❌', h); process.exit(1); }
