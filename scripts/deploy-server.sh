@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 # ProcessTürk Pazarlama Komuta Merkezi — VPS yayın scripti (Docker + Traefik + Let's Encrypt).
-# Coolify ağında çalışır; panel dışarıdan https://$APP_DOMAIN (basic auth) erişilir.
+# Coolify ağında çalışır; panel dışarıdan https://$APP_DOMAIN üzerinden erişilir.
+# ⚠️ BU SATIR "basic auth" DİYORDU VE BAYATTI (düzeltildi 2026-09-08). Aşağıdaki
+#    `pazarlama-auth.basicauth` middleware'i TANIMLI ama HİÇBİR router'a BAĞLI
+#    DEĞİL (ölçüldü) — `pazarlama-https` yalnız `shared-auth@file,pazarlama-gzip`
+#    taşıyor. Yani panelin tek kimlik savunması shared-auth'tur; basic auth
+#    etkisiz bir tanımdır. Bu bir kusur beyanı değil, DURUM beyanıdır: 41 ucun
+#    34'ü kendi kapısını taşımıyor ve tamamen o katmana güveniyor.
+#    Kapı: `npm run test:kimlik-kapsami` — kimliksiz her router'ın ya kod kapısı
+#    ya da gerekçeli beyanı olmasını zorlar.
 # İKİ kalıcı mount: /app/data (panel state) + /app/.hfhome (Higgsfield CLI auth/token).
 set -eu
 
