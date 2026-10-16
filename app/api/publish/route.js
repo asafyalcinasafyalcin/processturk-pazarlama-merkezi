@@ -48,7 +48,8 @@ export async function POST(request) {
       const imageUrl = resolveMediaUrl(item.imageUrl);
       const videoUrl = resolveMediaUrl(item.videoUrl);
       try {
-        const result = await publishMetaAuto(item.platform, { imageUrl, videoUrl, caption: item.caption });
+        const coverUrl = resolveMediaUrl(item.coverUrl) || undefined;
+        const result = await publishMetaAuto(item.platform, { imageUrl, videoUrl, caption: item.caption, coverUrl });
         const updated = await updateItem(id, { status: 'published', publishedAt: new Date().toISOString(), result: { method: 'meta-api', ...result } });
         return NextResponse.json({ ok: true, method: 'meta-api', item: updated });
       } catch (e) {
@@ -68,6 +69,11 @@ export async function POST(request) {
           body: JSON.stringify({
             text: item.caption,
             imageUrl: resolveMediaUrl(item.imageUrl) || undefined,
+            // 🔴 Video iletilmiyordu: Sosyal Yayın Servisi `videoUrl`'i destekliyor (video
+            // görselden önce denenir, yüklenemezse metne SESSİZCE düşmez) ama bu köprü
+            // yalnız imageUrl gönderdiği için takvimdeki video gönderisi LinkedIn'e
+            // düz metin olarak giderdi (2026-10-16'da kodda ölçüldü).
+            videoUrl: resolveMediaUrl(item.videoUrl) || undefined,
             // LinkedIn kimliği: kurumsal sayfa mı, kişisel profil mi. Geçilmezse
             // servis LINKEDIN_PUBLISH_AS varsayılanına düşer — bu yüzden takvim
             // öğesinde seçim varsa MUTLAKA iletilmeli (yanlış hesaptan yayın riski).
@@ -100,7 +106,7 @@ export async function POST(request) {
     // Gerçek yayın: YouTube (credentials varsa)
     if (item.platform === 'youtube' && youtubeConfigured()) {
       const videoUrl = resolveMediaUrl(item.videoUrl);
-      const title = item.caption?.split('\n')[0]?.slice(0, 100) || BRAND.name;
+      const title = item.title || item.caption?.split('\n')[0]?.slice(0, 100) || BRAND.name;
       try {
         const result = await publishYouTube({ videoUrl, caption: item.caption, title });
         const updated = await updateItem(id, { status: 'published', publishedAt: new Date().toISOString(), result: { method: 'youtube-api', ...result } });
@@ -124,7 +130,7 @@ export async function POST(request) {
     const instructions = PLATFORM_INST[item.platform] || `${item.platform} uygulamasında: videoyu indir, açıklamayı yapıştır.`;
 
     const videoUrl = resolveMediaUrl(item.videoUrl);
-    const title = item.platform === 'youtube' ? (item.caption?.split('\n')[0]?.slice(0, 100) || BRAND.name) : undefined;
+    const title = item.platform === 'youtube' ? (item.title || item.caption?.split('\n')[0]?.slice(0, 100) || BRAND.name) : undefined;
 
     const pkg = {
       platform: item.platform,
