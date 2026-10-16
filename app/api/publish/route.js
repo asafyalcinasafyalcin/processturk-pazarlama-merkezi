@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getItem, updateItem, META_PUBLISH, ICERIK_PUBLISH } from '@/lib/calendar';
 import { publishMetaAuto } from '@/lib/meta-publish';
-import { publishTikTok, publishYouTube, tiktokConfigured, youtubeConfigured } from '@/lib/tiktok-youtube-publish';
+import { publishTikTok, publishYouTube, setYouTubeThumbnail, tiktokConfigured, youtubeConfigured } from '@/lib/tiktok-youtube-publish';
 import { BRAND } from '@/lib/brand';
 
 // Marka hashtag'i brand.js'ten (BRAND.name) — BRAND_ID yoksa ProcessTürk varsayılanı.
@@ -109,7 +109,13 @@ export async function POST(request) {
       const title = item.title || item.caption?.split('\n')[0]?.slice(0, 100) || BRAND.name;
       try {
         const result = await publishYouTube({ videoUrl, caption: item.caption, title });
-        const updated = await updateItem(id, { status: 'published', publishedAt: new Date().toISOString(), result: { method: 'youtube-api', ...result } });
+        // Kapak video yayınlandıktan SONRA konur ve asla fırlatmaz (bkz. setYouTubeThumbnail):
+        // başarısız kapak yayını geri almaz, sebebi kayda düşer.
+        const kapak = item.coverUrl
+          ? await setYouTubeThumbnail({ videoId: result.videoId, thumbnailUrl: resolveMediaUrl(item.coverUrl) })
+          : { durum: 'atlandi', not: 'takvim öğesinde kapak yok' };
+        if (kapak.durum === 'basarisiz') console.error(`⚠️ YouTube kapağı konamadı (${result.videoId}): ${kapak.not}`);
+        const updated = await updateItem(id, { status: 'published', publishedAt: new Date().toISOString(), result: { method: 'youtube-api', ...result, kapak } });
         return NextResponse.json({ ok: true, method: 'youtube-api', item: updated });
       } catch (e) {
         return NextResponse.json({ ok: false, error: `YouTube yayını başarısız: ${e.message}` }, { status: 502 });

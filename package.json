@@ -10,7 +10,8 @@
     "lint": "next lint",
     "test:youtube-onkapi": "node scripts/youtube-onkapi-testi.mjs",
     "test:kimlik-kapsami": "node scripts/kimlik-kapsami-kapisi.mjs",
-    "test": "npm run test:kimlik-kapsami && npm run test:youtube-onkapi"
+    "test": "npm run test:kimlik-kapsami && npm run test:youtube-onkapi && npm run test:youtube-kapak",
+    "test:youtube-kapak": "node scripts/youtube-kapak-testi.mjs"
   },
   "dependencies": {
     "@fal-ai/client": "^1.2.0",
